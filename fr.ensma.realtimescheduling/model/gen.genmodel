@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/fr.ensma.realtimescheduling/src" modelPluginID="fr.ensma.realtimescheduling"
+    modelName="Gen" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>model.ecore</foreignModel>
+  <genPackages prefix="Realtimescheduling" basePackage="fr.ensma" disposableProviderFactory="true"
+      ecorePackage="model.ecore#/" publicationLocation="">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//Periodicity">
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Periodicity/Periodic"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Periodicity/Sporadic"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Periodicity/Aperiodic"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//SchedulingAlgorithm">
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SchedulingAlgorithm/FixedPriority"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SchedulingAlgorithm/RateMonotonic"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SchedulingAlgorithm/DeadlineMonotonic"/>
+    </genEnums>
+    <genClasses ecoreClass="model.ecore#//HardwareResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//HardwareResource/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//HardwareResource/scheduledOn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//HardwareResource/communicatesOver"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Task">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Task/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Task/worstCaseExecTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Task/implicitDeadline"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Task/priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Task/responseTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Task/scheduleable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Task/jitter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Task/criticalInstance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Task/releaseTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Task/periodicity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Task/characteristicPeriod"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Task/partition"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Module">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Module/utilization"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Module/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Module/period"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Module/partition"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Partition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Partition/id"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Partition/period"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Partition/executionIntervals"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Partition/virtualProcessorUtilization"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Partition/availabilityFactor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Partition/schedulingAlgorithm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Partition/tasks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Partition/module"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Interval">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Interval/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Interval/end"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Network"/>
+    <genClasses ecoreClass="model.ecore#//System">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//System/uses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//System/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//System/executesSoftware"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//SoftwareResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SoftwareResource/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//SoftwareResource/executedTasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//SoftwareResource/containedPartitions"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

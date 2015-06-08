@@ -12,7 +12,7 @@ import fr.ensma.realtimescheduling.Partition;
  * @author Gustavo Hidalgo
  * @version 1.0
  */
-public class PartitionUtil {
+public class PartitionUtils {
 
 	
 	/**
@@ -110,7 +110,7 @@ public class PartitionUtil {
 	/**
 	 * Calculates the least supply function for this partition
 	 * at some time.
-	 * TODO: this may or may not be broken. Need more tests.
+	 * 
 	 * @param t
 	 *            argument to function
 	 * @return least supply

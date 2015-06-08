@@ -29,6 +29,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getVirtualLinks <em>Virtual Links</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getLatency <em>Latency</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getNetworkBandwidth <em>Network Bandwidth</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getMaxFrameSize <em>Max Frame Size</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,6 +75,61 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * @ordered
 	 */
 	protected EList<VirtualLink> virtualLinks;
+
+	/**
+	 * The default value of the '{@link #getLatency() <em>Latency</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLatency()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double LATENCY_EDEFAULT = 0.0;
+	/**
+	 * The cached value of the '{@link #getLatency() <em>Latency</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLatency()
+	 * @generated
+	 * @ordered
+	 */
+	protected double latency = LATENCY_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getNetworkBandwidth() <em>Network Bandwidth</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNetworkBandwidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double NETWORK_BANDWIDTH_EDEFAULT = 0.0;
+	/**
+	 * The cached value of the '{@link #getNetworkBandwidth() <em>Network Bandwidth</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNetworkBandwidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected double networkBandwidth = NETWORK_BANDWIDTH_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getMaxFrameSize() <em>Max Frame Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxFrameSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double MAX_FRAME_SIZE_EDEFAULT = 0.0;
+	/**
+	 * The cached value of the '{@link #getMaxFrameSize() <em>Max Frame Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxFrameSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected double maxFrameSize = MAX_FRAME_SIZE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -142,6 +200,69 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getLatency() {
+		return latency;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLatency(double newLatency) {
+		double oldLatency = latency;
+		latency = newLatency;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.NETWORK__LATENCY, oldLatency, latency));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getNetworkBandwidth() {
+		return networkBandwidth;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNetworkBandwidth(double newNetworkBandwidth) {
+		double oldNetworkBandwidth = networkBandwidth;
+		networkBandwidth = newNetworkBandwidth;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH, oldNetworkBandwidth, networkBandwidth));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getMaxFrameSize() {
+		return maxFrameSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMaxFrameSize(double newMaxFrameSize) {
+		double oldMaxFrameSize = maxFrameSize;
+		maxFrameSize = newMaxFrameSize;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE, oldMaxFrameSize, maxFrameSize));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -167,6 +288,12 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				return getNodes();
 			case RealtimeschedulingPackage.NETWORK__VIRTUAL_LINKS:
 				return getVirtualLinks();
+			case RealtimeschedulingPackage.NETWORK__LATENCY:
+				return getLatency();
+			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
+				return getNetworkBandwidth();
+			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
+				return getMaxFrameSize();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -191,6 +318,15 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				getVirtualLinks().clear();
 				getVirtualLinks().addAll((Collection<? extends VirtualLink>)newValue);
 				return;
+			case RealtimeschedulingPackage.NETWORK__LATENCY:
+				setLatency((Double)newValue);
+				return;
+			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
+				setNetworkBandwidth((Double)newValue);
+				return;
+			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
+				setMaxFrameSize((Double)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -212,6 +348,15 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 			case RealtimeschedulingPackage.NETWORK__VIRTUAL_LINKS:
 				getVirtualLinks().clear();
 				return;
+			case RealtimeschedulingPackage.NETWORK__LATENCY:
+				setLatency(LATENCY_EDEFAULT);
+				return;
+			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
+				setNetworkBandwidth(NETWORK_BANDWIDTH_EDEFAULT);
+				return;
+			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
+				setMaxFrameSize(MAX_FRAME_SIZE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -230,6 +375,12 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				return nodes != null && !nodes.isEmpty();
 			case RealtimeschedulingPackage.NETWORK__VIRTUAL_LINKS:
 				return virtualLinks != null && !virtualLinks.isEmpty();
+			case RealtimeschedulingPackage.NETWORK__LATENCY:
+				return latency != LATENCY_EDEFAULT;
+			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
+				return networkBandwidth != NETWORK_BANDWIDTH_EDEFAULT;
+			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
+				return maxFrameSize != MAX_FRAME_SIZE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -246,6 +397,12 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", latency: ");
+		result.append(latency);
+		result.append(", networkBandwidth: ");
+		result.append(networkBandwidth);
+		result.append(", maxFrameSize: ");
+		result.append(maxFrameSize);
 		result.append(')');
 		return result.toString();
 	}

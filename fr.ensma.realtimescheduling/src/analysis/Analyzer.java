@@ -2,11 +2,14 @@ package analysis;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import fr.ensma.realtimescheduling.Interval;
+import fr.ensma.realtimescheduling.Network;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Task;
+import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * Performs schedulability analysis for classes in this package.
@@ -71,9 +74,9 @@ class Analyzer {
 	 */
 	static double RTA1(Partition p, List<Task> tasks, int index) {
 		double rmax = 0;
-		List<Interval> intervals = PartitionUtil.sortedIntervals(p);
+		List<Interval> intervals = PartitionUtils.sortedIntervals(p);
 		for (int j = 0; j < intervals.size(); j++) {
-			double sej = PartitionUtil.supply(p,intervals.get(j).getEnd());
+			double sej = PartitionUtils.supply(p,intervals.get(j).getEnd());
 			double r,rpp,rppp = tasks.get(index).getWorstCaseExecTime();
 			do {
 				r = rppp;
@@ -82,7 +85,7 @@ class Analyzer {
 						.mapToDouble(k -> 
 							Math.ceil(r_final / tasks.get(k).getCharacteristicPeriod()) * tasks.get(k).getWorstCaseExecTime())
 						.sum();
-				rppp = PartitionUtil.inverseSupply(p, rpp + sej) - intervals.get(j).getEnd();
+				rppp = PartitionUtils.inverseSupply(p, rpp + sej) - intervals.get(j).getEnd();
 			} while (rppp <= tasks.get(index).getImplicitDeadline() && rppp > r);
 			if (rppp > tasks.get(index).getImplicitDeadline()) {
 				r = 0;
@@ -96,7 +99,7 @@ class Analyzer {
 
 	/**
 	 * This tests for schedulability of a list of tasks in the critical
-	 * partition case.
+	 * partition case. This isn't used, only a sufficient test.
 	 * 
 	 * @param p
 	 *            partition
@@ -104,6 +107,7 @@ class Analyzer {
 	 *            index of the task being analyzed
 	 * @return 0 if the task misses its deadline, worst response time otherwise
 	 */
+	@Deprecated
 	static double RTA2(Partition p, int index) {
 		double rmax = 0;
 		List<fr.ensma.realtimescheduling.Task> tasks = p.getTasks();
@@ -119,7 +123,7 @@ class Analyzer {
 									k -> Math.ceil(r_final
 											/ tasks.get(k).getCharacteristicPeriod())
 											* tasks.get(k).getWorstCaseExecTime()).sum();
-			rppp = PartitionUtil.inverseSupply(p, rpp);
+			rppp = PartitionUtils.inverseSupply(p, rpp);
 		} while (r <= tasks.get(index).getImplicitDeadline() && rppp > r);
 		if (rppp > tasks.get(index).getImplicitDeadline()) {
 			rmax = 0;
@@ -127,6 +131,22 @@ class Analyzer {
 			rmax = Math.max(rppp, rmax);
 		}
 		return rmax;
+	}
+	
+	/**
+	 * Performs the first forward-analysis paper algorithm.
+	 * This is not the improved version. This method
+	 * assumes the network is valid under these criteria:
+	 * 1. No cycles
+	 * 2. All virtual links start at a 'start' node (node with no incoming links)
+	 * 	  and end at 'end' nodes (nodes without outgoing links)
+	 * 
+	 * @param net Network being analyzed
+	 * @return Map from virtual link to worst case end-to-end delay as a double
+	 */
+	static Map<VirtualLink, Double> FA1(Network net) {
+		
+		return null;
 	}
 	
 

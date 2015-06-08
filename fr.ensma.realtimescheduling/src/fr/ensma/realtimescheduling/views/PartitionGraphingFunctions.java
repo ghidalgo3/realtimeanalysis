@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import analysis.PartitionUtil;
+import analysis.PartitionUtils;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Partition;
 
@@ -23,7 +23,7 @@ public class PartitionGraphingFunctions {
 	 * @return
 	 */
 	public static double[][] getInverseSupply(Partition p, int n) {
-		return makeFunction((x) -> PartitionUtil.inverseSupply(p,x), 0, p.getPeriod()*n, 200);
+		return makeFunction((x) -> PartitionUtils.inverseSupply(p,x), 0, p.getPeriod()*n, 200);
 	}
 	
 	/**
@@ -50,7 +50,7 @@ public class PartitionGraphingFunctions {
 	 */
 	public static double[][] getSupply(Partition p, int n) {
 //		return makeFunction((x) -> PartitionUtil.supply(p, x), 0, p.getPeriod()*2, 100);
-		return makeFunction(x -> PartitionUtil.supply(p, x), 0, p.getPeriod()*n, 200);
+		return makeFunction(x -> PartitionUtils.supply(p, x), 0, p.getPeriod()*n, 200);
 	}
 	
 	/**
@@ -64,7 +64,7 @@ public class PartitionGraphingFunctions {
 	 * @return data sent to the graph (JFreeChart)
 	 */
 	private static double[][] applyAtIntervalExtremes(Partition p, BiFunction<Partition, Double, Double> f, int n) {
-		List<Interval> intervals = PartitionUtil.sortedIntervals(p);
+		List<Interval> intervals = PartitionUtils.sortedIntervals(p);
 		
 		List<Double> xs = new ArrayList<>(intervals.size()*2*n);
 		xs.addAll(Collections.nCopies(p.getExecutionIntervals().size()*2*n, 0.0));
@@ -85,11 +85,11 @@ public class PartitionGraphingFunctions {
 			}
 		}
 		
-		if(PartitionUtil.getMinimumStart(p) != 0.0) {
+		if(PartitionUtils.getMinimumStart(p) != 0.0) {
 			xs.add(0, 0.0);
 			ys.add(0, 0.0);
 		}
-		if(PartitionUtil.getLastIntervalEnd(p) != p.getPeriod()) {
+		if(PartitionUtils.getLastIntervalEnd(p) != p.getPeriod()) {
 			xs.add(p.getPeriod()*n);
 			ys.add(f.apply(p, p.getPeriod()*n));
 		}
@@ -107,6 +107,6 @@ public class PartitionGraphingFunctions {
 	 * @return
 	 */
 	public static double[][] getLeastSupply(Partition p, int n) {
-		return makeFunction((x) -> PartitionUtil.leastSupply(p, x), 0, p.getPeriod() * n, 200);
+		return makeFunction((x) -> PartitionUtils.leastSupply(p, x), 0, p.getPeriod() * n, 200);
 	}
 }

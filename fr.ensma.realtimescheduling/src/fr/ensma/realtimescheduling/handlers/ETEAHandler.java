@@ -7,11 +7,12 @@ import org.eclipse.core.commands.IHandler;
 import analysis.ModelInterface;
 
 
-public class DMAHandler extends AbstractHandler implements IHandler {
+
+public class ETEAHandler extends AbstractHandler implements IHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		HandlerUtils.holisticAnalysis(ModelInterface.allByDeadlineMonotonic(), event);
+		HandlerUtils.holisticAnalysis(ModelInterface.endToEndAnalysis(), event);
 		return null;
 	}
 

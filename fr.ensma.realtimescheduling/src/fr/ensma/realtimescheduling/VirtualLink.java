@@ -2,6 +2,7 @@
  */
 package fr.ensma.realtimescheduling;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -12,8 +13,9 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getNode <em>Node</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getNodes <em>Nodes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getId <em>Id</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,32 +25,22 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface VirtualLink extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Node</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Node#getVirtuallink <em>Virtuallink</em>}'.
+	 * Returns the value of the '<em><b>Nodes</b></em>' reference list.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.Node}.
+	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Node#getVirtualLinks <em>Virtual Links</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Node</em>' reference isn't clear,
+	 * If the meaning of the '<em>Nodes</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Node</em>' reference.
-	 * @see #setNode(Node)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_Node()
-	 * @see fr.ensma.realtimescheduling.Node#getVirtuallink
-	 * @model opposite="virtuallink"
+	 * @return the value of the '<em>Nodes</em>' reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_Nodes()
+	 * @see fr.ensma.realtimescheduling.Node#getVirtualLinks
+	 * @model opposite="virtualLinks"
 	 * @generated
 	 */
-	Node getNode();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getNode <em>Node</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Node</em>' reference.
-	 * @see #getNode()
-	 * @generated
-	 */
-	void setNode(Node value);
+	EList<Node> getNodes();
 
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
@@ -75,5 +67,31 @@ public interface VirtualLink extends EObject {
 	 * @generated
 	 */
 	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Min Inter Frame Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Min Inter Frame Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Min Inter Frame Time</em>' attribute.
+	 * @see #setMinInterFrameTime(double)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_MinInterFrameTime()
+	 * @model required="true"
+	 * @generated
+	 */
+	double getMinInterFrameTime();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getMinInterFrameTime <em>Min Inter Frame Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Min Inter Frame Time</em>' attribute.
+	 * @see #getMinInterFrameTime()
+	 * @generated
+	 */
+	void setMinInterFrameTime(double value);
 
 } // VirtualLink

@@ -507,13 +507,40 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int NETWORK__VIRTUAL_LINKS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Latency</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__LATENCY = 3;
+
+	/**
+	 * The feature id for the '<em><b>Network Bandwidth</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__NETWORK_BANDWIDTH = 4;
+
+	/**
+	 * The feature id for the '<em><b>Max Frame Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__MAX_FRAME_SIZE = 5;
+
+	/**
 	 * The number of structural features of the '<em>Network</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK_FEATURE_COUNT = 3;
+	int NETWORK_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Network</em>' class.
@@ -682,13 +709,13 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int NODE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Virtuallink</b></em>' reference list.
+	 * The feature id for the '<em><b>Virtual Links</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__VIRTUALLINK = 0;
+	int NODE__VIRTUAL_LINKS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -700,13 +727,31 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int NODE__ID = 1;
 
 	/**
+	 * The feature id for the '<em><b>Transmission Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__TRANSMISSION_DELAY = 2;
+
+	/**
+	 * The feature id for the '<em><b>Real Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__REAL_LINKS = 3;
+
+	/**
 	 * The number of structural features of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = 2;
+	int NODE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Node</em>' class.
@@ -728,13 +773,13 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int VIRTUAL_LINK = 10;
 
 	/**
-	 * The feature id for the '<em><b>Node</b></em>' reference.
+	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUAL_LINK__NODE = 0;
+	int VIRTUAL_LINK__NODES = 0;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -746,13 +791,22 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int VIRTUAL_LINK__ID = 1;
 
 	/**
+	 * The feature id for the '<em><b>Min Inter Frame Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_LINK__MIN_INTER_FRAME_TIME = 2;
+
+	/**
 	 * The number of structural features of the '<em>Virtual Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUAL_LINK_FEATURE_COUNT = 2;
+	int VIRTUAL_LINK_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Virtual Link</em>' class.
@@ -1208,6 +1262,39 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EReference getNetwork_VirtualLinks();
 
 	/**
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Network#getLatency <em>Latency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Latency</em>'.
+	 * @see fr.ensma.realtimescheduling.Network#getLatency()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Latency();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Network#getNetworkBandwidth <em>Network Bandwidth</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Network Bandwidth</em>'.
+	 * @see fr.ensma.realtimescheduling.Network#getNetworkBandwidth()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_NetworkBandwidth();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Network#getMaxFrameSize <em>Max Frame Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Frame Size</em>'.
+	 * @see fr.ensma.realtimescheduling.Network#getMaxFrameSize()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_MaxFrameSize();
+
+	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.System <em>System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1325,15 +1412,15 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EClass getNode();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.Node#getVirtuallink <em>Virtuallink</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.Node#getVirtualLinks <em>Virtual Links</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Virtuallink</em>'.
-	 * @see fr.ensma.realtimescheduling.Node#getVirtuallink()
+	 * @return the meta object for the reference list '<em>Virtual Links</em>'.
+	 * @see fr.ensma.realtimescheduling.Node#getVirtualLinks()
 	 * @see #getNode()
 	 * @generated
 	 */
-	EReference getNode_Virtuallink();
+	EReference getNode_VirtualLinks();
 
 	/**
 	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Node#getId <em>Id</em>}'.
@@ -1347,6 +1434,28 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EAttribute getNode_Id();
 
 	/**
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Node#getTransmissionDelay <em>Transmission Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transmission Delay</em>'.
+	 * @see fr.ensma.realtimescheduling.Node#getTransmissionDelay()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_TransmissionDelay();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.Node#getRealLinks <em>Real Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Real Links</em>'.
+	 * @see fr.ensma.realtimescheduling.Node#getRealLinks()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EReference getNode_RealLinks();
+
+	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.VirtualLink <em>Virtual Link</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1357,15 +1466,15 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EClass getVirtualLink();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.ensma.realtimescheduling.VirtualLink#getNode <em>Node</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.VirtualLink#getNodes <em>Nodes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Node</em>'.
-	 * @see fr.ensma.realtimescheduling.VirtualLink#getNode()
+	 * @return the meta object for the reference list '<em>Nodes</em>'.
+	 * @see fr.ensma.realtimescheduling.VirtualLink#getNodes()
 	 * @see #getVirtualLink()
 	 * @generated
 	 */
-	EReference getVirtualLink_Node();
+	EReference getVirtualLink_Nodes();
 
 	/**
 	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.VirtualLink#getId <em>Id</em>}'.
@@ -1377,6 +1486,17 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getVirtualLink_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.VirtualLink#getMinInterFrameTime <em>Min Inter Frame Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min Inter Frame Time</em>'.
+	 * @see fr.ensma.realtimescheduling.VirtualLink#getMinInterFrameTime()
+	 * @see #getVirtualLink()
+	 * @generated
+	 */
+	EAttribute getVirtualLink_MinInterFrameTime();
 
 	/**
 	 * Returns the meta object for enum '{@link fr.ensma.realtimescheduling.Periodicity <em>Periodicity</em>}'.
@@ -1746,6 +1866,30 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EReference NETWORK__VIRTUAL_LINKS = eINSTANCE.getNetwork_VirtualLinks();
 
 		/**
+		 * The meta object literal for the '<em><b>Latency</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__LATENCY = eINSTANCE.getNetwork_Latency();
+
+		/**
+		 * The meta object literal for the '<em><b>Network Bandwidth</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__NETWORK_BANDWIDTH = eINSTANCE.getNetwork_NetworkBandwidth();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Frame Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__MAX_FRAME_SIZE = eINSTANCE.getNetwork_MaxFrameSize();
+
+		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.SystemImpl <em>System</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1842,12 +1986,12 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EClass NODE = eINSTANCE.getNode();
 
 		/**
-		 * The meta object literal for the '<em><b>Virtuallink</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Virtual Links</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference NODE__VIRTUALLINK = eINSTANCE.getNode_Virtuallink();
+		EReference NODE__VIRTUAL_LINKS = eINSTANCE.getNode_VirtualLinks();
 
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
@@ -1856,6 +2000,22 @@ public interface RealtimeschedulingPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NODE__ID = eINSTANCE.getNode_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Transmission Delay</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__TRANSMISSION_DELAY = eINSTANCE.getNode_TransmissionDelay();
+
+		/**
+		 * The meta object literal for the '<em><b>Real Links</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE__REAL_LINKS = eINSTANCE.getNode_RealLinks();
 
 		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl <em>Virtual Link</em>}' class.
@@ -1868,12 +2028,12 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EClass VIRTUAL_LINK = eINSTANCE.getVirtualLink();
 
 		/**
-		 * The meta object literal for the '<em><b>Node</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Nodes</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIRTUAL_LINK__NODE = eINSTANCE.getVirtualLink_Node();
+		EReference VIRTUAL_LINK__NODES = eINSTANCE.getVirtualLink_Nodes();
 
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
@@ -1882,6 +2042,14 @@ public interface RealtimeschedulingPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VIRTUAL_LINK__ID = eINSTANCE.getVirtualLink_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Min Inter Frame Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VIRTUAL_LINK__MIN_INTER_FRAME_TIME = eINSTANCE.getVirtualLink_MinInterFrameTime();
 
 		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.Periodicity <em>Periodicity</em>}' enum.

@@ -6,14 +6,18 @@ import fr.ensma.realtimescheduling.Node;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.VirtualLink;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,8 +26,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getNode <em>Node</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getId <em>Id</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -31,14 +36,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements VirtualLink {
 	/**
-	 * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
+	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNode()
+	 * @see #getNodes()
 	 * @generated
 	 * @ordered
 	 */
-	protected Node node;
+	protected EList<Node> nodes;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -59,6 +64,26 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMinInterFrameTime() <em>Min Inter Frame Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMinInterFrameTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double MIN_INTER_FRAME_TIME_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getMinInterFrameTime() <em>Min Inter Frame Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMinInterFrameTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected double minInterFrameTime = MIN_INTER_FRAME_TIME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,59 +109,11 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Node getNode() {
-		if (node != null && node.eIsProxy()) {
-			InternalEObject oldNode = (InternalEObject)node;
-			node = (Node)eResolveProxy(oldNode);
-			if (node != oldNode) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RealtimeschedulingPackage.VIRTUAL_LINK__NODE, oldNode, node));
-			}
+	public EList<Node> getNodes() {
+		if (nodes == null) {
+			nodes = new EObjectWithInverseResolvingEList.ManyInverse<Node>(Node.class, this, RealtimeschedulingPackage.VIRTUAL_LINK__NODES, RealtimeschedulingPackage.NODE__VIRTUAL_LINKS);
 		}
-		return node;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Node basicGetNode() {
-		return node;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetNode(Node newNode, NotificationChain msgs) {
-		Node oldNode = node;
-		node = newNode;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.VIRTUAL_LINK__NODE, oldNode, newNode);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNode(Node newNode) {
-		if (newNode != node) {
-			NotificationChain msgs = null;
-			if (node != null)
-				msgs = ((InternalEObject)node).eInverseRemove(this, RealtimeschedulingPackage.NODE__VIRTUALLINK, Node.class, msgs);
-			if (newNode != null)
-				msgs = ((InternalEObject)newNode).eInverseAdd(this, RealtimeschedulingPackage.NODE__VIRTUALLINK, Node.class, msgs);
-			msgs = basicSetNode(newNode, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.VIRTUAL_LINK__NODE, newNode, newNode));
+		return nodes;
 	}
 
 	/**
@@ -165,13 +142,33 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getMinInterFrameTime() {
+		return minInterFrameTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMinInterFrameTime(double newMinInterFrameTime) {
+		double oldMinInterFrameTime = minInterFrameTime;
+		minInterFrameTime = newMinInterFrameTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME, oldMinInterFrameTime, minInterFrameTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODE:
-				if (node != null)
-					msgs = ((InternalEObject)node).eInverseRemove(this, RealtimeschedulingPackage.NODE__VIRTUALLINK, Node.class, msgs);
-				return basicSetNode((Node)otherEnd, msgs);
+			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getNodes()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -184,8 +181,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODE:
-				return basicSetNode(null, msgs);
+			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
+				return ((InternalEList<?>)getNodes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -198,11 +195,12 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODE:
-				if (resolve) return getNode();
-				return basicGetNode();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
+				return getNodes();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				return getId();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
+				return getMinInterFrameTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -212,14 +210,19 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODE:
-				setNode((Node)newValue);
+			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
+				getNodes().clear();
+				getNodes().addAll((Collection<? extends Node>)newValue);
 				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				setId((String)newValue);
+				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
+				setMinInterFrameTime((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -233,11 +236,14 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODE:
-				setNode((Node)null);
+			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
+				getNodes().clear();
 				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				setId(ID_EDEFAULT);
+				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
+				setMinInterFrameTime(MIN_INTER_FRAME_TIME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -251,10 +257,12 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODE:
-				return node != null;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
+				return nodes != null && !nodes.isEmpty();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
+				return minInterFrameTime != MIN_INTER_FRAME_TIME_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -271,6 +279,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
 		result.append(id);
+		result.append(", minInterFrameTime: ");
+		result.append(minInterFrameTime);
 		result.append(')');
 		return result.toString();
 	}

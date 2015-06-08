@@ -552,6 +552,33 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getNetwork_Latency() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_NetworkBandwidth() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_MaxFrameSize() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSystem() {
 		return systemEClass;
 	}
@@ -651,7 +678,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNode_Virtuallink() {
+	public EReference getNode_VirtualLinks() {
 		return (EReference)nodeEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -669,6 +696,24 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getNode_TransmissionDelay() {
+		return (EAttribute)nodeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNode_RealLinks() {
+		return (EReference)nodeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getVirtualLink() {
 		return virtualLinkEClass;
 	}
@@ -678,7 +723,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVirtualLink_Node() {
+	public EReference getVirtualLink_Nodes() {
 		return (EReference)virtualLinkEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -689,6 +734,15 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 */
 	public EAttribute getVirtualLink_Id() {
 		return (EAttribute)virtualLinkEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVirtualLink_MinInterFrameTime() {
+		return (EAttribute)virtualLinkEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -781,6 +835,9 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		createEAttribute(networkEClass, NETWORK__NAME);
 		createEReference(networkEClass, NETWORK__NODES);
 		createEReference(networkEClass, NETWORK__VIRTUAL_LINKS);
+		createEAttribute(networkEClass, NETWORK__LATENCY);
+		createEAttribute(networkEClass, NETWORK__NETWORK_BANDWIDTH);
+		createEAttribute(networkEClass, NETWORK__MAX_FRAME_SIZE);
 
 		systemEClass = createEClass(SYSTEM);
 		createEReference(systemEClass, SYSTEM__USES);
@@ -796,12 +853,15 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		createEAttribute(processorEClass, PROCESSOR__NAME);
 
 		nodeEClass = createEClass(NODE);
-		createEReference(nodeEClass, NODE__VIRTUALLINK);
+		createEReference(nodeEClass, NODE__VIRTUAL_LINKS);
 		createEAttribute(nodeEClass, NODE__ID);
+		createEAttribute(nodeEClass, NODE__TRANSMISSION_DELAY);
+		createEReference(nodeEClass, NODE__REAL_LINKS);
 
 		virtualLinkEClass = createEClass(VIRTUAL_LINK);
-		createEReference(virtualLinkEClass, VIRTUAL_LINK__NODE);
+		createEReference(virtualLinkEClass, VIRTUAL_LINK__NODES);
 		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__ID);
+		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__MIN_INTER_FRAME_TIME);
 
 		// Create enums
 		periodicityEEnum = createEEnum(PERIODICITY);
@@ -882,6 +942,9 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEAttribute(getNetwork_Name(), ecorePackage.getEString(), "name", null, 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNetwork_Nodes(), this.getNode(), null, "nodes", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNetwork_VirtualLinks(), this.getVirtualLink(), null, "virtualLinks", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Latency(), ecorePackage.getEDouble(), "latency", "0.0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_NetworkBandwidth(), ecorePackage.getEDouble(), "networkBandwidth", "0.0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_MaxFrameSize(), ecorePackage.getEDouble(), "maxFrameSize", "0.0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, fr.ensma.realtimescheduling.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystem_Uses(), this.getHardwareResource(), null, "uses", null, 1, 1, fr.ensma.realtimescheduling.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -897,12 +960,15 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEAttribute(getProcessor_Name(), ecorePackage.getEString(), "name", null, 1, 1, Processor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNode_Virtuallink(), this.getVirtualLink(), this.getVirtualLink_Node(), "virtuallink", null, 1, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNode_VirtualLinks(), this.getVirtualLink(), this.getVirtualLink_Nodes(), "virtualLinks", null, 1, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNode_Id(), ecorePackage.getEString(), "id", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNode_TransmissionDelay(), ecorePackage.getEDouble(), "transmissionDelay", "0.0", 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getNode_RealLinks(), this.getNode(), null, "realLinks", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(virtualLinkEClass, VirtualLink.class, "VirtualLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVirtualLink_Node(), this.getNode(), this.getNode_Virtuallink(), "node", null, 0, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVirtualLink_Nodes(), this.getNode(), this.getNode_VirtualLinks(), "nodes", null, 0, -1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVirtualLink_Id(), ecorePackage.getEString(), "id", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVirtualLink_MinInterFrameTime(), ecorePackage.getEDouble(), "minInterFrameTime", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(periodicityEEnum, Periodicity.class, "Periodicity");

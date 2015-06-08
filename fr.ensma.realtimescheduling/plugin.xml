@@ -13,11 +13,17 @@
             name="Sample Category">
       </category>
       <command
+            defaultHandler="fr.ensma.realtimescheduling.handlers.ETEAHandler"
+            id="fr.ensma.realtimescheduling.commands.etea"
+            name="End to End Analysis">
+      </command>
+      <command
             defaultHandler="fr.ensma.realtimescheduling.handlers.VPUHandler"
             id="fr.ensma.realtimescheduling.vpu"
             name="Virtual Processor Utilization">
       </command>
       <command
+            defaultHandler="fr.ensma.realtimescheduling.handlers.RTAHandler"
             id="fr.ensma.realtimescheduling.commands.rta"
             name="Response Time Analysis">
       </command>
@@ -31,6 +37,10 @@
       <handler
             class="fr.ensma.realtimescheduling.handlers.RTAHandler"
             commandId="fr.ensma.realtimescheduling.commands.rta">
+      </handler>
+      <handler
+            class="fr.ensma.realtimescheduling.handlers.ETEAHandler"
+            commandId="fr.ensma.realtimescheduling.commands.etea">
       </handler>
    </extension>
    <extension
@@ -61,6 +71,12 @@
                   label="Response Time"
                   style="push"
                   tooltip="Determine the Worst Case Response Time for tasks in a partition using the partition&apos;s specified priority assignment algorithm">
+            </command>
+            <command
+                  commandId="fr.ensma.realtimescheduling.commands.etea"
+                  label="End to End Analysis"
+                  style="push"
+                  tooltip="Perform the End to End delay analysis on the network component">
             </command>
          </menu>
       </menuContribution>

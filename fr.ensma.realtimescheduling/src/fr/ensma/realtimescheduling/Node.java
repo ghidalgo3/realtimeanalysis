@@ -14,8 +14,10 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.Node#getVirtuallink <em>Virtuallink</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Node#getVirtualLinks <em>Virtual Links</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Node#getId <em>Id</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Node#getTransmissionDelay <em>Transmission Delay</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Node#getRealLinks <em>Real Links</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,22 +27,22 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Node extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Virtuallink</b></em>' reference list.
+	 * Returns the value of the '<em><b>Virtual Links</b></em>' reference list.
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.VirtualLink}.
-	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.VirtualLink#getNode <em>Node</em>}'.
+	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.VirtualLink#getNodes <em>Nodes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Virtuallink</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Virtual Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Virtuallink</em>' reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_Virtuallink()
-	 * @see fr.ensma.realtimescheduling.VirtualLink#getNode
-	 * @model opposite="node" required="true"
+	 * @return the value of the '<em>Virtual Links</em>' reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_VirtualLinks()
+	 * @see fr.ensma.realtimescheduling.VirtualLink#getNodes
+	 * @model opposite="nodes" required="true"
 	 * @generated
 	 */
-	EList<VirtualLink> getVirtuallink();
+	EList<VirtualLink> getVirtualLinks();
 
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
@@ -67,5 +69,48 @@ public interface Node extends EObject {
 	 * @generated
 	 */
 	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transmission Delay</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transmission Delay</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transmission Delay</em>' attribute.
+	 * @see #setTransmissionDelay(double)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_TransmissionDelay()
+	 * @model default="0.0" required="true" derived="true"
+	 * @generated
+	 */
+	double getTransmissionDelay();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Node#getTransmissionDelay <em>Transmission Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transmission Delay</em>' attribute.
+	 * @see #getTransmissionDelay()
+	 * @generated
+	 */
+	void setTransmissionDelay(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Real Links</b></em>' reference list.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.Node}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Real Links</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Real Links</em>' reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_RealLinks()
+	 * @model
+	 * @generated
+	 */
+	EList<Node> getRealLinks();
 
 } // Node

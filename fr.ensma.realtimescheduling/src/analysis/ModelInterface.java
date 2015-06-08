@@ -147,29 +147,37 @@ public class ModelInterface {
 	 * @return
 	 */
 	public static List<String> virtualProcessorUtilizationAnalysis() {
-		if(!validSystem) return null;
 		List<String> l = new ArrayList<String>();
-		if(validSystem) {
-			allPartitions
-				.stream()
-				.forEach(p -> {
-					if(p.getTasks().stream().allMatch(t -> t.isScheduleable())) {
-						double vpu = 1 / p.getAvailabilityFactor() * p.getTasks()
-								.stream()
-								.mapToDouble(t -> t.getWorstCaseExecTime()/t.getCharacteristicPeriod())
-								.sum();
-						p.setVirtualProcessorUtilization(vpu);
-						l.add("Partition " + p.getId() + " has determinate VPU: " + vpu + ".");
-					} else {
-						l.add("Partition " + p.getId() + " has unschedulable tasks. Could not determine VPU.");
-						p.setVirtualProcessorUtilization(0.0);
-					}
-				});
-			return l;
-		} else {
+		if(!validSystem) {
 			l.add("System is invalid. Please validate the system successfully.");
-			return l;
+			return null;
 		}
+		allPartitions
+			.stream()
+			.forEach(p -> {
+				if(p.getTasks().stream().allMatch(t -> t.isScheduleable())) {
+					double vpu = 1 / p.getAvailabilityFactor() * p.getTasks()
+							.stream()
+							.mapToDouble(t -> t.getWorstCaseExecTime()/t.getCharacteristicPeriod())
+							.sum();
+					p.setVirtualProcessorUtilization(vpu);
+					l.add("Partition " + p.getId() + " has determinate VPU: " + vpu + ".");
+				} else {
+					l.add("Partition " + p.getId() + " has unschedulable tasks. Could not determine VPU.");
+					p.setVirtualProcessorUtilization(0.0);
+				}
+			});
+		return l;
+	}
+	
+	public static List<String> endToEndAnalysis() {
+		List<String> l = new ArrayList<String>();
+		if(!validSystem) {
+			l.add("System is invalid. Please validate the system successfully.");
+			return null;
+		}
+		system.getUses().getCommunicatesOver().getVirtualLinks().stream().forEachOrdered(vl -> l.add(vl.getNodes().toString() + "\n"));
+		return l;
 	}
 	
 	/**

@@ -220,7 +220,7 @@ public class ModelInterface {
 	 * @author Gustavo
 	 */
 	public static int fixedPriority(Task o1, Task o2) {
-		return Integer.compare(o1.getPriority(), o2.getPriority());
+		return Integer.compare(o2.getPriority(), o1.getPriority());
 	}
 	
 	/**

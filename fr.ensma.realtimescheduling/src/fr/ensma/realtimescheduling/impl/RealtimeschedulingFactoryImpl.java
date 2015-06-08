@@ -6,6 +6,7 @@ import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Network;
+import fr.ensma.realtimescheduling.Node;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Periodicity;
 import fr.ensma.realtimescheduling.Processor;
@@ -15,6 +16,7 @@ import fr.ensma.realtimescheduling.SchedulingAlgorithm;
 import fr.ensma.realtimescheduling.SoftwareResource;
 import fr.ensma.realtimescheduling.Task;
 
+import fr.ensma.realtimescheduling.VirtualLink;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -77,6 +79,8 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 			case RealtimeschedulingPackage.SYSTEM: return createSystem();
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE: return createSoftwareResource();
 			case RealtimeschedulingPackage.PROCESSOR: return createProcessor();
+			case RealtimeschedulingPackage.NODE: return createNode();
+			case RealtimeschedulingPackage.VIRTUAL_LINK: return createVirtualLink();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -204,6 +208,26 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	public Processor createProcessor() {
 		ProcessorImpl processor = new ProcessorImpl();
 		return processor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Node createNode() {
+		NodeImpl node = new NodeImpl();
+		return node;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VirtualLink createVirtualLink() {
+		VirtualLinkImpl virtualLink = new VirtualLinkImpl();
+		return virtualLink;
 	}
 
 	/**

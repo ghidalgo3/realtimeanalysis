@@ -103,6 +103,24 @@ public interface RealtimeschedulingFactory extends EFactory {
 	Processor createProcessor();
 
 	/**
+	 * Returns a new object of class '<em>Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Node</em>'.
+	 * @generated
+	 */
+	Node createNode();
+
+	/**
+	 * Returns a new object of class '<em>Virtual Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Virtual Link</em>'.
+	 * @generated
+	 */
+	VirtualLink createVirtualLink();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

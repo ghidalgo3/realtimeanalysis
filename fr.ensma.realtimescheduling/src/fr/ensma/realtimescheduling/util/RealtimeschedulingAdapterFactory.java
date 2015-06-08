@@ -6,12 +6,14 @@ import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Network;
+import fr.ensma.realtimescheduling.Node;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Processor;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SoftwareResource;
 import fr.ensma.realtimescheduling.Task;
 
+import fr.ensma.realtimescheduling.VirtualLink;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -110,6 +112,14 @@ public class RealtimeschedulingAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseProcessor(Processor object) {
 				return createProcessorAdapter();
+			}
+			@Override
+			public Adapter caseNode(Node object) {
+				return createNodeAdapter();
+			}
+			@Override
+			public Adapter caseVirtualLink(VirtualLink object) {
+				return createVirtualLinkAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -254,6 +264,34 @@ public class RealtimeschedulingAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createProcessorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.ensma.realtimescheduling.Node <em>Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.ensma.realtimescheduling.Node
+	 * @generated
+	 */
+	public Adapter createNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.ensma.realtimescheduling.VirtualLink <em>Virtual Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.ensma.realtimescheduling.VirtualLink
+	 * @generated
+	 */
+	public Adapter createVirtualLinkAdapter() {
 		return null;
 	}
 

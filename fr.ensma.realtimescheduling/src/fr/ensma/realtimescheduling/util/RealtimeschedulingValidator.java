@@ -13,6 +13,7 @@ import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Network;
+import fr.ensma.realtimescheduling.Node;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Periodicity;
 import fr.ensma.realtimescheduling.Processor;
@@ -20,6 +21,7 @@ import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SchedulingAlgorithm;
 import fr.ensma.realtimescheduling.SoftwareResource;
 import fr.ensma.realtimescheduling.Task;
+import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * <!-- begin-user-doc -->
@@ -111,6 +113,10 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 				return validateSoftwareResource((SoftwareResource)value, diagnostics, context);
 			case RealtimeschedulingPackage.PROCESSOR:
 				return validateProcessor((Processor)value, diagnostics, context);
+			case RealtimeschedulingPackage.NODE:
+				return validateNode((Node)value, diagnostics, context);
+			case RealtimeschedulingPackage.VIRTUAL_LINK:
+				return validateVirtualLink((VirtualLink)value, diagnostics, context);
 			case RealtimeschedulingPackage.PERIODICITY:
 				return validatePeriodicity((Periodicity)value, diagnostics, context);
 			case RealtimeschedulingPackage.SCHEDULING_ALGORITHM:
@@ -405,6 +411,24 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 */
 	public boolean validateProcessor(Processor processor, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(processor, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNode(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(node, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateVirtualLink(VirtualLink virtualLink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(virtualLink, diagnostics, context);
 	}
 
 	/**

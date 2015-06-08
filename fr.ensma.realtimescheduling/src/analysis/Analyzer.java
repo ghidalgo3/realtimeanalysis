@@ -83,8 +83,7 @@ class Analyzer {
 							Math.ceil(r_final / tasks.get(k).getCharacteristicPeriod()) * tasks.get(k).getWorstCaseExecTime())
 						.sum();
 				rppp = PartitionUtil.inverseSupply(p, rpp + sej) - intervals.get(j).getEnd();
-				//check out this terminating condition
-			} while (r <= tasks.get(index).getImplicitDeadline() && rppp > r);
+			} while (rppp <= tasks.get(index).getImplicitDeadline() && rppp > r);
 			if (rppp > tasks.get(index).getImplicitDeadline()) {
 				r = 0;
 				break;

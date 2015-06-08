@@ -489,13 +489,31 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int NETWORK__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__NODES = 1;
+
+	/**
+	 * The feature id for the '<em><b>Virtual Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__VIRTUAL_LINKS = 2;
+
+	/**
 	 * The number of structural features of the '<em>Network</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK_FEATURE_COUNT = 1;
+	int NETWORK_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Network</em>' class.
@@ -654,6 +672,98 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int PROCESSOR_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link fr.ensma.realtimescheduling.impl.NodeImpl <em>Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.ensma.realtimescheduling.impl.NodeImpl
+	 * @see fr.ensma.realtimescheduling.impl.RealtimeschedulingPackageImpl#getNode()
+	 * @generated
+	 */
+	int NODE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Virtuallink</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__VIRTUALLINK = 0;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__ID = 1;
+
+	/**
+	 * The number of structural features of the '<em>Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl <em>Virtual Link</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.ensma.realtimescheduling.impl.VirtualLinkImpl
+	 * @see fr.ensma.realtimescheduling.impl.RealtimeschedulingPackageImpl#getVirtualLink()
+	 * @generated
+	 */
+	int VIRTUAL_LINK = 10;
+
+	/**
+	 * The feature id for the '<em><b>Node</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_LINK__NODE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_LINK__ID = 1;
+
+	/**
+	 * The number of structural features of the '<em>Virtual Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_LINK_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Virtual Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_LINK_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link fr.ensma.realtimescheduling.Periodicity <em>Periodicity</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -661,7 +771,7 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @see fr.ensma.realtimescheduling.impl.RealtimeschedulingPackageImpl#getPeriodicity()
 	 * @generated
 	 */
-	int PERIODICITY = 9;
+	int PERIODICITY = 11;
 
 	/**
 	 * The meta object id for the '{@link fr.ensma.realtimescheduling.SchedulingAlgorithm <em>Scheduling Algorithm</em>}' enum.
@@ -671,7 +781,7 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @see fr.ensma.realtimescheduling.impl.RealtimeschedulingPackageImpl#getSchedulingAlgorithm()
 	 * @generated
 	 */
-	int SCHEDULING_ALGORITHM = 10;
+	int SCHEDULING_ALGORITHM = 12;
 
 
 	/**
@@ -1076,6 +1186,28 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EAttribute getNetwork_Name();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link fr.ensma.realtimescheduling.Network#getNodes <em>Nodes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Nodes</em>'.
+	 * @see fr.ensma.realtimescheduling.Network#getNodes()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EReference getNetwork_Nodes();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.ensma.realtimescheduling.Network#getVirtualLinks <em>Virtual Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Virtual Links</em>'.
+	 * @see fr.ensma.realtimescheduling.Network#getVirtualLinks()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EReference getNetwork_VirtualLinks();
+
+	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.System <em>System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1181,6 +1313,70 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProcessor_Name();
+
+	/**
+	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.Node <em>Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Node</em>'.
+	 * @see fr.ensma.realtimescheduling.Node
+	 * @generated
+	 */
+	EClass getNode();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.Node#getVirtuallink <em>Virtuallink</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Virtuallink</em>'.
+	 * @see fr.ensma.realtimescheduling.Node#getVirtuallink()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EReference getNode_Virtuallink();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Node#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see fr.ensma.realtimescheduling.Node#getId()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_Id();
+
+	/**
+	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.VirtualLink <em>Virtual Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Virtual Link</em>'.
+	 * @see fr.ensma.realtimescheduling.VirtualLink
+	 * @generated
+	 */
+	EClass getVirtualLink();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.ensma.realtimescheduling.VirtualLink#getNode <em>Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Node</em>'.
+	 * @see fr.ensma.realtimescheduling.VirtualLink#getNode()
+	 * @see #getVirtualLink()
+	 * @generated
+	 */
+	EReference getVirtualLink_Node();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.VirtualLink#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see fr.ensma.realtimescheduling.VirtualLink#getId()
+	 * @see #getVirtualLink()
+	 * @generated
+	 */
+	EAttribute getVirtualLink_Id();
 
 	/**
 	 * Returns the meta object for enum '{@link fr.ensma.realtimescheduling.Periodicity <em>Periodicity</em>}'.
@@ -1534,6 +1730,22 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EAttribute NETWORK__NAME = eINSTANCE.getNetwork_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Nodes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NETWORK__NODES = eINSTANCE.getNetwork_Nodes();
+
+		/**
+		 * The meta object literal for the '<em><b>Virtual Links</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NETWORK__VIRTUAL_LINKS = eINSTANCE.getNetwork_VirtualLinks();
+
+		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.SystemImpl <em>System</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1618,6 +1830,58 @@ public interface RealtimeschedulingPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROCESSOR__NAME = eINSTANCE.getProcessor_Name();
+
+		/**
+		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.NodeImpl <em>Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.ensma.realtimescheduling.impl.NodeImpl
+		 * @see fr.ensma.realtimescheduling.impl.RealtimeschedulingPackageImpl#getNode()
+		 * @generated
+		 */
+		EClass NODE = eINSTANCE.getNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Virtuallink</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE__VIRTUALLINK = eINSTANCE.getNode_Virtuallink();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__ID = eINSTANCE.getNode_Id();
+
+		/**
+		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl <em>Virtual Link</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.ensma.realtimescheduling.impl.VirtualLinkImpl
+		 * @see fr.ensma.realtimescheduling.impl.RealtimeschedulingPackageImpl#getVirtualLink()
+		 * @generated
+		 */
+		EClass VIRTUAL_LINK = eINSTANCE.getVirtualLink();
+
+		/**
+		 * The meta object literal for the '<em><b>Node</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VIRTUAL_LINK__NODE = eINSTANCE.getVirtualLink_Node();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VIRTUAL_LINK__ID = eINSTANCE.getVirtualLink_Id();
 
 		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.Periodicity <em>Periodicity</em>}' enum.

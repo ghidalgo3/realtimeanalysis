@@ -5,12 +5,14 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.SchedulingAlgorithm;
 import fr.ensma.realtimescheduling.Task;
+import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * This class houses methods to interface between the Ecore model and this package's
@@ -170,13 +172,22 @@ public class ModelInterface {
 		return l;
 	}
 	
+	/**
+	 * Performs the end to end analysis on the network component
+	 * and returns a list of messages to display to the user.
+	 * @return
+	 */
 	public static List<String> endToEndAnalysis() {
 		List<String> l = new ArrayList<String>();
 		if(!validSystem) {
 			l.add("System is invalid. Please validate the system successfully.");
 			return null;
 		}
-		system.getUses().getCommunicatesOver().getVirtualLinks().stream().forEachOrdered(vl -> l.add(vl.getNodes().toString() + "\n"));
+		Map<VirtualLink, Double> results = Analyzer.FA1(system.getUses().getCommunicatesOver());
+		for(Map.Entry<VirtualLink, Double> delay : results.entrySet()) {
+			l.add(String.format("Virtual Link %s experiences ETE delay of %.2f", delay.getKey(), delay.getValue()));
+		}
+//		system.getUses().getCommunicatesOver().getVirtualLinks().stream().forEachOrdered(vl -> l.add(vl.getNodes().toString() + "\n"));
 		return l;
 	}
 	

@@ -2,22 +2,19 @@
  */
 package fr.ensma.realtimescheduling.impl;
 
-import fr.ensma.realtimescheduling.Node;
-import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
-import fr.ensma.realtimescheduling.VirtualLink;
-
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import fr.ensma.realtimescheduling.Node;
+import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
+import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * <!-- begin-user-doc -->
@@ -109,6 +106,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Node> getNodes() {
 		if (nodes == null) {
 			nodes = new EObjectWithInverseResolvingEList.ManyInverse<Node>(Node.class, this, RealtimeschedulingPackage.VIRTUAL_LINK__NODES, RealtimeschedulingPackage.NODE__VIRTUAL_LINKS);
@@ -121,6 +119,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getId() {
 		return id;
 	}
@@ -130,6 +129,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
@@ -142,6 +142,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getMinInterFrameTime() {
 		return minInterFrameTime;
 	}
@@ -151,6 +152,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMinInterFrameTime(double newMinInterFrameTime) {
 		double oldMinInterFrameTime = minInterFrameTime;
 		minInterFrameTime = newMinInterFrameTime;
@@ -284,5 +286,58 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 		result.append(')');
 		return result.toString();
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(minInterFrameTime);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((nodes == null) ? 0 : nodes.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof VirtualLinkImpl)) {
+			return false;
+		}
+		VirtualLinkImpl other = (VirtualLinkImpl) obj;
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (Double.doubleToLongBits(minInterFrameTime) != Double
+				.doubleToLongBits(other.minInterFrameTime)) {
+			return false;
+		}
+		if (nodes == null) {
+			if (other.nodes != null) {
+				return false;
+			}
+		} else if (!nodes.equals(other.nodes)) {
+			return false;
+		}
+		return true;
+	}
+	
+	
 
 } //VirtualLinkImpl

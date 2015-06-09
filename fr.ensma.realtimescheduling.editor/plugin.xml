@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated gen -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="fr.ensma.realtimescheduling.presentation.RealtimeschedulingModelWizardID"
+            name="%_UI_RealtimeschedulingModelWizard_label"
+            class="fr.ensma.realtimescheduling.presentation.RealtimeschedulingModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/RealtimeschedulingModelFile.gif">
+         <description>%_UI_RealtimeschedulingModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated gen -->
+      <editor
+            id="fr.ensma.realtimescheduling.presentation.RealtimeschedulingEditorID"
+            name="%_UI_RealtimeschedulingEditor_label"
+            icon="icons/full/obj16/RealtimeschedulingModelFile.gif"
+            extensions="realtimescheduling"
+            class="fr.ensma.realtimescheduling.presentation.RealtimeschedulingEditor"
+            contributorClass="fr.ensma.realtimescheduling.presentation.RealtimeschedulingActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

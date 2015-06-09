@@ -1934,7 +1934,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_CQuvYA3EEeWYm5eXMEkysw" name="/order : EInt = 0" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@66197377{platform:/resource/fr.ensma.realtimescheduling/model/model.ecore#//Node/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_CQuvYA3EEeWYm5eXMEkysw" name="/order : EInt = 0" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="model.ecore#//Node/order"/>
           <semanticElements xmi:type="ecore:EAttribute" href="model.ecore#//Node/order"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_HEyUQA3EEeWYm5eXMEkysw" labelFormat="bold" labelAlignment="LEFT" description="_HExtMA3EEeWYm5eXMEkysw">
@@ -1979,7 +1979,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qm2UAA3DEeWYm5eXMEkysw" name="endToEndDelay : EDouble = 0.0" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@21c56d71{platform:/resource/fr.ensma.realtimescheduling/model/model.ecore#//VirtualLink/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qm2UAA3DEeWYm5eXMEkysw" name="endToEndDelay : EDouble = 0.0" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="model.ecore#//VirtualLink/endToEndDelay"/>
           <semanticElements xmi:type="ecore:EAttribute" href="model.ecore#//VirtualLink/endToEndDelay"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_uJuk4Q3DEeWYm5eXMEkysw" labelFormat="bold" labelAlignment="LEFT" description="_uJuk4A3DEeWYm5eXMEkysw">

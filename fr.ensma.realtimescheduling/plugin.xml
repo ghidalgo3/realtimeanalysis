@@ -13,17 +13,14 @@
             name="Sample Category">
       </category>
       <command
-            defaultHandler="fr.ensma.realtimescheduling.handlers.ETEAHandler"
             id="fr.ensma.realtimescheduling.commands.etea"
             name="End to End Analysis">
       </command>
       <command
-            defaultHandler="fr.ensma.realtimescheduling.handlers.VPUHandler"
-            id="fr.ensma.realtimescheduling.vpu"
+            id="fr.ensma.realtimescheduling.commands.vpu"
             name="Virtual Processor Utilization">
       </command>
       <command
-            defaultHandler="fr.ensma.realtimescheduling.handlers.RTAHandler"
             id="fr.ensma.realtimescheduling.commands.rta"
             name="Response Time Analysis">
       </command>

@@ -29,19 +29,22 @@ public class NetworkUtils {
 		for(Iterator<Node> iter = startCandidates.iterator(); startCandidates.size() != 1;) {
 			start = iter.next();
 			final Node s = start;
-			if(startCandidates.stream().anyMatch(node -> node.getRealLinks().stream().anyMatch(next -> next.equals(s)))) {
+			if(startCandidates.stream().anyMatch(node -> node.getRealLinks().contains(s))) {
 				iter.remove();
 			}
 		}
 		//first find the node that is not the successor of any other node
-		Node start2 = startCandidates.iterator().next();
+		Node start_node = startCandidates.iterator().next();
 		List<Node> accum = new ArrayList<Node>(link.getNodes().size());
-		accum.add(start2);
+		accum.add(start_node);
+		Node current = start_node;
 		//then add the rest of the nodes in order starting with the start node
-		while(start2.getVirtualLinks().size() != 0) {
-			start = start2.getRealLinks().stream().filter(n -> link.getNodes().contains(n)).findAny().get();
-			accum.add(start2);
+		while(current.getRealLinks().size() != 0) {
+			current = current.getRealLinks().stream().filter(n -> link.getNodes().contains(n)).findAny().get();
+			accum.add(current);
 		}
 		return accum;
 	}
+	
+	
 }

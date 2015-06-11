@@ -91,8 +91,8 @@ public class GraphingFunctions {
 			ys.add(0, 0.0);
 		}
 		if(PartitionUtils.getLastIntervalEnd(p) != p.getPeriod()) {
-			xs.add(p.getPeriod()*n);
-			ys.add(f.apply(p, p.getPeriod()*n));
+			xs.add((double) (p.getPeriod()*n));
+			ys.add(f.apply(p, (double) (p.getPeriod()*n)));
 		}
 		double[][] data = new double[2][xs.size()];
 		for(int i = 0; i < xs.size(); i++) {
@@ -111,6 +111,17 @@ public class GraphingFunctions {
 		return makeFunction((x) -> PartitionUtils.leastSupply(p, x), 0, p.getPeriod() * n, 200);
 	}
 
+	/**
+	 * Used by the partition utilization class to generate step
+	 * charts used to show when a partition is used. 0 means not
+	 * used and 1 means used.
+	 * This function will return 1 period of the partition 
+	 * which currently (11/06/2015) is shared by all partitions
+	 * scheduled on a module.
+	 * @param p A partition
+	 * @param offset hacky parameter used to shift the times up or down arbitrarily. Make 0 to ignore.
+	 * @return step data
+	 */
 	public static double[][] getIntervalStepData(Partition p, double offset) {
 		double[][] data = new double[2][p.getExecutionIntervals().size()*2 + 2];
 		List<Interval> sorted = PartitionUtils.sortedIntervals(p);

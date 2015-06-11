@@ -91,12 +91,12 @@ public interface Module extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Period</em>' attribute.
-	 * @see #setPeriod(double)
+	 * @see #setPeriod(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Period()
 	 * @model required="true"
 	 * @generated
 	 */
-	double getPeriod();
+	int getPeriod();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Module#getPeriod <em>Period</em>}' attribute.
@@ -106,7 +106,7 @@ public interface Module extends EObject {
 	 * @see #getPeriod()
 	 * @generated
 	 */
-	void setPeriod(double value);
+	void setPeriod(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Partition</b></em>' reference list.

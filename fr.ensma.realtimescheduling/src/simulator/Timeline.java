@@ -9,7 +9,7 @@ import java.util.Queue;
  */
 public class Timeline {
 
-    private static class TimedEvent implements Comparable<TimedEvent>{
+    private class TimedEvent implements Comparable<TimedEvent>{
 
         public final Event event;
         public final Time t;
@@ -21,18 +21,18 @@ public class Timeline {
 
         @Override
         public int compareTo(TimedEvent o) {
-            return this.t.getTime() > o.t.getTime() ? 1
-                    : this.t.getTime() < o.t.getTime() ? -1 : 0;
+            return this.t.time > o.t.time ? 1
+                    : this.t.time < o.t.time ? -1 : 0;
         }
     }
 
-    private static double currentTime;
-    private static Queue<TimedEvent> queue = new PriorityQueue<TimedEvent>();
+    private double currentTime;
+    private Queue<TimedEvent> queue = new PriorityQueue<TimedEvent>();
 
     /**
      * Add event e to execute at time t
      */
-    public static void enqueue(Event e, Time t) {
+    public void enqueue(Event e, Time t) {
         TimedEvent te = new TimedEvent(e, t);
         queue.add(te);
     }
@@ -40,21 +40,22 @@ public class Timeline {
     /**
      * Dequeue the next event
      */
-    public static Event dequeue() {
+    public Event dequeue() {
         TimedEvent te = queue.poll();
-        currentTime = te.t.getTime();
+        currentTime = te.t.time;
         return te.event;
     }
 
-    public static void reset() {
+    public void reset() {
+    	queue.clear();
     	currentTime = 0;
     }
     
-    public static boolean isEmpty() {
+    public boolean isEmpty() {
         return queue.isEmpty();
     }
 
-    public static Time getCurrentTime() {
+    public Time getCurrentTime() {
         return new Time(currentTime);
     }
 }

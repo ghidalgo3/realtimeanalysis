@@ -161,13 +161,13 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int TASK__PRIORITY = 3;
 
 	/**
-	 * The feature id for the '<em><b>Response Time</b></em>' attribute.
+	 * The feature id for the '<em><b>Worst Case Response Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__RESPONSE_TIME = 4;
+	int TASK__WORST_CASE_RESPONSE_TIME = 4;
 
 	/**
 	 * The feature id for the '<em><b>Scheduleable</b></em>' attribute.
@@ -736,13 +736,22 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int NODE__TRANSMISSION_DELAY = 2;
 
 	/**
-	 * The feature id for the '<em><b>Real Links</b></em>' reference list.
+	 * The feature id for the '<em><b>Real Outbound Links</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__REAL_LINKS = 3;
+	int NODE__REAL_OUTBOUND_LINKS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__ORDER = 4;
 
 	/**
 	 * The number of structural features of the '<em>Node</em>' class.
@@ -751,7 +760,7 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = 4;
+	int NODE_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Node</em>' class.
@@ -800,13 +809,22 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int VIRTUAL_LINK__MIN_INTER_FRAME_TIME = 2;
 
 	/**
+	 * The feature id for the '<em><b>End To End Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_LINK__END_TO_END_DELAY = 3;
+
+	/**
 	 * The number of structural features of the '<em>Virtual Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUAL_LINK_FEATURE_COUNT = 3;
+	int VIRTUAL_LINK_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Virtual Link</em>' class.
@@ -936,15 +954,15 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EAttribute getTask_Priority();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Task#getResponseTime <em>Response Time</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Task#getWorstCaseResponseTime <em>Worst Case Response Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Response Time</em>'.
-	 * @see fr.ensma.realtimescheduling.Task#getResponseTime()
+	 * @return the meta object for the attribute '<em>Worst Case Response Time</em>'.
+	 * @see fr.ensma.realtimescheduling.Task#getWorstCaseResponseTime()
 	 * @see #getTask()
 	 * @generated
 	 */
-	EAttribute getTask_ResponseTime();
+	EAttribute getTask_WorstCaseResponseTime();
 
 	/**
 	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Task#isScheduleable <em>Scheduleable</em>}'.
@@ -1445,15 +1463,26 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EAttribute getNode_TransmissionDelay();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.Node#getRealLinks <em>Real Links</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.Node#getRealOutboundLinks <em>Real Outbound Links</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Real Links</em>'.
-	 * @see fr.ensma.realtimescheduling.Node#getRealLinks()
+	 * @return the meta object for the reference list '<em>Real Outbound Links</em>'.
+	 * @see fr.ensma.realtimescheduling.Node#getRealOutboundLinks()
 	 * @see #getNode()
 	 * @generated
 	 */
-	EReference getNode_RealLinks();
+	EReference getNode_RealOutboundLinks();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Node#getOrder <em>Order</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Order</em>'.
+	 * @see fr.ensma.realtimescheduling.Node#getOrder()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_Order();
 
 	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.VirtualLink <em>Virtual Link</em>}'.
@@ -1497,6 +1526,17 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getVirtualLink_MinInterFrameTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.VirtualLink#getEndToEndDelay <em>End To End Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>End To End Delay</em>'.
+	 * @see fr.ensma.realtimescheduling.VirtualLink#getEndToEndDelay()
+	 * @see #getVirtualLink()
+	 * @generated
+	 */
+	EAttribute getVirtualLink_EndToEndDelay();
 
 	/**
 	 * Returns the meta object for enum '{@link fr.ensma.realtimescheduling.Periodicity <em>Periodicity</em>}'.
@@ -1618,12 +1658,12 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EAttribute TASK__PRIORITY = eINSTANCE.getTask_Priority();
 
 		/**
-		 * The meta object literal for the '<em><b>Response Time</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Worst Case Response Time</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TASK__RESPONSE_TIME = eINSTANCE.getTask_ResponseTime();
+		EAttribute TASK__WORST_CASE_RESPONSE_TIME = eINSTANCE.getTask_WorstCaseResponseTime();
 
 		/**
 		 * The meta object literal for the '<em><b>Scheduleable</b></em>' attribute feature.
@@ -2010,12 +2050,20 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EAttribute NODE__TRANSMISSION_DELAY = eINSTANCE.getNode_TransmissionDelay();
 
 		/**
-		 * The meta object literal for the '<em><b>Real Links</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Real Outbound Links</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference NODE__REAL_LINKS = eINSTANCE.getNode_RealLinks();
+		EReference NODE__REAL_OUTBOUND_LINKS = eINSTANCE.getNode_RealOutboundLinks();
+
+		/**
+		 * The meta object literal for the '<em><b>Order</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__ORDER = eINSTANCE.getNode_Order();
 
 		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl <em>Virtual Link</em>}' class.
@@ -2050,6 +2098,14 @@ public interface RealtimeschedulingPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VIRTUAL_LINK__MIN_INTER_FRAME_TIME = eINSTANCE.getVirtualLink_MinInterFrameTime();
+
+		/**
+		 * The meta object literal for the '<em><b>End To End Delay</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VIRTUAL_LINK__END_TO_END_DELAY = eINSTANCE.getVirtualLink_EndToEndDelay();
 
 		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.Periodicity <em>Periodicity</em>}' enum.

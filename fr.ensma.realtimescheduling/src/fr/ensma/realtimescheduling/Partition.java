@@ -73,7 +73,7 @@ public interface Partition extends EObject {
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='if(module->oclIsInvalid() or module->oclIsUndefined() or module=null) then 0.0 else self.module.period endif'"
 	 * @generated
 	 */
-	double getPeriod();
+	int getPeriod();
 
 	/**
 	 * Returns the value of the '<em><b>Execution Intervals</b></em>' containment reference list.
@@ -128,12 +128,23 @@ public interface Partition extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Availability Factor</em>' attribute.
+	 * @see #setAvailabilityFactor(double)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPartition_AvailabilityFactor()
-	 * @model default="0" required="true" changeable="false" derived="true"
+	 * @model default="0" required="true" derived="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='\n\t\t\t--check for divide by zero!\n\t\t\tif (period <> 0) then executionIntervals->collect(i : Interval | i.end - i.start)->sum() / period\n\t\t\telse 0.0\n\t\t\tendif'"
 	 * @generated
 	 */
 	double getAvailabilityFactor();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Partition#getAvailabilityFactor <em>Availability Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Availability Factor</em>' attribute.
+	 * @see #getAvailabilityFactor()
+	 * @generated
+	 */
+	void setAvailabilityFactor(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Scheduling Algorithm</b></em>' attribute.

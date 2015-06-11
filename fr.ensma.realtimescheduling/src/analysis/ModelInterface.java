@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Partition;
-import fr.ensma.realtimescheduling.SchedulingAlgorithm;
 import fr.ensma.realtimescheduling.Task;
 import fr.ensma.realtimescheduling.VirtualLink;
 
@@ -101,24 +100,8 @@ public class ModelInterface {
 		if(!validSystem) return null;
 		List<String> results = new LinkedList<String>();
 		for(Partition partition : allPartitions) {
-			int algo = partition.getSchedulingAlgorithm().getValue();
 			results.add("Partition " + partition.getId() + " scheduled with " + partition.getSchedulingAlgorithm()+".\n");
-			switch(algo) {
-			case SchedulingAlgorithm.DEADLINE_MONOTONIC_VALUE: {
-				results.addAll(fixedPriorityAlgorithm(Arrays.asList(partition), ModelInterface::deadlineMonotonic));
-				break;
-			}
-			case SchedulingAlgorithm.RATE_MONOTONIC_VALUE: {
-				results.addAll(fixedPriorityAlgorithm(Arrays.asList(partition), ModelInterface::rateMonotonic));
-				break;
-			}
-			case SchedulingAlgorithm.FIXED_PRIORITY_VALUE: {
-				results.addAll(fixedPriorityAlgorithm(Arrays.asList(partition), ModelInterface::fixedPriority));
-				break;
-			}
-			default:
-				//new algorithm was added but not included here
-			}
+			results.addAll(fixedPriorityAlgorithm(Arrays.asList(partition), PartitionUtils.getComparator(partition)));
 		}
 		return results;
 	}
@@ -203,11 +186,10 @@ public class ModelInterface {
 	 * @return Error message string for any tasks that miss their deadlines
 	 */
 	private static String setResponseTime(Partition partition, List<Task> sortedTasks) {
-		List<Double> responseTimes = Analyzer.responseTimeAnalysis(partition, sortedTasks);
+		List<Integer> responseTimes = Analyzer.responseTimeAnalysis(partition, sortedTasks);
 		StringBuilder sb = new StringBuilder();
-		
 		IntStream.range(0, partition.getTasks().size()).forEach(n -> {
-				partition.getTasks().get(n).setResponseTime(responseTimes.get(n));
+				partition.getTasks().get(n).setWorstCaseResponseTime(responseTimes.get(n));
 				if (responseTimes.get(n) == 0.0) {
 					partition.getTasks().get(n).setScheduleable(false);
 					sb.append(partition.getTasks().get(n).getName()+" will MISS its deadline.\n");
@@ -252,5 +234,7 @@ public class ModelInterface {
 	public static int deadlineMonotonic(Task o1, Task o2) {
 		return Double.compare(o1.getImplicitDeadline(), o2.getImplicitDeadline());
 	}
+	
+	
 	
 }

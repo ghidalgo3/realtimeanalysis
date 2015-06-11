@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.Task#getWorstCaseExecTime <em>Worst Case Exec Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getImplicitDeadline <em>Implicit Deadline</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getPriority <em>Priority</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Task#getResponseTime <em>Response Time</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Task#getWorstCaseResponseTime <em>Worst Case Response Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#isScheduleable <em>Scheduleable</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getJitter <em>Jitter</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getCriticalInstance <em>Critical Instance</em>}</li>
@@ -69,12 +69,12 @@ public interface Task extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Worst Case Exec Time</em>' attribute.
-	 * @see #setWorstCaseExecTime(double)
+	 * @see #setWorstCaseExecTime(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_WorstCaseExecTime()
 	 * @model default="0" required="true"
 	 * @generated
 	 */
-	double getWorstCaseExecTime();
+	int getWorstCaseExecTime();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getWorstCaseExecTime <em>Worst Case Exec Time</em>}' attribute.
@@ -84,7 +84,7 @@ public interface Task extends EObject {
 	 * @see #getWorstCaseExecTime()
 	 * @generated
 	 */
-	void setWorstCaseExecTime(double value);
+	void setWorstCaseExecTime(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Implicit Deadline</b></em>' attribute.
@@ -95,12 +95,12 @@ public interface Task extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Implicit Deadline</em>' attribute.
-	 * @see #setImplicitDeadline(double)
+	 * @see #setImplicitDeadline(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_ImplicitDeadline()
 	 * @model required="true"
 	 * @generated
 	 */
-	double getImplicitDeadline();
+	int getImplicitDeadline();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getImplicitDeadline <em>Implicit Deadline</em>}' attribute.
@@ -110,7 +110,7 @@ public interface Task extends EObject {
 	 * @see #getImplicitDeadline()
 	 * @generated
 	 */
-	void setImplicitDeadline(double value);
+	void setImplicitDeadline(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
@@ -139,30 +139,30 @@ public interface Task extends EObject {
 	void setPriority(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Response Time</b></em>' attribute.
+	 * Returns the value of the '<em><b>Worst Case Response Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Response Time</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Worst Case Response Time</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Response Time</em>' attribute.
-	 * @see #setResponseTime(double)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_ResponseTime()
+	 * @return the value of the '<em>Worst Case Response Time</em>' attribute.
+	 * @see #setWorstCaseResponseTime(int)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_WorstCaseResponseTime()
 	 * @model required="true"
 	 * @generated
 	 */
-	double getResponseTime();
+	int getWorstCaseResponseTime();
 
 	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getResponseTime <em>Response Time</em>}' attribute.
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getWorstCaseResponseTime <em>Worst Case Response Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Response Time</em>' attribute.
-	 * @see #getResponseTime()
+	 * @param value the new value of the '<em>Worst Case Response Time</em>' attribute.
+	 * @see #getWorstCaseResponseTime()
 	 * @generated
 	 */
-	void setResponseTime(double value);
+	void setWorstCaseResponseTime(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Scheduleable</b></em>' attribute.
@@ -199,12 +199,12 @@ public interface Task extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Jitter</em>' attribute.
-	 * @see #setJitter(float)
+	 * @see #setJitter(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_Jitter()
 	 * @model required="true"
 	 * @generated
 	 */
-	float getJitter();
+	int getJitter();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getJitter <em>Jitter</em>}' attribute.
@@ -214,7 +214,7 @@ public interface Task extends EObject {
 	 * @see #getJitter()
 	 * @generated
 	 */
-	void setJitter(float value);
+	void setJitter(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Critical Instance</b></em>' attribute.
@@ -251,12 +251,12 @@ public interface Task extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Release Time</em>' attribute.
-	 * @see #setReleaseTime(double)
+	 * @see #setReleaseTime(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_ReleaseTime()
 	 * @model required="true"
 	 * @generated
 	 */
-	double getReleaseTime();
+	int getReleaseTime();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getReleaseTime <em>Release Time</em>}' attribute.
@@ -266,7 +266,7 @@ public interface Task extends EObject {
 	 * @see #getReleaseTime()
 	 * @generated
 	 */
-	void setReleaseTime(double value);
+	void setReleaseTime(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Periodicity</b></em>' attribute.
@@ -306,12 +306,12 @@ public interface Task extends EObject {
 	 * This field only has 'meaning' if a task is not aperiodic.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Characteristic Period</em>' attribute.
-	 * @see #setCharacteristicPeriod(double)
+	 * @see #setCharacteristicPeriod(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_CharacteristicPeriod()
 	 * @model required="true"
 	 * @generated
 	 */
-	double getCharacteristicPeriod();
+	int getCharacteristicPeriod();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getCharacteristicPeriod <em>Characteristic Period</em>}' attribute.
@@ -321,7 +321,7 @@ public interface Task extends EObject {
 	 * @see #getCharacteristicPeriod()
 	 * @generated
 	 */
-	void setCharacteristicPeriod(double value);
+	void setCharacteristicPeriod(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Partition</b></em>' reference.

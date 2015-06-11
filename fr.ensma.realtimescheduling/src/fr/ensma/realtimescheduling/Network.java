@@ -88,7 +88,7 @@ public interface Network extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Latency</b></em>' attribute.
-	 * The default value is <code>"0.0"</code>.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Latency</em>' attribute isn't clear,
@@ -96,12 +96,12 @@ public interface Network extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Latency</em>' attribute.
-	 * @see #setLatency(double)
+	 * @see #setLatency(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_Latency()
-	 * @model default="0.0" required="true"
+	 * @model default="0" required="true"
 	 * @generated
 	 */
-	double getLatency();
+	int getLatency();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Network#getLatency <em>Latency</em>}' attribute.
@@ -111,7 +111,7 @@ public interface Network extends EObject {
 	 * @see #getLatency()
 	 * @generated
 	 */
-	void setLatency(double value);
+	void setLatency(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Network Bandwidth</b></em>' attribute.

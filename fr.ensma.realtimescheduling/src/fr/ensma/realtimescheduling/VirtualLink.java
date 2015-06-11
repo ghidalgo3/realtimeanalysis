@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getNodes <em>Nodes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getEndToEndDelay <em>End To End Delay</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,12 +78,12 @@ public interface VirtualLink extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Min Inter Frame Time</em>' attribute.
-	 * @see #setMinInterFrameTime(double)
+	 * @see #setMinInterFrameTime(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_MinInterFrameTime()
 	 * @model required="true"
 	 * @generated
 	 */
-	double getMinInterFrameTime();
+	int getMinInterFrameTime();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getMinInterFrameTime <em>Min Inter Frame Time</em>}' attribute.
@@ -92,6 +93,32 @@ public interface VirtualLink extends EObject {
 	 * @see #getMinInterFrameTime()
 	 * @generated
 	 */
-	void setMinInterFrameTime(double value);
+	void setMinInterFrameTime(int value);
+
+	/**
+	 * Returns the value of the '<em><b>End To End Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>End To End Delay</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>End To End Delay</em>' attribute.
+	 * @see #setEndToEndDelay(int)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_EndToEndDelay()
+	 * @model required="true"
+	 * @generated
+	 */
+	int getEndToEndDelay();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getEndToEndDelay <em>End To End Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>End To End Delay</em>' attribute.
+	 * @see #getEndToEndDelay()
+	 * @generated
+	 */
+	void setEndToEndDelay(int value);
 
 } // VirtualLink

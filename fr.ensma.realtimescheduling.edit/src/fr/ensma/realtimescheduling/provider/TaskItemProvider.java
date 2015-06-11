@@ -60,7 +60,7 @@ public class TaskItemProvider
 			addWorstCaseExecTimePropertyDescriptor(object);
 			addImplicitDeadlinePropertyDescriptor(object);
 			addPriorityPropertyDescriptor(object);
-			addResponseTimePropertyDescriptor(object);
+			addWorstCaseResponseTimePropertyDescriptor(object);
 			addScheduleablePropertyDescriptor(object);
 			addJitterPropertyDescriptor(object);
 			addCriticalInstancePropertyDescriptor(object);
@@ -111,7 +111,7 @@ public class TaskItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -133,7 +133,7 @@ public class TaskItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -161,23 +161,23 @@ public class TaskItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Response Time feature.
+	 * This adds a property descriptor for the Worst Case Response Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addResponseTimePropertyDescriptor(Object object) {
+	protected void addWorstCaseResponseTimePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Task_responseTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_responseTime_feature", "_UI_Task_type"),
-				 RealtimeschedulingPackage.Literals.TASK__RESPONSE_TIME,
+				 getString("_UI_Task_worstCaseResponseTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Task_worstCaseResponseTime_feature", "_UI_Task_type"),
+				 RealtimeschedulingPackage.Literals.TASK__WORST_CASE_RESPONSE_TIME,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -221,7 +221,7 @@ public class TaskItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -265,7 +265,7 @@ public class TaskItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -309,7 +309,7 @@ public class TaskItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -379,7 +379,7 @@ public class TaskItemProvider
 			case RealtimeschedulingPackage.TASK__WORST_CASE_EXEC_TIME:
 			case RealtimeschedulingPackage.TASK__IMPLICIT_DEADLINE:
 			case RealtimeschedulingPackage.TASK__PRIORITY:
-			case RealtimeschedulingPackage.TASK__RESPONSE_TIME:
+			case RealtimeschedulingPackage.TASK__WORST_CASE_RESPONSE_TIME:
 			case RealtimeschedulingPackage.TASK__SCHEDULEABLE:
 			case RealtimeschedulingPackage.TASK__JITTER:
 			case RealtimeschedulingPackage.TASK__CRITICAL_INSTANCE:

@@ -63,7 +63,8 @@ public class NodeItemProvider
 			addVirtualLinksPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addTransmissionDelayPropertyDescriptor(object);
-			addRealLinksPropertyDescriptor(object);
+			addRealOutboundLinksPropertyDescriptor(object);
+			addOrderPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -135,23 +136,45 @@ public class NodeItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Real Links feature.
+	 * This adds a property descriptor for the Real Outbound Links feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRealLinksPropertyDescriptor(Object object) {
+	protected void addRealOutboundLinksPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Node_realLinks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_realLinks_feature", "_UI_Node_type"),
-				 RealtimeschedulingPackage.Literals.NODE__REAL_LINKS,
+				 getString("_UI_Node_realOutboundLinks_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Node_realOutboundLinks_feature", "_UI_Node_type"),
+				 RealtimeschedulingPackage.Literals.NODE__REAL_OUTBOUND_LINKS,
 				 true,
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Order feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOrderPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Node_order_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Node_order_feature", "_UI_Node_type"),
+				 RealtimeschedulingPackage.Literals.NODE__ORDER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -196,6 +219,7 @@ public class NodeItemProvider
 		switch (notification.getFeatureID(Node.class)) {
 			case RealtimeschedulingPackage.NODE__ID:
 			case RealtimeschedulingPackage.NODE__TRANSMISSION_DELAY:
+			case RealtimeschedulingPackage.NODE__ORDER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

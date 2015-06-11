@@ -119,4 +119,17 @@ public class PartitionTest extends TestCase {
 		fail();
 	}
 
+	/**
+	 * Tests the '{@link fr.ensma.realtimescheduling.Partition#setAvailabilityFactor(double) <em>Availability Factor</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.ensma.realtimescheduling.Partition#setAvailabilityFactor(double)
+	 * @generated
+	 */
+	public void testSetAvailabilityFactor() {
+		// TODO: implement this feature setter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
 } //PartitionTest

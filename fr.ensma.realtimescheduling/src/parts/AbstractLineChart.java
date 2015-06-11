@@ -14,7 +14,14 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.experimental.chart.swt.ChartComposite;
 
-
+/**
+ * Abstract class for all line charts.
+ * Sets up the eclipse view to have a chart on the
+ * left side and a control component on the right.
+ * Subclasses define the data sources and any extra controls.
+ * @author Gustavo
+ *
+ */
 public abstract class AbstractLineChart extends ViewPart {
 
 	ChartComposite mainChart;
@@ -86,6 +93,10 @@ public abstract class AbstractLineChart extends ViewPart {
 		return mainChart = new ChartComposite(parent, SWT.NONE, null, true);
 	}
 	
+	/**
+	 * Subclasses create the chart in this method.
+	 * @return a JFreeChart
+	 */
 	abstract JFreeChart generateChart();
 
 	@Override
@@ -93,9 +104,26 @@ public abstract class AbstractLineChart extends ViewPart {
 		// TODO Auto-generated method stub
 	}
 	
+	/**
+	 * Subclasses create any control widgets they want and parent
+	 * them to the parameter of this method. This method should 
+	 * return a single composite that is the parent of the controls.
+	 * NOTE: The parameter returned should not be the parameter passed in,
+	 * though the parameter returned should be a child of the parameter passed in.
+	 * @param parent
+	 * @return
+	 */
 	abstract Composite setUpSelectors(Composite parent);
 
+	/**
+	 * Creates the dataset used for plotting.
+	 * @return
+	 */
 	abstract XYDataset createDataset();
 	
+	/**
+	 * Used by a 'query' button that asks to update the UI based
+	 * on the state of the system.
+	 */
 	abstract void queryModel();
 }

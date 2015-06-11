@@ -1,9 +1,12 @@
 package analysis;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Partition;
+import fr.ensma.realtimescheduling.SchedulingAlgorithm;
+import fr.ensma.realtimescheduling.Task;
 
 
 /**
@@ -126,5 +129,23 @@ public class PartitionUtils {
 					);
 		}
 		return sf;
+	}
+	
+	/**
+	 * Gives a comparator from the selected scheduling algorithm in a partition
+	 * @param p partition
+	 * @return comparator
+	 */
+	public static Comparator<Task> getComparator(Partition p) {
+		switch (p.getSchedulingAlgorithm().getValue()) {
+		case SchedulingAlgorithm.DEADLINE_MONOTONIC_VALUE:
+			return ModelInterface::deadlineMonotonic;
+		case SchedulingAlgorithm.FIXED_PRIORITY_VALUE:
+			return ModelInterface::fixedPriority;
+		case SchedulingAlgorithm.RATE_MONOTONIC_VALUE:
+			return ModelInterface::rateMonotonic;
+		default:
+			return null;
+		}
 	}
 }

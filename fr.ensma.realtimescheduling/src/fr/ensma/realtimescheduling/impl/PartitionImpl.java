@@ -203,8 +203,8 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getPeriod() {
-		return (Double)PERIOD__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
+	public int getPeriod() {
+		return (Integer)PERIOD__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
 	}
 
 	/**
@@ -247,6 +247,15 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	 */
 	public double getAvailabilityFactor() {
 		return (Double)AVAILABILITY_FACTOR__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAvailabilityFactor(double newAvailabilityFactor) {
+		AVAILABILITY_FACTOR__ESETTING_DELEGATE.dynamicSet(this, null, 0, newAvailabilityFactor);
 	}
 
 	/**
@@ -427,6 +436,9 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 			case RealtimeschedulingPackage.PARTITION__VIRTUAL_PROCESSOR_UTILIZATION:
 				setVirtualProcessorUtilization((Double)newValue);
 				return;
+			case RealtimeschedulingPackage.PARTITION__AVAILABILITY_FACTOR:
+				setAvailabilityFactor((Double)newValue);
+				return;
 			case RealtimeschedulingPackage.PARTITION__SCHEDULING_ALGORITHM:
 				setSchedulingAlgorithm((SchedulingAlgorithm)newValue);
 				return;
@@ -457,6 +469,9 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 				return;
 			case RealtimeschedulingPackage.PARTITION__VIRTUAL_PROCESSOR_UTILIZATION:
 				setVirtualProcessorUtilization(VIRTUAL_PROCESSOR_UTILIZATION_EDEFAULT);
+				return;
+			case RealtimeschedulingPackage.PARTITION__AVAILABILITY_FACTOR:
+				AVAILABILITY_FACTOR__ESETTING_DELEGATE.dynamicUnset(this, null, 0);
 				return;
 			case RealtimeschedulingPackage.PARTITION__SCHEDULING_ALGORITHM:
 				setSchedulingAlgorithm(SCHEDULING_ALGORITHM_EDEFAULT);

@@ -46,7 +46,6 @@ public class PartitionFunctionsView extends AbstractLineChart {
 	@Override
 	Composite setUpSelectors(Composite parent) {
 		Composite selectors = new Composite(parent, SWT.BORDER);
-		
 		Label functionName = new Label(selectors, SWT.NONE);
 		functionName.setText("Function");
 		functionCombo = new Combo(selectors, SWT.READ_ONLY);
@@ -137,9 +136,6 @@ public class PartitionFunctionsView extends AbstractLineChart {
 		return chart;
 	}
 	
-	
-
-
 	/**
 	 * Every time the focus is set on the Chart, reconstruct the chart.
 	 * May not be the best idea.

@@ -81,7 +81,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double PERIOD_EDEFAULT = 0.0;
+	protected static final int PERIOD_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getPeriod() <em>Period</em>}' attribute.
@@ -91,7 +91,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * @generated
 	 * @ordered
 	 */
-	protected double period = PERIOD_EDEFAULT;
+	protected int period = PERIOD_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getPartition() <em>Partition</em>}' reference list.
@@ -176,7 +176,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getPeriod() {
+	public int getPeriod() {
 		return period;
 	}
 
@@ -185,8 +185,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPeriod(double newPeriod) {
-		double oldPeriod = period;
+	public void setPeriod(int newPeriod) {
+		int oldPeriod = period;
 		period = newPeriod;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.MODULE__PERIOD, oldPeriod, period));
@@ -285,7 +285,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				setId((String)newValue);
 				return;
 			case RealtimeschedulingPackage.MODULE__PERIOD:
-				setPeriod((Double)newValue);
+				setPeriod((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.MODULE__PARTITION:
 				getPartition().clear();

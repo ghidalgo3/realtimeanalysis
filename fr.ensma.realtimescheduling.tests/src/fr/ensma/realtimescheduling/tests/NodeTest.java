@@ -17,6 +17,7 @@ import junit.textui.TestRunner;
  * The following features are tested:
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.Node#getTransmissionDelay() <em>Transmission Delay</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Node#getOrder() <em>Order</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -113,6 +114,32 @@ public class NodeTest extends TestCase {
 	 * @generated
 	 */
 	public void testSetTransmissionDelay() {
+		// TODO: implement this feature setter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link fr.ensma.realtimescheduling.Node#getOrder() <em>Order</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.ensma.realtimescheduling.Node#getOrder()
+	 * @generated
+	 */
+	public void testGetOrder() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link fr.ensma.realtimescheduling.Node#setOrder(int) <em>Order</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.ensma.realtimescheduling.Node#setOrder(int)
+	 * @generated
+	 */
+	public void testSetOrder() {
 		// TODO: implement this feature setter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

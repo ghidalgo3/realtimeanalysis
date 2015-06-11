@@ -21,8 +21,6 @@ import fr.ensma.realtimescheduling.VirtualLink;
  * 
  * @author Gustavo Hidalgo
  *
- *HELLO
- *
  */
 class Analyzer {
 	

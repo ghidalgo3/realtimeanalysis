@@ -26,6 +26,7 @@ import fr.ensma.realtimescheduling.VirtualLink;
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getEndToEndDelay <em>End To End Delay</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,7 +71,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double MIN_INTER_FRAME_TIME_EDEFAULT = 0.0;
+	protected static final int MIN_INTER_FRAME_TIME_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getMinInterFrameTime() <em>Min Inter Frame Time</em>}' attribute.
@@ -80,7 +81,27 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * @generated
 	 * @ordered
 	 */
-	protected double minInterFrameTime = MIN_INTER_FRAME_TIME_EDEFAULT;
+	protected int minInterFrameTime = MIN_INTER_FRAME_TIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getEndToEndDelay() <em>End To End Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEndToEndDelay()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int END_TO_END_DELAY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getEndToEndDelay() <em>End To End Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEndToEndDelay()
+	 * @generated
+	 * @ordered
+	 */
+	protected int endToEndDelay = END_TO_END_DELAY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,7 +164,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * @generated
 	 */
 	@Override
-	public double getMinInterFrameTime() {
+	public int getMinInterFrameTime() {
 		return minInterFrameTime;
 	}
 
@@ -152,12 +173,32 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setMinInterFrameTime(double newMinInterFrameTime) {
-		double oldMinInterFrameTime = minInterFrameTime;
+	public void setMinInterFrameTime(int newMinInterFrameTime) {
+		int oldMinInterFrameTime = minInterFrameTime;
 		minInterFrameTime = newMinInterFrameTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME, oldMinInterFrameTime, minInterFrameTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getEndToEndDelay() {
+		return endToEndDelay;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEndToEndDelay(int newEndToEndDelay) {
+		int oldEndToEndDelay = endToEndDelay;
+		endToEndDelay = newEndToEndDelay;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY, oldEndToEndDelay, endToEndDelay));
 	}
 
 	/**
@@ -203,6 +244,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 				return getId();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
 				return getMinInterFrameTime();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
+				return getEndToEndDelay();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -224,7 +267,10 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 				setId((String)newValue);
 				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
-				setMinInterFrameTime((Double)newValue);
+				setMinInterFrameTime((Integer)newValue);
+				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
+				setEndToEndDelay((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -247,6 +293,9 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
 				setMinInterFrameTime(MIN_INTER_FRAME_TIME_EDEFAULT);
 				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
+				setEndToEndDelay(END_TO_END_DELAY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -265,6 +314,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
 				return minInterFrameTime != MIN_INTER_FRAME_TIME_EDEFAULT;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
+				return endToEndDelay != END_TO_END_DELAY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -283,6 +334,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 		result.append(id);
 		result.append(", minInterFrameTime: ");
 		result.append(minInterFrameTime);
+		result.append(", endToEndDelay: ");
+		result.append(endToEndDelay);
 		result.append(')');
 		return result.toString();
 	}

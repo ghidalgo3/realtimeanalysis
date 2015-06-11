@@ -84,7 +84,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double LATENCY_EDEFAULT = 0.0;
+	protected static final int LATENCY_EDEFAULT = 0;
 	/**
 	 * The cached value of the '{@link #getLatency() <em>Latency</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -93,7 +93,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * @generated
 	 * @ordered
 	 */
-	protected double latency = LATENCY_EDEFAULT;
+	protected int latency = LATENCY_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getNetworkBandwidth() <em>Network Bandwidth</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -200,7 +200,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getLatency() {
+	public int getLatency() {
 		return latency;
 	}
 
@@ -209,8 +209,8 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLatency(double newLatency) {
-		double oldLatency = latency;
+	public void setLatency(int newLatency) {
+		int oldLatency = latency;
 		latency = newLatency;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.NETWORK__LATENCY, oldLatency, latency));
@@ -319,7 +319,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				getVirtualLinks().addAll((Collection<? extends VirtualLink>)newValue);
 				return;
 			case RealtimeschedulingPackage.NETWORK__LATENCY:
-				setLatency((Double)newValue);
+				setLatency((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
 				setNetworkBandwidth((Double)newValue);

@@ -27,7 +27,8 @@ import fr.ensma.realtimescheduling.VirtualLink;
  *   <li>{@link fr.ensma.realtimescheduling.impl.NodeImpl#getVirtualLinks <em>Virtual Links</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.NodeImpl#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.NodeImpl#getTransmissionDelay <em>Transmission Delay</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.NodeImpl#getRealLinks <em>Real Links</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.NodeImpl#getRealOutboundLinks <em>Real Outbound Links</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.NodeImpl#getOrder <em>Order</em>}</li>
  * </ul>
  * </p>
  *
@@ -85,14 +86,34 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	protected double transmissionDelay = TRANSMISSION_DELAY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRealLinks() <em>Real Links</em>}' reference list.
+	 * The cached value of the '{@link #getRealOutboundLinks() <em>Real Outbound Links</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRealLinks()
+	 * @see #getRealOutboundLinks()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Node> realLinks;
+	protected EList<Node> realOutboundLinks;
+
+	/**
+	 * The default value of the '{@link #getOrder() <em>Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrder()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int ORDER_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getOrder() <em>Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrder()
+	 * @generated
+	 * @ordered
+	 */
+	protected int order = ORDER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,11 +199,34 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * @generated
 	 */
 	@Override
-	public EList<Node> getRealLinks() {
-		if (realLinks == null) {
-			realLinks = new EObjectResolvingEList<Node>(Node.class, this, RealtimeschedulingPackage.NODE__REAL_LINKS);
+	public EList<Node> getRealOutboundLinks() {
+		if (realOutboundLinks == null) {
+			realOutboundLinks = new EObjectResolvingEList<Node>(Node.class, this, RealtimeschedulingPackage.NODE__REAL_OUTBOUND_LINKS);
 		}
-		return realLinks;
+		return realOutboundLinks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getOrder() {
+		return order;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setOrder(int newOrder) {
+		int oldOrder = order;
+		order = newOrder;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.NODE__ORDER, oldOrder, order));
 	}
 
 	/**
@@ -228,8 +272,10 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 				return getId();
 			case RealtimeschedulingPackage.NODE__TRANSMISSION_DELAY:
 				return getTransmissionDelay();
-			case RealtimeschedulingPackage.NODE__REAL_LINKS:
-				return getRealLinks();
+			case RealtimeschedulingPackage.NODE__REAL_OUTBOUND_LINKS:
+				return getRealOutboundLinks();
+			case RealtimeschedulingPackage.NODE__ORDER:
+				return getOrder();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -253,9 +299,12 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 			case RealtimeschedulingPackage.NODE__TRANSMISSION_DELAY:
 				setTransmissionDelay((Double)newValue);
 				return;
-			case RealtimeschedulingPackage.NODE__REAL_LINKS:
-				getRealLinks().clear();
-				getRealLinks().addAll((Collection<? extends Node>)newValue);
+			case RealtimeschedulingPackage.NODE__REAL_OUTBOUND_LINKS:
+				getRealOutboundLinks().clear();
+				getRealOutboundLinks().addAll((Collection<? extends Node>)newValue);
+				return;
+			case RealtimeschedulingPackage.NODE__ORDER:
+				setOrder((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -278,8 +327,11 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 			case RealtimeschedulingPackage.NODE__TRANSMISSION_DELAY:
 				setTransmissionDelay(TRANSMISSION_DELAY_EDEFAULT);
 				return;
-			case RealtimeschedulingPackage.NODE__REAL_LINKS:
-				getRealLinks().clear();
+			case RealtimeschedulingPackage.NODE__REAL_OUTBOUND_LINKS:
+				getRealOutboundLinks().clear();
+				return;
+			case RealtimeschedulingPackage.NODE__ORDER:
+				setOrder(ORDER_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -299,8 +351,10 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case RealtimeschedulingPackage.NODE__TRANSMISSION_DELAY:
 				return transmissionDelay != TRANSMISSION_DELAY_EDEFAULT;
-			case RealtimeschedulingPackage.NODE__REAL_LINKS:
-				return realLinks != null && !realLinks.isEmpty();
+			case RealtimeschedulingPackage.NODE__REAL_OUTBOUND_LINKS:
+				return realOutboundLinks != null && !realOutboundLinks.isEmpty();
+			case RealtimeschedulingPackage.NODE__ORDER:
+				return order != ORDER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -319,6 +373,8 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 		result.append(id);
 		result.append(", transmissionDelay: ");
 		result.append(transmissionDelay);
+		result.append(", order: ");
+		result.append(order);
 		result.append(')');
 		return result.toString();
 	}
@@ -340,48 +396,6 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 //		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof NodeImpl)) {
-			return false;
-		}
-		NodeImpl other = (NodeImpl) obj;
-		if (id == null) {
-			if (other.id != null) {
-				return false;
-			}
-		} else if (!id.equals(other.id)) {
-			return false;
-		}
-		if (realLinks == null) {
-			if (other.realLinks != null) {
-				return false;
-			}
-		} else if (!realLinks.equals(other.realLinks)) {
-			return false;
-		}
-		if (Double.doubleToLongBits(transmissionDelay) != Double
-				.doubleToLongBits(other.transmissionDelay)) {
-			return false;
-		}
-		if (virtualLinks == null) {
-			if (other.virtualLinks != null) {
-				return false;
-			}
-		} else if (!virtualLinks.equals(other.virtualLinks)) {
-			return false;
-		}
-		return true;
-	}
 
 	
 

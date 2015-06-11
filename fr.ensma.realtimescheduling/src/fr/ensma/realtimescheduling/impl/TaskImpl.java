@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getWorstCaseExecTime <em>Worst Case Exec Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getImplicitDeadline <em>Implicit Deadline</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getPriority <em>Priority</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getResponseTime <em>Response Time</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getWorstCaseResponseTime <em>Worst Case Response Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#isScheduleable <em>Scheduleable</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getJitter <em>Jitter</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getCriticalInstance <em>Critical Instance</em>}</li>
@@ -69,7 +69,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double WORST_CASE_EXEC_TIME_EDEFAULT = 0.0;
+	protected static final int WORST_CASE_EXEC_TIME_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getWorstCaseExecTime() <em>Worst Case Exec Time</em>}' attribute.
@@ -79,7 +79,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected double worstCaseExecTime = WORST_CASE_EXEC_TIME_EDEFAULT;
+	protected int worstCaseExecTime = WORST_CASE_EXEC_TIME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getImplicitDeadline() <em>Implicit Deadline</em>}' attribute.
@@ -89,7 +89,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double IMPLICIT_DEADLINE_EDEFAULT = 0.0;
+	protected static final int IMPLICIT_DEADLINE_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getImplicitDeadline() <em>Implicit Deadline</em>}' attribute.
@@ -99,7 +99,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected double implicitDeadline = IMPLICIT_DEADLINE_EDEFAULT;
+	protected int implicitDeadline = IMPLICIT_DEADLINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
@@ -122,24 +122,24 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	protected int priority = PRIORITY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getResponseTime() <em>Response Time</em>}' attribute.
+	 * The default value of the '{@link #getWorstCaseResponseTime() <em>Worst Case Response Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResponseTime()
+	 * @see #getWorstCaseResponseTime()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double RESPONSE_TIME_EDEFAULT = 0.0;
+	protected static final int WORST_CASE_RESPONSE_TIME_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getResponseTime() <em>Response Time</em>}' attribute.
+	 * The cached value of the '{@link #getWorstCaseResponseTime() <em>Worst Case Response Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResponseTime()
+	 * @see #getWorstCaseResponseTime()
 	 * @generated
 	 * @ordered
 	 */
-	protected double responseTime = RESPONSE_TIME_EDEFAULT;
+	protected int worstCaseResponseTime = WORST_CASE_RESPONSE_TIME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isScheduleable() <em>Scheduleable</em>}' attribute.
@@ -169,7 +169,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final float JITTER_EDEFAULT = 0.0F;
+	protected static final int JITTER_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getJitter() <em>Jitter</em>}' attribute.
@@ -179,7 +179,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected float jitter = JITTER_EDEFAULT;
+	protected int jitter = JITTER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCriticalInstance() <em>Critical Instance</em>}' attribute.
@@ -209,7 +209,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double RELEASE_TIME_EDEFAULT = 0.0;
+	protected static final int RELEASE_TIME_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getReleaseTime() <em>Release Time</em>}' attribute.
@@ -219,7 +219,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected double releaseTime = RELEASE_TIME_EDEFAULT;
+	protected int releaseTime = RELEASE_TIME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPeriodicity() <em>Periodicity</em>}' attribute.
@@ -249,7 +249,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double CHARACTERISTIC_PERIOD_EDEFAULT = 0.0;
+	protected static final int CHARACTERISTIC_PERIOD_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getCharacteristicPeriod() <em>Characteristic Period</em>}' attribute.
@@ -259,7 +259,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected double characteristicPeriod = CHARACTERISTIC_PERIOD_EDEFAULT;
+	protected int characteristicPeriod = CHARACTERISTIC_PERIOD_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getPartition() <em>Partition</em>}' reference.
@@ -316,7 +316,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getWorstCaseExecTime() {
+	public int getWorstCaseExecTime() {
 		return worstCaseExecTime;
 	}
 
@@ -325,8 +325,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setWorstCaseExecTime(double newWorstCaseExecTime) {
-		double oldWorstCaseExecTime = worstCaseExecTime;
+	public void setWorstCaseExecTime(int newWorstCaseExecTime) {
+		int oldWorstCaseExecTime = worstCaseExecTime;
 		worstCaseExecTime = newWorstCaseExecTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__WORST_CASE_EXEC_TIME, oldWorstCaseExecTime, worstCaseExecTime));
@@ -337,7 +337,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getImplicitDeadline() {
+	public int getImplicitDeadline() {
 		return implicitDeadline;
 	}
 
@@ -346,8 +346,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setImplicitDeadline(double newImplicitDeadline) {
-		double oldImplicitDeadline = implicitDeadline;
+	public void setImplicitDeadline(int newImplicitDeadline) {
+		int oldImplicitDeadline = implicitDeadline;
 		implicitDeadline = newImplicitDeadline;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__IMPLICIT_DEADLINE, oldImplicitDeadline, implicitDeadline));
@@ -379,8 +379,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getResponseTime() {
-		return responseTime;
+	public int getWorstCaseResponseTime() {
+		return worstCaseResponseTime;
 	}
 
 	/**
@@ -388,11 +388,11 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setResponseTime(double newResponseTime) {
-		double oldResponseTime = responseTime;
-		responseTime = newResponseTime;
+	public void setWorstCaseResponseTime(int newWorstCaseResponseTime) {
+		int oldWorstCaseResponseTime = worstCaseResponseTime;
+		worstCaseResponseTime = newWorstCaseResponseTime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__RESPONSE_TIME, oldResponseTime, responseTime));
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__WORST_CASE_RESPONSE_TIME, oldWorstCaseResponseTime, worstCaseResponseTime));
 	}
 
 	/**
@@ -421,7 +421,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public float getJitter() {
+	public int getJitter() {
 		return jitter;
 	}
 
@@ -430,8 +430,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setJitter(float newJitter) {
-		float oldJitter = jitter;
+	public void setJitter(int newJitter) {
+		int oldJitter = jitter;
 		jitter = newJitter;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__JITTER, oldJitter, jitter));
@@ -463,7 +463,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getReleaseTime() {
+	public int getReleaseTime() {
 		return releaseTime;
 	}
 
@@ -472,8 +472,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReleaseTime(double newReleaseTime) {
-		double oldReleaseTime = releaseTime;
+	public void setReleaseTime(int newReleaseTime) {
+		int oldReleaseTime = releaseTime;
 		releaseTime = newReleaseTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__RELEASE_TIME, oldReleaseTime, releaseTime));
@@ -505,7 +505,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getCharacteristicPeriod() {
+	public int getCharacteristicPeriod() {
 		return characteristicPeriod;
 	}
 
@@ -514,8 +514,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCharacteristicPeriod(double newCharacteristicPeriod) {
-		double oldCharacteristicPeriod = characteristicPeriod;
+	public void setCharacteristicPeriod(int newCharacteristicPeriod) {
+		int oldCharacteristicPeriod = characteristicPeriod;
 		characteristicPeriod = newCharacteristicPeriod;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__CHARACTERISTIC_PERIOD, oldCharacteristicPeriod, characteristicPeriod));
@@ -627,8 +627,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 				return getImplicitDeadline();
 			case RealtimeschedulingPackage.TASK__PRIORITY:
 				return getPriority();
-			case RealtimeschedulingPackage.TASK__RESPONSE_TIME:
-				return getResponseTime();
+			case RealtimeschedulingPackage.TASK__WORST_CASE_RESPONSE_TIME:
+				return getWorstCaseResponseTime();
 			case RealtimeschedulingPackage.TASK__SCHEDULEABLE:
 				return isScheduleable();
 			case RealtimeschedulingPackage.TASK__JITTER:
@@ -660,34 +660,34 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 				setName((String)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__WORST_CASE_EXEC_TIME:
-				setWorstCaseExecTime((Double)newValue);
+				setWorstCaseExecTime((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__IMPLICIT_DEADLINE:
-				setImplicitDeadline((Double)newValue);
+				setImplicitDeadline((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__PRIORITY:
 				setPriority((Integer)newValue);
 				return;
-			case RealtimeschedulingPackage.TASK__RESPONSE_TIME:
-				setResponseTime((Double)newValue);
+			case RealtimeschedulingPackage.TASK__WORST_CASE_RESPONSE_TIME:
+				setWorstCaseResponseTime((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__SCHEDULEABLE:
 				setScheduleable((Boolean)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__JITTER:
-				setJitter((Float)newValue);
+				setJitter((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__CRITICAL_INSTANCE:
 				setCriticalInstance((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__RELEASE_TIME:
-				setReleaseTime((Double)newValue);
+				setReleaseTime((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__PERIODICITY:
 				setPeriodicity((Periodicity)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__CHARACTERISTIC_PERIOD:
-				setCharacteristicPeriod((Double)newValue);
+				setCharacteristicPeriod((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__PARTITION:
 				setPartition((Partition)newValue);
@@ -716,8 +716,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 			case RealtimeschedulingPackage.TASK__PRIORITY:
 				setPriority(PRIORITY_EDEFAULT);
 				return;
-			case RealtimeschedulingPackage.TASK__RESPONSE_TIME:
-				setResponseTime(RESPONSE_TIME_EDEFAULT);
+			case RealtimeschedulingPackage.TASK__WORST_CASE_RESPONSE_TIME:
+				setWorstCaseResponseTime(WORST_CASE_RESPONSE_TIME_EDEFAULT);
 				return;
 			case RealtimeschedulingPackage.TASK__SCHEDULEABLE:
 				setScheduleable(SCHEDULEABLE_EDEFAULT);
@@ -760,8 +760,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 				return implicitDeadline != IMPLICIT_DEADLINE_EDEFAULT;
 			case RealtimeschedulingPackage.TASK__PRIORITY:
 				return priority != PRIORITY_EDEFAULT;
-			case RealtimeschedulingPackage.TASK__RESPONSE_TIME:
-				return responseTime != RESPONSE_TIME_EDEFAULT;
+			case RealtimeschedulingPackage.TASK__WORST_CASE_RESPONSE_TIME:
+				return worstCaseResponseTime != WORST_CASE_RESPONSE_TIME_EDEFAULT;
 			case RealtimeschedulingPackage.TASK__SCHEDULEABLE:
 				return scheduleable != SCHEDULEABLE_EDEFAULT;
 			case RealtimeschedulingPackage.TASK__JITTER:
@@ -798,8 +798,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 		result.append(implicitDeadline);
 		result.append(", priority: ");
 		result.append(priority);
-		result.append(", responseTime: ");
-		result.append(responseTime);
+		result.append(", worstCaseResponseTime: ");
+		result.append(worstCaseResponseTime);
 		result.append(", scheduleable: ");
 		result.append(scheduleable);
 		result.append(", jitter: ");

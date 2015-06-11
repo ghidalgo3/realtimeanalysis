@@ -17,7 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.Node#getVirtualLinks <em>Virtual Links</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Node#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Node#getTransmissionDelay <em>Transmission Delay</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Node#getRealLinks <em>Real Links</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Node#getRealOutboundLinks <em>Real Outbound Links</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Node#getOrder <em>Order</em>}</li>
  * </ul>
  * </p>
  *
@@ -98,19 +99,45 @@ public interface Node extends EObject {
 	void setTransmissionDelay(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Real Links</b></em>' reference list.
+	 * Returns the value of the '<em><b>Real Outbound Links</b></em>' reference list.
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.Node}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Real Links</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Real Outbound Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Real Links</em>' reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_RealLinks()
+	 * @return the value of the '<em>Real Outbound Links</em>' reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_RealOutboundLinks()
 	 * @model
 	 * @generated
 	 */
-	EList<Node> getRealLinks();
+	EList<Node> getRealOutboundLinks();
+
+	/**
+	 * Returns the value of the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Order</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Order</em>' attribute.
+	 * @see #setOrder(int)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_Order()
+	 * @model required="true" derived="true"
+	 * @generated
+	 */
+	int getOrder();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Node#getOrder <em>Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Order</em>' attribute.
+	 * @see #getOrder()
+	 * @generated
+	 */
+	void setOrder(int value);
 
 } // Node

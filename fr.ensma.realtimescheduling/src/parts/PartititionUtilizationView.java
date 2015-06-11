@@ -43,12 +43,16 @@ public class PartititionUtilizationView extends AbstractLineChart {
 				true, 
 				true,
 				false);
+		//change the axis some
 		((XYPlot) chart.getPlot()).setDomainAxis(new NumberAxis());
 		((XYPlot) chart.getPlot()).getRangeAxis().setVisible(false);
-		((XYPlot) chart.getPlot()).getRenderer().setBaseStroke(new BasicStroke(20.0f));
+		((XYPlot) chart.getPlot()).getRenderer().setBaseStroke(new BasicStroke(20.0f)); //does nothing lol
 		return chart;
 	}
-
+	
+	/**
+	 * Sets up a list view and a label.
+	 */
 	@Override
 	Composite setUpSelectors(Composite parent) {
 		Composite holder = new Composite(parent, SWT.BORDER);

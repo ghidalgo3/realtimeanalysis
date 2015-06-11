@@ -7,19 +7,14 @@ package simulator;
  */
 public class Time {
 
-    private double time;
+    public final double time;
 
     public Time(double time) {
         this.time = time;
     }
 
-    public double getTime() {
-        return time;
-    }
-
     public Time add(double moreTime) {
-        time += moreTime;
-        return this;
+        return new Time(time + moreTime);
     }
 
     @Override

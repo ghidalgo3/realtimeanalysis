@@ -63,6 +63,7 @@ public class VirtualLinkItemProvider
 			addNodesPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addMinInterFrameTimePropertyDescriptor(object);
+			addEndToEndDelayPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -128,7 +129,29 @@ public class VirtualLinkItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the End To End Delay feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEndToEndDelayPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_VirtualLink_endToEndDelay_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_VirtualLink_endToEndDelay_feature", "_UI_VirtualLink_type"),
+				 RealtimeschedulingPackage.Literals.VIRTUAL_LINK__END_TO_END_DELAY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -173,6 +196,7 @@ public class VirtualLinkItemProvider
 		switch (notification.getFeatureID(VirtualLink.class)) {
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
+			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

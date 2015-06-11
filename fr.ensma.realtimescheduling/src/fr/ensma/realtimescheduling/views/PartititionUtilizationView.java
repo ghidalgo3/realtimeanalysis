@@ -1,4 +1,4 @@
-package parts;
+package fr.ensma.realtimescheduling.views;
 
 import java.awt.BasicStroke;
 import java.util.ArrayList;
@@ -19,7 +19,6 @@ import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
 import analysis.ModelInterface;
 import fr.ensma.realtimescheduling.Module;
-import fr.ensma.realtimescheduling.views.GraphingFunctions;
 
 /**
  * Displays chronological displays of partitions

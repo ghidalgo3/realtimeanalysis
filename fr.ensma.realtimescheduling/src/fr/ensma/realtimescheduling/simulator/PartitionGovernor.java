@@ -1,4 +1,4 @@
-package simulator;
+package fr.ensma.realtimescheduling.simulator;
 
 import java.util.ArrayList;
 import java.util.List;

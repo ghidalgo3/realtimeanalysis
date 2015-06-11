@@ -35,7 +35,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double START_EDEFAULT = 0.0;
+	protected static final int START_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getStart() <em>Start</em>}' attribute.
@@ -45,7 +45,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	 * @generated
 	 * @ordered
 	 */
-	protected double start = START_EDEFAULT;
+	protected int start = START_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getEnd() <em>End</em>}' attribute.
@@ -55,7 +55,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double END_EDEFAULT = 0.0;
+	protected static final int END_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getEnd() <em>End</em>}' attribute.
@@ -65,7 +65,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	 * @generated
 	 * @ordered
 	 */
-	protected double end = END_EDEFAULT;
+	protected int end = END_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,7 +91,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getStart() {
+	public int getStart() {
 		return start;
 	}
 
@@ -100,8 +100,8 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStart(double newStart) {
-		double oldStart = start;
+	public void setStart(int newStart) {
+		int oldStart = start;
 		start = newStart;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.INTERVAL__START, oldStart, start));
@@ -112,7 +112,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getEnd() {
+	public int getEnd() {
 		return end;
 	}
 
@@ -121,8 +121,8 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEnd(double newEnd) {
-		double oldEnd = end;
+	public void setEnd(int newEnd) {
+		int oldEnd = end;
 		end = newEnd;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.INTERVAL__END, oldEnd, end));
@@ -153,10 +153,10 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.INTERVAL__START:
-				setStart((Double)newValue);
+				setStart((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.INTERVAL__END:
-				setEnd((Double)newValue);
+				setEnd((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

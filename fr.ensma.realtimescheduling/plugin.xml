@@ -87,14 +87,14 @@
       </category>
       <view
             category="fr.ensma.realtimescheduling"
-            class="parts.PartitionFunctionsView"
+            class="fr.ensma.realtimescheduling.views.PartitionFunctionsView"
             icon="icons/sample.gif"
             id="fr.ensma.realtimescheduling.views.partitionfunctions"
             name="Partition Functions">
       </view>
       <view
             category="fr.ensma.realtimescheduling"
-            class="parts.WCRTView"
+            class="fr.ensma.realtimescheduling.views.WCRTView"
             icon="icons/sample.gif"
             id="fr.ensma.realtimescheduling.views.taskvisualization"
             name="Response Times"
@@ -102,7 +102,7 @@
       </view>
       <view
             category="fr.ensma.realtimescheduling"
-            class="parts.VPUView"
+            class="fr.ensma.realtimescheduling.views.VPUView"
             icon="icons/sample.gif"
             id="fr.ensma.realtimescheduling.views.virtualprocessorutilization"
             name="Virtual Processor Utilization"
@@ -110,7 +110,7 @@
       </view>
       <view
             category="fr.ensma.realtimescheduling"
-            class="parts.PartititionUtilizationView"
+            class="fr.ensma.realtimescheduling.views.PartititionUtilizationView"
             icon="icons/sample.gif"
             id="fr.ensma.realtimescheduling.views.partitionutil"
             name="Partition Utilization">

@@ -955,8 +955,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEReference(getPartition_Module(), this.getModule(), this.getModule_Partition(), "module", null, 1, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(intervalEClass, Interval.class, "Interval", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInterval_Start(), ecorePackage.getEDouble(), "start", null, 1, 1, Interval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInterval_End(), ecorePackage.getEDouble(), "end", null, 1, 1, Interval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInterval_Start(), ecorePackage.getEInt(), "start", null, 1, 1, Interval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInterval_End(), ecorePackage.getEInt(), "end", null, 1, 1, Interval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetwork_Name(), ecorePackage.getEString(), "name", null, 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1095,35 +1095,35 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		  (moduleEClass, 
 		   source, 
 		   new String[] {
-			 "NonZeroPeriod", "\n\t\t\tperiod > 0",
-			 "NonOverlappingPartitions", "\n\t\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n\t\t\tif (allIntervals->size() <= 1) then true\n\t\t\telse \n\t\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n\t\t\tendif"
+			 "NonZeroPeriod", "\n\t\tperiod > 0",
+			 "NonOverlappingPartitions", "\n\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n\t\tif (allIntervals->size() <= 1) then true\n\t\telse \n\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n\t\tendif"
 		   });	
 		addAnnotation
 		  (getModule_Utilization(), 
 		   source, 
 		   new String[] {
-			 "derivation", "\n\t\t\tif(partition->size() > 0) then\n\t\t\t\tpartition->collect(p | p.availabilityFactor)->sum()\n\t\t\telse \n\t\t\t\t0.0\n\t\t\tendif"
+			 "derivation", "\n\t\t\tif(partition->size() > 0) then\n\t\t\t\tpartition->collect(p | p.availabilityFactor)->sum()\n\t\t\telse \n\t\t\t\t0\n\t\t\tendif"
 		   });	
 		addAnnotation
 		  (partitionEClass, 
 		   source, 
 		   new String[] {
-			 "PositivePeriod", "\n\t\t\tperiod > 0",
-			 "AvailibilityFactorLessThanOrEqualToOne", "\n\t\t\tavailabilityFactor <= 1",
-			 "PeriodSpansIntervals", "\n\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(start) in\n\t\t\t\t\tif(sortedIntervals->size() > 1) then sortedIntervals->last().end <= period else true endif",
-			 "NonOverlappingIntervals", "\n\t\t\tif (executionIntervals->size() <= 1)\n\t\t\t\tthen true -- Nothing can overlap if there is only one or none!\n\t\t\telse\n\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(i : Interval | i.start)\n\t\t\t\tin sortedIntervals->subSequence(1, sortedIntervals->size() - 1)->forAll(i : Interval | i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)\n\t\t\tendif"
+			 "PositivePeriod", "\n\t\tperiod > 0",
+			 "AvailibilityFactorLessThanOrEqualToOne", "\n\t\tavailabilityFactor <= 1",
+			 "PeriodSpansIntervals", "\n\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(start) in\n\t\t\t\tif(sortedIntervals->size() > 1) then sortedIntervals->last().end <= period else true endif",
+			 "NonOverlappingIntervals", "\n\t\tif (executionIntervals->size() <= 1)\n\t\t\tthen true -- Nothing can overlap if there is only one or none!\n\t\telse\n\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(i : Interval | i.start)\n\t\t\tin sortedIntervals->subSequence(1, sortedIntervals->size() - 1)->forAll(i : Interval | i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)\n\t\tendif"
 		   });	
 		addAnnotation
 		  (getPartition_Period(), 
 		   source, 
 		   new String[] {
-			 "derivation", "if(module->oclIsInvalid() or module->oclIsUndefined() or module=null) then 0.0 else self.module.period endif"
+			 "derivation", "if(module->oclIsInvalid() or module->oclIsUndefined() or module=null) then 0 else self.module.period endif"
 		   });	
 		addAnnotation
 		  (getPartition_AvailabilityFactor(), 
 		   source, 
 		   new String[] {
-			 "derivation", "\n\t\t\t--check for divide by zero!\n\t\t\tif (period <> 0) then executionIntervals->collect(i : Interval | i.end - i.start)->sum() / period\n\t\t\telse 0.0\n\t\t\tendif"
+			 "derivation", "\n\t\t--check for divide by zero!\n\t\tif (period <> 0) then executionIntervals->collect(i : Interval | i.end - i.start)->sum() / period\n\t\telse 0\n\t\tendif"
 		   });	
 		addAnnotation
 		  (intervalEClass, 

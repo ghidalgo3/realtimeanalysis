@@ -1493,7 +1493,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_tCGTVP39EeSAXK7Fq3mgTA" red="255" green="252" blue="216"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_pfVXMP39EeSAXK7Fq3mgTA" name="start : EDouble = 0.0" tooltipText="">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_pfVXMP39EeSAXK7Fq3mgTA" name="start : EInt = 0" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="model.ecore#//Interval/start"/>
           <semanticElements xmi:type="ecore:EAttribute" href="model.ecore#//Interval/start"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_SJMroQ2-EeWYm5eXMEkysw" labelFormat="bold" labelAlignment="LEFT" description="_SJMEkg2-EeWYm5eXMEkysw">
@@ -1503,7 +1503,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_r6fyEP39EeSAXK7Fq3mgTA" name="end : EDouble = 0.0" tooltipText="">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_r6fyEP39EeSAXK7Fq3mgTA" name="end : EInt = 0" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="model.ecore#//Interval/end"/>
           <semanticElements xmi:type="ecore:EAttribute" href="model.ecore#//Interval/end"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_SJMrqQ2-EeWYm5eXMEkysw" labelFormat="bold" labelAlignment="LEFT" description="_SJMrpw2-EeWYm5eXMEkysw">

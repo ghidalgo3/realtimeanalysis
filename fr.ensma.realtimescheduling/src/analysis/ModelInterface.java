@@ -145,7 +145,7 @@ public class ModelInterface {
 				if(p.getTasks().stream().allMatch(t -> t.isScheduleable())) {
 					double vpu = 1 / p.getAvailabilityFactor() * p.getTasks()
 							.stream()
-							.mapToDouble(t -> t.getWorstCaseExecTime()/t.getCharacteristicPeriod())
+							.mapToDouble(t -> (1.0*t.getWorstCaseExecTime())/t.getCharacteristicPeriod())
 							.sum();
 					p.setVirtualProcessorUtilization(vpu);
 					l.add("Partition " + p.getId() + " has determinate VPU: " + vpu + ".");

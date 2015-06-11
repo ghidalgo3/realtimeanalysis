@@ -1,4 +1,4 @@
-package simulator;
+package fr.ensma.realtimescheduling.simulator;
 
 /**
  * Used for keeping track of time for events and simulation

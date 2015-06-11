@@ -1,4 +1,4 @@
-package simulator;
+package fr.ensma.realtimescheduling.simulator;
 
 /**
  * A discrete time event.

@@ -1,4 +1,4 @@
-package parts;
+package fr.ensma.realtimescheduling.views;
 
 
 import java.util.Arrays;
@@ -18,7 +18,6 @@ import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
 import analysis.ModelInterface;
 import fr.ensma.realtimescheduling.Partition;
-import fr.ensma.realtimescheduling.views.FunctionAttributes;
 
 /**
  * This class handles the XY line graphing aspects of the plugin.

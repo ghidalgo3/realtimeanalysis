@@ -22,7 +22,7 @@ public class PartitionUtils {
 	 * Gets the start time of the earliest interval
 	 * @return earlist start time
 	 */
-	public static double getMinimumStart(Partition p) {
+	public static int getMinimumStart(Partition p) {
 		return p.getExecutionIntervals().stream().min(ModelInterface::intervalByStart).get().getStart();
 	}
 	

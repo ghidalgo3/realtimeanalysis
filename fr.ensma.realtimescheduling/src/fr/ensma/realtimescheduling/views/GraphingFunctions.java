@@ -75,14 +75,14 @@ public class GraphingFunctions {
 		for(int period = 0; period < n; period++) {
 			for (int i = 0; i < p.getExecutionIntervals().size(); i++) {
 				xs.set(i*2+period*intervals.size(),
-						intervals.get(i).getStart()+period*p.getPeriod());
+						(double) (intervals.get(i).getStart()+period*p.getPeriod()));
 				ys.set(i*2+period*intervals.size(),
-						f.apply(p, intervals.get(i).getStart()+period*p.getPeriod()));
+						f.apply(p, (double) (intervals.get(i).getStart()+period*p.getPeriod())));
 				
 				xs.set(i*2+1+period*intervals.size(),
-						intervals.get(i).getEnd()+period*p.getPeriod());
+						(double) (intervals.get(i).getEnd()+period*p.getPeriod()));
 				ys.set(i*2+1+period*intervals.size(),
-						f.apply(p, intervals.get(i).getEnd()+period*p.getPeriod()));
+						f.apply(p, (double) (intervals.get(i).getEnd()+period*p.getPeriod())));
 			}
 		}
 		

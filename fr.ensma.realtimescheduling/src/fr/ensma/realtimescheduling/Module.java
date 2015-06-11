@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NonZeroPeriod NonOverlappingPartitions'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NonZeroPeriod='\n\t\t\tperiod > 0' NonOverlappingPartitions='\n\t\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n\t\t\tif (allIntervals->size() <= 1) then true\n\t\t\telse \n\t\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n\t\t\tendif'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NonZeroPeriod='\n\t\tperiod > 0' NonOverlappingPartitions='\n\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n\t\tif (allIntervals->size() <= 1) then true\n\t\telse \n\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n\t\tendif'"
  * @generated
  */
 public interface Module extends EObject {
@@ -41,7 +41,7 @@ public interface Module extends EObject {
 	 * @see #setUtilization(double)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Utilization()
 	 * @model default="0" required="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='\n\t\t\tif(partition->size() > 0) then\n\t\t\t\tpartition->collect(p | p.availabilityFactor)->sum()\n\t\t\telse \n\t\t\t\t0.0\n\t\t\tendif'"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='\n\t\t\tif(partition->size() > 0) then\n\t\t\t\tpartition->collect(p | p.availabilityFactor)->sum()\n\t\t\telse \n\t\t\t\t0\n\t\t\tendif'"
 	 * @generated
 	 */
 	double getUtilization();

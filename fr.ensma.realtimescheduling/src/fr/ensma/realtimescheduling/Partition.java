@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPartition()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PositivePeriod AvailibilityFactorLessThanOrEqualToOne PeriodSpansIntervals NonOverlappingIntervals'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot PositivePeriod='\n\t\t\tperiod > 0' AvailibilityFactorLessThanOrEqualToOne='\n\t\t\tavailabilityFactor <= 1' PeriodSpansIntervals='\n\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(start) in\n\t\t\t\t\tif(sortedIntervals->size() > 1) then sortedIntervals->last().end <= period else true endif' NonOverlappingIntervals='\n\t\t\tif (executionIntervals->size() <= 1)\n\t\t\t\tthen true -- Nothing can overlap if there is only one or none!\n\t\t\telse\n\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(i : Interval | i.start)\n\t\t\t\tin sortedIntervals->subSequence(1, sortedIntervals->size() - 1)->forAll(i : Interval | i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)\n\t\t\tendif'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot PositivePeriod='\n\t\tperiod > 0' AvailibilityFactorLessThanOrEqualToOne='\n\t\tavailabilityFactor <= 1' PeriodSpansIntervals='\n\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(start) in\n\t\t\t\tif(sortedIntervals->size() > 1) then sortedIntervals->last().end <= period else true endif' NonOverlappingIntervals='\n\t\tif (executionIntervals->size() <= 1)\n\t\t\tthen true -- Nothing can overlap if there is only one or none!\n\t\telse\n\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(i : Interval | i.start)\n\t\t\tin sortedIntervals->subSequence(1, sortedIntervals->size() - 1)->forAll(i : Interval | i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)\n\t\tendif'"
  * @generated
  */
 public interface Partition extends EObject {
@@ -70,7 +70,7 @@ public interface Partition extends EObject {
 	 * @return the value of the '<em>Period</em>' attribute.
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPartition_Period()
 	 * @model default="0" changeable="false" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='if(module->oclIsInvalid() or module->oclIsUndefined() or module=null) then 0.0 else self.module.period endif'"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='if(module->oclIsInvalid() or module->oclIsUndefined() or module=null) then 0 else self.module.period endif'"
 	 * @generated
 	 */
 	int getPeriod();
@@ -131,7 +131,7 @@ public interface Partition extends EObject {
 	 * @see #setAvailabilityFactor(double)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPartition_AvailabilityFactor()
 	 * @model default="0" required="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='\n\t\t\t--check for divide by zero!\n\t\t\tif (period <> 0) then executionIntervals->collect(i : Interval | i.end - i.start)->sum() / period\n\t\t\telse 0.0\n\t\t\tendif'"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='\n\t\t--check for divide by zero!\n\t\tif (period <> 0) then executionIntervals->collect(i : Interval | i.end - i.start)->sum() / period\n\t\telse 0\n\t\tendif'"
 	 * @generated
 	 */
 	double getAvailabilityFactor();

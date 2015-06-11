@@ -79,7 +79,7 @@ public class IntervalItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -101,7 +101,7 @@ public class IntervalItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -126,7 +126,7 @@ public class IntervalItemProvider
 	@Override
 	public String getText(Object object) {
 		Interval interval = (Interval)object;
-		return getString("_UI_Interval_type") + " " + String.format("(%.1f, %.1f)", interval.getStart(), interval.getEnd());
+		return getString("_UI_Interval_type") + " " + String.format("(%d, %d)", interval.getStart(), interval.getEnd());
 	}
 	
 

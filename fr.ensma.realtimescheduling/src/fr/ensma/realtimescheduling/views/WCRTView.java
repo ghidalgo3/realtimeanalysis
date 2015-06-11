@@ -1,4 +1,4 @@
-package parts;
+package fr.ensma.realtimescheduling.views;
 
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;

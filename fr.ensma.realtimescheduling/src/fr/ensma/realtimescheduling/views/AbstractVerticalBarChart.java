@@ -1,4 +1,4 @@
-package parts;
+package fr.ensma.realtimescheduling.views;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseAdapter;

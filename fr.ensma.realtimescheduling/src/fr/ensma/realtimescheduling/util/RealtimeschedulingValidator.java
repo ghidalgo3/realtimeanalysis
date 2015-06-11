@@ -338,7 +338,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String MODULE__NON_ZERO_PERIOD__EEXPRESSION = "\n" +
-		"\t\t\tperiod > 0";
+		"\t\tperiod > 0";
 
 	/**
 	 * Validates the NonZeroPeriod constraint of '<em>Module</em>'.
@@ -368,11 +368,11 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String MODULE__NON_OVERLAPPING_PARTITIONS__EEXPRESSION = "\n" +
-		"\t\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n" +
-		"\t\t\tif (allIntervals->size() <= 1) then true\n" +
-		"\t\t\telse \n" +
-		"\t\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n" +
-		"\t\t\tendif";
+		"\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n" +
+		"\t\tif (allIntervals->size() <= 1) then true\n" +
+		"\t\telse \n" +
+		"\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n" +
+		"\t\tendif";
 
 	/**
 	 * Validates the NonOverlappingPartitions constraint of '<em>Module</em>'.
@@ -460,7 +460,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String PARTITION__POSITIVE_PERIOD__EEXPRESSION = "\n" +
-		"\t\t\tperiod > 0";
+		"\t\tperiod > 0";
 
 	/**
 	 * Validates the PositivePeriod constraint of '<em>Partition</em>'.
@@ -490,7 +490,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String PARTITION__AVAILIBILITY_FACTOR_LESS_THAN_OR_EQUAL_TO_ONE__EEXPRESSION = "\n" +
-		"\t\t\tavailabilityFactor <= 1";
+		"\t\tavailabilityFactor <= 1";
 
 	/**
 	 * Validates the AvailibilityFactorLessThanOrEqualToOne constraint of '<em>Partition</em>'.
@@ -520,8 +520,8 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String PARTITION__PERIOD_SPANS_INTERVALS__EEXPRESSION = "\n" +
-		"\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(start) in\n" +
-		"\t\t\t\t\tif(sortedIntervals->size() > 1) then sortedIntervals->last().end <= period else true endif";
+		"\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(start) in\n" +
+		"\t\t\t\tif(sortedIntervals->size() > 1) then sortedIntervals->last().end <= period else true endif";
 
 	/**
 	 * Validates the PeriodSpansIntervals constraint of '<em>Partition</em>'.
@@ -551,12 +551,12 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String PARTITION__NON_OVERLAPPING_INTERVALS__EEXPRESSION = "\n" +
-		"\t\t\tif (executionIntervals->size() <= 1)\n" +
-		"\t\t\t\tthen true -- Nothing can overlap if there is only one or none!\n" +
-		"\t\t\telse\n" +
-		"\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(i : Interval | i.start)\n" +
-		"\t\t\t\tin sortedIntervals->subSequence(1, sortedIntervals->size() - 1)->forAll(i : Interval | i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)\n" +
-		"\t\t\tendif";
+		"\t\tif (executionIntervals->size() <= 1)\n" +
+		"\t\t\tthen true -- Nothing can overlap if there is only one or none!\n" +
+		"\t\telse\n" +
+		"\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(i : Interval | i.start)\n" +
+		"\t\t\tin sortedIntervals->subSequence(1, sortedIntervals->size() - 1)->forAll(i : Interval | i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)\n" +
+		"\t\tendif";
 
 	/**
 	 * Validates the NonOverlappingIntervals constraint of '<em>Partition</em>'.

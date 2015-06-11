@@ -32,12 +32,12 @@ public interface Interval extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Start</em>' attribute.
-	 * @see #setStart(double)
+	 * @see #setStart(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getInterval_Start()
 	 * @model required="true"
 	 * @generated
 	 */
-	double getStart();
+	int getStart();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Interval#getStart <em>Start</em>}' attribute.
@@ -47,7 +47,7 @@ public interface Interval extends EObject {
 	 * @see #getStart()
 	 * @generated
 	 */
-	void setStart(double value);
+	void setStart(int value);
 
 	/**
 	 * Returns the value of the '<em><b>End</b></em>' attribute.
@@ -58,12 +58,12 @@ public interface Interval extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>End</em>' attribute.
-	 * @see #setEnd(double)
+	 * @see #setEnd(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getInterval_End()
 	 * @model required="true"
 	 * @generated
 	 */
-	double getEnd();
+	int getEnd();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Interval#getEnd <em>End</em>}' attribute.
@@ -73,6 +73,6 @@ public interface Interval extends EObject {
 	 * @see #getEnd()
 	 * @generated
 	 */
-	void setEnd(double value);
+	void setEnd(int value);
 
 } // Interval

@@ -27,7 +27,7 @@ public class VLWrapper {
 		S_min = new ArrayList<>(Collections.nCopies(link.getNodes().size(), 0.0));
 		S_max = new ArrayList<>(Collections.nCopies(link.getNodes().size(), 0.0));
 		J =     new ArrayList<>(Collections.nCopies(link.getNodes().size(), 0.0));
-		nodes = (NetworkUtils.getVLNodes(link));
+//		nodes = (NetworkUtils.getVLNodes(link));
 		this.link = link;
 	}
 	

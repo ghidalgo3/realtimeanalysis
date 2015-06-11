@@ -13,9 +13,9 @@ import fr.ensma.realtimescheduling.Partition;
  */
 public enum FunctionAttributes {
 	
-	SUPPLY("Supply", "Time", "Supply", PartitionGraphingFunctions::getSupply),
-	INVERSE_SUPPLY("Inverse Supply", "Supply", "Time", PartitionGraphingFunctions::getInverseSupply),
-	LEAST_SUPPLY("Least Supply", "Time width", "Least supply", PartitionGraphingFunctions::getLeastSupply);
+	SUPPLY("Supply", "Time", "Supply", GraphingFunctions::getSupply),
+	INVERSE_SUPPLY("Inverse Supply", "Supply", "Time", GraphingFunctions::getInverseSupply),
+	LEAST_SUPPLY("Least Supply", "Time width", "Least supply", GraphingFunctions::getLeastSupply);
 	
 	private String title;
 	private String domainName;

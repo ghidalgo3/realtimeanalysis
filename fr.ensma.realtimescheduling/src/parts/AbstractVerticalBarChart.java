@@ -1,4 +1,4 @@
-package fr.ensma.realtimescheduling.views;
+package parts;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseAdapter;
@@ -23,12 +23,12 @@ import org.jfree.experimental.chart.swt.ChartComposite;
  * @author Gustavo
  *
  */
-public abstract class AbstractBarChart extends ViewPart {
+public abstract class AbstractVerticalBarChart extends ViewPart {
 
-	private ChartComposite cp;
-	private String title;
-	private String domainName;
-	private String rangeName;
+	ChartComposite cp;
+	String title;
+	String domainName; 
+	String rangeName;
 	
 	/**
 	 * Create a BarChart with a title, x axis name, and y axis name.
@@ -36,18 +36,13 @@ public abstract class AbstractBarChart extends ViewPart {
 	 * @param domainName
 	 * @param rangeName
 	 */
-	public AbstractBarChart(String title, String domainName, String rangeName) {
+	public AbstractVerticalBarChart(String title, String domainName, String rangeName) {
 		this.title = title;
 		this.domainName = domainName;
 		this.rangeName = rangeName;
 	}
 	
-	/**
-	 * Concrete subclasses must be able to create a dataset for displaying
-	 * on this barchart
-	 * @return
-	 */
-	abstract CategoryDataset createDataset();
+	
 	
 	/**
 	 * This method is called by eclipse to set up the layout
@@ -73,12 +68,12 @@ public abstract class AbstractBarChart extends ViewPart {
 		
 		FormData controlData = new FormData();
 		controlData.right = new FormAttachment(100,0);
-		//controlData.bottom = new FormAttachment(100,0);
 		controlData.top = new FormAttachment(0,10);
-		controlData.width = 100; // doesn't do anything
+		controlData.width = 100; 
 		controls.setLayoutData(controlData);
 		parent.setLayout(parentLayout);
-		generateGraph();
+		cp.setChart(generateChart());
+		cp.redraw();
 		parent.redraw();
 	}
 	
@@ -103,7 +98,9 @@ public abstract class AbstractBarChart extends ViewPart {
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseUp(MouseEvent e) {
-				generateGraph();
+				cp.setChart(generateChart());
+				cp.redraw();
+				parent.redraw();
 			}
 		});
 		return controls;
@@ -117,12 +114,13 @@ public abstract class AbstractBarChart extends ViewPart {
 	private Composite setUpChart(Composite parent) {
 		return cp = new ChartComposite(parent, SWT.NONE, null, true);
 	}
+
 	
 	/**
 	 * Creates a JFreeChart object based on the abstract dataset
 	 * method and re-renders the graph.
 	 */
-	private void generateGraph() {
+	JFreeChart generateChart() {
 		final CategoryDataset dataset = createDataset(); 
 		final JFreeChart chart = ChartFactory.createBarChart(
 	            title,         // chart title
@@ -137,9 +135,15 @@ public abstract class AbstractBarChart extends ViewPart {
 		BarRenderer renderer = (BarRenderer) chart.getCategoryPlot().getRenderer();
 		//hack to make the bars wider
 	    renderer.setItemMargin(dataset.getColumnCount() == 0 ? 1 : -10/dataset.getColumnCount());
-		cp.setChart(chart);
-		cp.redraw();
+		return chart;
 	}
+
+	/**
+	 * Concrete subclasses must be able to create a dataset for displaying
+	 * on this barchart
+	 * @return
+	 */
+	abstract CategoryDataset createDataset();
 
 	/**
 	 * Doesn't do anything by default.
@@ -148,6 +152,8 @@ public abstract class AbstractBarChart extends ViewPart {
 	public void setFocus() {
 		// TODO Auto-generated method stub
 	}
+	
+	
 	
 	
 

@@ -1,4 +1,4 @@
-package fr.ensma.realtimescheduling.views;
+package parts;
 
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -9,7 +9,7 @@ import analysis.ModelInterface;
  * @author Gustavo
  *
  */
-public class VPUView extends AbstractBarChart {
+public class VPUView extends AbstractVerticalBarChart {
 
 	public VPUView() {
 		super("Virtual Processor Utilization", "Partition", "Utilization");

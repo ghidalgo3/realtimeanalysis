@@ -33,7 +33,7 @@ public class ModelInterface {
 	 * Instance to the System from the model being analyzed
 	 * We will also parse the other entities out of the System
 	 */
-	private static fr.ensma.realtimescheduling.System system;
+	public static fr.ensma.realtimescheduling.System system;
 	
 	/**
 	 * Since we use the partitions directly so much, we extract the list of
@@ -42,6 +42,8 @@ public class ModelInterface {
 	public static List<Partition> allPartitions;
 	//don't know if this will ever be needed....
 	static boolean validSystem;
+	
+	public static boolean validSystem() {return validSystem;}
 	
 	/**
 	 * Very ugly way of receiving the System after the user clicks on 

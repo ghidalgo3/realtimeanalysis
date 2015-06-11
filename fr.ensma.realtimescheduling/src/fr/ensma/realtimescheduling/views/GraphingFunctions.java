@@ -7,6 +7,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import analysis.PartitionUtils;
 import fr.ensma.realtimescheduling.Interval;
+import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Partition;
 
 /**
@@ -14,7 +15,7 @@ import fr.ensma.realtimescheduling.Partition;
  * These functions have to handle special cases for the graphs to look good.
  * @author Gustavo
  */
-public class PartitionGraphingFunctions {
+public class GraphingFunctions {
 	
 	/**
 	 * Calculates the inverse supply function for an partition
@@ -102,11 +103,31 @@ public class PartitionGraphingFunctions {
 	}
 	
 	/**
-	 * Calculates the least supply data array over 2 periods for a partition
+	 * Calculates the least supply data array over n periods for a partition
 	 * @param p
 	 * @return
 	 */
 	public static double[][] getLeastSupply(Partition p, int n) {
 		return makeFunction((x) -> PartitionUtils.leastSupply(p, x), 0, p.getPeriod() * n, 200);
+	}
+
+	public static double[][] getIntervalStepData(Partition p, double offset) {
+		double[][] data = new double[2][p.getExecutionIntervals().size()*2 + 2];
+		List<Interval> sorted = PartitionUtils.sortedIntervals(p);
+		for(int i = 1; i <= sorted.size(); i++) {
+			data[0][i*2 - 1] = sorted.get(i-1).getStart();
+			data[1][i*2 - 1] = 1.0 + offset;
+			data[0][i*2] = sorted.get(i-1).getEnd();
+			data[1][i*2] = 0.0 + offset;
+		}
+		data[0][0] = 0.0;
+		data[1][0] = 0.0 + offset;
+		data[0][p.getExecutionIntervals().size()*2 + 1] = p.getPeriod();
+		data[1][p.getExecutionIntervals().size()*2 + 1] = 1.0 + offset;
+		return data;
+	}
+	
+	public static double[][] getModuleFreeTime(Module module) {
+		return null;
 	}
 }

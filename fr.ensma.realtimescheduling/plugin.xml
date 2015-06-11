@@ -87,14 +87,14 @@
       </category>
       <view
             category="fr.ensma.realtimescheduling"
-            class="fr.ensma.realtimescheduling.views.ChartView"
+            class="parts.PartitionFunctionsView"
             icon="icons/sample.gif"
             id="fr.ensma.realtimescheduling.views.partitionfunctions"
             name="Partition Functions">
       </view>
       <view
             category="fr.ensma.realtimescheduling"
-            class="fr.ensma.realtimescheduling.views.WCRTView"
+            class="parts.WCRTView"
             icon="icons/sample.gif"
             id="fr.ensma.realtimescheduling.views.taskvisualization"
             name="Response Times"
@@ -102,11 +102,18 @@
       </view>
       <view
             category="fr.ensma.realtimescheduling"
-            class="fr.ensma.realtimescheduling.views.VPUView"
+            class="parts.VPUView"
             icon="icons/sample.gif"
             id="fr.ensma.realtimescheduling.views.virtualprocessorutilization"
             name="Virtual Processor Utilization"
             restorable="true">
+      </view>
+      <view
+            category="fr.ensma.realtimescheduling"
+            class="parts.PartititionUtilizationView"
+            icon="icons/sample.gif"
+            id="fr.ensma.realtimescheduling.views.partitionutil"
+            name="Partition Utilization">
       </view>
    </extension>
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -177,6 +184,13 @@
          </view>
          <view
                id="fr.ensma.realtimescheduling.views.virtualprocessorutilization"
+               minimized="false"
+               relationship="stack"
+               relative="fr.ensma.realtimescheduling.views.taskvisualization"
+               visible="true">
+         </view>
+         <view
+               id="fr.ensma.realtimescheduling.views.partitionutil"
                minimized="false"
                relationship="stack"
                relative="fr.ensma.realtimescheduling.views.taskvisualization"

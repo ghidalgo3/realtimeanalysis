@@ -296,11 +296,11 @@ public class PartitionItemProvider
 			case RealtimeschedulingPackage.PARTITION__VIRTUAL_PROCESSOR_UTILIZATION:
 			case RealtimeschedulingPackage.PARTITION__AVAILABILITY_FACTOR:
 			case RealtimeschedulingPackage.PARTITION__SCHEDULING_ALGORITHM:
-				//fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				//return;
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case RealtimeschedulingPackage.PARTITION__EXECUTION_INTERVALS:
-				//fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, true));//added
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+//				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, true));//added
 				return;
 		}
 		super.notifyChanged(notification);

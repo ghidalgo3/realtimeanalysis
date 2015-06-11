@@ -1,4 +1,4 @@
-package fr.ensma.realtimescheduling.views;
+package parts;
 
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -10,7 +10,7 @@ import analysis.ModelInterface;
  * @author Gustavo
  *
  */
-public class WCRTView extends AbstractBarChart {
+public class WCRTView extends AbstractVerticalBarChart {
 	
 
 	public WCRTView() {
@@ -22,7 +22,7 @@ public class WCRTView extends AbstractBarChart {
 	 * and categorizing the partitions and tasks within the model.
 	 */
 	@Override
-	CategoryDataset createDataset() {  
+	CategoryDataset createDataset() {
 		  final DefaultCategoryDataset result = new DefaultCategoryDataset();
 		  if(ModelInterface.allPartitions != null) {
 			  ModelInterface.allPartitions
@@ -37,6 +37,8 @@ public class WCRTView extends AbstractBarChart {
 		  }
 		  return result;
 	}
+	
+	
 	
 
 }

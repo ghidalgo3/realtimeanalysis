@@ -3,7 +3,7 @@
 package fr.ensma.realtimescheduling.provider;
 
 
-import fr.ensma.realtimescheduling.Node;
+import fr.ensma.realtimescheduling.Port;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 
 import java.util.Collection;
@@ -26,12 +26,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link fr.ensma.realtimescheduling.Node} object.
+ * This is the item provider adapter for a {@link fr.ensma.realtimescheduling.Port} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class NodeItemProvider 
+public class PortItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -45,7 +45,7 @@ public class NodeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NodeItemProvider(AdapterFactory adapterFactory) {
+	public PortItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,29 +60,30 @@ public class NodeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addVirtualLinksPropertyDescriptor(object);
+			addConnectionPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addTransmissionDelayPropertyDescriptor(object);
-			addRealOutboundLinksPropertyDescriptor(object);
 			addOrderPropertyDescriptor(object);
+			addBandwidthPropertyDescriptor(object);
+			addTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Virtual Links feature.
+	 * This adds a property descriptor for the Connection feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addVirtualLinksPropertyDescriptor(Object object) {
+	protected void addConnectionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Node_virtualLinks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_virtualLinks_feature", "_UI_Node_type"),
-				 RealtimeschedulingPackage.Literals.NODE__VIRTUAL_LINKS,
+				 getString("_UI_Port_connection_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Port_connection_feature", "_UI_Port_type"),
+				 RealtimeschedulingPackage.Literals.PORT__CONNECTION,
 				 true,
 				 false,
 				 true,
@@ -102,9 +103,9 @@ public class NodeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Node_id_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_id_feature", "_UI_Node_type"),
-				 RealtimeschedulingPackage.Literals.NODE__ID,
+				 getString("_UI_Port_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Port_id_feature", "_UI_Port_type"),
+				 RealtimeschedulingPackage.Literals.PORT__ID,
 				 true,
 				 false,
 				 false,
@@ -124,35 +125,13 @@ public class NodeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Node_transmissionDelay_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_transmissionDelay_feature", "_UI_Node_type"),
-				 RealtimeschedulingPackage.Literals.NODE__TRANSMISSION_DELAY,
+				 getString("_UI_Port_transmissionDelay_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Port_transmissionDelay_feature", "_UI_Port_type"),
+				 RealtimeschedulingPackage.Literals.PORT__TRANSMISSION_DELAY,
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Real Outbound Links feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRealOutboundLinksPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Node_realOutboundLinks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_realOutboundLinks_feature", "_UI_Node_type"),
-				 RealtimeschedulingPackage.Literals.NODE__REAL_OUTBOUND_LINKS,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}
@@ -168,9 +147,9 @@ public class NodeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Node_order_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_order_feature", "_UI_Node_type"),
-				 RealtimeschedulingPackage.Literals.NODE__ORDER,
+				 getString("_UI_Port_order_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Port_order_feature", "_UI_Port_type"),
+				 RealtimeschedulingPackage.Literals.PORT__ORDER,
 				 true,
 				 false,
 				 false,
@@ -180,14 +159,58 @@ public class NodeItemProvider
 	}
 
 	/**
-	 * This returns Node.gif.
+	 * This adds a property descriptor for the Bandwidth feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBandwidthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Port_Bandwidth_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Port_Bandwidth_feature", "_UI_Port_type"),
+				 RealtimeschedulingPackage.Literals.PORT__BANDWIDTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Port_Type_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Port_Type_feature", "_UI_Port_type"),
+				 RealtimeschedulingPackage.Literals.PORT__TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns Port.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Node"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Port"));
 	}
 
 	/**
@@ -198,10 +221,10 @@ public class NodeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Node)object).getId();
+		String label = ((Port)object).getId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Node_type") :
-			getString("_UI_Node_type") + " " + label;
+			getString("_UI_Port_type") :
+			getString("_UI_Port_type") + " " + label;
 	}
 	
 
@@ -216,10 +239,12 @@ public class NodeItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Node.class)) {
-			case RealtimeschedulingPackage.NODE__ID:
-			case RealtimeschedulingPackage.NODE__TRANSMISSION_DELAY:
-			case RealtimeschedulingPackage.NODE__ORDER:
+		switch (notification.getFeatureID(Port.class)) {
+			case RealtimeschedulingPackage.PORT__ID:
+			case RealtimeschedulingPackage.PORT__TRANSMISSION_DELAY:
+			case RealtimeschedulingPackage.PORT__ORDER:
+			case RealtimeschedulingPackage.PORT__BANDWIDTH:
+			case RealtimeschedulingPackage.PORT__TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

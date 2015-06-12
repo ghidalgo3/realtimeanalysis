@@ -5,10 +5,13 @@ package fr.ensma.realtimescheduling.impl;
 import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SoftwareResource;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -233,7 +236,6 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {

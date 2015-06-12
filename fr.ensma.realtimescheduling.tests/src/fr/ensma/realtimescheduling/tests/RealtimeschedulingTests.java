@@ -33,7 +33,7 @@ public class RealtimeschedulingTests extends TestSuite {
 		TestSuite suite = new RealtimeschedulingTests("realtimescheduling Tests");
 		suite.addTestSuite(ModuleTest.class);
 		suite.addTestSuite(PartitionTest.class);
-		suite.addTestSuite(NodeTest.class);
+		suite.addTestSuite(PortTest.class);
 		return suite;
 	}
 

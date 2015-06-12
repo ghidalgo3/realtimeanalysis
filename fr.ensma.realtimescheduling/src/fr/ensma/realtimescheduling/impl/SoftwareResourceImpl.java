@@ -6,6 +6,7 @@ import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SoftwareResource;
 import fr.ensma.realtimescheduling.Task;
+import fr.ensma.realtimescheduling.VirtualLink;
 
 import java.util.Collection;
 
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getExecutedTasks <em>Executed Tasks</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getContainedPartitions <em>Contained Partitions</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getVirtualLInks <em>Virtual LInks</em>}</li>
  * </ul>
  * </p>
  *
@@ -78,6 +80,16 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected EList<Partition> containedPartitions;
+
+	/**
+	 * The cached value of the '{@link #getVirtualLInks() <em>Virtual LInks</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVirtualLInks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<VirtualLink> virtualLInks;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,6 +160,18 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<VirtualLink> getVirtualLInks() {
+		if (virtualLInks == null) {
+			virtualLInks = new EObjectContainmentEList<VirtualLink>(VirtualLink.class, this, RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS);
+		}
+		return virtualLInks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -155,6 +179,8 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 				return ((InternalEList<?>)getExecutedTasks()).basicRemove(otherEnd, msgs);
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS:
 				return ((InternalEList<?>)getContainedPartitions()).basicRemove(otherEnd, msgs);
+			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
+				return ((InternalEList<?>)getVirtualLInks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -173,6 +199,8 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 				return getExecutedTasks();
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS:
 				return getContainedPartitions();
+			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
+				return getVirtualLInks();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -197,6 +225,10 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 				getContainedPartitions().clear();
 				getContainedPartitions().addAll((Collection<? extends Partition>)newValue);
 				return;
+			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
+				getVirtualLInks().clear();
+				getVirtualLInks().addAll((Collection<? extends VirtualLink>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -218,6 +250,9 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS:
 				getContainedPartitions().clear();
 				return;
+			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
+				getVirtualLInks().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -236,6 +271,8 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 				return executedTasks != null && !executedTasks.isEmpty();
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS:
 				return containedPartitions != null && !containedPartitions.isEmpty();
+			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
+				return virtualLInks != null && !virtualLInks.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

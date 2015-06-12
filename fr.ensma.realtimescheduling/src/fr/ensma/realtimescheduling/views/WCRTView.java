@@ -31,7 +31,7 @@ public class WCRTView extends AbstractVerticalBarChart {
 			  		partition.getTasks()
 			  			.stream()
 			  			.forEach(task -> {
-			  				result.addValue(task.getWorstCaseResponseTime(), "Partition "+partition.getId(), task.getName());
+			  				result.addValue(task.getResponseTime(), "Partition "+partition.getId(), task.getName());
 			  			});
 			  	});
 		  }

@@ -2,21 +2,24 @@
  */
 package fr.ensma.realtimescheduling.impl;
 
+import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Network;
-import fr.ensma.realtimescheduling.Node;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Periodicity;
+import fr.ensma.realtimescheduling.Port;
+import fr.ensma.realtimescheduling.PortType;
 import fr.ensma.realtimescheduling.Processor;
 import fr.ensma.realtimescheduling.RealtimeschedulingFactory;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SchedulingAlgorithm;
 import fr.ensma.realtimescheduling.SoftwareResource;
+import fr.ensma.realtimescheduling.Switch;
 import fr.ensma.realtimescheduling.Task;
-
 import fr.ensma.realtimescheduling.VirtualLink;
+
 import fr.ensma.realtimescheduling.util.RealtimeschedulingValidator;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -103,7 +106,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass nodeEClass = null;
+	private EClass switchEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -111,6 +114,20 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * @generated
 	 */
 	private EClass virtualLinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass portEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass connectionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -125,6 +142,13 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * @generated
 	 */
 	private EEnum schedulingAlgorithmEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum portTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -282,7 +306,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_WorstCaseResponseTime() {
+	public EAttribute getTask_ResponseTime() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -401,6 +425,24 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 */
 	public EReference getModule_Processors() {
 		return (EReference)moduleEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModule_Connection() {
+		return (EReference)moduleEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModule_Virtuallink() {
+		return (EReference)moduleEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -534,7 +576,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNetwork_Nodes() {
+	public EReference getNetwork_Switches() {
 		return (EReference)networkEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -543,26 +585,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNetwork_VirtualLinks() {
-		return (EReference)networkEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getNetwork_Latency() {
-		return (EAttribute)networkEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getNetwork_NetworkBandwidth() {
-		return (EAttribute)networkEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -571,7 +595,16 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * @generated
 	 */
 	public EAttribute getNetwork_MaxFrameSize() {
-		return (EAttribute)networkEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNetwork_Connection() {
+		return (EReference)networkEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -651,6 +684,15 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSoftwareResource_VirtualLInks() {
+		return (EReference)softwareResourceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProcessor() {
 		return processorEClass;
 	}
@@ -669,8 +711,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getNode() {
-		return nodeEClass;
+	public EClass getSwitch() {
+		return switchEClass;
 	}
 
 	/**
@@ -678,8 +720,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNode_VirtualLinks() {
-		return (EReference)nodeEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSwitch_Id() {
+		return (EAttribute)switchEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -687,8 +729,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNode_Id() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(1);
+	public EReference getSwitch_Ports() {
+		return (EReference)switchEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -696,26 +738,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNode_TransmissionDelay() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getNode_RealOutboundLinks() {
-		return (EReference)nodeEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getNode_Order() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(4);
+	public EAttribute getSwitch_Latency() {
+		return (EAttribute)switchEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -732,17 +756,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVirtualLink_Nodes() {
-		return (EReference)virtualLinkEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getVirtualLink_Id() {
-		return (EAttribute)virtualLinkEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)virtualLinkEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -751,7 +766,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * @generated
 	 */
 	public EAttribute getVirtualLink_MinInterFrameTime() {
-		return (EAttribute)virtualLinkEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)virtualLinkEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -760,7 +775,133 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * @generated
 	 */
 	public EAttribute getVirtualLink_EndToEndDelay() {
-		return (EAttribute)virtualLinkEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)virtualLinkEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getVirtualLink_EndSystems() {
+		return (EReference)virtualLinkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getVirtualLink_Connection() {
+		return (EReference)virtualLinkEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPort() {
+		return portEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPort_Connection() {
+		return (EReference)portEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPort_Id() {
+		return (EAttribute)portEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPort_TransmissionDelay() {
+		return (EAttribute)portEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPort_Order() {
+		return (EAttribute)portEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPort_Bandwidth() {
+		return (EAttribute)portEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPort_Type() {
+		return (EAttribute)portEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConnection() {
+		return connectionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConnection_Ports() {
+		return (EReference)connectionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConnection_Id() {
+		return (EAttribute)connectionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConnection_Module() {
+		return (EReference)connectionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConnection_Virtuallink() {
+		return (EReference)connectionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -779,6 +920,15 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 */
 	public EEnum getSchedulingAlgorithm() {
 		return schedulingAlgorithmEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getPortType() {
+		return portTypeEEnum;
 	}
 
 	/**
@@ -819,7 +969,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		createEAttribute(taskEClass, TASK__WORST_CASE_EXEC_TIME);
 		createEAttribute(taskEClass, TASK__IMPLICIT_DEADLINE);
 		createEAttribute(taskEClass, TASK__PRIORITY);
-		createEAttribute(taskEClass, TASK__WORST_CASE_RESPONSE_TIME);
+		createEAttribute(taskEClass, TASK__RESPONSE_TIME);
 		createEAttribute(taskEClass, TASK__SCHEDULEABLE);
 		createEAttribute(taskEClass, TASK__JITTER);
 		createEAttribute(taskEClass, TASK__CRITICAL_INSTANCE);
@@ -834,6 +984,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		createEAttribute(moduleEClass, MODULE__PERIOD);
 		createEReference(moduleEClass, MODULE__PARTITION);
 		createEReference(moduleEClass, MODULE__PROCESSORS);
+		createEReference(moduleEClass, MODULE__CONNECTION);
+		createEReference(moduleEClass, MODULE__VIRTUALLINK);
 
 		partitionEClass = createEClass(PARTITION);
 		createEAttribute(partitionEClass, PARTITION__ID);
@@ -851,11 +1003,10 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 
 		networkEClass = createEClass(NETWORK);
 		createEAttribute(networkEClass, NETWORK__NAME);
-		createEReference(networkEClass, NETWORK__NODES);
-		createEReference(networkEClass, NETWORK__VIRTUAL_LINKS);
-		createEAttribute(networkEClass, NETWORK__LATENCY);
+		createEReference(networkEClass, NETWORK__SWITCHES);
 		createEAttribute(networkEClass, NETWORK__NETWORK_BANDWIDTH);
 		createEAttribute(networkEClass, NETWORK__MAX_FRAME_SIZE);
+		createEReference(networkEClass, NETWORK__CONNECTION);
 
 		systemEClass = createEClass(SYSTEM);
 		createEReference(systemEClass, SYSTEM__USES);
@@ -866,26 +1017,41 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		createEAttribute(softwareResourceEClass, SOFTWARE_RESOURCE__NAME);
 		createEReference(softwareResourceEClass, SOFTWARE_RESOURCE__EXECUTED_TASKS);
 		createEReference(softwareResourceEClass, SOFTWARE_RESOURCE__CONTAINED_PARTITIONS);
+		createEReference(softwareResourceEClass, SOFTWARE_RESOURCE__VIRTUAL_LINKS);
 
 		processorEClass = createEClass(PROCESSOR);
 		createEAttribute(processorEClass, PROCESSOR__NAME);
 
-		nodeEClass = createEClass(NODE);
-		createEReference(nodeEClass, NODE__VIRTUAL_LINKS);
-		createEAttribute(nodeEClass, NODE__ID);
-		createEAttribute(nodeEClass, NODE__TRANSMISSION_DELAY);
-		createEReference(nodeEClass, NODE__REAL_OUTBOUND_LINKS);
-		createEAttribute(nodeEClass, NODE__ORDER);
+		switchEClass = createEClass(SWITCH);
+		createEAttribute(switchEClass, SWITCH__ID);
+		createEReference(switchEClass, SWITCH__PORTS);
+		createEAttribute(switchEClass, SWITCH__LATENCY);
 
 		virtualLinkEClass = createEClass(VIRTUAL_LINK);
-		createEReference(virtualLinkEClass, VIRTUAL_LINK__NODES);
 		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__ID);
 		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__MIN_INTER_FRAME_TIME);
 		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__END_TO_END_DELAY);
+		createEReference(virtualLinkEClass, VIRTUAL_LINK__END_SYSTEMS);
+		createEReference(virtualLinkEClass, VIRTUAL_LINK__CONNECTION);
+
+		portEClass = createEClass(PORT);
+		createEReference(portEClass, PORT__CONNECTION);
+		createEAttribute(portEClass, PORT__ID);
+		createEAttribute(portEClass, PORT__TRANSMISSION_DELAY);
+		createEAttribute(portEClass, PORT__ORDER);
+		createEAttribute(portEClass, PORT__BANDWIDTH);
+		createEAttribute(portEClass, PORT__TYPE);
+
+		connectionEClass = createEClass(CONNECTION);
+		createEReference(connectionEClass, CONNECTION__PORTS);
+		createEAttribute(connectionEClass, CONNECTION__ID);
+		createEReference(connectionEClass, CONNECTION__MODULE);
+		createEReference(connectionEClass, CONNECTION__VIRTUALLINK);
 
 		// Create enums
 		periodicityEEnum = createEEnum(PERIODICITY);
 		schedulingAlgorithmEEnum = createEEnum(SCHEDULING_ALGORITHM);
+		portTypeEEnum = createEEnum(PORT_TYPE);
 	}
 
 	/**
@@ -928,11 +1094,11 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEAttribute(getTask_WorstCaseExecTime(), ecorePackage.getEInt(), "worstCaseExecTime", "0", 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_ImplicitDeadline(), ecorePackage.getEInt(), "implicitDeadline", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Priority(), ecorePackage.getEInt(), "priority", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTask_WorstCaseResponseTime(), ecorePackage.getEInt(), "worstCaseResponseTime", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_ResponseTime(), ecorePackage.getEInt(), "responseTime", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Scheduleable(), ecorePackage.getEBoolean(), "scheduleable", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTask_Jitter(), ecorePackage.getEInt(), "jitter", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_Jitter(), ecorePackage.getEFloat(), "jitter", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_CriticalInstance(), ecorePackage.getEInt(), "criticalInstance", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTask_ReleaseTime(), ecorePackage.getEInt(), "releaseTime", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_ReleaseTime(), ecorePackage.getEDouble(), "releaseTime", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Periodicity(), this.getPeriodicity(), "periodicity", "Periodic", 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_CharacteristicPeriod(), ecorePackage.getEInt(), "characteristicPeriod", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_Partition(), this.getPartition(), this.getPartition_Tasks(), "partition", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -943,10 +1109,12 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEAttribute(getModule_Period(), ecorePackage.getEInt(), "period", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_Partition(), this.getPartition(), this.getPartition_Module(), "partition", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_Processors(), this.getProcessor(), null, "processors", null, 1, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModule_Connection(), this.getConnection(), this.getConnection_Module(), "connection", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModule_Virtuallink(), this.getVirtualLink(), this.getVirtualLink_EndSystems(), "virtuallink", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(partitionEClass, Partition.class, "Partition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPartition_Id(), ecorePackage.getEInt(), "id", "0", 1, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPartition_Period(), ecorePackage.getEInt(), "period", "0", 0, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartition_Period(), ecorePackage.getEDouble(), "period", "0", 0, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getPartition_ExecutionIntervals(), this.getInterval(), null, "executionIntervals", null, 0, -1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartition_VirtualProcessorUtilization(), ecorePackage.getEDouble(), "virtualProcessorUtilization", "0", 1, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartition_AvailabilityFactor(), ecorePackage.getEDouble(), "availabilityFactor", "0", 1, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -960,11 +1128,10 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetwork_Name(), ecorePackage.getEString(), "name", null, 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNetwork_Nodes(), this.getNode(), null, "nodes", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNetwork_VirtualLinks(), this.getVirtualLink(), null, "virtualLinks", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNetwork_Latency(), ecorePackage.getEInt(), "latency", "0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNetwork_Switches(), this.getSwitch(), null, "Switches", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_NetworkBandwidth(), ecorePackage.getEDouble(), "networkBandwidth", "0.0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_MaxFrameSize(), ecorePackage.getEDouble(), "maxFrameSize", "0.0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNetwork_Connection(), this.getConnection(), null, "connection", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, fr.ensma.realtimescheduling.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystem_Uses(), this.getHardwareResource(), null, "uses", null, 1, 1, fr.ensma.realtimescheduling.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -975,22 +1142,36 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEAttribute(getSoftwareResource_Name(), ecorePackage.getEString(), "name", null, 1, 1, SoftwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSoftwareResource_ExecutedTasks(), this.getTask(), null, "executedTasks", null, 0, -1, SoftwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSoftwareResource_ContainedPartitions(), this.getPartition(), null, "containedPartitions", null, 1, -1, SoftwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSoftwareResource_VirtualLInks(), this.getVirtualLink(), null, "virtualLInks", null, 0, -1, SoftwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processorEClass, Processor.class, "Processor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProcessor_Name(), ecorePackage.getEString(), "name", null, 1, 1, Processor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNode_VirtualLinks(), this.getVirtualLink(), this.getVirtualLink_Nodes(), "virtualLinks", null, 1, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_Id(), ecorePackage.getEString(), "id", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_TransmissionDelay(), ecorePackage.getEDouble(), "transmissionDelay", "0.0", 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getNode_RealOutboundLinks(), this.getNode(), null, "realOutboundLinks", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_Order(), ecorePackage.getEInt(), "order", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEClass(switchEClass, Switch.class, "Switch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSwitch_Id(), ecorePackage.getEString(), "id", null, 1, 1, Switch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSwitch_Ports(), this.getPort(), null, "Ports", null, 2, -1, Switch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSwitch_Latency(), ecorePackage.getEInt(), "latency", "0", 1, 1, Switch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(virtualLinkEClass, VirtualLink.class, "VirtualLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVirtualLink_Nodes(), this.getNode(), this.getNode_VirtualLinks(), "nodes", null, 0, -1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVirtualLink_Id(), ecorePackage.getEString(), "id", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVirtualLink_MinInterFrameTime(), ecorePackage.getEInt(), "minInterFrameTime", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVirtualLink_EndToEndDelay(), ecorePackage.getEInt(), "endToEndDelay", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVirtualLink_EndSystems(), this.getModule(), this.getModule_Virtuallink(), "endSystems", null, 2, 2, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVirtualLink_Connection(), this.getConnection(), this.getConnection_Virtuallink(), "connection", null, 0, -1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(portEClass, Port.class, "Port", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPort_Connection(), this.getConnection(), this.getConnection_Ports(), "connection", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPort_Id(), ecorePackage.getEString(), "id", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPort_TransmissionDelay(), ecorePackage.getEDouble(), "transmissionDelay", "0.0", 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPort_Order(), ecorePackage.getEInt(), "order", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPort_Bandwidth(), ecorePackage.getEDouble(), "Bandwidth", "0.0", 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPort_Type(), this.getPortType(), "Type", "Output", 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(connectionEClass, Connection.class, "Connection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConnection_Ports(), this.getPort(), this.getPort_Connection(), "ports", null, 2, 2, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnection_Id(), ecorePackage.getEString(), "id", null, 1, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnection_Module(), this.getModule(), this.getModule_Connection(), "module", null, 1, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnection_Virtuallink(), this.getVirtualLink(), this.getVirtualLink_Connection(), "virtuallink", null, 0, -1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(periodicityEEnum, Periodicity.class, "Periodicity");
@@ -1002,6 +1183,10 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		addEEnumLiteral(schedulingAlgorithmEEnum, SchedulingAlgorithm.FIXED_PRIORITY);
 		addEEnumLiteral(schedulingAlgorithmEEnum, SchedulingAlgorithm.RATE_MONOTONIC);
 		addEEnumLiteral(schedulingAlgorithmEEnum, SchedulingAlgorithm.DEADLINE_MONOTONIC);
+
+		initEEnum(portTypeEEnum, PortType.class, "PortType");
+		addEEnumLiteral(portTypeEEnum, PortType.INPUT);
+		addEEnumLiteral(portTypeEEnum, PortType.OUTPUT);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1095,35 +1280,35 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		  (moduleEClass, 
 		   source, 
 		   new String[] {
-			 "NonZeroPeriod", "\n\t\tperiod > 0",
-			 "NonOverlappingPartitions", "\n\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n\t\tif (allIntervals->size() <= 1) then true\n\t\telse \n\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n\t\tendif"
+			 "NonZeroPeriod", "\n\t\t\tperiod > 0",
+			 "NonOverlappingPartitions", "\n\t\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n\t\t\tif (allIntervals->size() <= 1) then true\n\t\t\telse \n\t\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n\t\t\tendif"
 		   });	
 		addAnnotation
 		  (getModule_Utilization(), 
 		   source, 
 		   new String[] {
-			 "derivation", "\n\t\t\tif(partition->size() > 0) then\n\t\t\t\tpartition->collect(p | p.availabilityFactor)->sum()\n\t\t\telse \n\t\t\t\t0\n\t\t\tendif"
+			 "derivation", "\n\t\t\tif(partition->size() > 0) then\n\t\t\t\tpartition->collect(p | p.availabilityFactor)->sum()\n\t\t\telse \n\t\t\t\t0.0\n\t\t\tendif"
 		   });	
 		addAnnotation
 		  (partitionEClass, 
 		   source, 
 		   new String[] {
-			 "PositivePeriod", "\n\t\tperiod > 0",
-			 "AvailibilityFactorLessThanOrEqualToOne", "\n\t\tavailabilityFactor <= 1",
-			 "PeriodSpansIntervals", "\n\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(start) in\n\t\t\t\tif(sortedIntervals->size() > 1) then sortedIntervals->last().end <= period else true endif",
-			 "NonOverlappingIntervals", "\n\t\tif (executionIntervals->size() <= 1)\n\t\t\tthen true -- Nothing can overlap if there is only one or none!\n\t\telse\n\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(i : Interval | i.start)\n\t\t\tin sortedIntervals->subSequence(1, sortedIntervals->size() - 1)->forAll(i : Interval | i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)\n\t\tendif"
+			 "PositivePeriod", "\n\t\t\tperiod > 0",
+			 "AvailibilityFactorLessThanOrEqualToOne", "\n\t\t\tavailabilityFactor <= 1",
+			 "PeriodSpansIntervals", "\n\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(start) in\n\t\t\t\t\tif(sortedIntervals->size() > 1) then sortedIntervals->last().end <= period else true endif",
+			 "NonOverlappingIntervals", "\n\t\t\tif (executionIntervals->size() <= 1)\n\t\t\t\tthen true -- Nothing can overlap if there is only one or none!\n\t\t\telse\n\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(i : Interval | i.start)\n\t\t\t\tin sortedIntervals->subSequence(1, sortedIntervals->size() - 1)->forAll(i : Interval | i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)\n\t\t\tendif"
 		   });	
 		addAnnotation
 		  (getPartition_Period(), 
 		   source, 
 		   new String[] {
-			 "derivation", "if(module->oclIsInvalid() or module->oclIsUndefined() or module=null) then 0 else self.module.period endif"
+			 "derivation", "if(module->oclIsInvalid() or module->oclIsUndefined() or module=null) then 0.0 else self.module.period endif"
 		   });	
 		addAnnotation
 		  (getPartition_AvailabilityFactor(), 
 		   source, 
 		   new String[] {
-			 "derivation", "\n\t\t--check for divide by zero!\n\t\tif (period <> 0) then executionIntervals->collect(i : Interval | i.end - i.start)->sum() / period\n\t\telse 0\n\t\tendif"
+			 "derivation", "\n\t\t\t--check for divide by zero!\n\t\t\tif (period <> 0) then executionIntervals->collect(i : Interval | i.end - i.start)->sum() / period\n\t\t\telse 0.0\n\t\t\tendif"
 		   });	
 		addAnnotation
 		  (intervalEClass, 

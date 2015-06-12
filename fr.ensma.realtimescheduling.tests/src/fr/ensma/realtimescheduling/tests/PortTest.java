@@ -2,7 +2,7 @@
  */
 package fr.ensma.realtimescheduling.tests;
 
-import fr.ensma.realtimescheduling.Node;
+import fr.ensma.realtimescheduling.Port;
 import fr.ensma.realtimescheduling.RealtimeschedulingFactory;
 
 import junit.framework.TestCase;
@@ -11,26 +11,26 @@ import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Node</b></em>'.
+ * A test case for the model object '<em><b>Port</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.Node#getTransmissionDelay() <em>Transmission Delay</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Node#getOrder() <em>Order</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Port#getTransmissionDelay() <em>Transmission Delay</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Port#getOrder() <em>Order</em>}</li>
  * </ul>
  * </p>
  * @generated
  */
-public class NodeTest extends TestCase {
+public class PortTest extends TestCase {
 
 	/**
-	 * The fixture for this Node test case.
+	 * The fixture for this Port test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Node fixture = null;
+	protected Port fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -38,36 +38,36 @@ public class NodeTest extends TestCase {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(NodeTest.class);
+		TestRunner.run(PortTest.class);
 	}
 
 	/**
-	 * Constructs a new Node test case with the given name.
+	 * Constructs a new Port test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NodeTest(String name) {
+	public PortTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Sets the fixture for this Node test case.
+	 * Sets the fixture for this Port test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void setFixture(Node fixture) {
+	protected void setFixture(Port fixture) {
 		this.fixture = fixture;
 	}
 
 	/**
-	 * Returns the fixture for this Node test case.
+	 * Returns the fixture for this Port test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Node getFixture() {
+	protected Port getFixture() {
 		return fixture;
 	}
 
@@ -79,7 +79,7 @@ public class NodeTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(RealtimeschedulingFactory.eINSTANCE.createNode());
+		setFixture(RealtimeschedulingFactory.eINSTANCE.createPort());
 	}
 
 	/**
@@ -94,10 +94,10 @@ public class NodeTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link fr.ensma.realtimescheduling.Node#getTransmissionDelay() <em>Transmission Delay</em>}' feature getter.
+	 * Tests the '{@link fr.ensma.realtimescheduling.Port#getTransmissionDelay() <em>Transmission Delay</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.ensma.realtimescheduling.Node#getTransmissionDelay()
+	 * @see fr.ensma.realtimescheduling.Port#getTransmissionDelay()
 	 * @generated
 	 */
 	public void testGetTransmissionDelay() {
@@ -107,10 +107,10 @@ public class NodeTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link fr.ensma.realtimescheduling.Node#setTransmissionDelay(double) <em>Transmission Delay</em>}' feature setter.
+	 * Tests the '{@link fr.ensma.realtimescheduling.Port#setTransmissionDelay(double) <em>Transmission Delay</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.ensma.realtimescheduling.Node#setTransmissionDelay(double)
+	 * @see fr.ensma.realtimescheduling.Port#setTransmissionDelay(double)
 	 * @generated
 	 */
 	public void testSetTransmissionDelay() {
@@ -120,10 +120,10 @@ public class NodeTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link fr.ensma.realtimescheduling.Node#getOrder() <em>Order</em>}' feature getter.
+	 * Tests the '{@link fr.ensma.realtimescheduling.Port#getOrder() <em>Order</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.ensma.realtimescheduling.Node#getOrder()
+	 * @see fr.ensma.realtimescheduling.Port#getOrder()
 	 * @generated
 	 */
 	public void testGetOrder() {
@@ -133,10 +133,10 @@ public class NodeTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link fr.ensma.realtimescheduling.Node#setOrder(int) <em>Order</em>}' feature setter.
+	 * Tests the '{@link fr.ensma.realtimescheduling.Port#setOrder(int) <em>Order</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.ensma.realtimescheduling.Node#setOrder(int)
+	 * @see fr.ensma.realtimescheduling.Port#setOrder(int)
 	 * @generated
 	 */
 	public void testSetOrder() {
@@ -145,4 +145,4 @@ public class NodeTest extends TestCase {
 		fail();
 	}
 
-} //NodeTest
+} //PortTest

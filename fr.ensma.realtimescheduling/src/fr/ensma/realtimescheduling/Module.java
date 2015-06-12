@@ -19,12 +19,14 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.Module#getPeriod <em>Period</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Module#getPartition <em>Partition</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Module#getProcessors <em>Processors</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Module#getConnection <em>Connection</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Module#getVirtuallink <em>Virtuallink</em>}</li>
  * </ul>
  * </p>
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NonZeroPeriod NonOverlappingPartitions'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NonZeroPeriod='\n\t\tperiod > 0' NonOverlappingPartitions='\n\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n\t\tif (allIntervals->size() <= 1) then true\n\t\telse \n\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n\t\tendif'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NonZeroPeriod='\n\t\t\tperiod > 0' NonOverlappingPartitions='\n\t\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n\t\t\tif (allIntervals->size() <= 1) then true\n\t\t\telse \n\t\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n\t\t\tendif'"
  * @generated
  */
 public interface Module extends EObject {
@@ -41,7 +43,7 @@ public interface Module extends EObject {
 	 * @see #setUtilization(double)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Utilization()
 	 * @model default="0" required="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='\n\t\t\tif(partition->size() > 0) then\n\t\t\t\tpartition->collect(p | p.availabilityFactor)->sum()\n\t\t\telse \n\t\t\t\t0\n\t\t\tendif'"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='\n\t\t\tif(partition->size() > 0) then\n\t\t\t\tpartition->collect(p | p.availabilityFactor)->sum()\n\t\t\telse \n\t\t\t\t0.0\n\t\t\tendif'"
 	 * @generated
 	 */
 	double getUtilization();
@@ -141,5 +143,61 @@ public interface Module extends EObject {
 	 * @generated
 	 */
 	EList<Processor> getProcessors();
+
+	/**
+	 * Returns the value of the '<em><b>Connection</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Connection#getModule <em>Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Connection</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Connection</em>' reference.
+	 * @see #setConnection(Connection)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Connection()
+	 * @see fr.ensma.realtimescheduling.Connection#getModule
+	 * @model opposite="module" required="true"
+	 * @generated
+	 */
+	Connection getConnection();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Module#getConnection <em>Connection</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Connection</em>' reference.
+	 * @see #getConnection()
+	 * @generated
+	 */
+	void setConnection(Connection value);
+
+	/**
+	 * Returns the value of the '<em><b>Virtuallink</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.VirtualLink#getEndSystems <em>End Systems</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Virtuallink</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Virtuallink</em>' reference.
+	 * @see #setVirtuallink(VirtualLink)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Virtuallink()
+	 * @see fr.ensma.realtimescheduling.VirtualLink#getEndSystems
+	 * @model opposite="endSystems"
+	 * @generated
+	 */
+	VirtualLink getVirtuallink();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Module#getVirtuallink <em>Virtuallink</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Virtuallink</em>' reference.
+	 * @see #getVirtuallink()
+	 * @generated
+	 */
+	void setVirtuallink(VirtualLink value);
 
 } // Module

@@ -2,19 +2,26 @@
  */
 package fr.ensma.realtimescheduling.impl;
 
-import java.util.Collection;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-import fr.ensma.realtimescheduling.Node;
+import fr.ensma.realtimescheduling.Connection;
+import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.VirtualLink;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,26 +30,17 @@ import fr.ensma.realtimescheduling.VirtualLink;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getEndToEndDelay <em>End To End Delay</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getEndSystems <em>End Systems</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getConnection <em>Connection</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements VirtualLink {
-	/**
-	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNodes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Node> nodes;
-
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -104,6 +102,26 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	protected int endToEndDelay = END_TO_END_DELAY_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getEndSystems() <em>End Systems</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEndSystems()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Module> endSystems;
+
+	/**
+	 * The cached value of the '{@link #getConnection() <em>Connection</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConnection()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Connection> connection;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -127,20 +145,6 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EList<Node> getNodes() {
-		if (nodes == null) {
-			nodes = new EObjectWithInverseResolvingEList.ManyInverse<Node>(Node.class, this, RealtimeschedulingPackage.VIRTUAL_LINK__NODES, RealtimeschedulingPackage.NODE__VIRTUAL_LINKS);
-		}
-		return nodes;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public String getId() {
 		return id;
 	}
@@ -150,7 +154,6 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
@@ -163,7 +166,6 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public int getMinInterFrameTime() {
 		return minInterFrameTime;
 	}
@@ -206,12 +208,38 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Module> getEndSystems() {
+		if (endSystems == null) {
+			endSystems = new EObjectWithInverseResolvingEList<Module>(Module.class, this, RealtimeschedulingPackage.VIRTUAL_LINK__END_SYSTEMS, RealtimeschedulingPackage.MODULE__VIRTUALLINK);
+		}
+		return endSystems;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Connection> getConnection() {
+		if (connection == null) {
+			connection = new EObjectWithInverseResolvingEList.ManyInverse<Connection>(Connection.class, this, RealtimeschedulingPackage.VIRTUAL_LINK__CONNECTION, RealtimeschedulingPackage.CONNECTION__VIRTUALLINK);
+		}
+		return connection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getNodes()).basicAdd(otherEnd, msgs);
+			case RealtimeschedulingPackage.VIRTUAL_LINK__END_SYSTEMS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getEndSystems()).basicAdd(otherEnd, msgs);
+			case RealtimeschedulingPackage.VIRTUAL_LINK__CONNECTION:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConnection()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -224,8 +252,10 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
-				return ((InternalEList<?>)getNodes()).basicRemove(otherEnd, msgs);
+			case RealtimeschedulingPackage.VIRTUAL_LINK__END_SYSTEMS:
+				return ((InternalEList<?>)getEndSystems()).basicRemove(otherEnd, msgs);
+			case RealtimeschedulingPackage.VIRTUAL_LINK__CONNECTION:
+				return ((InternalEList<?>)getConnection()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -238,14 +268,16 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
-				return getNodes();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				return getId();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
 				return getMinInterFrameTime();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
 				return getEndToEndDelay();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__END_SYSTEMS:
+				return getEndSystems();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__CONNECTION:
+				return getConnection();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -259,10 +291,6 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
-				getNodes().clear();
-				getNodes().addAll((Collection<? extends Node>)newValue);
-				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				setId((String)newValue);
 				return;
@@ -271,6 +299,14 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
 				setEndToEndDelay((Integer)newValue);
+				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__END_SYSTEMS:
+				getEndSystems().clear();
+				getEndSystems().addAll((Collection<? extends Module>)newValue);
+				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__CONNECTION:
+				getConnection().clear();
+				getConnection().addAll((Collection<? extends Connection>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -284,9 +320,6 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
-				getNodes().clear();
-				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -295,6 +328,12 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
 				setEndToEndDelay(END_TO_END_DELAY_EDEFAULT);
+				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__END_SYSTEMS:
+				getEndSystems().clear();
+				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__CONNECTION:
+				getConnection().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -308,14 +347,16 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.VIRTUAL_LINK__NODES:
-				return nodes != null && !nodes.isEmpty();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
 				return minInterFrameTime != MIN_INTER_FRAME_TIME_EDEFAULT;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
 				return endToEndDelay != END_TO_END_DELAY_EDEFAULT;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__END_SYSTEMS:
+				return endSystems != null && !endSystems.isEmpty();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__CONNECTION:
+				return connection != null && !connection.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -339,58 +380,5 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 		result.append(')');
 		return result.toString();
 	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(minInterFrameTime);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((nodes == null) ? 0 : nodes.hashCode());
-		return result;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof VirtualLinkImpl)) {
-			return false;
-		}
-		VirtualLinkImpl other = (VirtualLinkImpl) obj;
-		if (id == null) {
-			if (other.id != null) {
-				return false;
-			}
-		} else if (!id.equals(other.id)) {
-			return false;
-		}
-		if (Double.doubleToLongBits(minInterFrameTime) != Double
-				.doubleToLongBits(other.minInterFrameTime)) {
-			return false;
-		}
-		if (nodes == null) {
-			if (other.nodes != null) {
-				return false;
-			}
-		} else if (!nodes.equals(other.nodes)) {
-			return false;
-		}
-		return true;
-	}
-	
-	
 
 } //VirtualLinkImpl

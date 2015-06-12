@@ -1,18 +1,13 @@
 package analysis;
 
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import fr.ensma.realtimescheduling.Interval;
-import fr.ensma.realtimescheduling.Network;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Task;
-import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * Performs schedulability analysis for classes in this package.
@@ -145,54 +140,54 @@ class Analyzer {
 	 * @param net Network being analyzed
 	 * @return Map from virtual link to worst case end-to-end delay as a double
 	 */
-	static Map<VirtualLink, Double> FA1(Network net) {
-		Map<VirtualLink, Double> result = new HashMap<>();
-		/* Set up auxiliary vectors */
-		List<VLWrapper> vlwrappers = net.getVirtualLinks()
-				.stream()
-				.map(VLWrapper::new)
-				.collect(Collectors.toList());
-		List<NodeWrapper> nodewrappers = net.getNodes()
-				.stream()
-				.map(node -> new NodeWrapper(node, vlwrappers))
-				.collect(Collectors.toList());
-		/* First loop of algorithm */
-		vlwrappers.stream().forEach(vlw -> {
-			vlw.S_max.set(0, 0.0);
-			vlw.S_min.set(0, 0.0);
-		});
-		/* Categorize nodes by order now */
-		Map<Integer, List<NodeWrapper>> byOrder = new TreeMap<>();
-		int maxOrder = nodewrappers.stream().mapToInt(nw -> nw.order).max().getAsInt();
-		IntStream.rangeClosed(1, maxOrder)
-			.forEach((order) -> {
-				byOrder.put(order, nodewrappers.stream().filter(node -> node.order == order).collect(Collectors.toList()));
-			});
-		/* Begin massive loops */
-		for(int order = 1; order <= maxOrder; order++) {
-			for(NodeWrapper h : byOrder.get(order)) {
-				final int current_order = order;
-				/* Calculate current Jitter values */
-				h.linksThroughMe.stream().forEach(vlw -> {
-					vlw.calculateJitter(current_order);
-				});
-				/* Causes B and BP to be computed */
-				//B^h calculation happens below.
-				Function<Double, Double> W = t -> h.RBFallVLs(t);
-				/* for each flow... */
-				h.linksThroughMe.stream().forEach(v -> {
-					double bklg = maximize(W, 0, h.B());
-					if(h.node != v.nodes.get(v.nodes.size() - 1)) { //if not the last one
-						v.setNextSMin(h.node, v.rankForNode(h.node)*(h.node.getTransmissionDelay() + net.getLatency()));
-						v.setNextSMax(h.node, v.getSMax(h.node) + bklg + h.node.getTransmissionDelay() + net.getLatency());
-					} else { //it is the last one
-						result.put(v.link, v.getSMax(h.node) + bklg + h.node.getTransmissionDelay());
-					}
-				});
-			}
-		}
-		return result;
-	}
+//	static Map<VirtualLink, Double> FA1(Network net) {
+//		Map<VirtualLink, Double> result = new HashMap<>();
+//		/* Set up auxiliary vectors */
+//		List<VLWrapper> vlwrappers = net.getVirtualLinks()
+//				.stream()
+//				.map(VLWrapper::new)
+//				.collect(Collectors.toList());
+//		List<NodeWrapper> nodewrappers = net.getNodes()
+//				.stream()
+//				.map(node -> new NodeWrapper(node, vlwrappers))
+//				.collect(Collectors.toList());
+//		/* First loop of algorithm */
+//		vlwrappers.stream().forEach(vlw -> {
+//			vlw.S_max.set(0, 0.0);
+//			vlw.S_min.set(0, 0.0);
+//		});
+//		/* Categorize nodes by order now */
+//		Map<Integer, List<NodeWrapper>> byOrder = new TreeMap<>();
+//		int maxOrder = nodewrappers.stream().mapToInt(nw -> nw.order).max().getAsInt();
+//		IntStream.rangeClosed(1, maxOrder)
+//			.forEach((order) -> {
+//				byOrder.put(order, nodewrappers.stream().filter(node -> node.order == order).collect(Collectors.toList()));
+//			});
+//		/* Begin massive loops */
+//		for(int order = 1; order <= maxOrder; order++) {
+//			for(NodeWrapper h : byOrder.get(order)) {
+//				final int current_order = order;
+//				/* Calculate current Jitter values */
+//				h.linksThroughMe.stream().forEach(vlw -> {
+//					vlw.calculateJitter(current_order);
+//				});
+//				/* Causes B and BP to be computed */
+//				//B^h calculation happens below.
+//				Function<Double, Double> W = t -> h.RBFallVLs(t);
+//				/* for each flow... */
+//				h.linksThroughMe.stream().forEach(v -> {
+//					double bklg = maximize(W, 0, h.B());
+//					if(h.node != v.nodes.get(v.nodes.size() - 1)) { //if not the last one
+//						v.setNextSMin(h.node, v.rankForNode(h.node)*(h.node.getTransmissionDelay() + net.getLatency()));
+//						v.setNextSMax(h.node, v.getSMax(h.node) + bklg + h.node.getTransmissionDelay() + net.getLatency());
+//					} else { //it is the last one
+//						result.put(v.link, v.getSMax(h.node) + bklg + h.node.getTransmissionDelay());
+//					}
+//				});
+//			}
+//		}
+//		return result;
+//	}
 	
 	/**
 	 * TODO: Get this working

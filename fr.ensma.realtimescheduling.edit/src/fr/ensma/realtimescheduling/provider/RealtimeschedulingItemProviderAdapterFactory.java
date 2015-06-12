@@ -279,26 +279,26 @@ public class RealtimeschedulingItemProviderAdapterFactory extends Realtimeschedu
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.ensma.realtimescheduling.Node} instances.
+	 * This keeps track of the one adapter used for all {@link fr.ensma.realtimescheduling.Switch} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected NodeItemProvider nodeItemProvider;
+	protected SwitchItemProvider switchItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.ensma.realtimescheduling.Node}.
+	 * This creates an adapter for a {@link fr.ensma.realtimescheduling.Switch}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createNodeAdapter() {
-		if (nodeItemProvider == null) {
-			nodeItemProvider = new NodeItemProvider(this);
+	public Adapter createSwitchAdapter() {
+		if (switchItemProvider == null) {
+			switchItemProvider = new SwitchItemProvider(this);
 		}
 
-		return nodeItemProvider;
+		return switchItemProvider;
 	}
 
 	/**
@@ -322,6 +322,52 @@ public class RealtimeschedulingItemProviderAdapterFactory extends Realtimeschedu
 		}
 
 		return virtualLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.ensma.realtimescheduling.Port} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PortItemProvider portItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.ensma.realtimescheduling.Port}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPortAdapter() {
+		if (portItemProvider == null) {
+			portItemProvider = new PortItemProvider(this);
+		}
+
+		return portItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.ensma.realtimescheduling.Connection} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConnectionItemProvider connectionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.ensma.realtimescheduling.Connection}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConnectionAdapter() {
+		if (connectionItemProvider == null) {
+			connectionItemProvider = new ConnectionItemProvider(this);
+		}
+
+		return connectionItemProvider;
 	}
 
 	/**
@@ -432,8 +478,10 @@ public class RealtimeschedulingItemProviderAdapterFactory extends Realtimeschedu
 		if (systemItemProvider != null) systemItemProvider.dispose();
 		if (softwareResourceItemProvider != null) softwareResourceItemProvider.dispose();
 		if (processorItemProvider != null) processorItemProvider.dispose();
-		if (nodeItemProvider != null) nodeItemProvider.dispose();
+		if (switchItemProvider != null) switchItemProvider.dispose();
 		if (virtualLinkItemProvider != null) virtualLinkItemProvider.dispose();
+		if (portItemProvider != null) portItemProvider.dispose();
+		if (connectionItemProvider != null) connectionItemProvider.dispose();
 	}
 
 }

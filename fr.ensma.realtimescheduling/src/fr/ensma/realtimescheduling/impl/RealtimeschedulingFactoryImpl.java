@@ -2,21 +2,24 @@
  */
 package fr.ensma.realtimescheduling.impl;
 
+import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Network;
-import fr.ensma.realtimescheduling.Node;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Periodicity;
+import fr.ensma.realtimescheduling.Port;
+import fr.ensma.realtimescheduling.PortType;
 import fr.ensma.realtimescheduling.Processor;
 import fr.ensma.realtimescheduling.RealtimeschedulingFactory;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SchedulingAlgorithm;
 import fr.ensma.realtimescheduling.SoftwareResource;
+import fr.ensma.realtimescheduling.Switch;
 import fr.ensma.realtimescheduling.Task;
-
 import fr.ensma.realtimescheduling.VirtualLink;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -79,8 +82,10 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 			case RealtimeschedulingPackage.SYSTEM: return createSystem();
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE: return createSoftwareResource();
 			case RealtimeschedulingPackage.PROCESSOR: return createProcessor();
-			case RealtimeschedulingPackage.NODE: return createNode();
+			case RealtimeschedulingPackage.SWITCH: return createSwitch();
 			case RealtimeschedulingPackage.VIRTUAL_LINK: return createVirtualLink();
+			case RealtimeschedulingPackage.PORT: return createPort();
+			case RealtimeschedulingPackage.CONNECTION: return createConnection();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -98,6 +103,8 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 				return createPeriodicityFromString(eDataType, initialValue);
 			case RealtimeschedulingPackage.SCHEDULING_ALGORITHM:
 				return createSchedulingAlgorithmFromString(eDataType, initialValue);
+			case RealtimeschedulingPackage.PORT_TYPE:
+				return createPortTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -115,6 +122,8 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 				return convertPeriodicityToString(eDataType, instanceValue);
 			case RealtimeschedulingPackage.SCHEDULING_ALGORITHM:
 				return convertSchedulingAlgorithmToString(eDataType, instanceValue);
+			case RealtimeschedulingPackage.PORT_TYPE:
+				return convertPortTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -215,9 +224,9 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Node createNode() {
-		NodeImpl node = new NodeImpl();
-		return node;
+	public Switch createSwitch() {
+		SwitchImpl switch_ = new SwitchImpl();
+		return switch_;
 	}
 
 	/**
@@ -228,6 +237,26 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	public VirtualLink createVirtualLink() {
 		VirtualLinkImpl virtualLink = new VirtualLinkImpl();
 		return virtualLink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port createPort() {
+		PortImpl port = new PortImpl();
+		return port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Connection createConnection() {
+		ConnectionImpl connection = new ConnectionImpl();
+		return connection;
 	}
 
 	/**
@@ -267,6 +296,26 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	 * @generated
 	 */
 	public String convertSchedulingAlgorithmToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PortType createPortTypeFromString(EDataType eDataType, String initialValue) {
+		PortType result = PortType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPortTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

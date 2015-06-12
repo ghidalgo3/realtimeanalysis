@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.SoftwareResource#getName <em>Name</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.SoftwareResource#getExecutedTasks <em>Executed Tasks</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.SoftwareResource#getContainedPartitions <em>Contained Partitions</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.SoftwareResource#getVirtualLInks <em>Virtual LInks</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,5 +83,21 @@ public interface SoftwareResource extends EObject {
 	 * @generated
 	 */
 	EList<Partition> getContainedPartitions();
+
+	/**
+	 * Returns the value of the '<em><b>Virtual LInks</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.VirtualLink}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Virtual LInks</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Virtual LInks</em>' containment reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getSoftwareResource_VirtualLInks()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<VirtualLink> getVirtualLInks();
 
 } // SoftwareResource

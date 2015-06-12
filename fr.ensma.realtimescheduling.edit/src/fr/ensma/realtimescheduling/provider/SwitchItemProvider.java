@@ -5,7 +5,7 @@ package fr.ensma.realtimescheduling.provider;
 
 import fr.ensma.realtimescheduling.RealtimeschedulingFactory;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
-import fr.ensma.realtimescheduling.SoftwareResource;
+import fr.ensma.realtimescheduling.Switch;
 
 import java.util.Collection;
 import java.util.List;
@@ -29,12 +29,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link fr.ensma.realtimescheduling.SoftwareResource} object.
+ * This is the item provider adapter for a {@link fr.ensma.realtimescheduling.Switch} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SoftwareResourceItemProvider 
+public class SwitchItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -48,7 +48,7 @@ public class SoftwareResourceItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SoftwareResourceItemProvider(AdapterFactory adapterFactory) {
+	public SwitchItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,29 +63,52 @@ public class SoftwareResourceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
+			addLatencyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SoftwareResource_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SoftwareResource_name_feature", "_UI_SoftwareResource_type"),
-				 RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__NAME,
+				 getString("_UI_Switch_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Switch_id_feature", "_UI_Switch_type"),
+				 RealtimeschedulingPackage.Literals.SWITCH__ID,
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Latency feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLatencyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Switch_latency_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Switch_latency_feature", "_UI_Switch_type"),
+				 RealtimeschedulingPackage.Literals.SWITCH__LATENCY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -102,9 +125,7 @@ public class SoftwareResourceItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__EXECUTED_TASKS);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__VIRTUAL_LINKS);
+			childrenFeatures.add(RealtimeschedulingPackage.Literals.SWITCH__PORTS);
 		}
 		return childrenFeatures;
 	}
@@ -123,14 +144,14 @@ public class SoftwareResourceItemProvider
 	}
 
 	/**
-	 * This returns SoftwareResource.gif.
+	 * This returns Switch.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SoftwareResource"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Switch"));
 	}
 
 	/**
@@ -141,10 +162,10 @@ public class SoftwareResourceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SoftwareResource)object).getName();
+		String label = ((Switch)object).getId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_SoftwareResource_type") :
-			getString("_UI_SoftwareResource_type") + " " + label;
+			getString("_UI_Switch_type") :
+			getString("_UI_Switch_type") + " " + label;
 	}
 	
 
@@ -159,13 +180,12 @@ public class SoftwareResourceItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(SoftwareResource.class)) {
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__NAME:
+		switch (notification.getFeatureID(Switch.class)) {
+			case RealtimeschedulingPackage.SWITCH__ID:
+			case RealtimeschedulingPackage.SWITCH__LATENCY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__EXECUTED_TASKS:
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS:
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
+			case RealtimeschedulingPackage.SWITCH__PORTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -185,18 +205,8 @@ public class SoftwareResourceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__EXECUTED_TASKS,
-				 RealtimeschedulingFactory.eINSTANCE.createTask()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS,
-				 RealtimeschedulingFactory.eINSTANCE.createPartition()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__VIRTUAL_LINKS,
-				 RealtimeschedulingFactory.eINSTANCE.createVirtualLink()));
+				(RealtimeschedulingPackage.Literals.SWITCH__PORTS,
+				 RealtimeschedulingFactory.eINSTANCE.createPort()));
 	}
 
 	/**

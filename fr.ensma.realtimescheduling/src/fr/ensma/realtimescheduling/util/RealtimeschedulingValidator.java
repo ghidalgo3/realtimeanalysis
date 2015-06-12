@@ -9,17 +9,20 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import analysis.ModelInterface;
+import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Network;
-import fr.ensma.realtimescheduling.Node;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Periodicity;
+import fr.ensma.realtimescheduling.Port;
+import fr.ensma.realtimescheduling.PortType;
 import fr.ensma.realtimescheduling.Processor;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SchedulingAlgorithm;
 import fr.ensma.realtimescheduling.SoftwareResource;
+import fr.ensma.realtimescheduling.Switch;
 import fr.ensma.realtimescheduling.Task;
 import fr.ensma.realtimescheduling.VirtualLink;
 
@@ -113,14 +116,20 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 				return validateSoftwareResource((SoftwareResource)value, diagnostics, context);
 			case RealtimeschedulingPackage.PROCESSOR:
 				return validateProcessor((Processor)value, diagnostics, context);
-			case RealtimeschedulingPackage.NODE:
-				return validateNode((Node)value, diagnostics, context);
+			case RealtimeschedulingPackage.SWITCH:
+				return validateSwitch((Switch)value, diagnostics, context);
 			case RealtimeschedulingPackage.VIRTUAL_LINK:
 				return validateVirtualLink((VirtualLink)value, diagnostics, context);
+			case RealtimeschedulingPackage.PORT:
+				return validatePort((Port)value, diagnostics, context);
+			case RealtimeschedulingPackage.CONNECTION:
+				return validateConnection((Connection)value, diagnostics, context);
 			case RealtimeschedulingPackage.PERIODICITY:
 				return validatePeriodicity((Periodicity)value, diagnostics, context);
 			case RealtimeschedulingPackage.SCHEDULING_ALGORITHM:
 				return validateSchedulingAlgorithm((SchedulingAlgorithm)value, diagnostics, context);
+			case RealtimeschedulingPackage.PORT_TYPE:
+				return validatePortType((PortType)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -338,7 +347,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String MODULE__NON_ZERO_PERIOD__EEXPRESSION = "\n" +
-		"\t\tperiod > 0";
+		"\t\t\tperiod > 0";
 
 	/**
 	 * Validates the NonZeroPeriod constraint of '<em>Module</em>'.
@@ -368,11 +377,11 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String MODULE__NON_OVERLAPPING_PARTITIONS__EEXPRESSION = "\n" +
-		"\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n" +
-		"\t\tif (allIntervals->size() <= 1) then true\n" +
-		"\t\telse \n" +
-		"\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n" +
-		"\t\tendif";
+		"\t\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n" +
+		"\t\t\tif (allIntervals->size() <= 1) then true\n" +
+		"\t\t\telse \n" +
+		"\t\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n" +
+		"\t\t\tendif";
 
 	/**
 	 * Validates the NonOverlappingPartitions constraint of '<em>Module</em>'.
@@ -418,8 +427,8 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNode(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(node, diagnostics, context);
+	public boolean validateSwitch(Switch switch_, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(switch_, diagnostics, context);
 	}
 
 	/**
@@ -429,6 +438,24 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 */
 	public boolean validateVirtualLink(VirtualLink virtualLink, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(virtualLink, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePort(Port port, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(port, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateConnection(Connection connection, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(connection, diagnostics, context);
 	}
 
 	/**
@@ -460,7 +487,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String PARTITION__POSITIVE_PERIOD__EEXPRESSION = "\n" +
-		"\t\tperiod > 0";
+		"\t\t\tperiod > 0";
 
 	/**
 	 * Validates the PositivePeriod constraint of '<em>Partition</em>'.
@@ -490,7 +517,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String PARTITION__AVAILIBILITY_FACTOR_LESS_THAN_OR_EQUAL_TO_ONE__EEXPRESSION = "\n" +
-		"\t\tavailabilityFactor <= 1";
+		"\t\t\tavailabilityFactor <= 1";
 
 	/**
 	 * Validates the AvailibilityFactorLessThanOrEqualToOne constraint of '<em>Partition</em>'.
@@ -520,8 +547,8 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String PARTITION__PERIOD_SPANS_INTERVALS__EEXPRESSION = "\n" +
-		"\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(start) in\n" +
-		"\t\t\t\tif(sortedIntervals->size() > 1) then sortedIntervals->last().end <= period else true endif";
+		"\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(start) in\n" +
+		"\t\t\t\t\tif(sortedIntervals->size() > 1) then sortedIntervals->last().end <= period else true endif";
 
 	/**
 	 * Validates the PeriodSpansIntervals constraint of '<em>Partition</em>'.
@@ -551,12 +578,12 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String PARTITION__NON_OVERLAPPING_INTERVALS__EEXPRESSION = "\n" +
-		"\t\tif (executionIntervals->size() <= 1)\n" +
-		"\t\t\tthen true -- Nothing can overlap if there is only one or none!\n" +
-		"\t\telse\n" +
-		"\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(i : Interval | i.start)\n" +
-		"\t\t\tin sortedIntervals->subSequence(1, sortedIntervals->size() - 1)->forAll(i : Interval | i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)\n" +
-		"\t\tendif";
+		"\t\t\tif (executionIntervals->size() <= 1)\n" +
+		"\t\t\t\tthen true -- Nothing can overlap if there is only one or none!\n" +
+		"\t\t\telse\n" +
+		"\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(i : Interval | i.start)\n" +
+		"\t\t\t\tin sortedIntervals->subSequence(1, sortedIntervals->size() - 1)->forAll(i : Interval | i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)\n" +
+		"\t\t\tendif";
 
 	/**
 	 * Validates the NonOverlappingIntervals constraint of '<em>Partition</em>'.
@@ -694,6 +721,15 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSchedulingAlgorithm(SchedulingAlgorithm schedulingAlgorithm, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePortType(PortType portType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

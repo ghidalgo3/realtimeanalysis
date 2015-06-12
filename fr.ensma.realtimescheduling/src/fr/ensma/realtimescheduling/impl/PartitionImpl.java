@@ -203,8 +203,8 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPeriod() {
-		return (Integer)PERIOD__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
+	public double getPeriod() {
+		return (Double)PERIOD__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
 	}
 
 	/**

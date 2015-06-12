@@ -62,7 +62,6 @@ public class NetworkItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addLatencyPropertyDescriptor(object);
 			addNetworkBandwidthPropertyDescriptor(object);
 			addMaxFrameSizePropertyDescriptor(object);
 		}
@@ -87,28 +86,6 @@ public class NetworkItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Latency feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addLatencyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Network_latency_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Network_latency_feature", "_UI_Network_type"),
-				 RealtimeschedulingPackage.Literals.NETWORK__LATENCY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -169,8 +146,8 @@ public class NetworkItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.NETWORK__NODES);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.NETWORK__VIRTUAL_LINKS);
+			childrenFeatures.add(RealtimeschedulingPackage.Literals.NETWORK__SWITCHES);
+			childrenFeatures.add(RealtimeschedulingPackage.Literals.NETWORK__CONNECTION);
 		}
 		return childrenFeatures;
 	}
@@ -227,13 +204,12 @@ public class NetworkItemProvider
 
 		switch (notification.getFeatureID(Network.class)) {
 			case RealtimeschedulingPackage.NETWORK__NAME:
-			case RealtimeschedulingPackage.NETWORK__LATENCY:
 			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
 			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case RealtimeschedulingPackage.NETWORK__NODES:
-			case RealtimeschedulingPackage.NETWORK__VIRTUAL_LINKS:
+			case RealtimeschedulingPackage.NETWORK__SWITCHES:
+			case RealtimeschedulingPackage.NETWORK__CONNECTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -253,13 +229,13 @@ public class NetworkItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RealtimeschedulingPackage.Literals.NETWORK__NODES,
-				 RealtimeschedulingFactory.eINSTANCE.createNode()));
+				(RealtimeschedulingPackage.Literals.NETWORK__SWITCHES,
+				 RealtimeschedulingFactory.eINSTANCE.createSwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RealtimeschedulingPackage.Literals.NETWORK__VIRTUAL_LINKS,
-				 RealtimeschedulingFactory.eINSTANCE.createVirtualLink()));
+				(RealtimeschedulingPackage.Literals.NETWORK__CONNECTION,
+				 RealtimeschedulingFactory.eINSTANCE.createConnection()));
 	}
 
 	/**

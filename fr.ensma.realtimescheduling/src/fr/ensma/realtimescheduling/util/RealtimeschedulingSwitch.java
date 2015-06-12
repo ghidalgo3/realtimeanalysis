@@ -2,21 +2,20 @@
  */
 package fr.ensma.realtimescheduling.util;
 
+import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Network;
-import fr.ensma.realtimescheduling.Node;
 import fr.ensma.realtimescheduling.Partition;
+import fr.ensma.realtimescheduling.Port;
 import fr.ensma.realtimescheduling.Processor;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SoftwareResource;
 import fr.ensma.realtimescheduling.Task;
-
 import fr.ensma.realtimescheduling.VirtualLink;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
 
 /**
@@ -130,15 +129,27 @@ public class RealtimeschedulingSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case RealtimeschedulingPackage.NODE: {
-				Node node = (Node)theEObject;
-				T result = caseNode(node);
+			case RealtimeschedulingPackage.SWITCH: {
+				fr.ensma.realtimescheduling.Switch switch_ = (fr.ensma.realtimescheduling.Switch)theEObject;
+				T result = caseSwitch(switch_);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case RealtimeschedulingPackage.VIRTUAL_LINK: {
 				VirtualLink virtualLink = (VirtualLink)theEObject;
 				T result = caseVirtualLink(virtualLink);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RealtimeschedulingPackage.PORT: {
+				Port port = (Port)theEObject;
+				T result = casePort(port);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RealtimeschedulingPackage.CONNECTION: {
+				Connection connection = (Connection)theEObject;
+				T result = caseConnection(connection);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -282,17 +293,17 @@ public class RealtimeschedulingSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Node</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Switch</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Node</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Switch</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseNode(Node object) {
+	public T caseSwitch(fr.ensma.realtimescheduling.Switch object) {
 		return null;
 	}
 
@@ -308,6 +319,36 @@ public class RealtimeschedulingSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVirtualLink(VirtualLink object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Port</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Port</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePort(Port object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connection</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connection</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnection(Connection object) {
 		return null;
 	}
 

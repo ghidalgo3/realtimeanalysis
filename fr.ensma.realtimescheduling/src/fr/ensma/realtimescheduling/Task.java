@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.Task#getWorstCaseExecTime <em>Worst Case Exec Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getImplicitDeadline <em>Implicit Deadline</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getPriority <em>Priority</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Task#getWorstCaseResponseTime <em>Worst Case Response Time</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Task#getResponseTime <em>Response Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#isScheduleable <em>Scheduleable</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getJitter <em>Jitter</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getCriticalInstance <em>Critical Instance</em>}</li>
@@ -139,30 +139,30 @@ public interface Task extends EObject {
 	void setPriority(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Worst Case Response Time</b></em>' attribute.
+	 * Returns the value of the '<em><b>Response Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Worst Case Response Time</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Response Time</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Worst Case Response Time</em>' attribute.
-	 * @see #setWorstCaseResponseTime(int)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_WorstCaseResponseTime()
+	 * @return the value of the '<em>Response Time</em>' attribute.
+	 * @see #setResponseTime(int)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_ResponseTime()
 	 * @model required="true"
 	 * @generated
 	 */
-	int getWorstCaseResponseTime();
+	int getResponseTime();
 
 	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getWorstCaseResponseTime <em>Worst Case Response Time</em>}' attribute.
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getResponseTime <em>Response Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Worst Case Response Time</em>' attribute.
-	 * @see #getWorstCaseResponseTime()
+	 * @param value the new value of the '<em>Response Time</em>' attribute.
+	 * @see #getResponseTime()
 	 * @generated
 	 */
-	void setWorstCaseResponseTime(int value);
+	void setResponseTime(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Scheduleable</b></em>' attribute.
@@ -199,12 +199,12 @@ public interface Task extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Jitter</em>' attribute.
-	 * @see #setJitter(int)
+	 * @see #setJitter(float)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_Jitter()
 	 * @model required="true"
 	 * @generated
 	 */
-	int getJitter();
+	float getJitter();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getJitter <em>Jitter</em>}' attribute.
@@ -214,7 +214,7 @@ public interface Task extends EObject {
 	 * @see #getJitter()
 	 * @generated
 	 */
-	void setJitter(int value);
+	void setJitter(float value);
 
 	/**
 	 * Returns the value of the '<em><b>Critical Instance</b></em>' attribute.
@@ -251,12 +251,12 @@ public interface Task extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Release Time</em>' attribute.
-	 * @see #setReleaseTime(int)
+	 * @see #setReleaseTime(double)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_ReleaseTime()
 	 * @model required="true"
 	 * @generated
 	 */
-	int getReleaseTime();
+	double getReleaseTime();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getReleaseTime <em>Release Time</em>}' attribute.
@@ -266,7 +266,7 @@ public interface Task extends EObject {
 	 * @see #getReleaseTime()
 	 * @generated
 	 */
-	void setReleaseTime(int value);
+	void setReleaseTime(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Periodicity</b></em>' attribute.

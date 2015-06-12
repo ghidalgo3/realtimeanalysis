@@ -5,13 +5,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Task;
-import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * This class houses methods to interface between the Ecore model and this package's
@@ -167,10 +165,10 @@ public class ModelInterface {
 			l.add("System is invalid. Please validate the system successfully.");
 			return null;
 		}
-		Map<VirtualLink, Double> results = Analyzer.FA1(system.getUses().getCommunicatesOver());
-		for(Map.Entry<VirtualLink, Double> delay : results.entrySet()) {
-			l.add(String.format("Virtual Link %s experiences ETE delay of %.2f", delay.getKey(), delay.getValue()));
-		}
+//		Map<VirtualLink, Double> results = Analyzer.FA1(system.getUses().getCommunicatesOver());
+//		for(Map.Entry<VirtualLink, Double> delay : results.entrySet()) {
+//			l.add(String.format("Virtual Link %s experiences ETE delay of %.2f", delay.getKey(), delay.getValue()));
+//		}
 //		system.getUses().getCommunicatesOver().getVirtualLinks().stream().forEachOrdered(vl -> l.add(vl.getNodes().toString() + "\n"));
 		return l;
 	}
@@ -188,7 +186,7 @@ public class ModelInterface {
 		List<Integer> responseTimes = Analyzer.responseTimeAnalysis(partition, sortedTasks);
 		StringBuilder sb = new StringBuilder();
 		IntStream.range(0, partition.getTasks().size()).forEach(n -> {
-				partition.getTasks().get(n).setWorstCaseResponseTime(responseTimes.get(n));
+				partition.getTasks().get(n).setResponseTime(responseTimes.get(n));
 				if (responseTimes.get(n) == 0.0) {
 					partition.getTasks().get(n).setScheduleable(false);
 					sb.append(partition.getTasks().get(n).getName()+" will MISS its deadline.\n");

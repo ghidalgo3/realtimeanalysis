@@ -62,6 +62,8 @@ public class ModuleItemProvider
 			addIdPropertyDescriptor(object);
 			addPeriodPropertyDescriptor(object);
 			addPartitionPropertyDescriptor(object);
+			addConnectionPropertyDescriptor(object);
+			addVirtuallinkPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -146,6 +148,50 @@ public class ModuleItemProvider
 				 getString("_UI_Module_partition_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Module_partition_feature", "_UI_Module_type"),
 				 RealtimeschedulingPackage.Literals.MODULE__PARTITION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Connection feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConnectionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Module_connection_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Module_connection_feature", "_UI_Module_type"),
+				 RealtimeschedulingPackage.Literals.MODULE__CONNECTION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Virtuallink feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVirtuallinkPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Module_virtuallink_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Module_virtuallink_feature", "_UI_Module_type"),
+				 RealtimeschedulingPackage.Literals.MODULE__VIRTUALLINK,
 				 true,
 				 false,
 				 true,

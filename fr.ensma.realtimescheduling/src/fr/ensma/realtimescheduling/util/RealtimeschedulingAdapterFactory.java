@@ -2,23 +2,22 @@
  */
 package fr.ensma.realtimescheduling.util;
 
+import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Network;
-import fr.ensma.realtimescheduling.Node;
 import fr.ensma.realtimescheduling.Partition;
+import fr.ensma.realtimescheduling.Port;
 import fr.ensma.realtimescheduling.Processor;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SoftwareResource;
+import fr.ensma.realtimescheduling.Switch;
 import fr.ensma.realtimescheduling.Task;
-
 import fr.ensma.realtimescheduling.VirtualLink;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -114,12 +113,20 @@ public class RealtimeschedulingAdapterFactory extends AdapterFactoryImpl {
 				return createProcessorAdapter();
 			}
 			@Override
-			public Adapter caseNode(Node object) {
-				return createNodeAdapter();
+			public Adapter caseSwitch(Switch object) {
+				return createSwitchAdapter();
 			}
 			@Override
 			public Adapter caseVirtualLink(VirtualLink object) {
 				return createVirtualLinkAdapter();
+			}
+			@Override
+			public Adapter casePort(Port object) {
+				return createPortAdapter();
+			}
+			@Override
+			public Adapter caseConnection(Connection object) {
+				return createConnectionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -268,16 +275,16 @@ public class RealtimeschedulingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.ensma.realtimescheduling.Node <em>Node</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.ensma.realtimescheduling.Switch <em>Switch</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.ensma.realtimescheduling.Node
+	 * @see fr.ensma.realtimescheduling.Switch
 	 * @generated
 	 */
-	public Adapter createNodeAdapter() {
+	public Adapter createSwitchAdapter() {
 		return null;
 	}
 
@@ -292,6 +299,34 @@ public class RealtimeschedulingAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVirtualLinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.ensma.realtimescheduling.Port <em>Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.ensma.realtimescheduling.Port
+	 * @generated
+	 */
+	public Adapter createPortAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.ensma.realtimescheduling.Connection <em>Connection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.ensma.realtimescheduling.Connection
+	 * @generated
+	 */
+	public Adapter createConnectionAdapter() {
 		return null;
 	}
 

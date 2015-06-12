@@ -3,9 +3,8 @@
 package fr.ensma.realtimescheduling.provider;
 
 
-import fr.ensma.realtimescheduling.RealtimeschedulingFactory;
+import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
-import fr.ensma.realtimescheduling.SoftwareResource;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,8 +13,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -29,12 +26,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link fr.ensma.realtimescheduling.SoftwareResource} object.
+ * This is the item provider adapter for a {@link fr.ensma.realtimescheduling.Connection} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SoftwareResourceItemProvider 
+public class ConnectionItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -48,7 +45,7 @@ public class SoftwareResourceItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SoftwareResourceItemProvider(AdapterFactory adapterFactory) {
+	public ConnectionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,25 +60,50 @@ public class SoftwareResourceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
+			addPortsPropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
+			addModulePropertyDescriptor(object);
+			addVirtuallinkPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Ports feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addPortsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SoftwareResource_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SoftwareResource_name_feature", "_UI_SoftwareResource_type"),
-				 RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__NAME,
+				 getString("_UI_Connection_ports_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_ports_feature", "_UI_Connection_type"),
+				 RealtimeschedulingPackage.Literals.CONNECTION__PORTS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Connection_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_id_feature", "_UI_Connection_type"),
+				 RealtimeschedulingPackage.Literals.CONNECTION__ID,
 				 true,
 				 false,
 				 false,
@@ -91,46 +113,58 @@ public class SoftwareResourceItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Module feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__EXECUTED_TASKS);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__VIRTUAL_LINKS);
-		}
-		return childrenFeatures;
+	protected void addModulePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Connection_module_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_module_feature", "_UI_Connection_type"),
+				 RealtimeschedulingPackage.Literals.CONNECTION__MODULE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Virtuallink feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addVirtuallinkPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Connection_virtuallink_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_virtuallink_feature", "_UI_Connection_type"),
+				 RealtimeschedulingPackage.Literals.CONNECTION__VIRTUALLINK,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This returns SoftwareResource.gif.
+	 * This returns Connection.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SoftwareResource"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Connection"));
 	}
 
 	/**
@@ -141,10 +175,10 @@ public class SoftwareResourceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SoftwareResource)object).getName();
+		String label = ((Connection)object).getId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_SoftwareResource_type") :
-			getString("_UI_SoftwareResource_type") + " " + label;
+			getString("_UI_Connection_type") :
+			getString("_UI_Connection_type") + " " + label;
 	}
 	
 
@@ -159,14 +193,9 @@ public class SoftwareResourceItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(SoftwareResource.class)) {
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__NAME:
+		switch (notification.getFeatureID(Connection.class)) {
+			case RealtimeschedulingPackage.CONNECTION__ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__EXECUTED_TASKS:
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS:
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -182,21 +211,6 @@ public class SoftwareResourceItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__EXECUTED_TASKS,
-				 RealtimeschedulingFactory.eINSTANCE.createTask()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS,
-				 RealtimeschedulingFactory.eINSTANCE.createPartition()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE__VIRTUAL_LINKS,
-				 RealtimeschedulingFactory.eINSTANCE.createVirtualLink()));
 	}
 
 	/**

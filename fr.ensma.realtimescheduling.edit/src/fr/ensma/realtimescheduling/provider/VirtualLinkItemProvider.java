@@ -60,34 +60,13 @@ public class VirtualLinkItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNodesPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addMinInterFrameTimePropertyDescriptor(object);
 			addEndToEndDelayPropertyDescriptor(object);
+			addEndSystemsPropertyDescriptor(object);
+			addConnectionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Nodes feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNodesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_VirtualLink_nodes_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_VirtualLink_nodes_feature", "_UI_VirtualLink_type"),
-				 RealtimeschedulingPackage.Literals.VIRTUAL_LINK__NODES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -152,6 +131,50 @@ public class VirtualLinkItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the End Systems feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEndSystemsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_VirtualLink_endSystems_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_VirtualLink_endSystems_feature", "_UI_VirtualLink_type"),
+				 RealtimeschedulingPackage.Literals.VIRTUAL_LINK__END_SYSTEMS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Connection feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConnectionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_VirtualLink_connection_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_VirtualLink_connection_feature", "_UI_VirtualLink_type"),
+				 RealtimeschedulingPackage.Literals.VIRTUAL_LINK__CONNECTION,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

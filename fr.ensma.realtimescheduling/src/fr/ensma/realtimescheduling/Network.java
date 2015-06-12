@@ -14,11 +14,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.Network#getName <em>Name</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Network#getNodes <em>Nodes</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Network#getVirtualLinks <em>Virtual Links</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Network#getLatency <em>Latency</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Network#getSwitches <em>Switches</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Network#getNetworkBandwidth <em>Network Bandwidth</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Network#getMaxFrameSize <em>Max Frame Size</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Network#getConnection <em>Connection</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,63 +54,20 @@ public interface Network extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Nodes</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.ensma.realtimescheduling.Node}.
+	 * Returns the value of the '<em><b>Switches</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.Switch}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Nodes</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Switches</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Nodes</em>' containment reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_Nodes()
+	 * @return the value of the '<em>Switches</em>' containment reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_Switches()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Node> getNodes();
-
-	/**
-	 * Returns the value of the '<em><b>Virtual Links</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.ensma.realtimescheduling.VirtualLink}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Virtual Links</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Virtual Links</em>' containment reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_VirtualLinks()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<VirtualLink> getVirtualLinks();
-
-	/**
-	 * Returns the value of the '<em><b>Latency</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Latency</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Latency</em>' attribute.
-	 * @see #setLatency(int)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_Latency()
-	 * @model default="0" required="true"
-	 * @generated
-	 */
-	int getLatency();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Network#getLatency <em>Latency</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Latency</em>' attribute.
-	 * @see #getLatency()
-	 * @generated
-	 */
-	void setLatency(int value);
+	EList<Switch> getSwitches();
 
 	/**
 	 * Returns the value of the '<em><b>Network Bandwidth</b></em>' attribute.
@@ -166,4 +122,20 @@ public interface Network extends EObject {
 	 * @generated
 	 */
 	void setMaxFrameSize(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Connection</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.Connection}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Connection</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Connection</em>' containment reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_Connection()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Connection> getConnection();
 } // Network

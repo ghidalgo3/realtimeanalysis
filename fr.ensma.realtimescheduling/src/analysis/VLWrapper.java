@@ -1,7 +1,5 @@
 package analysis;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import fr.ensma.realtimescheduling.Node;
 import fr.ensma.realtimescheduling.VirtualLink;
@@ -24,9 +22,9 @@ public class VLWrapper {
 	
 	
 	public VLWrapper(VirtualLink link){
-		S_min = new ArrayList<>(Collections.nCopies(link.getNodes().size(), 0.0));
-		S_max = new ArrayList<>(Collections.nCopies(link.getNodes().size(), 0.0));
-		J =     new ArrayList<>(Collections.nCopies(link.getNodes().size(), 0.0));
+//		S_min = new ArrayList<>(Collections.nCopies(link.getNodes().size(), 0.0));
+//		S_max = new ArrayList<>(Collections.nCopies(link.getNodes().size(), 0.0));
+//		J =     new ArrayList<>(Collections.nCopies(link.getNodes().size(), 0.0));
 //		nodes = (NetworkUtils.getVLNodes(link));
 		this.link = link;
 	}

@@ -110,7 +110,7 @@
       </view>
       <view
             category="fr.ensma.realtimescheduling"
-            class="fr.ensma.realtimescheduling.views.PartititionUtilizationView"
+            class="fr.ensma.realtimescheduling.views.ModuleUtilView"
             icon="icons/sample.gif"
             id="fr.ensma.realtimescheduling.views.partitionutil"
             name="Partition Utilization">

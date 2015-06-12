@@ -118,7 +118,6 @@ public class ModelInterface {
 					.flatMap(p -> p.getTasks().stream())
 					.sorted(comparator)
 					.collect(Collectors.toList());
-			sortedTasks.stream().forEach(t -> System.out.println(t));
 			return ps
 					.stream()
 					.map(p -> setResponseTime(p, sortedTasks))

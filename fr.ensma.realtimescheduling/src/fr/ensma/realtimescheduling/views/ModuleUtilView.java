@@ -25,7 +25,7 @@ import fr.ensma.realtimescheduling.Module;
  * @author Gustavo
  *
  */
-public class PartititionUtilizationView extends AbstractLineChart {
+public class ModuleUtilView extends AbstractLineChart {
 
 	List modules;
 	java.util.List<Module> modelModules;
@@ -78,10 +78,13 @@ public class PartititionUtilizationView extends AbstractLineChart {
 		DefaultXYDataset data = new DefaultXYDataset();
 		offset = 0;
 		if(selectedModules != null) {
-			selectedModules.stream().forEach(module -> {
-				module.getPartition().stream().forEach(partition -> {
-					data.addSeries(partition.getId(), GraphingFunctions.getIntervalStepData(partition, offset));
-					offset += 1.75; //worst hack of all time
+			selectedModules.stream()
+				.forEach(module -> data.addSeries(module.getId() + " free time", GraphingFunctions.getModuleFreeTime(module)));
+			selectedModules.stream()
+				.forEach(module -> {
+					module.getPartition().stream().forEach(partition -> {
+						data.addSeries(partition.getId(), GraphingFunctions.getIntervalStepData(partition, offset));
+						offset += 1.75; //worst hack of all time
 				});
 			});
 		}
@@ -94,7 +97,6 @@ public class PartititionUtilizationView extends AbstractLineChart {
 			modelModules = ModelInterface.system.getUses().getScheduledOn().stream().collect(Collectors.toList());
 			modules.setItems(modelModules.stream().map(Module::getId).collect(Collectors.toList()).toArray(new String[0]));
 		} 
-		
 	}
 	
 }

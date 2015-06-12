@@ -138,7 +138,8 @@ public class GraphingFunctions {
 		return data;
 	}
 	
+	//TODO
 	public static double[][] getModuleFreeTime(Module module) {
-		return null;
+		return new double[][]{{0.0}, {0.0}};
 	}
 }

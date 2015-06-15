@@ -60,80 +60,11 @@ public class PortItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addConnectionPropertyDescriptor(object);
-			addIdPropertyDescriptor(object);
-			addTransmissionDelayPropertyDescriptor(object);
 			addOrderPropertyDescriptor(object);
 			addBandwidthPropertyDescriptor(object);
-			addTypePropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Connection feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addConnectionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Port_connection_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Port_connection_feature", "_UI_Port_type"),
-				 RealtimeschedulingPackage.Literals.PORT__CONNECTION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Port_id_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Port_id_feature", "_UI_Port_type"),
-				 RealtimeschedulingPackage.Literals.PORT__ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Transmission Delay feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTransmissionDelayPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Port_transmissionDelay_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Port_transmissionDelay_feature", "_UI_Port_type"),
-				 RealtimeschedulingPackage.Literals.PORT__TRANSMISSION_DELAY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -181,36 +112,25 @@ public class PortItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Type feature.
+	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTypePropertyDescriptor(Object object) {
+	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Port_Type_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Port_Type_feature", "_UI_Port_type"),
-				 RealtimeschedulingPackage.Literals.PORT__TYPE,
+				 getString("_UI_Port_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Port_id_feature", "_UI_Port_type"),
+				 RealtimeschedulingPackage.Literals.PORT__ID,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
-	}
-
-	/**
-	 * This returns Port.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Port"));
 	}
 
 	/**
@@ -221,10 +141,8 @@ public class PortItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Port)object).getId();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Port_type") :
-			getString("_UI_Port_type") + " " + label;
+		Port port = (Port)object;
+		return getString("_UI_Port_type") + " " + port.getId();
 	}
 	
 
@@ -240,11 +158,9 @@ public class PortItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Port.class)) {
-			case RealtimeschedulingPackage.PORT__ID:
-			case RealtimeschedulingPackage.PORT__TRANSMISSION_DELAY:
 			case RealtimeschedulingPackage.PORT__ORDER:
 			case RealtimeschedulingPackage.PORT__BANDWIDTH:
-			case RealtimeschedulingPackage.PORT__TYPE:
+			case RealtimeschedulingPackage.PORT__ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

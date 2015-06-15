@@ -16,8 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getEndToEndDelay <em>End To End Delay</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getEndSystems <em>End Systems</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getConnection <em>Connection</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getRoutes <em>Routes</em>}</li>
  * </ul>
  * </p>
  *
@@ -105,39 +104,19 @@ public interface VirtualLink extends EObject {
 	void setEndToEndDelay(int value);
 
 	/**
-	 * Returns the value of the '<em><b>End Systems</b></em>' reference list.
-	 * The list contents are of type {@link fr.ensma.realtimescheduling.Module}.
-	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Module#getVirtuallink <em>Virtuallink</em>}'.
+	 * Returns the value of the '<em><b>Routes</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.Route}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>End Systems</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Routes</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>End Systems</em>' reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_EndSystems()
-	 * @see fr.ensma.realtimescheduling.Module#getVirtuallink
-	 * @model opposite="virtuallink" lower="2" upper="2"
+	 * @return the value of the '<em>Routes</em>' containment reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_Routes()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Module> getEndSystems();
-
-	/**
-	 * Returns the value of the '<em><b>Connection</b></em>' reference list.
-	 * The list contents are of type {@link fr.ensma.realtimescheduling.Connection}.
-	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Connection#getVirtuallink <em>Virtuallink</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Connection</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Connection</em>' reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_Connection()
-	 * @see fr.ensma.realtimescheduling.Connection#getVirtuallink
-	 * @model opposite="virtuallink"
-	 * @generated
-	 */
-	EList<Connection> getConnection();
+	EList<Route> getRoutes();
 
 } // VirtualLink

@@ -7,20 +7,12 @@ import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SoftwareResource;
 import fr.ensma.realtimescheduling.Task;
 import fr.ensma.realtimescheduling.VirtualLink;
-
 import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -31,7 +23,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getExecutedTasks <em>Executed Tasks</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getContainedPartitions <em>Contained Partitions</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getVirtualLInks <em>Virtual LInks</em>}</li>
@@ -41,26 +32,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implements SoftwareResource {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getExecutedTasks() <em>Executed Tasks</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -108,27 +79,6 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	protected EClass eStaticClass() {
 		return RealtimeschedulingPackage.Literals.SOFTWARE_RESOURCE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.SOFTWARE_RESOURCE__NAME, oldName, name));
 	}
 
 	/**
@@ -193,8 +143,6 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__NAME:
-				return getName();
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__EXECUTED_TASKS:
 				return getExecutedTasks();
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS:
@@ -214,9 +162,6 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__NAME:
-				setName((String)newValue);
-				return;
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__EXECUTED_TASKS:
 				getExecutedTasks().clear();
 				getExecutedTasks().addAll((Collection<? extends Task>)newValue);
@@ -241,9 +186,6 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__EXECUTED_TASKS:
 				getExecutedTasks().clear();
 				return;
@@ -265,8 +207,6 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__EXECUTED_TASKS:
 				return executedTasks != null && !executedTasks.isEmpty();
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS:
@@ -275,22 +215,6 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 				return virtualLInks != null && !virtualLInks.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //SoftwareResourceImpl

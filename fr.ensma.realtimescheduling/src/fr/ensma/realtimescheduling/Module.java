@@ -19,8 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.Module#getPeriod <em>Period</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Module#getPartition <em>Partition</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Module#getProcessors <em>Processors</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Module#getConnection <em>Connection</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Module#getVirtuallink <em>Virtuallink</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Module#getPorts <em>Ports</em>}</li>
  * </ul>
  * </p>
  *
@@ -145,59 +144,19 @@ public interface Module extends EObject {
 	EList<Processor> getProcessors();
 
 	/**
-	 * Returns the value of the '<em><b>Connection</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Connection#getModule <em>Module</em>}'.
+	 * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.EndSystemPort}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Connection</em>' reference isn't clear,
+	 * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Connection</em>' reference.
-	 * @see #setConnection(Connection)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Connection()
-	 * @see fr.ensma.realtimescheduling.Connection#getModule
-	 * @model opposite="module" required="true"
+	 * @return the value of the '<em>Ports</em>' containment reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Ports()
+	 * @model containment="true"
 	 * @generated
 	 */
-	Connection getConnection();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Module#getConnection <em>Connection</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Connection</em>' reference.
-	 * @see #getConnection()
-	 * @generated
-	 */
-	void setConnection(Connection value);
-
-	/**
-	 * Returns the value of the '<em><b>Virtuallink</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.VirtualLink#getEndSystems <em>End Systems</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Virtuallink</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Virtuallink</em>' reference.
-	 * @see #setVirtuallink(VirtualLink)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Virtuallink()
-	 * @see fr.ensma.realtimescheduling.VirtualLink#getEndSystems
-	 * @model opposite="endSystems"
-	 * @generated
-	 */
-	VirtualLink getVirtuallink();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Module#getVirtuallink <em>Virtuallink</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Virtuallink</em>' reference.
-	 * @see #getVirtuallink()
-	 * @generated
-	 */
-	void setVirtuallink(VirtualLink value);
+	EList<EndSystemPort> getPorts();
 
 } // Module

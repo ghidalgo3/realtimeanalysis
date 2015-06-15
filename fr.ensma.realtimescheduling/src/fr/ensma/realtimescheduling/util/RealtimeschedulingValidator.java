@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import analysis.ModelInterface;
 import fr.ensma.realtimescheduling.Connection;
+import fr.ensma.realtimescheduling.EndSystemPort;
 import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
@@ -17,12 +18,13 @@ import fr.ensma.realtimescheduling.Network;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Periodicity;
 import fr.ensma.realtimescheduling.Port;
-import fr.ensma.realtimescheduling.PortType;
 import fr.ensma.realtimescheduling.Processor;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
+import fr.ensma.realtimescheduling.Route;
 import fr.ensma.realtimescheduling.SchedulingAlgorithm;
 import fr.ensma.realtimescheduling.SoftwareResource;
 import fr.ensma.realtimescheduling.Switch;
+import fr.ensma.realtimescheduling.SwitchPort;
 import fr.ensma.realtimescheduling.Task;
 import fr.ensma.realtimescheduling.VirtualLink;
 
@@ -124,12 +126,16 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 				return validatePort((Port)value, diagnostics, context);
 			case RealtimeschedulingPackage.CONNECTION:
 				return validateConnection((Connection)value, diagnostics, context);
+			case RealtimeschedulingPackage.ROUTE:
+				return validateRoute((Route)value, diagnostics, context);
+			case RealtimeschedulingPackage.SWITCH_PORT:
+				return validateSwitchPort((SwitchPort)value, diagnostics, context);
+			case RealtimeschedulingPackage.END_SYSTEM_PORT:
+				return validateEndSystemPort((EndSystemPort)value, diagnostics, context);
 			case RealtimeschedulingPackage.PERIODICITY:
 				return validatePeriodicity((Periodicity)value, diagnostics, context);
 			case RealtimeschedulingPackage.SCHEDULING_ALGORITHM:
 				return validateSchedulingAlgorithm((SchedulingAlgorithm)value, diagnostics, context);
-			case RealtimeschedulingPackage.PORT_TYPE:
-				return validatePortType((PortType)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -463,6 +469,33 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateRoute(Route route, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(route, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSwitchPort(SwitchPort switchPort, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(switchPort, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEndSystemPort(EndSystemPort endSystemPort, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(endSystemPort, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validatePartition(Partition partition, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(partition, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(partition, diagnostics, context);
@@ -721,15 +754,6 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSchedulingAlgorithm(SchedulingAlgorithm schedulingAlgorithm, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePortType(PortType portType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

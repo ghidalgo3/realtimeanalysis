@@ -60,34 +60,12 @@ public class ConnectionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPortsPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
-			addModulePropertyDescriptor(object);
-			addVirtuallinkPropertyDescriptor(object);
+			addRoutePropertyDescriptor(object);
+			addSourcePropertyDescriptor(object);
+			addDestinationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Ports feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPortsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Connection_ports_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_ports_feature", "_UI_Connection_type"),
-				 RealtimeschedulingPackage.Literals.CONNECTION__PORTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -113,19 +91,19 @@ public class ConnectionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Module feature.
+	 * This adds a property descriptor for the Route feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addModulePropertyDescriptor(Object object) {
+	protected void addRoutePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Connection_module_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_module_feature", "_UI_Connection_type"),
-				 RealtimeschedulingPackage.Literals.CONNECTION__MODULE,
+				 getString("_UI_Connection_route_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_route_feature", "_UI_Connection_type"),
+				 RealtimeschedulingPackage.Literals.CONNECTION__ROUTE,
 				 true,
 				 false,
 				 true,
@@ -135,19 +113,41 @@ public class ConnectionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Virtuallink feature.
+	 * This adds a property descriptor for the Source feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addVirtuallinkPropertyDescriptor(Object object) {
+	protected void addSourcePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Connection_virtuallink_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_virtuallink_feature", "_UI_Connection_type"),
-				 RealtimeschedulingPackage.Literals.CONNECTION__VIRTUALLINK,
+				 getString("_UI_Connection_source_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_source_feature", "_UI_Connection_type"),
+				 RealtimeschedulingPackage.Literals.CONNECTION__SOURCE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Destination feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDestinationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Connection_destination_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_destination_feature", "_UI_Connection_type"),
+				 RealtimeschedulingPackage.Literals.CONNECTION__DESTINATION,
 				 true,
 				 false,
 				 true,

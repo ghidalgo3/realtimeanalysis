@@ -6,25 +6,18 @@ package fr.ensma.realtimescheduling.provider;
 import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.RealtimeschedulingFactory;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
-
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -63,31 +56,8 @@ public class HardwareResourceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HardwareResource_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HardwareResource_name_feature", "_UI_HardwareResource_type"),
-				 RealtimeschedulingPackage.Literals.HARDWARE_RESOURCE__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -140,10 +110,7 @@ public class HardwareResourceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((HardwareResource)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_HardwareResource_type") :
-			getString("_UI_HardwareResource_type") + " " + label;
+		return getString("_UI_HardwareResource_type");
 	}
 	
 
@@ -159,9 +126,6 @@ public class HardwareResourceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HardwareResource.class)) {
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON:
 			case RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

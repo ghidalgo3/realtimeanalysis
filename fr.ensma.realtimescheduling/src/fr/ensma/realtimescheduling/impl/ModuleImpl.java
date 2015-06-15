@@ -2,27 +2,20 @@
  */
 package fr.ensma.realtimescheduling.impl;
 
-import fr.ensma.realtimescheduling.Connection;
+import fr.ensma.realtimescheduling.EndSystemPort;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Processor;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
-import fr.ensma.realtimescheduling.VirtualLink;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -39,8 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getPeriod <em>Period</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getPartition <em>Partition</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getProcessors <em>Processors</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getConnection <em>Connection</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getVirtuallink <em>Virtuallink</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getPorts <em>Ports</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,24 +110,14 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	protected EList<Processor> processors;
 
 	/**
-	 * The cached value of the '{@link #getConnection() <em>Connection</em>}' reference.
+	 * The cached value of the '{@link #getPorts() <em>Ports</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConnection()
+	 * @see #getPorts()
 	 * @generated
 	 * @ordered
 	 */
-	protected Connection connection;
-
-	/**
-	 * The cached value of the '{@link #getVirtuallink() <em>Virtuallink</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVirtuallink()
-	 * @generated
-	 * @ordered
-	 */
-	protected VirtualLink virtuallink;
+	protected EList<EndSystemPort> ports;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -245,119 +227,11 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Connection getConnection() {
-		if (connection != null && connection.eIsProxy()) {
-			InternalEObject oldConnection = (InternalEObject)connection;
-			connection = (Connection)eResolveProxy(oldConnection);
-			if (connection != oldConnection) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RealtimeschedulingPackage.MODULE__CONNECTION, oldConnection, connection));
-			}
+	public EList<EndSystemPort> getPorts() {
+		if (ports == null) {
+			ports = new EObjectContainmentEList<EndSystemPort>(EndSystemPort.class, this, RealtimeschedulingPackage.MODULE__PORTS);
 		}
-		return connection;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Connection basicGetConnection() {
-		return connection;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetConnection(Connection newConnection, NotificationChain msgs) {
-		Connection oldConnection = connection;
-		connection = newConnection;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.MODULE__CONNECTION, oldConnection, newConnection);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setConnection(Connection newConnection) {
-		if (newConnection != connection) {
-			NotificationChain msgs = null;
-			if (connection != null)
-				msgs = ((InternalEObject)connection).eInverseRemove(this, RealtimeschedulingPackage.CONNECTION__MODULE, Connection.class, msgs);
-			if (newConnection != null)
-				msgs = ((InternalEObject)newConnection).eInverseAdd(this, RealtimeschedulingPackage.CONNECTION__MODULE, Connection.class, msgs);
-			msgs = basicSetConnection(newConnection, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.MODULE__CONNECTION, newConnection, newConnection));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public VirtualLink getVirtuallink() {
-		if (virtuallink != null && virtuallink.eIsProxy()) {
-			InternalEObject oldVirtuallink = (InternalEObject)virtuallink;
-			virtuallink = (VirtualLink)eResolveProxy(oldVirtuallink);
-			if (virtuallink != oldVirtuallink) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RealtimeschedulingPackage.MODULE__VIRTUALLINK, oldVirtuallink, virtuallink));
-			}
-		}
-		return virtuallink;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public VirtualLink basicGetVirtuallink() {
-		return virtuallink;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetVirtuallink(VirtualLink newVirtuallink, NotificationChain msgs) {
-		VirtualLink oldVirtuallink = virtuallink;
-		virtuallink = newVirtuallink;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.MODULE__VIRTUALLINK, oldVirtuallink, newVirtuallink);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setVirtuallink(VirtualLink newVirtuallink) {
-		if (newVirtuallink != virtuallink) {
-			NotificationChain msgs = null;
-			if (virtuallink != null)
-				msgs = ((InternalEObject)virtuallink).eInverseRemove(this, RealtimeschedulingPackage.VIRTUAL_LINK__END_SYSTEMS, VirtualLink.class, msgs);
-			if (newVirtuallink != null)
-				msgs = ((InternalEObject)newVirtuallink).eInverseAdd(this, RealtimeschedulingPackage.VIRTUAL_LINK__END_SYSTEMS, VirtualLink.class, msgs);
-			msgs = basicSetVirtuallink(newVirtuallink, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.MODULE__VIRTUALLINK, newVirtuallink, newVirtuallink));
+		return ports;
 	}
 
 	/**
@@ -371,14 +245,6 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		switch (featureID) {
 			case RealtimeschedulingPackage.MODULE__PARTITION:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPartition()).basicAdd(otherEnd, msgs);
-			case RealtimeschedulingPackage.MODULE__CONNECTION:
-				if (connection != null)
-					msgs = ((InternalEObject)connection).eInverseRemove(this, RealtimeschedulingPackage.CONNECTION__MODULE, Connection.class, msgs);
-				return basicSetConnection((Connection)otherEnd, msgs);
-			case RealtimeschedulingPackage.MODULE__VIRTUALLINK:
-				if (virtuallink != null)
-					msgs = ((InternalEObject)virtuallink).eInverseRemove(this, RealtimeschedulingPackage.VIRTUAL_LINK__END_SYSTEMS, VirtualLink.class, msgs);
-				return basicSetVirtuallink((VirtualLink)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -395,10 +261,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				return ((InternalEList<?>)getPartition()).basicRemove(otherEnd, msgs);
 			case RealtimeschedulingPackage.MODULE__PROCESSORS:
 				return ((InternalEList<?>)getProcessors()).basicRemove(otherEnd, msgs);
-			case RealtimeschedulingPackage.MODULE__CONNECTION:
-				return basicSetConnection(null, msgs);
-			case RealtimeschedulingPackage.MODULE__VIRTUALLINK:
-				return basicSetVirtuallink(null, msgs);
+			case RealtimeschedulingPackage.MODULE__PORTS:
+				return ((InternalEList<?>)getPorts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -421,12 +285,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				return getPartition();
 			case RealtimeschedulingPackage.MODULE__PROCESSORS:
 				return getProcessors();
-			case RealtimeschedulingPackage.MODULE__CONNECTION:
-				if (resolve) return getConnection();
-				return basicGetConnection();
-			case RealtimeschedulingPackage.MODULE__VIRTUALLINK:
-				if (resolve) return getVirtuallink();
-				return basicGetVirtuallink();
+			case RealtimeschedulingPackage.MODULE__PORTS:
+				return getPorts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -457,11 +317,9 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				getProcessors().clear();
 				getProcessors().addAll((Collection<? extends Processor>)newValue);
 				return;
-			case RealtimeschedulingPackage.MODULE__CONNECTION:
-				setConnection((Connection)newValue);
-				return;
-			case RealtimeschedulingPackage.MODULE__VIRTUALLINK:
-				setVirtuallink((VirtualLink)newValue);
+			case RealtimeschedulingPackage.MODULE__PORTS:
+				getPorts().clear();
+				getPorts().addAll((Collection<? extends EndSystemPort>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -490,11 +348,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 			case RealtimeschedulingPackage.MODULE__PROCESSORS:
 				getProcessors().clear();
 				return;
-			case RealtimeschedulingPackage.MODULE__CONNECTION:
-				setConnection((Connection)null);
-				return;
-			case RealtimeschedulingPackage.MODULE__VIRTUALLINK:
-				setVirtuallink((VirtualLink)null);
+			case RealtimeschedulingPackage.MODULE__PORTS:
+				getPorts().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -518,10 +373,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				return partition != null && !partition.isEmpty();
 			case RealtimeschedulingPackage.MODULE__PROCESSORS:
 				return processors != null && !processors.isEmpty();
-			case RealtimeschedulingPackage.MODULE__CONNECTION:
-				return connection != null;
-			case RealtimeschedulingPackage.MODULE__VIRTUALLINK:
-				return virtuallink != null;
+			case RealtimeschedulingPackage.MODULE__PORTS:
+				return ports != null && !ports.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

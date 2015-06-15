@@ -3,6 +3,7 @@
 package fr.ensma.realtimescheduling.util;
 
 import fr.ensma.realtimescheduling.Connection;
+import fr.ensma.realtimescheduling.EndSystemPort;
 import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
@@ -11,8 +12,10 @@ import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Port;
 import fr.ensma.realtimescheduling.Processor;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
+import fr.ensma.realtimescheduling.Route;
 import fr.ensma.realtimescheduling.SoftwareResource;
 import fr.ensma.realtimescheduling.Switch;
+import fr.ensma.realtimescheduling.SwitchPort;
 import fr.ensma.realtimescheduling.Task;
 import fr.ensma.realtimescheduling.VirtualLink;
 import org.eclipse.emf.common.notify.Adapter;
@@ -127,6 +130,18 @@ public class RealtimeschedulingAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseConnection(Connection object) {
 				return createConnectionAdapter();
+			}
+			@Override
+			public Adapter caseRoute(Route object) {
+				return createRouteAdapter();
+			}
+			@Override
+			public Adapter caseSwitchPort(SwitchPort object) {
+				return createSwitchPortAdapter();
+			}
+			@Override
+			public Adapter caseEndSystemPort(EndSystemPort object) {
+				return createEndSystemPortAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -327,6 +342,48 @@ public class RealtimeschedulingAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConnectionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.ensma.realtimescheduling.Route <em>Route</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.ensma.realtimescheduling.Route
+	 * @generated
+	 */
+	public Adapter createRouteAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.ensma.realtimescheduling.SwitchPort <em>Switch Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.ensma.realtimescheduling.SwitchPort
+	 * @generated
+	 */
+	public Adapter createSwitchPortAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.ensma.realtimescheduling.EndSystemPort <em>End System Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.ensma.realtimescheduling.EndSystemPort
+	 * @generated
+	 */
+	public Adapter createEndSystemPortAdapter() {
 		return null;
 	}
 

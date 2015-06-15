@@ -3,6 +3,7 @@
 package fr.ensma.realtimescheduling.util;
 
 import fr.ensma.realtimescheduling.Connection;
+import fr.ensma.realtimescheduling.EndSystemPort;
 import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
@@ -11,7 +12,9 @@ import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Port;
 import fr.ensma.realtimescheduling.Processor;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
+import fr.ensma.realtimescheduling.Route;
 import fr.ensma.realtimescheduling.SoftwareResource;
+import fr.ensma.realtimescheduling.SwitchPort;
 import fr.ensma.realtimescheduling.Task;
 import fr.ensma.realtimescheduling.VirtualLink;
 import org.eclipse.emf.ecore.EObject;
@@ -150,6 +153,26 @@ public class RealtimeschedulingSwitch<T> extends Switch<T> {
 			case RealtimeschedulingPackage.CONNECTION: {
 				Connection connection = (Connection)theEObject;
 				T result = caseConnection(connection);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RealtimeschedulingPackage.ROUTE: {
+				Route route = (Route)theEObject;
+				T result = caseRoute(route);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RealtimeschedulingPackage.SWITCH_PORT: {
+				SwitchPort switchPort = (SwitchPort)theEObject;
+				T result = caseSwitchPort(switchPort);
+				if (result == null) result = casePort(switchPort);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RealtimeschedulingPackage.END_SYSTEM_PORT: {
+				EndSystemPort endSystemPort = (EndSystemPort)theEObject;
+				T result = caseEndSystemPort(endSystemPort);
+				if (result == null) result = casePort(endSystemPort);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -349,6 +372,51 @@ public class RealtimeschedulingSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConnection(Connection object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Route</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Route</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRoute(Route object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Switch Port</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Switch Port</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSwitchPort(SwitchPort object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>End System Port</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>End System Port</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEndSystemPort(EndSystemPort object) {
 		return null;
 	}
 

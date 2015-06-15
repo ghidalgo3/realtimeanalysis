@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.Switch#getId <em>Id</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Switch#getPorts <em>Ports</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Switch#getLatency <em>Latency</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Switch#getPorts <em>Ports</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,7 +53,7 @@ public interface Switch extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.ensma.realtimescheduling.Port}.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.SwitchPort}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
@@ -62,10 +62,10 @@ public interface Switch extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ports</em>' containment reference list.
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getSwitch_Ports()
-	 * @model containment="true" lower="2"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Port> getPorts();
+	EList<SwitchPort> getPorts();
 
 	/**
 	 * Returns the value of the '<em><b>Latency</b></em>' attribute.

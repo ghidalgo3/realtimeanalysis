@@ -325,29 +325,6 @@ public class RealtimeschedulingItemProviderAdapterFactory extends Realtimeschedu
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.ensma.realtimescheduling.Port} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PortItemProvider portItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link fr.ensma.realtimescheduling.Port}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPortAdapter() {
-		if (portItemProvider == null) {
-			portItemProvider = new PortItemProvider(this);
-		}
-
-		return portItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link fr.ensma.realtimescheduling.Connection} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -368,6 +345,75 @@ public class RealtimeschedulingItemProviderAdapterFactory extends Realtimeschedu
 		}
 
 		return connectionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.ensma.realtimescheduling.Route} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RouteItemProvider routeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.ensma.realtimescheduling.Route}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRouteAdapter() {
+		if (routeItemProvider == null) {
+			routeItemProvider = new RouteItemProvider(this);
+		}
+
+		return routeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.ensma.realtimescheduling.SwitchPort} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SwitchPortItemProvider switchPortItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.ensma.realtimescheduling.SwitchPort}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSwitchPortAdapter() {
+		if (switchPortItemProvider == null) {
+			switchPortItemProvider = new SwitchPortItemProvider(this);
+		}
+
+		return switchPortItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.ensma.realtimescheduling.EndSystemPort} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EndSystemPortItemProvider endSystemPortItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.ensma.realtimescheduling.EndSystemPort}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEndSystemPortAdapter() {
+		if (endSystemPortItemProvider == null) {
+			endSystemPortItemProvider = new EndSystemPortItemProvider(this);
+		}
+
+		return endSystemPortItemProvider;
 	}
 
 	/**
@@ -480,8 +526,10 @@ public class RealtimeschedulingItemProviderAdapterFactory extends Realtimeschedu
 		if (processorItemProvider != null) processorItemProvider.dispose();
 		if (switchItemProvider != null) switchItemProvider.dispose();
 		if (virtualLinkItemProvider != null) virtualLinkItemProvider.dispose();
-		if (portItemProvider != null) portItemProvider.dispose();
 		if (connectionItemProvider != null) connectionItemProvider.dispose();
+		if (routeItemProvider != null) routeItemProvider.dispose();
+		if (switchPortItemProvider != null) switchPortItemProvider.dispose();
+		if (endSystemPortItemProvider != null) endSystemPortItemProvider.dispose();
 	}
 
 }

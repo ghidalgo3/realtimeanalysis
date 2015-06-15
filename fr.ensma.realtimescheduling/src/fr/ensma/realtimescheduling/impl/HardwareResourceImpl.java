@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.impl.HardwareResourceImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.HardwareResourceImpl#getScheduledOn <em>Scheduled On</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.HardwareResourceImpl#getCommunicatesOver <em>Communicates Over</em>}</li>
  * </ul>
@@ -39,26 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class HardwareResourceImpl extends MinimalEObjectImpl.Container implements HardwareResource {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getScheduledOn() <em>Scheduled On</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -96,27 +75,6 @@ public class HardwareResourceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	protected EClass eStaticClass() {
 		return RealtimeschedulingPackage.Literals.HARDWARE_RESOURCE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.HARDWARE_RESOURCE__NAME, oldName, name));
 	}
 
 	/**
@@ -198,8 +156,6 @@ public class HardwareResourceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__NAME:
-				return getName();
 			case RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON:
 				return getScheduledOn();
 			case RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER:
@@ -217,9 +173,6 @@ public class HardwareResourceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__NAME:
-				setName((String)newValue);
-				return;
 			case RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON:
 				getScheduledOn().clear();
 				getScheduledOn().addAll((Collection<? extends Module>)newValue);
@@ -239,9 +192,6 @@ public class HardwareResourceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 			case RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON:
 				getScheduledOn().clear();
 				return;
@@ -260,30 +210,12 @@ public class HardwareResourceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON:
 				return scheduledOn != null && !scheduledOn.isEmpty();
 			case RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER:
 				return communicatesOver != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //HardwareResourceImpl

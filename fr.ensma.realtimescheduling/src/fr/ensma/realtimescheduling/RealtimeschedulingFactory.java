@@ -121,15 +121,6 @@ public interface RealtimeschedulingFactory extends EFactory {
 	VirtualLink createVirtualLink();
 
 	/**
-	 * Returns a new object of class '<em>Port</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Port</em>'.
-	 * @generated
-	 */
-	Port createPort();
-
-	/**
 	 * Returns a new object of class '<em>Connection</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -137,6 +128,33 @@ public interface RealtimeschedulingFactory extends EFactory {
 	 * @generated
 	 */
 	Connection createConnection();
+
+	/**
+	 * Returns a new object of class '<em>Route</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Route</em>'.
+	 * @generated
+	 */
+	Route createRoute();
+
+	/**
+	 * Returns a new object of class '<em>Switch Port</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Switch Port</em>'.
+	 * @generated
+	 */
+	SwitchPort createSwitchPort();
+
+	/**
+	 * Returns a new object of class '<em>End System Port</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>End System Port</em>'.
+	 * @generated
+	 */
+	EndSystemPort createEndSystemPort();
 
 	/**
 	 * Returns the package supported by this factory.

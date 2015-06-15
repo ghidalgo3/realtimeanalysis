@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.Network#getSwitches <em>Switches</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Network#getNetworkBandwidth <em>Network Bandwidth</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Network#getMaxFrameSize <em>Max Frame Size</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Network#getConnection <em>Connection</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Network#getConnections <em>Connections</em>}</li>
  * </ul>
  * </p>
  *
@@ -124,18 +124,18 @@ public interface Network extends EObject {
 	void setMaxFrameSize(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Connection</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Connections</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.Connection}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Connection</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Connections</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Connection</em>' containment reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_Connection()
+	 * @return the value of the '<em>Connections</em>' containment reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_Connections()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Connection> getConnection();
+	EList<Connection> getConnections();
 } // Network

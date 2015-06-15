@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getEndToEndDelay <em>End To End Delay</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getRoutes <em>Routes</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
  *
@@ -114,9 +115,35 @@ public interface VirtualLink extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Routes</em>' containment reference list.
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_Routes()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<Route> getRoutes();
+
+	/**
+	 * Returns the value of the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Source</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Source</em>' reference.
+	 * @see #setSource(Module)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_Source()
+	 * @model required="true"
+	 * @generated
+	 */
+	Module getSource();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getSource <em>Source</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Source</em>' reference.
+	 * @see #getSource()
+	 * @generated
+	 */
+	void setSource(Module value);
 
 } // VirtualLink

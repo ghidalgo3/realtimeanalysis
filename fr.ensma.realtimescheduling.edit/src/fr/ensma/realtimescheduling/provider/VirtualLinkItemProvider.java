@@ -65,6 +65,7 @@ public class VirtualLinkItemProvider
 			addIdPropertyDescriptor(object);
 			addMinInterFrameTimePropertyDescriptor(object);
 			addEndToEndDelayPropertyDescriptor(object);
+			addSourcePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -131,6 +132,28 @@ public class VirtualLinkItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Source feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSourcePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_VirtualLink_source_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_VirtualLink_source_feature", "_UI_VirtualLink_type"),
+				 RealtimeschedulingPackage.Literals.VIRTUAL_LINK__SOURCE,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getSwitches <em>Switches</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getNetworkBandwidth <em>Network Bandwidth</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getMaxFrameSize <em>Max Frame Size</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getConnection <em>Connection</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getConnections <em>Connections</em>}</li>
  * </ul>
  * </p>
  *
@@ -112,14 +112,14 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	protected double maxFrameSize = MAX_FRAME_SIZE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getConnection() <em>Connection</em>}' containment reference list.
+	 * The cached value of the '{@link #getConnections() <em>Connections</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConnection()
+	 * @see #getConnections()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Connection> connection;
+	protected EList<Connection> connections;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -220,11 +220,11 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Connection> getConnection() {
-		if (connection == null) {
-			connection = new EObjectContainmentEList<Connection>(Connection.class, this, RealtimeschedulingPackage.NETWORK__CONNECTION);
+	public EList<Connection> getConnections() {
+		if (connections == null) {
+			connections = new EObjectContainmentEList<Connection>(Connection.class, this, RealtimeschedulingPackage.NETWORK__CONNECTIONS);
 		}
-		return connection;
+		return connections;
 	}
 
 	/**
@@ -237,8 +237,8 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 		switch (featureID) {
 			case RealtimeschedulingPackage.NETWORK__SWITCHES:
 				return ((InternalEList<?>)getSwitches()).basicRemove(otherEnd, msgs);
-			case RealtimeschedulingPackage.NETWORK__CONNECTION:
-				return ((InternalEList<?>)getConnection()).basicRemove(otherEnd, msgs);
+			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
+				return ((InternalEList<?>)getConnections()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -259,8 +259,8 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				return getNetworkBandwidth();
 			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
 				return getMaxFrameSize();
-			case RealtimeschedulingPackage.NETWORK__CONNECTION:
-				return getConnection();
+			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
+				return getConnections();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -287,9 +287,9 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
 				setMaxFrameSize((Double)newValue);
 				return;
-			case RealtimeschedulingPackage.NETWORK__CONNECTION:
-				getConnection().clear();
-				getConnection().addAll((Collection<? extends Connection>)newValue);
+			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
+				getConnections().clear();
+				getConnections().addAll((Collection<? extends Connection>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -315,8 +315,8 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
 				setMaxFrameSize(MAX_FRAME_SIZE_EDEFAULT);
 				return;
-			case RealtimeschedulingPackage.NETWORK__CONNECTION:
-				getConnection().clear();
+			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
+				getConnections().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -338,8 +338,8 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				return networkBandwidth != NETWORK_BANDWIDTH_EDEFAULT;
 			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
 				return maxFrameSize != MAX_FRAME_SIZE_EDEFAULT;
-			case RealtimeschedulingPackage.NETWORK__CONNECTION:
-				return connection != null && !connection.isEmpty();
+			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
+				return connections != null && !connections.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getInterval()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='EndAfterStart NonZeroLength'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot EndAfterStart='\n\t\t\tend >= start' NonZeroLength='\n\t\t\tend <> start'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot EndAfterStart='end >= start' NonZeroLength='end <> start'"
  * @generated
  */
 public interface Interval extends EObject {

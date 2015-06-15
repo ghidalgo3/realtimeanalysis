@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SwitchImpl#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SwitchImpl#getLatency <em>Latency</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.SwitchImpl#getPorts <em>Ports</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.SwitchImpl#getSwitchPorts <em>Switch Ports</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,14 +73,14 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	protected int latency = LATENCY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getPorts() <em>Ports</em>}' containment reference list.
+	 * The cached value of the '{@link #getSwitchPorts() <em>Switch Ports</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPorts()
+	 * @see #getSwitchPorts()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<SwitchPort> ports;
+	protected EList<SwitchPort> switchPorts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -127,18 +127,6 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<SwitchPort> getPorts() {
-		if (ports == null) {
-			ports = new EObjectContainmentEList<SwitchPort>(SwitchPort.class, this, RealtimeschedulingPackage.SWITCH__PORTS);
-		}
-		return ports;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getLatency() {
 		return latency;
 	}
@@ -160,11 +148,23 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<SwitchPort> getSwitchPorts() {
+		if (switchPorts == null) {
+			switchPorts = new EObjectContainmentEList<SwitchPort>(SwitchPort.class, this, RealtimeschedulingPackage.SWITCH__SWITCH_PORTS);
+		}
+		return switchPorts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.SWITCH__PORTS:
-				return ((InternalEList<?>)getPorts()).basicRemove(otherEnd, msgs);
+			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:
+				return ((InternalEList<?>)getSwitchPorts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -181,8 +181,8 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 				return getId();
 			case RealtimeschedulingPackage.SWITCH__LATENCY:
 				return getLatency();
-			case RealtimeschedulingPackage.SWITCH__PORTS:
-				return getPorts();
+			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:
+				return getSwitchPorts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,9 +202,9 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 			case RealtimeschedulingPackage.SWITCH__LATENCY:
 				setLatency((Integer)newValue);
 				return;
-			case RealtimeschedulingPackage.SWITCH__PORTS:
-				getPorts().clear();
-				getPorts().addAll((Collection<? extends SwitchPort>)newValue);
+			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:
+				getSwitchPorts().clear();
+				getSwitchPorts().addAll((Collection<? extends SwitchPort>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -224,8 +224,8 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 			case RealtimeschedulingPackage.SWITCH__LATENCY:
 				setLatency(LATENCY_EDEFAULT);
 				return;
-			case RealtimeschedulingPackage.SWITCH__PORTS:
-				getPorts().clear();
+			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:
+				getSwitchPorts().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -243,8 +243,8 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case RealtimeschedulingPackage.SWITCH__LATENCY:
 				return latency != LATENCY_EDEFAULT;
-			case RealtimeschedulingPackage.SWITCH__PORTS:
-				return ports != null && !ports.isEmpty();
+			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:
+				return switchPorts != null && !switchPorts.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

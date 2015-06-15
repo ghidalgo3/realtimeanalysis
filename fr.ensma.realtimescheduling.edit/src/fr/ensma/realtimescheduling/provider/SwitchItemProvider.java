@@ -125,7 +125,7 @@ public class SwitchItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.SWITCH__PORTS);
+			childrenFeatures.add(RealtimeschedulingPackage.Literals.SWITCH__SWITCH_PORTS);
 		}
 		return childrenFeatures;
 	}
@@ -185,7 +185,7 @@ public class SwitchItemProvider
 			case RealtimeschedulingPackage.SWITCH__LATENCY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case RealtimeschedulingPackage.SWITCH__PORTS:
+			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -205,7 +205,7 @@ public class SwitchItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RealtimeschedulingPackage.Literals.SWITCH__PORTS,
+				(RealtimeschedulingPackage.Literals.SWITCH__SWITCH_PORTS,
 				 RealtimeschedulingFactory.eINSTANCE.createSwitchPort()));
 	}
 

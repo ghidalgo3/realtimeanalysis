@@ -179,8 +179,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String TASK__POSITIVE_WCET__EEXPRESSION = "\n" +
-		"\t\t\tworstCaseExecTime > 0";
+	protected static final String TASK__POSITIVE_WCET__EEXPRESSION = "worstCaseExecTime > 0";
 
 	/**
 	 * Validates the PositiveWCET constraint of '<em>Task</em>'.
@@ -209,8 +208,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String TASK__EXECUTION_AND_DEADLINE_ALLOWS_COMPLETION__EEXPRESSION = "\n" +
-		"\t\t\tworstCaseExecTime <= implicitDeadline";
+	protected static final String TASK__EXECUTION_AND_DEADLINE_ALLOWS_COMPLETION__EEXPRESSION = "worstCaseExecTime <= implicitDeadline";
 
 	/**
 	 * Validates the ExecutionAndDeadlineAllowsCompletion constraint of '<em>Task</em>'.
@@ -239,8 +237,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String TASK__EXECUTION_AND_PERIOD_ALLOWS_COMPLETION__EEXPRESSION = "\n" +
-		"\t\t\tif (periodicity <> Periodicity::Aperiodic)\n" +
+	protected static final String TASK__EXECUTION_AND_PERIOD_ALLOWS_COMPLETION__EEXPRESSION = "if (periodicity <> Periodicity::Aperiodic)\n" +
 		"\t\t\tthen worstCaseExecTime <= characteristicPeriod\n" +
 		"\t\t\telse true\n" +
 		"\t\t\tendif";
@@ -272,8 +269,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String TASK__DEADLINE_LESS_THAN_PERIOD__EEXPRESSION = "\n" +
-		"\t\t\timplicitDeadline <= characteristicPeriod";
+	protected static final String TASK__DEADLINE_LESS_THAN_PERIOD__EEXPRESSION = "implicitDeadline <= characteristicPeriod";
 
 	/**
 	 * Validates the DeadlineLessThanPeriod constraint of '<em>Task</em>'.
@@ -302,8 +298,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String TASK__POSITIVE_PERIOD__EEXPRESSION = "\n" +
-		"\t\t\tcharacteristicPeriod > 0";
+	protected static final String TASK__POSITIVE_PERIOD__EEXPRESSION = "characteristicPeriod > 0";
 
 	/**
 	 * Validates the PositivePeriod constraint of '<em>Task</em>'.
@@ -352,8 +347,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String MODULE__NON_ZERO_PERIOD__EEXPRESSION = "\n" +
-		"\t\t\tperiod > 0";
+	protected static final String MODULE__NON_ZERO_PERIOD__EEXPRESSION = "period > 0";
 
 	/**
 	 * Validates the NonZeroPeriod constraint of '<em>Module</em>'.
@@ -382,12 +376,19 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String MODULE__NON_OVERLAPPING_PARTITIONS__EEXPRESSION = "\n" +
-		"\t\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n" +
-		"\t\t\tif (allIntervals->size() <= 1) then true\n" +
-		"\t\t\telse \n" +
-		"\t\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n" +
-		"\t\t\tendif";
+	protected static final String MODULE__NON_OVERLAPPING_PARTITIONS__EEXPRESSION = "let allIntervals : Sequence(Interval) = partition.executionIntervals\n" +
+		"\t\t->flatten()\n" +
+		"\t\t->sortedBy(i : Interval | i.start)\n" +
+		"\tin if (allIntervals\n" +
+		"\t\t\t->size() <= 1)\n" +
+		"\t\tthen true\n" +
+		"\t\telse allIntervals\n" +
+		"\t\t\t->subSequence(1, allIntervals\n" +
+		"\t\t\t\t->size() - 1)\n" +
+		"\t\t\t->forAll(i : Interval | i.end <= allIntervals\n" +
+		"\t\t\t\t->at(1 + allIntervals\n" +
+		"\t\t\t\t\t->indexOf(i)).start)\n" +
+		"\t\tendif";
 
 	/**
 	 * Validates the NonOverlappingPartitions constraint of '<em>Module</em>'.
@@ -470,7 +471,47 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateRoute(Route route, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(route, diagnostics, context);
+		if (!validate_NoCircularContainment(route, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(route, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(route, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(route, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(route, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(route, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(route, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(route, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(route, diagnostics, context);
+		if (result || diagnostics != null) result &= validateRoute_DestinationsCannotIncludeSource(route, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the DestinationsCannotIncludeSource constraint of '<em>Route</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ROUTE__DESTINATIONS_CANNOT_INCLUDE_SOURCE__EEXPRESSION = "\n" +
+		"\t\t\tdestinations->forAll(dest : Module | dest <> source)";
+
+	/**
+	 * Validates the DestinationsCannotIncludeSource constraint of '<em>Route</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRoute_DestinationsCannotIncludeSource(Route route, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(RealtimeschedulingPackage.Literals.ROUTE,
+				 route,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "DestinationsCannotIncludeSource",
+				 ROUTE__DESTINATIONS_CANNOT_INCLUDE_SOURCE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -519,8 +560,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARTITION__POSITIVE_PERIOD__EEXPRESSION = "\n" +
-		"\t\t\tperiod > 0";
+	protected static final String PARTITION__POSITIVE_PERIOD__EEXPRESSION = "period > 0";
 
 	/**
 	 * Validates the PositivePeriod constraint of '<em>Partition</em>'.
@@ -549,8 +589,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARTITION__AVAILIBILITY_FACTOR_LESS_THAN_OR_EQUAL_TO_ONE__EEXPRESSION = "\n" +
-		"\t\t\tavailabilityFactor <= 1";
+	protected static final String PARTITION__AVAILIBILITY_FACTOR_LESS_THAN_OR_EQUAL_TO_ONE__EEXPRESSION = "availabilityFactor <= 1";
 
 	/**
 	 * Validates the AvailibilityFactorLessThanOrEqualToOne constraint of '<em>Partition</em>'.
@@ -579,9 +618,14 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARTITION__PERIOD_SPANS_INTERVALS__EEXPRESSION = "\n" +
-		"\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(start) in\n" +
-		"\t\t\t\t\tif(sortedIntervals->size() > 1) then sortedIntervals->last().end <= period else true endif";
+	protected static final String PARTITION__PERIOD_SPANS_INTERVALS__EEXPRESSION = "let sortedIntervals : Sequence(Interval) = executionIntervals\n" +
+		"\t\t\t->sortedBy(start)\n" +
+		"\t\tin if (sortedIntervals\n" +
+		"\t\t\t->size() > 1)\n" +
+		"\t\tthen sortedIntervals\n" +
+		"\t\t\t->last().end <= period\n" +
+		"\t\telse true\n" +
+		"\t\tendif";
 
 	/**
 	 * Validates the PeriodSpansIntervals constraint of '<em>Partition</em>'.
@@ -610,13 +654,19 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARTITION__NON_OVERLAPPING_INTERVALS__EEXPRESSION = "\n" +
-		"\t\t\tif (executionIntervals->size() <= 1)\n" +
-		"\t\t\t\tthen true -- Nothing can overlap if there is only one or none!\n" +
-		"\t\t\telse\n" +
-		"\t\t\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals->sortedBy(i : Interval | i.start)\n" +
-		"\t\t\t\tin sortedIntervals->subSequence(1, sortedIntervals->size() - 1)->forAll(i : Interval | i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)\n" +
-		"\t\t\tendif";
+	protected static final String PARTITION__NON_OVERLAPPING_INTERVALS__EEXPRESSION = "if (executionIntervals\n" +
+		"\t\t\t->size() <= 1)\n" +
+		"\t\tthen true -- Nothing can overlap if there is only one or none!\n" +
+		"\t\telse\n" +
+		"\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals\n" +
+		"\t\t\t->sortedBy(i : Interval | i.start)\n" +
+		"\t\tin sortedIntervals\n" +
+		"\t\t\t->subSequence(1, sortedIntervals\n" +
+		"\t\t\t\t->size() - 1)\n" +
+		"\t\t\t->forAll(i : Interval | i.end <= sortedIntervals\n" +
+		"\t\t\t\t->at(1 + sortedIntervals\n" +
+		"\t\t\t\t\t->indexOf(i)).start)\n" +
+		"\t\tendif";
 
 	/**
 	 * Validates the NonOverlappingIntervals constraint of '<em>Partition</em>'.
@@ -665,8 +715,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String INTERVAL__END_AFTER_START__EEXPRESSION = "\n" +
-		"\t\t\tend >= start";
+	protected static final String INTERVAL__END_AFTER_START__EEXPRESSION = "end >= start";
 
 	/**
 	 * Validates the EndAfterStart constraint of '<em>Interval</em>'.
@@ -695,8 +744,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String INTERVAL__NON_ZERO_LENGTH__EEXPRESSION = "\n" +
-		"\t\t\tend <> start";
+	protected static final String INTERVAL__NON_ZERO_LENGTH__EEXPRESSION = "end <> start";
 
 	/**
 	 * Validates the NonZeroLength constraint of '<em>Interval</em>'.

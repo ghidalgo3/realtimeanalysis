@@ -167,7 +167,7 @@ public class ModuleItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(RealtimeschedulingPackage.Literals.MODULE__PROCESSORS);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.MODULE__PORTS);
+			childrenFeatures.add(RealtimeschedulingPackage.Literals.MODULE__MODULE_PORTS);
 		}
 		return childrenFeatures;
 	}
@@ -229,7 +229,7 @@ public class ModuleItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case RealtimeschedulingPackage.MODULE__PROCESSORS:
-			case RealtimeschedulingPackage.MODULE__PORTS:
+			case RealtimeschedulingPackage.MODULE__MODULE_PORTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -254,7 +254,7 @@ public class ModuleItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RealtimeschedulingPackage.Literals.MODULE__PORTS,
+				(RealtimeschedulingPackage.Literals.MODULE__MODULE_PORTS,
 				 RealtimeschedulingFactory.eINSTANCE.createEndSystemPort()));
 	}
 

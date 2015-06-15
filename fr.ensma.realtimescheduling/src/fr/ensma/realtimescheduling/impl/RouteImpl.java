@@ -6,20 +6,12 @@ import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.Route;
-
 import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -31,7 +23,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.impl.RouteImpl#getSource <em>Source</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.RouteImpl#getDestinations <em>Destinations</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.RouteImpl#getConnection <em>Connection</em>}</li>
  * </ul>
@@ -40,16 +31,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
-	/**
-	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSource()
-	 * @generated
-	 * @ordered
-	 */
-	protected Module source;
-
 	/**
 	 * The cached value of the '{@link #getDestinations() <em>Destinations</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -87,44 +68,6 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	@Override
 	protected EClass eStaticClass() {
 		return RealtimeschedulingPackage.Literals.ROUTE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Module getSource() {
-		if (source != null && source.eIsProxy()) {
-			InternalEObject oldSource = (InternalEObject)source;
-			source = (Module)eResolveProxy(oldSource);
-			if (source != oldSource) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RealtimeschedulingPackage.ROUTE__SOURCE, oldSource, source));
-			}
-		}
-		return source;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Module basicGetSource() {
-		return source;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSource(Module newSource) {
-		Module oldSource = source;
-		source = newSource;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.ROUTE__SOURCE, oldSource, source));
 	}
 
 	/**
@@ -188,9 +131,6 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.ROUTE__SOURCE:
-				if (resolve) return getSource();
-				return basicGetSource();
 			case RealtimeschedulingPackage.ROUTE__DESTINATIONS:
 				return getDestinations();
 			case RealtimeschedulingPackage.ROUTE__CONNECTION:
@@ -208,9 +148,6 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.ROUTE__SOURCE:
-				setSource((Module)newValue);
-				return;
 			case RealtimeschedulingPackage.ROUTE__DESTINATIONS:
 				getDestinations().clear();
 				getDestinations().addAll((Collection<? extends Module>)newValue);
@@ -231,9 +168,6 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.ROUTE__SOURCE:
-				setSource((Module)null);
-				return;
 			case RealtimeschedulingPackage.ROUTE__DESTINATIONS:
 				getDestinations().clear();
 				return;
@@ -252,8 +186,6 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.ROUTE__SOURCE:
-				return source != null;
 			case RealtimeschedulingPackage.ROUTE__DESTINATIONS:
 				return destinations != null && !destinations.isEmpty();
 			case RealtimeschedulingPackage.ROUTE__CONNECTION:

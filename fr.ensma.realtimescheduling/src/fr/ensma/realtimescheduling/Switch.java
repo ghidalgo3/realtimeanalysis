@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.Switch#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Switch#getLatency <em>Latency</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Switch#getPorts <em>Ports</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Switch#getSwitchPorts <em>Switch Ports</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,22 +52,6 @@ public interface Switch extends EObject {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.ensma.realtimescheduling.SwitchPort}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ports</em>' containment reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getSwitch_Ports()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<SwitchPort> getPorts();
-
-	/**
 	 * Returns the value of the '<em><b>Latency</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
@@ -93,5 +77,21 @@ public interface Switch extends EObject {
 	 * @generated
 	 */
 	void setLatency(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Switch Ports</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.SwitchPort}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Switch Ports</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Switch Ports</em>' containment reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getSwitch_SwitchPorts()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	EList<SwitchPort> getSwitchPorts();
 
 } // Switch

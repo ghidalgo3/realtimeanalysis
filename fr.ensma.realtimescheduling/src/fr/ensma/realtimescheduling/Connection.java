@@ -14,10 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.Connection#getId <em>Id</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Connection#getPorts <em>Ports</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Connection#getRoute <em>Route</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Connection#getSource <em>Source</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Connection#getDestination <em>Destination</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,30 +25,22 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Connection extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Ports</b></em>' reference list.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.Port}.
+	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Port#getConnection <em>Connection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Ports</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #setId(String)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getConnection_Id()
-	 * @model
+	 * @return the value of the '<em>Ports</em>' reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getConnection_Ports()
+	 * @see fr.ensma.realtimescheduling.Port#getConnection
+	 * @model opposite="connection" lower="2" upper="2"
 	 * @generated
 	 */
-	String getId();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Connection#getId <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Id</em>' attribute.
-	 * @see #getId()
-	 * @generated
-	 */
-	void setId(String value);
+	EList<Port> getPorts();
 
 	/**
 	 * Returns the value of the '<em><b>Route</b></em>' reference list.
@@ -65,61 +55,9 @@ public interface Connection extends EObject {
 	 * @return the value of the '<em>Route</em>' reference list.
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getConnection_Route()
 	 * @see fr.ensma.realtimescheduling.Route#getConnection
-	 * @model opposite="connection" required="true"
+	 * @model opposite="connection"
 	 * @generated
 	 */
 	EList<Route> getRoute();
-
-	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Source</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' reference.
-	 * @see #setSource(Port)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getConnection_Source()
-	 * @model required="true"
-	 * @generated
-	 */
-	Port getSource();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Connection#getSource <em>Source</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source</em>' reference.
-	 * @see #getSource()
-	 * @generated
-	 */
-	void setSource(Port value);
-
-	/**
-	 * Returns the value of the '<em><b>Destination</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Destination</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Destination</em>' reference.
-	 * @see #setDestination(Port)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getConnection_Destination()
-	 * @model required="true"
-	 * @generated
-	 */
-	Port getDestination();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Connection#getDestination <em>Destination</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Destination</em>' reference.
-	 * @see #getDestination()
-	 * @generated
-	 */
-	void setDestination(Port value);
 
 } // Connection

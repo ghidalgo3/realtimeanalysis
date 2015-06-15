@@ -14,43 +14,17 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.Route#getSource <em>Source</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Route#getDestinations <em>Destinations</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Route#getConnection <em>Connection</em>}</li>
  * </ul>
  * </p>
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getRoute()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='DestinationsCannotIncludeSource'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot DestinationsCannotIncludeSource='\n\t\t\tdestinations->forAll(dest : Module | dest <> source)'"
  * @generated
  */
 public interface Route extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Source</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' reference.
-	 * @see #setSource(Module)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getRoute_Source()
-	 * @model required="true"
-	 * @generated
-	 */
-	Module getSource();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Route#getSource <em>Source</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source</em>' reference.
-	 * @see #getSource()
-	 * @generated
-	 */
-	void setSource(Module value);
-
 	/**
 	 * Returns the value of the '<em><b>Destinations</b></em>' reference list.
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.Module}.
@@ -80,7 +54,7 @@ public interface Route extends EObject {
 	 * @return the value of the '<em>Connection</em>' reference list.
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getRoute_Connection()
 	 * @see fr.ensma.realtimescheduling.Connection#getRoute
-	 * @model opposite="route" required="true"
+	 * @model opposite="route"
 	 * @generated
 	 */
 	EList<Connection> getConnection();

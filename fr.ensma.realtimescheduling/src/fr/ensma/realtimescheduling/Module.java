@@ -19,13 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.Module#getPeriod <em>Period</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Module#getPartition <em>Partition</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Module#getProcessors <em>Processors</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Module#getPorts <em>Ports</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Module#getModulePorts <em>Module Ports</em>}</li>
  * </ul>
  * </p>
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NonZeroPeriod NonOverlappingPartitions'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NonZeroPeriod='\n\t\t\tperiod > 0' NonOverlappingPartitions='\n\t\t\tlet allIntervals : Sequence(Interval) = partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start) in\n\t\t\tif (allIntervals->size() <= 1) then true\n\t\t\telse \n\t\t\t\tallIntervals->subSequence(1, allIntervals->size() - 1)->forAll(i : Interval | i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)\n\t\t\tendif'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NonZeroPeriod='period > 0' NonOverlappingPartitions='let allIntervals : Sequence(Interval) = partition.executionIntervals\n\t\t->flatten()\n\t\t->sortedBy(i : Interval | i.start)\n\tin if (allIntervals\n\t\t\t->size() <= 1)\n\t\tthen true\n\t\telse allIntervals\n\t\t\t->subSequence(1, allIntervals\n\t\t\t\t->size() - 1)\n\t\t\t->forAll(i : Interval | i.end <= allIntervals\n\t\t\t\t->at(1 + allIntervals\n\t\t\t\t\t->indexOf(i)).start)\n\t\tendif'"
  * @generated
  */
 public interface Module extends EObject {
@@ -42,7 +42,7 @@ public interface Module extends EObject {
 	 * @see #setUtilization(double)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Utilization()
 	 * @model default="0" required="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='\n\t\t\tif(partition->size() > 0) then\n\t\t\t\tpartition->collect(p | p.availabilityFactor)->sum()\n\t\t\telse \n\t\t\t\t0.0\n\t\t\tendif'"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot derivation='if (partition\n\t\t\t\t\t\t->size() > 0)\n\t\t\t\t\tthen partition\n\t\t\t\t\t\t->collect(p | p.availabilityFactor)\n\t\t\t\t\t\t->sum()\n\t\t\t\t\telse 0.0\n\t\t\t\t\tendif'"
 	 * @generated
 	 */
 	double getUtilization();
@@ -144,19 +144,19 @@ public interface Module extends EObject {
 	EList<Processor> getProcessors();
 
 	/**
-	 * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Module Ports</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.EndSystemPort}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Module Ports</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ports</em>' containment reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Ports()
+	 * @return the value of the '<em>Module Ports</em>' containment reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_ModulePorts()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<EndSystemPort> getPorts();
+	EList<EndSystemPort> getModulePorts();
 
 } // Module

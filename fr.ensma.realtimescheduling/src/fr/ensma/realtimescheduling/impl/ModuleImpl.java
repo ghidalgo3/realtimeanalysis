@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getPeriod <em>Period</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getPartition <em>Partition</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getProcessors <em>Processors</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getPorts <em>Ports</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getModulePorts <em>Module Ports</em>}</li>
  * </ul>
  * </p>
  *
@@ -110,14 +110,14 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	protected EList<Processor> processors;
 
 	/**
-	 * The cached value of the '{@link #getPorts() <em>Ports</em>}' containment reference list.
+	 * The cached value of the '{@link #getModulePorts() <em>Module Ports</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPorts()
+	 * @see #getModulePorts()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EndSystemPort> ports;
+	protected EList<EndSystemPort> modulePorts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -227,11 +227,11 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<EndSystemPort> getPorts() {
-		if (ports == null) {
-			ports = new EObjectContainmentEList<EndSystemPort>(EndSystemPort.class, this, RealtimeschedulingPackage.MODULE__PORTS);
+	public EList<EndSystemPort> getModulePorts() {
+		if (modulePorts == null) {
+			modulePorts = new EObjectContainmentEList<EndSystemPort>(EndSystemPort.class, this, RealtimeschedulingPackage.MODULE__MODULE_PORTS);
 		}
-		return ports;
+		return modulePorts;
 	}
 
 	/**
@@ -261,8 +261,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				return ((InternalEList<?>)getPartition()).basicRemove(otherEnd, msgs);
 			case RealtimeschedulingPackage.MODULE__PROCESSORS:
 				return ((InternalEList<?>)getProcessors()).basicRemove(otherEnd, msgs);
-			case RealtimeschedulingPackage.MODULE__PORTS:
-				return ((InternalEList<?>)getPorts()).basicRemove(otherEnd, msgs);
+			case RealtimeschedulingPackage.MODULE__MODULE_PORTS:
+				return ((InternalEList<?>)getModulePorts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -285,8 +285,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				return getPartition();
 			case RealtimeschedulingPackage.MODULE__PROCESSORS:
 				return getProcessors();
-			case RealtimeschedulingPackage.MODULE__PORTS:
-				return getPorts();
+			case RealtimeschedulingPackage.MODULE__MODULE_PORTS:
+				return getModulePorts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -317,9 +317,9 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				getProcessors().clear();
 				getProcessors().addAll((Collection<? extends Processor>)newValue);
 				return;
-			case RealtimeschedulingPackage.MODULE__PORTS:
-				getPorts().clear();
-				getPorts().addAll((Collection<? extends EndSystemPort>)newValue);
+			case RealtimeschedulingPackage.MODULE__MODULE_PORTS:
+				getModulePorts().clear();
+				getModulePorts().addAll((Collection<? extends EndSystemPort>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -348,8 +348,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 			case RealtimeschedulingPackage.MODULE__PROCESSORS:
 				getProcessors().clear();
 				return;
-			case RealtimeschedulingPackage.MODULE__PORTS:
-				getPorts().clear();
+			case RealtimeschedulingPackage.MODULE__MODULE_PORTS:
+				getModulePorts().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -373,8 +373,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				return partition != null && !partition.isEmpty();
 			case RealtimeschedulingPackage.MODULE__PROCESSORS:
 				return processors != null && !processors.isEmpty();
-			case RealtimeschedulingPackage.MODULE__PORTS:
-				return ports != null && !ports.isEmpty();
+			case RealtimeschedulingPackage.MODULE__MODULE_PORTS:
+				return modulePorts != null && !modulePorts.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

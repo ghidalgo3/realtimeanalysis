@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.Port#getOrder <em>Order</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Port#getBandwidth <em>Bandwidth</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Port#getId <em>Id</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Port#getConnection <em>Connection</em>}</li>
  * </ul>
  * </p>
  *
@@ -101,5 +102,33 @@ public interface Port extends EObject {
 	 * @generated
 	 */
 	void setId(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Connection</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Connection#getPorts <em>Ports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Connection</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Connection</em>' reference.
+	 * @see #setConnection(Connection)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPort_Connection()
+	 * @see fr.ensma.realtimescheduling.Connection#getPorts
+	 * @model opposite="ports" required="true"
+	 * @generated
+	 */
+	Connection getConnection();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Port#getConnection <em>Connection</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Connection</em>' reference.
+	 * @see #getConnection()
+	 * @generated
+	 */
+	void setConnection(Connection value);
 
 } // Port

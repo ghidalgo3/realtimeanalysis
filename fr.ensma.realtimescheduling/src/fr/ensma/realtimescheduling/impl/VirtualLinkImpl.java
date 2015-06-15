@@ -2,6 +2,7 @@
  */
 package fr.ensma.realtimescheduling.impl;
 
+import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.Route;
 import fr.ensma.realtimescheduling.VirtualLink;
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getEndToEndDelay <em>End To End Delay</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getRoutes <em>Routes</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,6 +104,16 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * @ordered
 	 */
 	protected EList<Route> routes;
+
+	/**
+	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSource()
+	 * @generated
+	 * @ordered
+	 */
+	protected Module source;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -202,6 +214,44 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module getSource() {
+		if (source != null && source.eIsProxy()) {
+			InternalEObject oldSource = (InternalEObject)source;
+			source = (Module)eResolveProxy(oldSource);
+			if (source != oldSource) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE, oldSource, source));
+			}
+		}
+		return source;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Module basicGetSource() {
+		return source;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSource(Module newSource) {
+		Module oldSource = source;
+		source = newSource;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE, oldSource, source));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -227,6 +277,9 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 				return getEndToEndDelay();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				return getRoutes();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE:
+				if (resolve) return getSource();
+				return basicGetSource();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -253,6 +306,9 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 				getRoutes().clear();
 				getRoutes().addAll((Collection<? extends Route>)newValue);
 				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE:
+				setSource((Module)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -277,6 +333,9 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				getRoutes().clear();
 				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE:
+				setSource((Module)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -297,6 +356,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 				return endToEndDelay != END_TO_END_DELAY_EDEFAULT;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				return routes != null && !routes.isEmpty();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE:
+				return source != null;
 		}
 		return super.eIsSet(featureID);
 	}

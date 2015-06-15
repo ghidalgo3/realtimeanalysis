@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see fr.ensma.realtimescheduling.RealtimeschedulingFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
@@ -297,13 +296,13 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int MODULE__PROCESSORS = 4;
 
 	/**
-	 * The feature id for the '<em><b>Ports</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Module Ports</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__PORTS = 5;
+	int MODULE__MODULE_PORTS = 5;
 
 	/**
 	 * The number of structural features of the '<em>Module</em>' class.
@@ -516,13 +515,13 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int NETWORK__MAX_FRAME_SIZE = 3;
 
 	/**
-	 * The feature id for the '<em><b>Connection</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Connections</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__CONNECTION = 4;
+	int NETWORK__CONNECTIONS = 4;
 
 	/**
 	 * The number of structural features of the '<em>Network</em>' class.
@@ -718,13 +717,13 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int SWITCH__LATENCY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Ports</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Switch Ports</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SWITCH__PORTS = 2;
+	int SWITCH__SWITCH_PORTS = 2;
 
 	/**
 	 * The number of structural features of the '<em>Switch</em>' class.
@@ -791,13 +790,22 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int VIRTUAL_LINK__ROUTES = 3;
 
 	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_LINK__SOURCE = 4;
+
+	/**
 	 * The number of structural features of the '<em>Virtual Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUAL_LINK_FEATURE_COUNT = 4;
+	int VIRTUAL_LINK_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Virtual Link</em>' class.
@@ -846,13 +854,22 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int PORT__ID = 2;
 
 	/**
+	 * The feature id for the '<em><b>Connection</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__CONNECTION = 3;
+
+	/**
 	 * The number of structural features of the '<em>Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_FEATURE_COUNT = 3;
+	int PORT_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Port</em>' class.
@@ -874,13 +891,13 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int CONNECTION = 12;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Ports</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION__ID = 0;
+	int CONNECTION__PORTS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Route</b></em>' reference list.
@@ -892,31 +909,13 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int CONNECTION__ROUTE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTION__SOURCE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Destination</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTION__DESTINATION = 3;
-
-	/**
 	 * The number of structural features of the '<em>Connection</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_FEATURE_COUNT = 4;
+	int CONNECTION_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Connection</em>' class.
@@ -938,22 +937,13 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int ROUTE = 13;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROUTE__SOURCE = 0;
-
-	/**
 	 * The feature id for the '<em><b>Destinations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROUTE__DESTINATIONS = 1;
+	int ROUTE__DESTINATIONS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Connection</b></em>' reference list.
@@ -962,7 +952,7 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ROUTE__CONNECTION = 2;
+	int ROUTE__CONNECTION = 1;
 
 	/**
 	 * The number of structural features of the '<em>Route</em>' class.
@@ -971,7 +961,7 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ROUTE_FEATURE_COUNT = 3;
+	int ROUTE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Route</em>' class.
@@ -1018,6 +1008,15 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @ordered
 	 */
 	int SWITCH_PORT__ID = PORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Connection</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWITCH_PORT__CONNECTION = PORT__CONNECTION;
 
 	/**
 	 * The number of structural features of the '<em>Switch Port</em>' class.
@@ -1073,6 +1072,15 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @ordered
 	 */
 	int END_SYSTEM_PORT__ID = PORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Connection</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END_SYSTEM_PORT__CONNECTION = PORT__CONNECTION;
 
 	/**
 	 * The number of structural features of the '<em>End System Port</em>' class.
@@ -1353,15 +1361,15 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EReference getModule_Processors();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.ensma.realtimescheduling.Module#getPorts <em>Ports</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.ensma.realtimescheduling.Module#getModulePorts <em>Module Ports</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Ports</em>'.
-	 * @see fr.ensma.realtimescheduling.Module#getPorts()
+	 * @return the meta object for the containment reference list '<em>Module Ports</em>'.
+	 * @see fr.ensma.realtimescheduling.Module#getModulePorts()
 	 * @see #getModule()
 	 * @generated
 	 */
-	EReference getModule_Ports();
+	EReference getModule_ModulePorts();
 
 	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.Partition <em>Partition</em>}'.
@@ -1548,15 +1556,15 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EAttribute getNetwork_MaxFrameSize();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.ensma.realtimescheduling.Network#getConnection <em>Connection</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.ensma.realtimescheduling.Network#getConnections <em>Connections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Connection</em>'.
-	 * @see fr.ensma.realtimescheduling.Network#getConnection()
+	 * @return the meta object for the containment reference list '<em>Connections</em>'.
+	 * @see fr.ensma.realtimescheduling.Network#getConnections()
 	 * @see #getNetwork()
 	 * @generated
 	 */
-	EReference getNetwork_Connection();
+	EReference getNetwork_Connections();
 
 	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.System <em>System</em>}'.
@@ -1687,17 +1695,6 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EAttribute getSwitch_Id();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.ensma.realtimescheduling.Switch#getPorts <em>Ports</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Ports</em>'.
-	 * @see fr.ensma.realtimescheduling.Switch#getPorts()
-	 * @see #getSwitch()
-	 * @generated
-	 */
-	EReference getSwitch_Ports();
-
-	/**
 	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Switch#getLatency <em>Latency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1707,6 +1704,17 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSwitch_Latency();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.ensma.realtimescheduling.Switch#getSwitchPorts <em>Switch Ports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Switch Ports</em>'.
+	 * @see fr.ensma.realtimescheduling.Switch#getSwitchPorts()
+	 * @see #getSwitch()
+	 * @generated
+	 */
+	EReference getSwitch_SwitchPorts();
 
 	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.VirtualLink <em>Virtual Link</em>}'.
@@ -1763,6 +1771,17 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EReference getVirtualLink_Routes();
 
 	/**
+	 * Returns the meta object for the reference '{@link fr.ensma.realtimescheduling.VirtualLink#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see fr.ensma.realtimescheduling.VirtualLink#getSource()
+	 * @see #getVirtualLink()
+	 * @generated
+	 */
+	EReference getVirtualLink_Source();
+
+	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.Port <em>Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1806,6 +1825,17 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EAttribute getPort_Id();
 
 	/**
+	 * Returns the meta object for the reference '{@link fr.ensma.realtimescheduling.Port#getConnection <em>Connection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Connection</em>'.
+	 * @see fr.ensma.realtimescheduling.Port#getConnection()
+	 * @see #getPort()
+	 * @generated
+	 */
+	EReference getPort_Connection();
+
+	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.Connection <em>Connection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1816,15 +1846,15 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EClass getConnection();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Connection#getId <em>Id</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.Connection#getPorts <em>Ports</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see fr.ensma.realtimescheduling.Connection#getId()
+	 * @return the meta object for the reference list '<em>Ports</em>'.
+	 * @see fr.ensma.realtimescheduling.Connection#getPorts()
 	 * @see #getConnection()
 	 * @generated
 	 */
-	EAttribute getConnection_Id();
+	EReference getConnection_Ports();
 
 	/**
 	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.Connection#getRoute <em>Route</em>}'.
@@ -1838,28 +1868,6 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EReference getConnection_Route();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.ensma.realtimescheduling.Connection#getSource <em>Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see fr.ensma.realtimescheduling.Connection#getSource()
-	 * @see #getConnection()
-	 * @generated
-	 */
-	EReference getConnection_Source();
-
-	/**
-	 * Returns the meta object for the reference '{@link fr.ensma.realtimescheduling.Connection#getDestination <em>Destination</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Destination</em>'.
-	 * @see fr.ensma.realtimescheduling.Connection#getDestination()
-	 * @see #getConnection()
-	 * @generated
-	 */
-	EReference getConnection_Destination();
-
-	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.Route <em>Route</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1868,17 +1876,6 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRoute();
-
-	/**
-	 * Returns the meta object for the reference '{@link fr.ensma.realtimescheduling.Route#getSource <em>Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see fr.ensma.realtimescheduling.Route#getSource()
-	 * @see #getRoute()
-	 * @generated
-	 */
-	EReference getRoute_Source();
 
 	/**
 	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.Route#getDestinations <em>Destinations</em>}'.
@@ -2148,12 +2145,12 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EReference MODULE__PROCESSORS = eINSTANCE.getModule_Processors();
 
 		/**
-		 * The meta object literal for the '<em><b>Ports</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Module Ports</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODULE__PORTS = eINSTANCE.getModule_Ports();
+		EReference MODULE__MODULE_PORTS = eINSTANCE.getModule_ModulePorts();
 
 		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.PartitionImpl <em>Partition</em>}' class.
@@ -2298,12 +2295,12 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EAttribute NETWORK__MAX_FRAME_SIZE = eINSTANCE.getNetwork_MaxFrameSize();
 
 		/**
-		 * The meta object literal for the '<em><b>Connection</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Connections</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference NETWORK__CONNECTION = eINSTANCE.getNetwork_Connection();
+		EReference NETWORK__CONNECTIONS = eINSTANCE.getNetwork_Connections();
 
 		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.SystemImpl <em>System</em>}' class.
@@ -2410,20 +2407,20 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EAttribute SWITCH__ID = eINSTANCE.getSwitch_Id();
 
 		/**
-		 * The meta object literal for the '<em><b>Ports</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SWITCH__PORTS = eINSTANCE.getSwitch_Ports();
-
-		/**
 		 * The meta object literal for the '<em><b>Latency</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute SWITCH__LATENCY = eINSTANCE.getSwitch_Latency();
+
+		/**
+		 * The meta object literal for the '<em><b>Switch Ports</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SWITCH__SWITCH_PORTS = eINSTANCE.getSwitch_SwitchPorts();
 
 		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl <em>Virtual Link</em>}' class.
@@ -2468,6 +2465,14 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EReference VIRTUAL_LINK__ROUTES = eINSTANCE.getVirtualLink_Routes();
 
 		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VIRTUAL_LINK__SOURCE = eINSTANCE.getVirtualLink_Source();
+
+		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.PortImpl <em>Port</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2502,6 +2507,14 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EAttribute PORT__ID = eINSTANCE.getPort_Id();
 
 		/**
+		 * The meta object literal for the '<em><b>Connection</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PORT__CONNECTION = eINSTANCE.getPort_Connection();
+
+		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.ConnectionImpl <em>Connection</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2512,12 +2525,12 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EClass CONNECTION = eINSTANCE.getConnection();
 
 		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Ports</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONNECTION__ID = eINSTANCE.getConnection_Id();
+		EReference CONNECTION__PORTS = eINSTANCE.getConnection_Ports();
 
 		/**
 		 * The meta object literal for the '<em><b>Route</b></em>' reference list feature.
@@ -2528,22 +2541,6 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EReference CONNECTION__ROUTE = eINSTANCE.getConnection_Route();
 
 		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONNECTION__SOURCE = eINSTANCE.getConnection_Source();
-
-		/**
-		 * The meta object literal for the '<em><b>Destination</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONNECTION__DESTINATION = eINSTANCE.getConnection_Destination();
-
-		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.RouteImpl <em>Route</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2552,14 +2549,6 @@ public interface RealtimeschedulingPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ROUTE = eINSTANCE.getRoute();
-
-		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ROUTE__SOURCE = eINSTANCE.getRoute_Source();
 
 		/**
 		 * The meta object literal for the '<em><b>Destinations</b></em>' reference list feature.

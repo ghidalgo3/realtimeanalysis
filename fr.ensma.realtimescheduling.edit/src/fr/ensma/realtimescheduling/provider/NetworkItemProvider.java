@@ -147,7 +147,7 @@ public class NetworkItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(RealtimeschedulingPackage.Literals.NETWORK__SWITCHES);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.NETWORK__CONNECTION);
+			childrenFeatures.add(RealtimeschedulingPackage.Literals.NETWORK__CONNECTIONS);
 		}
 		return childrenFeatures;
 	}
@@ -209,7 +209,7 @@ public class NetworkItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case RealtimeschedulingPackage.NETWORK__SWITCHES:
-			case RealtimeschedulingPackage.NETWORK__CONNECTION:
+			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -234,7 +234,7 @@ public class NetworkItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RealtimeschedulingPackage.Literals.NETWORK__CONNECTION,
+				(RealtimeschedulingPackage.Literals.NETWORK__CONNECTIONS,
 				 RealtimeschedulingFactory.eINSTANCE.createConnection()));
 	}
 

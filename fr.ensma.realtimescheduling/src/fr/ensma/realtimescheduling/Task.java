@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PositiveWCET ExecutionAndDeadlineAllowsCompletion ExecutionAndPeriodAllowsCompletion DeadlineLessThanPeriod PositivePeriod'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot PositiveWCET='worstCaseExecTime > 0' ExecutionAndDeadlineAllowsCompletion='worstCaseExecTime <= implicitDeadline' ExecutionAndPeriodAllowsCompletion='if (periodicity <> Periodicity::Aperiodic)\n\t\t\tthen worstCaseExecTime <= characteristicPeriod\n\t\t\telse true\n\t\t\tendif' DeadlineLessThanPeriod='implicitDeadline <= characteristicPeriod' PositivePeriod='characteristicPeriod > 0'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot PositiveWCET='worstCaseExecTime > 0' ExecutionAndDeadlineAllowsCompletion='worstCaseExecTime <= implicitDeadline' ExecutionAndPeriodAllowsCompletion='\n\t\tif (periodicity <> Periodicity::Aperiodic)\n\t\t\tthen worstCaseExecTime <= characteristicPeriod\n\t\t\telse true\n\t\t\tendif' DeadlineLessThanPeriod='implicitDeadline <= characteristicPeriod' PositivePeriod='characteristicPeriod > 0'"
  * @generated
  */
 public interface Task extends EObject {

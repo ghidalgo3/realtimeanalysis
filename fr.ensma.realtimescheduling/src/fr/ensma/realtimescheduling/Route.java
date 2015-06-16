@@ -14,49 +14,58 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.Route#getDestinations <em>Destinations</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Route#getConnection <em>Connection</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Route#getConnections <em>Connections</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Route#getEndToEndDelay <em>End To End Delay</em>}</li>
  * </ul>
  * </p>
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getRoute()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='DestinationsCannotIncludeSource'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot DestinationsCannotIncludeSource='\n\t\t\tdestinations->forAll(dest : Module | dest <> source)'"
+ * @model
  * @generated
  */
 public interface Route extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Destinations</b></em>' reference list.
-	 * The list contents are of type {@link fr.ensma.realtimescheduling.Module}.
+	 * Returns the value of the '<em><b>Connections</b></em>' reference list.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.Connection}.
+	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Connection#getRoutes <em>Routes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Destinations</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Connections</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Destinations</em>' reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getRoute_Destinations()
+	 * @return the value of the '<em>Connections</em>' reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getRoute_Connections()
+	 * @see fr.ensma.realtimescheduling.Connection#getRoutes
+	 * @model opposite="routes"
+	 * @generated
+	 */
+	EList<Connection> getConnections();
+
+	/**
+	 * Returns the value of the '<em><b>End To End Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>End To End Delay</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>End To End Delay</em>' attribute.
+	 * @see #setEndToEndDelay(int)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getRoute_EndToEndDelay()
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<Module> getDestinations();
+	int getEndToEndDelay();
 
 	/**
-	 * Returns the value of the '<em><b>Connection</b></em>' reference list.
-	 * The list contents are of type {@link fr.ensma.realtimescheduling.Connection}.
-	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Connection#getRoute <em>Route</em>}'.
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Route#getEndToEndDelay <em>End To End Delay</em>}' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Connection</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Connection</em>' reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getRoute_Connection()
-	 * @see fr.ensma.realtimescheduling.Connection#getRoute
-	 * @model opposite="route"
+	 * @param value the new value of the '<em>End To End Delay</em>' attribute.
+	 * @see #getEndToEndDelay()
 	 * @generated
 	 */
-	EList<Connection> getConnection();
+	void setEndToEndDelay(int value);
 
 } // Route

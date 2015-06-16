@@ -5,6 +5,7 @@ package fr.ensma.realtimescheduling.provider;
 
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 
+import fr.ensma.realtimescheduling.Route;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,7 +21,9 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link fr.ensma.realtimescheduling.Route} object.
@@ -57,26 +60,26 @@ public class RouteItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDestinationsPropertyDescriptor(object);
-			addConnectionPropertyDescriptor(object);
+			addConnectionsPropertyDescriptor(object);
+			addEndToEndDelayPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Destinations feature.
+	 * This adds a property descriptor for the Connections feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDestinationsPropertyDescriptor(Object object) {
+	protected void addConnectionsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Route_destinations_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Route_destinations_feature", "_UI_Route_type"),
-				 RealtimeschedulingPackage.Literals.ROUTE__DESTINATIONS,
+				 getString("_UI_Route_connections_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Route_connections_feature", "_UI_Route_type"),
+				 RealtimeschedulingPackage.Literals.ROUTE__CONNECTIONS,
 				 true,
 				 false,
 				 true,
@@ -86,23 +89,23 @@ public class RouteItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Connection feature.
+	 * This adds a property descriptor for the End To End Delay feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addConnectionPropertyDescriptor(Object object) {
+	protected void addEndToEndDelayPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Route_connection_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Route_connection_feature", "_UI_Route_type"),
-				 RealtimeschedulingPackage.Literals.ROUTE__CONNECTION,
+				 getString("_UI_Route_endToEndDelay_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Route_endToEndDelay_feature", "_UI_Route_type"),
+				 RealtimeschedulingPackage.Literals.ROUTE__END_TO_END_DELAY,
 				 true,
 				 false,
-				 true,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -126,7 +129,8 @@ public class RouteItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Route_type");
+		Route route = (Route)object;
+		return getString("_UI_Route_type") + " " + route.getEndToEndDelay();
 	}
 	
 
@@ -140,6 +144,12 @@ public class RouteItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Route.class)) {
+			case RealtimeschedulingPackage.ROUTE__END_TO_END_DELAY:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

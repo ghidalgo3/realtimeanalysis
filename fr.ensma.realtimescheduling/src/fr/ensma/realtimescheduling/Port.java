@@ -62,7 +62,7 @@ public interface Port extends EObject {
 	 * @return the value of the '<em>Bandwidth</em>' attribute.
 	 * @see #setBandwidth(double)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPort_Bandwidth()
-	 * @model default="0.0" required="true"
+	 * @model default="0.0" required="true" derived="true"
 	 * @generated
 	 */
 	double getBandwidth();

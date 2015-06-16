@@ -63,7 +63,6 @@ public class NetworkItemProvider
 
 			addNamePropertyDescriptor(object);
 			addNetworkBandwidthPropertyDescriptor(object);
-			addMaxFrameSizePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -107,29 +106,7 @@ public class NetworkItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Max Frame Size feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMaxFrameSizePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Network_maxFrameSize_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Network_maxFrameSize_feature", "_UI_Network_type"),
-				 RealtimeschedulingPackage.Literals.NETWORK__MAX_FRAME_SIZE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -205,7 +182,6 @@ public class NetworkItemProvider
 		switch (notification.getFeatureID(Network.class)) {
 			case RealtimeschedulingPackage.NETWORK__NAME:
 			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
-			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case RealtimeschedulingPackage.NETWORK__SWITCHES:

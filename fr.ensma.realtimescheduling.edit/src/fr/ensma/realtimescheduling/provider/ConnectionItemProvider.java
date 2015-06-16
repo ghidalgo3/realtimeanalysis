@@ -3,6 +3,7 @@
 package fr.ensma.realtimescheduling.provider;
 
 
+import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import java.util.Collection;
 import java.util.List;
@@ -16,7 +17,9 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link fr.ensma.realtimescheduling.Connection} object.
@@ -54,7 +57,8 @@ public class ConnectionItemProvider
 			super.getPropertyDescriptors(object);
 
 			addPortsPropertyDescriptor(object);
-			addRoutePropertyDescriptor(object);
+			addRoutesPropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -82,23 +86,45 @@ public class ConnectionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Route feature.
+	 * This adds a property descriptor for the Routes feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRoutePropertyDescriptor(Object object) {
+	protected void addRoutesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Connection_route_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_route_feature", "_UI_Connection_type"),
-				 RealtimeschedulingPackage.Literals.CONNECTION__ROUTE,
+				 getString("_UI_Connection_routes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_routes_feature", "_UI_Connection_type"),
+				 RealtimeschedulingPackage.Literals.CONNECTION__ROUTES,
 				 true,
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Connection_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Connection_id_feature", "_UI_Connection_type"),
+				 RealtimeschedulingPackage.Literals.CONNECTION__ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -122,7 +148,10 @@ public class ConnectionItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Connection_type");
+		String label = ((Connection)object).getId();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Connection_type") :
+			getString("_UI_Connection_type") + " " + label;
 	}
 	
 
@@ -136,6 +165,12 @@ public class ConnectionItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Connection.class)) {
+			case RealtimeschedulingPackage.CONNECTION__ID:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

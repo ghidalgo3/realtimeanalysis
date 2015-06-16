@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.Network#getName <em>Name</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Network#getSwitches <em>Switches</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Network#getNetworkBandwidth <em>Network Bandwidth</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Network#getMaxFrameSize <em>Max Frame Size</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Network#getConnections <em>Connections</em>}</li>
  * </ul>
  * </p>
@@ -71,7 +70,7 @@ public interface Network extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Network Bandwidth</b></em>' attribute.
-	 * The default value is <code>"0.0"</code>.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Network Bandwidth</em>' attribute isn't clear,
@@ -79,12 +78,12 @@ public interface Network extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Network Bandwidth</em>' attribute.
-	 * @see #setNetworkBandwidth(double)
+	 * @see #setNetworkBandwidth(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_NetworkBandwidth()
-	 * @model default="0.0" required="true"
+	 * @model default="0" required="true"
 	 * @generated
 	 */
-	double getNetworkBandwidth();
+	int getNetworkBandwidth();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Network#getNetworkBandwidth <em>Network Bandwidth</em>}' attribute.
@@ -94,34 +93,7 @@ public interface Network extends EObject {
 	 * @see #getNetworkBandwidth()
 	 * @generated
 	 */
-	void setNetworkBandwidth(double value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Frame Size</b></em>' attribute.
-	 * The default value is <code>"0.0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Max Frame Size</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Max Frame Size</em>' attribute.
-	 * @see #setMaxFrameSize(double)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_MaxFrameSize()
-	 * @model default="0.0" required="true"
-	 * @generated
-	 */
-	double getMaxFrameSize();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Network#getMaxFrameSize <em>Max Frame Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Frame Size</em>' attribute.
-	 * @see #getMaxFrameSize()
-	 * @generated
-	 */
-	void setMaxFrameSize(double value);
+	void setNetworkBandwidth(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Connections</b></em>' containment reference list.

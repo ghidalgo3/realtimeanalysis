@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getSwitches <em>Switches</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getNetworkBandwidth <em>Network Bandwidth</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getMaxFrameSize <em>Max Frame Size</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getConnections <em>Connections</em>}</li>
  * </ul>
  * </p>
@@ -79,7 +78,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double NETWORK_BANDWIDTH_EDEFAULT = 0.0;
+	protected static final int NETWORK_BANDWIDTH_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getNetworkBandwidth() <em>Network Bandwidth</em>}' attribute.
@@ -89,27 +88,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * @generated
 	 * @ordered
 	 */
-	protected double networkBandwidth = NETWORK_BANDWIDTH_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getMaxFrameSize() <em>Max Frame Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxFrameSize()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double MAX_FRAME_SIZE_EDEFAULT = 0.0;
-
-	/**
-	 * The cached value of the '{@link #getMaxFrameSize() <em>Max Frame Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxFrameSize()
-	 * @generated
-	 * @ordered
-	 */
-	protected double maxFrameSize = MAX_FRAME_SIZE_EDEFAULT;
+	protected int networkBandwidth = NETWORK_BANDWIDTH_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getConnections() <em>Connections</em>}' containment reference list.
@@ -178,7 +157,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getNetworkBandwidth() {
+	public int getNetworkBandwidth() {
 		return networkBandwidth;
 	}
 
@@ -187,32 +166,11 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNetworkBandwidth(double newNetworkBandwidth) {
-		double oldNetworkBandwidth = networkBandwidth;
+	public void setNetworkBandwidth(int newNetworkBandwidth) {
+		int oldNetworkBandwidth = networkBandwidth;
 		networkBandwidth = newNetworkBandwidth;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH, oldNetworkBandwidth, networkBandwidth));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getMaxFrameSize() {
-		return maxFrameSize;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxFrameSize(double newMaxFrameSize) {
-		double oldMaxFrameSize = maxFrameSize;
-		maxFrameSize = newMaxFrameSize;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE, oldMaxFrameSize, maxFrameSize));
 	}
 
 	/**
@@ -257,8 +215,6 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				return getSwitches();
 			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
 				return getNetworkBandwidth();
-			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
-				return getMaxFrameSize();
 			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
 				return getConnections();
 		}
@@ -282,10 +238,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				getSwitches().addAll((Collection<? extends Switch>)newValue);
 				return;
 			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
-				setNetworkBandwidth((Double)newValue);
-				return;
-			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
-				setMaxFrameSize((Double)newValue);
+				setNetworkBandwidth((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
 				getConnections().clear();
@@ -312,9 +265,6 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
 				setNetworkBandwidth(NETWORK_BANDWIDTH_EDEFAULT);
 				return;
-			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
-				setMaxFrameSize(MAX_FRAME_SIZE_EDEFAULT);
-				return;
 			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
 				getConnections().clear();
 				return;
@@ -336,8 +286,6 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				return switches != null && !switches.isEmpty();
 			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
 				return networkBandwidth != NETWORK_BANDWIDTH_EDEFAULT;
-			case RealtimeschedulingPackage.NETWORK__MAX_FRAME_SIZE:
-				return maxFrameSize != MAX_FRAME_SIZE_EDEFAULT;
 			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
 				return connections != null && !connections.isEmpty();
 		}
@@ -358,8 +306,6 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 		result.append(name);
 		result.append(", networkBandwidth: ");
 		result.append(networkBandwidth);
-		result.append(", maxFrameSize: ");
-		result.append(maxFrameSize);
 		result.append(')');
 		return result.toString();
 	}

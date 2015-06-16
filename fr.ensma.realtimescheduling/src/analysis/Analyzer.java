@@ -1,13 +1,17 @@
 package analysis;
 
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import fr.ensma.realtimescheduling.Interval;
-import fr.ensma.realtimescheduling.Network;
 import fr.ensma.realtimescheduling.Partition;
+import fr.ensma.realtimescheduling.Port;
 import fr.ensma.realtimescheduling.Route;
 import fr.ensma.realtimescheduling.Task;
 
@@ -132,21 +136,84 @@ class Analyzer {
 	
 	/**
 	 * Performs the first forward-analysis paper algorithm.
-	 * This is not the improved version. This method
-	 * assumes the network is valid under these criteria:
-	 * 1. No cycles
-	 * 2. All virtual links start at a 'start' node (node with no incoming links)
-	 * 	  and end at 'end' nodes (nodes without outgoing links)
-	 * 3. All nodes are part of some virtual link
+	 * This is not the improved version.
 	 * 
 	 * @param net Network being analyzed
 	 * @return Map from virtual link to worst case end-to-end delay as a double
 	 */
-	static Map<Route, Double> FA1(Network net) {
-		/* Build auxilary DSs */
-		/* Perform algorithm */
-		/* Return to user */
-		return null;
+	static Map<Route, Double> FA1(fr.ensma.realtimescheduling.System system) {
+		//all switches and all end systems will inherit the network bandwidth
+		double networkBandwith = system.getUses().getCommunicatesOver().getNetworkBandwidth();
+		system.getUses().getCommunicatesOver().getSwitches().stream().flatMap(s -> s.getSwitchPorts().stream()).forEach(port -> port.setBandwidth(networkBandwith));
+		system.getUses().getScheduledOn().stream().flatMap(mod -> mod.getModulePorts().stream()).forEach(port -> port.setBandwidth(networkBandwith));
+		
+		System.out.println("FA1 Invoked");
+		Map<Route, Double> results = new HashMap<>();
+		List<Flow> gamma = system.getExecutesSoftware().getVirtualLInks()
+				.stream()
+				.flatMap(vl -> vl.getRoutes().stream())
+				.map(route -> new Flow(system.getUses().getCommunicatesOver(), route))
+				.collect(Collectors.toList());//now need to create PortWrapperss
+		System.out.println("Flows established");
+		Set<Port> allNodes = gamma //all nodes used. Some ports may only be input ports and are therefore not counted
+				.stream()
+				.flatMap(flow -> flow.P_i.stream())
+				.collect(Collectors.toSet());
+		List<PortWrapper> portWrappers = allNodes
+				.stream()
+				.map(p -> new PortWrapper(p, gamma)) //to PortWrappers
+				.collect(Collectors.toList());
+		System.out.println("Order assigned");
+		//group them by order now.
+		Map<Integer, List<PortWrapper>> byOrder = new HashMap<>();
+		IntStream.rangeClosed(1, portWrappers.stream().mapToInt(pw -> pw.order).max().getAsInt()) // from 1 to max order
+			.forEach(order -> {
+				List<PortWrapper> thisOrder = portWrappers.stream().filter(pw -> pw.order == order).collect(Collectors.toList());
+				byOrder.put(order, thisOrder);
+			});
+		System.out.println("Partitioned by order. Beginning algorithm.");
+		//TODO we need to topologically sort nodes in an order but that will 
+		//be dealt with later
+		for(Flow v : gamma) {
+			v.setSmin(v.first, 0.0);
+			v.setSmax(v.first, 0.0);
+		}
+		for(Map.Entry<Integer, List<PortWrapper>> order : byOrder.entrySet()) {
+			System.out.println("Calculating order " + order.getKey());
+			for(PortWrapper h : order.getValue()) {
+				for(Flow v : h.flowsThroughMe) {
+					v.calculateJitterFor(h.port);
+				}
+				//h.B(); used in the Bklg calculation
+				Function<Double, Double> W = t -> h.flowsThroughMe.stream().mapToDouble(v -> v.RBF(h.port, t)).sum();
+				for(Flow v : h.flowsThroughMe) {
+					v.calculateBklgFor(h, W);
+					if (h.port != v.last) {
+						v.setSmin(v.successor(h.port), v.rankOf(h.port)*(v.link.getMaxFrameSize() / h.port.getBandwidth()) + 16.0); //TODO move latency
+						v.setSmax(v.successor(h.port), v.SmaxFor(h.port)+v.BklgFor(h.port)+(v.link.getMaxFrameSize() / h.port.getBandwidth()) + 16.0);
+					} else {
+						v.ETEDelay = v.SmaxFor(h.port) + v.BklgFor(h.port) + v.link.getMaxFrameSize() / h.port.getBandwidth();
+						results.put(v.r, v.ETEDelay);
+					}
+				}
+			}
+		}
+		Flow vl1 = gamma.stream().filter(v -> v.link.getId().equals("VL1")).findAny().get();
+		System.out.println("VL1 Data:");
+		System.out.println("Nodes:");
+		System.out.println(vl1);
+		System.out.println("S_Max:");
+		System.out.println(Arrays.toString(vl1.S_max));
+		System.out.println("S_min:");
+		System.out.println(Arrays.toString(vl1.S_min));
+		System.out.println("Bklg:");
+		System.out.println(Arrays.toString(vl1.Bklg));
+		PortWrapper micro = portWrappers.stream().filter(pw -> pw.port.getId() == 1).findAny().get();
+		System.out.println("B^ES1:");
+		System.out.println();
+		System.out.println("B function: " + micro.B());
+		System.out.println("BP function: " + micro.BP());
+		return results;
 	}
 	
 	

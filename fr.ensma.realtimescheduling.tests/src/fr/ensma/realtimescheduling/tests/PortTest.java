@@ -13,6 +13,7 @@ import junit.framework.TestCase;
  * The following features are tested:
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.Port#getOrder() <em>Order</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Port#getBandwidth() <em>Bandwidth</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -78,6 +79,32 @@ public abstract class PortTest extends TestCase {
 	 * @generated
 	 */
 	public void testSetOrder() {
+		// TODO: implement this feature setter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link fr.ensma.realtimescheduling.Port#getBandwidth() <em>Bandwidth</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.ensma.realtimescheduling.Port#getBandwidth()
+	 * @generated
+	 */
+	public void testGetBandwidth() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link fr.ensma.realtimescheduling.Port#setBandwidth(double) <em>Bandwidth</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.ensma.realtimescheduling.Port#setBandwidth(double)
+	 * @generated
+	 */
+	public void testSetBandwidth() {
 		// TODO: implement this feature setter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

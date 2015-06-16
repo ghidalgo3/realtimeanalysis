@@ -589,17 +589,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_MaxFrameSize() {
-		return (EAttribute)networkEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getNetwork_Connections() {
-		return (EReference)networkEClass.getEStructuralFeatures().get(4);
+		return (EReference)networkEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -760,17 +751,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getVirtualLink_EndToEndDelay() {
-		return (EAttribute)virtualLinkEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getVirtualLink_Routes() {
-		return (EReference)virtualLinkEClass.getEStructuralFeatures().get(3);
+		return (EReference)virtualLinkEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -779,7 +761,25 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * @generated
 	 */
 	public EReference getVirtualLink_Source() {
+		return (EReference)virtualLinkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getVirtualLink_Destinations() {
 		return (EReference)virtualLinkEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVirtualLink_MaxFrameSize() {
+		return (EAttribute)virtualLinkEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -850,8 +850,17 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConnection_Route() {
+	public EReference getConnection_Routes() {
 		return (EReference)connectionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConnection_Id() {
+		return (EAttribute)connectionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -868,7 +877,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRoute_Destinations() {
+	public EReference getRoute_Connections() {
 		return (EReference)routeEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -877,8 +886,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRoute_Connection() {
-		return (EReference)routeEClass.getEStructuralFeatures().get(1);
+	public EAttribute getRoute_EndToEndDelay() {
+		return (EAttribute)routeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -989,7 +998,6 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		createEAttribute(networkEClass, NETWORK__NAME);
 		createEReference(networkEClass, NETWORK__SWITCHES);
 		createEAttribute(networkEClass, NETWORK__NETWORK_BANDWIDTH);
-		createEAttribute(networkEClass, NETWORK__MAX_FRAME_SIZE);
 		createEReference(networkEClass, NETWORK__CONNECTIONS);
 
 		systemEClass = createEClass(SYSTEM);
@@ -1013,9 +1021,10 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		virtualLinkEClass = createEClass(VIRTUAL_LINK);
 		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__ID);
 		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__MIN_INTER_FRAME_TIME);
-		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__END_TO_END_DELAY);
 		createEReference(virtualLinkEClass, VIRTUAL_LINK__ROUTES);
 		createEReference(virtualLinkEClass, VIRTUAL_LINK__SOURCE);
+		createEReference(virtualLinkEClass, VIRTUAL_LINK__DESTINATIONS);
+		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__MAX_FRAME_SIZE);
 
 		portEClass = createEClass(PORT);
 		createEAttribute(portEClass, PORT__ORDER);
@@ -1025,11 +1034,12 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 
 		connectionEClass = createEClass(CONNECTION);
 		createEReference(connectionEClass, CONNECTION__PORTS);
-		createEReference(connectionEClass, CONNECTION__ROUTE);
+		createEReference(connectionEClass, CONNECTION__ROUTES);
+		createEAttribute(connectionEClass, CONNECTION__ID);
 
 		routeEClass = createEClass(ROUTE);
-		createEReference(routeEClass, ROUTE__DESTINATIONS);
-		createEReference(routeEClass, ROUTE__CONNECTION);
+		createEReference(routeEClass, ROUTE__CONNECTIONS);
+		createEAttribute(routeEClass, ROUTE__END_TO_END_DELAY);
 
 		switchPortEClass = createEClass(SWITCH_PORT);
 
@@ -1115,8 +1125,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetwork_Name(), ecorePackage.getEString(), "name", null, 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNetwork_Switches(), this.getSwitch(), null, "switches", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNetwork_NetworkBandwidth(), ecorePackage.getEDouble(), "networkBandwidth", "0.0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNetwork_MaxFrameSize(), ecorePackage.getEDouble(), "maxFrameSize", "0.0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_NetworkBandwidth(), ecorePackage.getEInt(), "networkBandwidth", "0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNetwork_Connections(), this.getConnection(), null, "connections", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, fr.ensma.realtimescheduling.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1140,23 +1149,25 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEClass(virtualLinkEClass, VirtualLink.class, "VirtualLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVirtualLink_Id(), ecorePackage.getEString(), "id", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVirtualLink_MinInterFrameTime(), ecorePackage.getEInt(), "minInterFrameTime", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVirtualLink_EndToEndDelay(), ecorePackage.getEInt(), "endToEndDelay", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVirtualLink_Routes(), this.getRoute(), null, "routes", null, 1, -1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVirtualLink_Source(), this.getModule(), null, "source", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVirtualLink_Destinations(), this.getModule(), null, "destinations", null, 1, -1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVirtualLink_MaxFrameSize(), ecorePackage.getEInt(), "maxFrameSize", "0", 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPort_Order(), ecorePackage.getEInt(), "order", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPort_Bandwidth(), ecorePackage.getEDouble(), "Bandwidth", "0.0", 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPort_Bandwidth(), ecorePackage.getEDouble(), "Bandwidth", "0.0", 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPort_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPort_Connection(), this.getConnection(), this.getConnection_Ports(), "connection", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectionEClass, Connection.class, "Connection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConnection_Ports(), this.getPort(), this.getPort_Connection(), "ports", null, 2, 2, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConnection_Route(), this.getRoute(), this.getRoute_Connection(), "route", null, 0, -1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnection_Routes(), this.getRoute(), this.getRoute_Connections(), "routes", null, 0, -1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnection_Id(), ecorePackage.getEString(), "id", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(routeEClass, Route.class, "Route", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRoute_Destinations(), this.getModule(), null, "destinations", null, 1, -1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRoute_Connection(), this.getConnection(), this.getConnection_Route(), "connection", null, 0, -1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRoute_Connections(), this.getConnection(), this.getConnection_Routes(), "connections", null, 0, -1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoute_EndToEndDelay(), ecorePackage.getEInt(), "endToEndDelay", null, 1, 1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(switchPortEClass, SwitchPort.class, "SwitchPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1177,10 +1188,28 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		createResource(eNS_URI);
 
 		// Create annotations
+		// http://www.eclipse.org/OCL/Import
+		createImportAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
 		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createImportAnnotations() {
+		String source = "http://www.eclipse.org/OCL/Import";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "ecore", "http://www.eclipse.org/emf/2002/Ecore"
+		   });
 	}
 
 	/**
@@ -1224,7 +1253,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 			 "constraints", "EndAfterStart NonZeroLength"
 		   });	
 		addAnnotation
-		  (routeEClass, 
+		  (virtualLinkEClass, 
 		   source, 
 		   new String[] {
 			 "constraints", "DestinationsCannotIncludeSource"
@@ -1245,7 +1274,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		   new String[] {
 			 "PositiveWCET", "worstCaseExecTime > 0",
 			 "ExecutionAndDeadlineAllowsCompletion", "worstCaseExecTime <= implicitDeadline",
-			 "ExecutionAndPeriodAllowsCompletion", "if (periodicity <> Periodicity::Aperiodic)\n\t\t\tthen worstCaseExecTime <= characteristicPeriod\n\t\t\telse true\n\t\t\tendif",
+			 "ExecutionAndPeriodAllowsCompletion", "\n\t\tif (periodicity <> Periodicity::Aperiodic)\n\t\t\tthen worstCaseExecTime <= characteristicPeriod\n\t\t\telse true\n\t\t\tendif",
 			 "DeadlineLessThanPeriod", "implicitDeadline <= characteristicPeriod",
 			 "PositivePeriod", "characteristicPeriod > 0"
 		   });	
@@ -1291,7 +1320,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 			 "NonZeroLength", "end <> start"
 		   });	
 		addAnnotation
-		  (routeEClass, 
+		  (virtualLinkEClass, 
 		   source, 
 		   new String[] {
 			 "DestinationsCannotIncludeSource", "\n\t\t\tdestinations->forAll(dest : Module | dest <> source)"

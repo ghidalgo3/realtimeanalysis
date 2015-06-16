@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -26,9 +27,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getEndToEndDelay <em>End To End Delay</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getRoutes <em>Routes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getDestinations <em>Destinations</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getMaxFrameSize <em>Max Frame Size</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,26 +78,6 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	protected int minInterFrameTime = MIN_INTER_FRAME_TIME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getEndToEndDelay() <em>End To End Delay</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEndToEndDelay()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int END_TO_END_DELAY_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getEndToEndDelay() <em>End To End Delay</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEndToEndDelay()
-	 * @generated
-	 * @ordered
-	 */
-	protected int endToEndDelay = END_TO_END_DELAY_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getRoutes() <em>Routes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -114,6 +96,36 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * @ordered
 	 */
 	protected Module source;
+
+	/**
+	 * The cached value of the '{@link #getDestinations() <em>Destinations</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDestinations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Module> destinations;
+
+	/**
+	 * The default value of the '{@link #getMaxFrameSize() <em>Max Frame Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxFrameSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MAX_FRAME_SIZE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getMaxFrameSize() <em>Max Frame Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxFrameSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected int maxFrameSize = MAX_FRAME_SIZE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -181,27 +193,6 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getEndToEndDelay() {
-		return endToEndDelay;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEndToEndDelay(int newEndToEndDelay) {
-		int oldEndToEndDelay = endToEndDelay;
-		endToEndDelay = newEndToEndDelay;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY, oldEndToEndDelay, endToEndDelay));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Route> getRoutes() {
 		if (routes == null) {
 			routes = new EObjectContainmentEList<Route>(Route.class, this, RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES);
@@ -252,6 +243,39 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Module> getDestinations() {
+		if (destinations == null) {
+			destinations = new EObjectResolvingEList<Module>(Module.class, this, RealtimeschedulingPackage.VIRTUAL_LINK__DESTINATIONS);
+		}
+		return destinations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getMaxFrameSize() {
+		return maxFrameSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMaxFrameSize(int newMaxFrameSize) {
+		int oldMaxFrameSize = maxFrameSize;
+		maxFrameSize = newMaxFrameSize;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.VIRTUAL_LINK__MAX_FRAME_SIZE, oldMaxFrameSize, maxFrameSize));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -273,13 +297,15 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 				return getId();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
 				return getMinInterFrameTime();
-			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
-				return getEndToEndDelay();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				return getRoutes();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE:
 				if (resolve) return getSource();
 				return basicGetSource();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__DESTINATIONS:
+				return getDestinations();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__MAX_FRAME_SIZE:
+				return getMaxFrameSize();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -299,15 +325,19 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
 				setMinInterFrameTime((Integer)newValue);
 				return;
-			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
-				setEndToEndDelay((Integer)newValue);
-				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				getRoutes().clear();
 				getRoutes().addAll((Collection<? extends Route>)newValue);
 				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE:
 				setSource((Module)newValue);
+				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__DESTINATIONS:
+				getDestinations().clear();
+				getDestinations().addAll((Collection<? extends Module>)newValue);
+				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__MAX_FRAME_SIZE:
+				setMaxFrameSize((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -327,14 +357,17 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
 				setMinInterFrameTime(MIN_INTER_FRAME_TIME_EDEFAULT);
 				return;
-			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
-				setEndToEndDelay(END_TO_END_DELAY_EDEFAULT);
-				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				getRoutes().clear();
 				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE:
 				setSource((Module)null);
+				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__DESTINATIONS:
+				getDestinations().clear();
+				return;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__MAX_FRAME_SIZE:
+				setMaxFrameSize(MAX_FRAME_SIZE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -352,12 +385,14 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
 				return minInterFrameTime != MIN_INTER_FRAME_TIME_EDEFAULT;
-			case RealtimeschedulingPackage.VIRTUAL_LINK__END_TO_END_DELAY:
-				return endToEndDelay != END_TO_END_DELAY_EDEFAULT;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				return routes != null && !routes.isEmpty();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE:
 				return source != null;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__DESTINATIONS:
+				return destinations != null && !destinations.isEmpty();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__MAX_FRAME_SIZE:
+				return maxFrameSize != MAX_FRAME_SIZE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -376,8 +411,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 		result.append(id);
 		result.append(", minInterFrameTime: ");
 		result.append(minInterFrameTime);
-		result.append(", endToEndDelay: ");
-		result.append(endToEndDelay);
+		result.append(", maxFrameSize: ");
+		result.append(maxFrameSize);
 		result.append(')');
 		return result.toString();
 	}

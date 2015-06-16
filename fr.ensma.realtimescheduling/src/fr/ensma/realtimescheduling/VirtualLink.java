@@ -15,14 +15,16 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getEndToEndDelay <em>End To End Delay</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getRoutes <em>Routes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getSource <em>Source</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getDestinations <em>Destinations</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getMaxFrameSize <em>Max Frame Size</em>}</li>
  * </ul>
  * </p>
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='DestinationsCannotIncludeSource'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot DestinationsCannotIncludeSource='\n\t\t\tdestinations->forAll(dest : Module | dest <> source)'"
  * @generated
  */
 public interface VirtualLink extends EObject {
@@ -79,32 +81,6 @@ public interface VirtualLink extends EObject {
 	void setMinInterFrameTime(int value);
 
 	/**
-	 * Returns the value of the '<em><b>End To End Delay</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>End To End Delay</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>End To End Delay</em>' attribute.
-	 * @see #setEndToEndDelay(int)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_EndToEndDelay()
-	 * @model required="true"
-	 * @generated
-	 */
-	int getEndToEndDelay();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getEndToEndDelay <em>End To End Delay</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>End To End Delay</em>' attribute.
-	 * @see #getEndToEndDelay()
-	 * @generated
-	 */
-	void setEndToEndDelay(int value);
-
-	/**
 	 * Returns the value of the '<em><b>Routes</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.Route}.
 	 * <!-- begin-user-doc -->
@@ -145,5 +121,48 @@ public interface VirtualLink extends EObject {
 	 * @generated
 	 */
 	void setSource(Module value);
+
+	/**
+	 * Returns the value of the '<em><b>Destinations</b></em>' reference list.
+	 * The list contents are of type {@link fr.ensma.realtimescheduling.Module}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Destinations</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Destinations</em>' reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_Destinations()
+	 * @model required="true"
+	 * @generated
+	 */
+	EList<Module> getDestinations();
+
+	/**
+	 * Returns the value of the '<em><b>Max Frame Size</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Max Frame Size</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Max Frame Size</em>' attribute.
+	 * @see #setMaxFrameSize(int)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_MaxFrameSize()
+	 * @model default="0" required="true"
+	 * @generated
+	 */
+	int getMaxFrameSize();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getMaxFrameSize <em>Max Frame Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Max Frame Size</em>' attribute.
+	 * @see #getMaxFrameSize()
+	 * @generated
+	 */
+	void setMaxFrameSize(int value);
 
 } // VirtualLink

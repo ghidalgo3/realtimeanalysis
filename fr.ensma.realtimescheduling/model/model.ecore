@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="realtimescheduling" nsURI="ensma.fr" nsPrefix="ensma.fr">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
   <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
     <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
@@ -19,7 +22,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="PositiveWCET" value="worstCaseExecTime > 0"/>
       <details key="ExecutionAndDeadlineAllowsCompletion" value="worstCaseExecTime &lt;= implicitDeadline"/>
-      <details key="ExecutionAndPeriodAllowsCompletion" value="if (periodicity &lt;> Periodicity::Aperiodic)&#xA;&#x9;&#x9;&#x9;then worstCaseExecTime &lt;= characteristicPeriod&#xA;&#x9;&#x9;&#x9;else true&#xA;&#x9;&#x9;&#x9;endif"/>
+      <details key="ExecutionAndPeriodAllowsCompletion" value="&#xA;&#x9;&#x9;if (periodicity &lt;> Periodicity::Aperiodic)&#xA;&#x9;&#x9;&#x9;then worstCaseExecTime &lt;= characteristicPeriod&#xA;&#x9;&#x9;&#x9;else true&#xA;&#x9;&#x9;&#x9;endif"/>
       <details key="DeadlineLessThanPeriod" value="implicitDeadline &lt;= characteristicPeriod"/>
       <details key="PositivePeriod" value="characteristicPeriod > 0"/>
     </eAnnotations>
@@ -135,9 +138,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="switches" upperBound="-1"
         eType="#//Switch" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="networkBandwidth" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxFrameSize" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.0"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
         eType="#//Connection" containment="true"/>
   </eClassifiers>
@@ -172,21 +173,30 @@
         upperBound="-1" eType="#//SwitchPort" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="VirtualLink">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="DestinationsCannotIncludeSource"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="DestinationsCannotIncludeSource" value="&#xA;&#x9;&#x9;&#x9;destinations->forAll(dest : Module | dest &lt;> source)"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minInterFrameTime" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endToEndDelay" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="routes" lowerBound="1"
         upperBound="-1" eType="#//Route" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
         eType="#//Module"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destinations" lowerBound="1"
+        upperBound="-1" eType="#//Module"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxFrameSize" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Bandwidth" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.0"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.0"
+        derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connection" lowerBound="1"
         eType="#//Connection" eOpposite="#//Connection/ports"/>
@@ -194,20 +204,15 @@
   <eClassifiers xsi:type="ecore:EClass" name="Connection">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ports" lowerBound="2" upperBound="2"
         eType="#//Port" eOpposite="#//Port/connection"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="route" upperBound="-1"
-        eType="#//Route" eOpposite="#//Route/connection"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routes" upperBound="-1"
+        eType="#//Route" eOpposite="#//Route/connections"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Route">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="DestinationsCannotIncludeSource"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="DestinationsCannotIncludeSource" value="&#xA;&#x9;&#x9;&#x9;destinations->forAll(dest : Module | dest &lt;> source)"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="destinations" lowerBound="1"
-        upperBound="-1" eType="#//Module"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="connection" upperBound="-1"
-        eType="#//Connection" eOpposite="#//Connection/route"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
+        eType="#//Connection" eOpposite="#//Connection/routes"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endToEndDelay" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SwitchPort" eSuperTypes="#//Port"/>
   <eClassifiers xsi:type="ecore:EClass" name="EndSystemPort" eSuperTypes="#//Port"/>

@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SwitchImpl#getId <em>Id</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.SwitchImpl#getLatency <em>Latency</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SwitchImpl#getSwitchPorts <em>Switch Ports</em>}</li>
  * </ul>
  * </p>
@@ -51,26 +50,6 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getLatency() <em>Latency</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLatency()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int LATENCY_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getLatency() <em>Latency</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLatency()
-	 * @generated
-	 * @ordered
-	 */
-	protected int latency = LATENCY_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSwitchPorts() <em>Switch Ports</em>}' containment reference list.
@@ -127,27 +106,6 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getLatency() {
-		return latency;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setLatency(int newLatency) {
-		int oldLatency = latency;
-		latency = newLatency;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.SWITCH__LATENCY, oldLatency, latency));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<SwitchPort> getSwitchPorts() {
 		if (switchPorts == null) {
 			switchPorts = new EObjectContainmentEList<SwitchPort>(SwitchPort.class, this, RealtimeschedulingPackage.SWITCH__SWITCH_PORTS);
@@ -179,8 +137,6 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 		switch (featureID) {
 			case RealtimeschedulingPackage.SWITCH__ID:
 				return getId();
-			case RealtimeschedulingPackage.SWITCH__LATENCY:
-				return getLatency();
 			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:
 				return getSwitchPorts();
 		}
@@ -198,9 +154,6 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 		switch (featureID) {
 			case RealtimeschedulingPackage.SWITCH__ID:
 				setId((String)newValue);
-				return;
-			case RealtimeschedulingPackage.SWITCH__LATENCY:
-				setLatency((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:
 				getSwitchPorts().clear();
@@ -221,9 +174,6 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 			case RealtimeschedulingPackage.SWITCH__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case RealtimeschedulingPackage.SWITCH__LATENCY:
-				setLatency(LATENCY_EDEFAULT);
-				return;
 			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:
 				getSwitchPorts().clear();
 				return;
@@ -241,8 +191,6 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 		switch (featureID) {
 			case RealtimeschedulingPackage.SWITCH__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case RealtimeschedulingPackage.SWITCH__LATENCY:
-				return latency != LATENCY_EDEFAULT;
 			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:
 				return switchPorts != null && !switchPorts.isEmpty();
 		}
@@ -261,8 +209,6 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
 		result.append(id);
-		result.append(", latency: ");
-		result.append(latency);
 		result.append(')');
 		return result.toString();
 	}

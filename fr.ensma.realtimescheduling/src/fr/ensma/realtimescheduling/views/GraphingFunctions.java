@@ -64,6 +64,7 @@ public class GraphingFunctions {
 	 * @param f function used for graphing at the extremes of intervals
 	 * @return data sent to the graph (JFreeChart)
 	 */
+	@SuppressWarnings("unused")
 	private static double[][] applyAtIntervalExtremes(Partition p, BiFunction<Partition, Double, Double> f, int n) {
 		List<Interval> intervals = PartitionUtils.sortedIntervals(p);
 		
@@ -75,14 +76,14 @@ public class GraphingFunctions {
 		for(int period = 0; period < n; period++) {
 			for (int i = 0; i < p.getExecutionIntervals().size(); i++) {
 				xs.set(i*2+period*intervals.size(),
-						(double) (intervals.get(i).getStart()+period*p.getPeriod()));
+						intervals.get(i).getStart()+period*p.getPeriod());
 				ys.set(i*2+period*intervals.size(),
-						f.apply(p, (double) (intervals.get(i).getStart()+period*p.getPeriod())));
+						f.apply(p, intervals.get(i).getStart()+period*p.getPeriod()));
 				
 				xs.set(i*2+1+period*intervals.size(),
-						(double) (intervals.get(i).getEnd()+period*p.getPeriod()));
+						intervals.get(i).getEnd()+period*p.getPeriod());
 				ys.set(i*2+1+period*intervals.size(),
-						f.apply(p, (double) (intervals.get(i).getEnd()+period*p.getPeriod())));
+						f.apply(p, intervals.get(i).getEnd()+period*p.getPeriod()));
 			}
 		}
 		
@@ -91,8 +92,8 @@ public class GraphingFunctions {
 			ys.add(0, 0.0);
 		}
 		if(PartitionUtils.getLastIntervalEnd(p) != p.getPeriod()) {
-			xs.add((double) (p.getPeriod()*n));
-			ys.add(f.apply(p, (double) (p.getPeriod()*n)));
+			xs.add(p.getPeriod()*n);
+			ys.add(f.apply(p, p.getPeriod()*n));
 		}
 		double[][] data = new double[2][xs.size()];
 		for(int i = 0; i < xs.size(); i++) {

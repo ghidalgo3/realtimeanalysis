@@ -63,6 +63,7 @@ public class NetworkItemProvider
 
 			addNamePropertyDescriptor(object);
 			addNetworkBandwidthPropertyDescriptor(object);
+			addLatencyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -103,6 +104,28 @@ public class NetworkItemProvider
 				 getString("_UI_Network_networkBandwidth_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Network_networkBandwidth_feature", "_UI_Network_type"),
 				 RealtimeschedulingPackage.Literals.NETWORK__NETWORK_BANDWIDTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Latency feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLatencyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Network_latency_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Network_latency_feature", "_UI_Network_type"),
+				 RealtimeschedulingPackage.Literals.NETWORK__LATENCY,
 				 true,
 				 false,
 				 false,
@@ -182,6 +205,7 @@ public class NetworkItemProvider
 		switch (notification.getFeatureID(Network.class)) {
 			case RealtimeschedulingPackage.NETWORK__NAME:
 			case RealtimeschedulingPackage.NETWORK__NETWORK_BANDWIDTH:
+			case RealtimeschedulingPackage.NETWORK__LATENCY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case RealtimeschedulingPackage.NETWORK__SWITCHES:

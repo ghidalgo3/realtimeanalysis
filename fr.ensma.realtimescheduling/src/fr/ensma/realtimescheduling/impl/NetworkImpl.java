@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getSwitches <em>Switches</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getNetworkBandwidth <em>Network Bandwidth</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getConnections <em>Connections</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.NetworkImpl#getLatency <em>Latency</em>}</li>
  * </ul>
  * </p>
  *
@@ -99,6 +100,26 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * @ordered
 	 */
 	protected EList<Connection> connections;
+
+	/**
+	 * The default value of the '{@link #getLatency() <em>Latency</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLatency()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LATENCY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getLatency() <em>Latency</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLatency()
+	 * @generated
+	 * @ordered
+	 */
+	protected int latency = LATENCY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -190,6 +211,27 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getLatency() {
+		return latency;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLatency(int newLatency) {
+		int oldLatency = latency;
+		latency = newLatency;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.NETWORK__LATENCY, oldLatency, latency));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -217,6 +259,8 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				return getNetworkBandwidth();
 			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
 				return getConnections();
+			case RealtimeschedulingPackage.NETWORK__LATENCY:
+				return getLatency();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -244,6 +288,9 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				getConnections().clear();
 				getConnections().addAll((Collection<? extends Connection>)newValue);
 				return;
+			case RealtimeschedulingPackage.NETWORK__LATENCY:
+				setLatency((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -268,6 +315,9 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
 				getConnections().clear();
 				return;
+			case RealtimeschedulingPackage.NETWORK__LATENCY:
+				setLatency(LATENCY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -288,6 +338,8 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 				return networkBandwidth != NETWORK_BANDWIDTH_EDEFAULT;
 			case RealtimeschedulingPackage.NETWORK__CONNECTIONS:
 				return connections != null && !connections.isEmpty();
+			case RealtimeschedulingPackage.NETWORK__LATENCY:
+				return latency != LATENCY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -306,6 +358,8 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 		result.append(name);
 		result.append(", networkBandwidth: ");
 		result.append(networkBandwidth);
+		result.append(", latency: ");
+		result.append(latency);
 		result.append(')');
 		return result.toString();
 	}

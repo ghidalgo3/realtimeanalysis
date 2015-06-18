@@ -10,9 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Partition;
-import fr.ensma.realtimescheduling.Route;
 import fr.ensma.realtimescheduling.Task;
-import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * This class houses methods to interface between the Ecore model and this package's
@@ -168,13 +166,14 @@ public class ModelInterface {
 			l.add("System is invalid. Please validate the system successfully.");
 			return null;
 		}
-		Map<Route, Double> results = Analyzer.FA1(system);
-		for(Map.Entry<Route, Double> delay : results.entrySet()) {
-			l.add(String.format("Route %s -> %s  has ETE delay %.2f",
-					((VirtualLink)delay.getKey().eContainer()).getSource().getId(),
-					"Some destination", //somehow put destination here
+		Map<Flow, Double> results = Analyzer.FA1(system);
+		for(Map.Entry<Flow, Double> delay : results.entrySet()) {
+			l.add(String.format("%s: Route %s -> %s  has ETE delay %.2f",
+					delay.getKey().link.getId(),
+					delay.getKey().first.getId(),
+					delay.getKey().last.getId(), 
 					delay.getValue()));
-			delay.getKey().setEndToEndDelay(delay.getValue().intValue());
+			delay.getKey().r.setEndToEndDelay(delay.getValue().intValue());
 		}
 //		system.getUses().getCommunicatesOver().getVirtualLinks().stream().forEachOrdered(vl -> l.add(vl.getNodes().toString() + "\n"));
 		return l;

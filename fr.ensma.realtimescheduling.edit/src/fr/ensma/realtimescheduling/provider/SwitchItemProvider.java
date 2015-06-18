@@ -64,7 +64,6 @@ public class SwitchItemProvider
 			super.getPropertyDescriptors(object);
 
 			addIdPropertyDescriptor(object);
-			addLatencyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,28 +86,6 @@ public class SwitchItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Latency feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addLatencyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Switch_latency_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Switch_latency_feature", "_UI_Switch_type"),
-				 RealtimeschedulingPackage.Literals.SWITCH__LATENCY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -182,7 +159,6 @@ public class SwitchItemProvider
 
 		switch (notification.getFeatureID(Switch.class)) {
 			case RealtimeschedulingPackage.SWITCH__ID:
-			case RealtimeschedulingPackage.SWITCH__LATENCY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:

@@ -141,6 +141,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
         eType="#//Connection" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="latency" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="System">
     <eStructuralFeatures xsi:type="ecore:EReference" name="uses" lowerBound="1" eType="#//HardwareResource"
@@ -167,8 +169,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Switch">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="latency" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="switchPorts" lowerBound="1"
         upperBound="-1" eType="#//SwitchPort" containment="true"/>
   </eClassifiers>

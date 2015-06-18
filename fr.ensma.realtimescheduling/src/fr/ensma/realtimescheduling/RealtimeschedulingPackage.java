@@ -516,13 +516,22 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int NETWORK__CONNECTIONS = 3;
 
 	/**
+	 * The feature id for the '<em><b>Latency</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__LATENCY = 4;
+
+	/**
 	 * The number of structural features of the '<em>Network</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK_FEATURE_COUNT = 4;
+	int NETWORK_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Network</em>' class.
@@ -700,22 +709,13 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int SWITCH__ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Latency</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SWITCH__LATENCY = 1;
-
-	/**
 	 * The feature id for the '<em><b>Switch Ports</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SWITCH__SWITCH_PORTS = 2;
+	int SWITCH__SWITCH_PORTS = 1;
 
 	/**
 	 * The number of structural features of the '<em>Switch</em>' class.
@@ -724,7 +724,7 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SWITCH_FEATURE_COUNT = 3;
+	int SWITCH_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Switch</em>' class.
@@ -1566,6 +1566,17 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EReference getNetwork_Connections();
 
 	/**
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Network#getLatency <em>Latency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Latency</em>'.
+	 * @see fr.ensma.realtimescheduling.Network#getLatency()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Latency();
+
+	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.System <em>System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1692,17 +1703,6 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSwitch_Id();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Switch#getLatency <em>Latency</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Latency</em>'.
-	 * @see fr.ensma.realtimescheduling.Switch#getLatency()
-	 * @see #getSwitch()
-	 * @generated
-	 */
-	EAttribute getSwitch_Latency();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link fr.ensma.realtimescheduling.Switch#getSwitchPorts <em>Switch Ports</em>}'.
@@ -2316,6 +2316,14 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EReference NETWORK__CONNECTIONS = eINSTANCE.getNetwork_Connections();
 
 		/**
+		 * The meta object literal for the '<em><b>Latency</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__LATENCY = eINSTANCE.getNetwork_Latency();
+
+		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.SystemImpl <em>System</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2418,14 +2426,6 @@ public interface RealtimeschedulingPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SWITCH__ID = eINSTANCE.getSwitch_Id();
-
-		/**
-		 * The meta object literal for the '<em><b>Latency</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SWITCH__LATENCY = eINSTANCE.getSwitch_Latency();
 
 		/**
 		 * The meta object literal for the '<em><b>Switch Ports</b></em>' containment reference list feature.

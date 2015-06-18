@@ -598,6 +598,15 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getNetwork_Latency() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSystem() {
 		return systemEClass;
 	}
@@ -706,17 +715,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSwitch_Latency() {
-		return (EAttribute)switchEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getSwitch_SwitchPorts() {
-		return (EReference)switchEClass.getEStructuralFeatures().get(2);
+		return (EReference)switchEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -999,6 +999,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		createEReference(networkEClass, NETWORK__SWITCHES);
 		createEAttribute(networkEClass, NETWORK__NETWORK_BANDWIDTH);
 		createEReference(networkEClass, NETWORK__CONNECTIONS);
+		createEAttribute(networkEClass, NETWORK__LATENCY);
 
 		systemEClass = createEClass(SYSTEM);
 		createEReference(systemEClass, SYSTEM__USES);
@@ -1015,7 +1016,6 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 
 		switchEClass = createEClass(SWITCH);
 		createEAttribute(switchEClass, SWITCH__ID);
-		createEAttribute(switchEClass, SWITCH__LATENCY);
 		createEReference(switchEClass, SWITCH__SWITCH_PORTS);
 
 		virtualLinkEClass = createEClass(VIRTUAL_LINK);
@@ -1127,6 +1127,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEReference(getNetwork_Switches(), this.getSwitch(), null, "switches", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_NetworkBandwidth(), ecorePackage.getEInt(), "networkBandwidth", "0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNetwork_Connections(), this.getConnection(), null, "connections", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Latency(), ecorePackage.getEInt(), "latency", "0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, fr.ensma.realtimescheduling.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystem_Uses(), this.getHardwareResource(), null, "uses", null, 1, 1, fr.ensma.realtimescheduling.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1143,7 +1144,6 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 
 		initEClass(switchEClass, Switch.class, "Switch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSwitch_Id(), ecorePackage.getEString(), "id", null, 1, 1, Switch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSwitch_Latency(), ecorePackage.getEInt(), "latency", "0", 1, 1, Switch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSwitch_SwitchPorts(), this.getSwitchPort(), null, "switchPorts", null, 1, -1, Switch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(virtualLinkEClass, VirtualLink.class, "VirtualLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

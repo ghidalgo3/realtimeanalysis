@@ -6,13 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Port;
-import fr.ensma.realtimescheduling.Route;
 import fr.ensma.realtimescheduling.Task;
 
 /**
@@ -141,14 +141,15 @@ class Analyzer {
 	 * @param net Network being analyzed
 	 * @return Map from virtual link to worst case end-to-end delay as a double
 	 */
-	static Map<Route, Double> FA1(fr.ensma.realtimescheduling.System system) {
+	static Map<Flow, Double> FA1(fr.ensma.realtimescheduling.System system) {
+		int networkLatency = system.getUses().getCommunicatesOver().getLatency();
 		//all switches and all end systems will inherit the network bandwidth
 		double networkBandwith = system.getUses().getCommunicatesOver().getNetworkBandwidth();
 		system.getUses().getCommunicatesOver().getSwitches().stream().flatMap(s -> s.getSwitchPorts().stream()).forEach(port -> port.setBandwidth(networkBandwith));
 		system.getUses().getScheduledOn().stream().flatMap(mod -> mod.getModulePorts().stream()).forEach(port -> port.setBandwidth(networkBandwith));
 		
 		System.out.println("FA1 Invoked");
-		Map<Route, Double> results = new HashMap<>();
+		Map<Flow, Double> results = new HashMap<>();
 		List<Flow> gamma = system.getExecutesSoftware().getVirtualLInks()
 				.stream()
 				.flatMap(vl -> vl.getRoutes().stream())
@@ -165,7 +166,7 @@ class Analyzer {
 				.collect(Collectors.toList());
 		System.out.println("Order assigned");
 		//group them by order now.
-		Map<Integer, List<PortWrapper>> byOrder = new HashMap<>();
+		Map<Integer, List<PortWrapper>> byOrder = new TreeMap<>();
 		IntStream.rangeClosed(1, portWrappers.stream().mapToInt(pw -> pw.order).max().getAsInt()) // from 1 to max order
 			.forEach(order -> {
 				List<PortWrapper> thisOrder = portWrappers.stream().filter(pw -> pw.order == order).collect(Collectors.toList());
@@ -189,17 +190,20 @@ class Analyzer {
 				for(Flow v : h.flowsThroughMe) {
 					v.calculateBklgFor(h, W);
 					if (h.port != v.last) {
-						v.setSmin(v.successor(h.port), v.rankOf(h.port)*(v.link.getMaxFrameSize() / h.port.getBandwidth()) + 16.0); //TODO move latency
-						v.setSmax(v.successor(h.port), v.SmaxFor(h.port)+v.BklgFor(h.port)+(v.link.getMaxFrameSize() / h.port.getBandwidth()) + 16.0);
+						v.setSmin(v.successor(h.port),
+								v.rankOf(h.port) * (v.link.getMaxFrameSize() / h.port.getBandwidth() + networkLatency));
+						v.setSmax(v.successor(h.port),
+								v.SmaxFor(h.port) + v.BklgFor(h.port) + v.link.getMaxFrameSize() / h.port.getBandwidth() + networkLatency);
 					} else {
 						v.ETEDelay = v.SmaxFor(h.port) + v.BklgFor(h.port) + v.link.getMaxFrameSize() / h.port.getBandwidth();
-						results.put(v.r, v.ETEDelay);
+						results.put(v, v.ETEDelay);
 					}
 				}
 			}
 		}
-		Flow vl1 = gamma.stream().filter(v -> v.link.getId().equals("VL1")).findAny().get();
-		System.out.println("VL1 Data:");
+		
+		Flow vl1 = gamma.stream().filter(v -> v.link.getId().equals("VL4")).findAny().get();
+		System.out.println("VL4 Data:");
 		System.out.println("Nodes:");
 		System.out.println(vl1);
 		System.out.println("S_Max:");
@@ -208,11 +212,6 @@ class Analyzer {
 		System.out.println(Arrays.toString(vl1.S_min));
 		System.out.println("Bklg:");
 		System.out.println(Arrays.toString(vl1.Bklg));
-		PortWrapper micro = portWrappers.stream().filter(pw -> pw.port.getId() == 1).findAny().get();
-		System.out.println("B^ES1:");
-		System.out.println();
-		System.out.println("B function: " + micro.B());
-		System.out.println("BP function: " + micro.BP());
 		return results;
 	}
 	

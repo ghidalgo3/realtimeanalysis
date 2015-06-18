@@ -43,7 +43,6 @@ public class Flow {
 	Route r;
 	
 	//already sorted by rank
-	List<Port> nodes;
 	
 	/**
 	 * Given a physical description of a network, 
@@ -105,18 +104,18 @@ public class Flow {
 	}
 	
 	//magic maximization function here
+	//i'm thinking the problem is here
 	public void calculateBklgFor(PortWrapper p, Function<Double, Double> W) {
 		double B_h = p.B();
 		double max = 0.0;
-		for(int i = 0; i < 1000; i++) {
-			double t_ = (B_h/1000)*i;
-			double c = W.apply(t_) - link.getMaxFrameSize()/p.port.getBandwidth() - t_;
+		double C = link.getMaxFrameSize() / p.port.getBandwidth();
+		for (double t = 0.0; t <= B_h; t += B_h / 1000.0) {
+			double c = W.apply(t) - C - t;
 			if(c > max) {
 				max = c;
 			}
 		}
 		Bklg[P_i.indexOf(p.port)] = max;
-		
 	}
 	
 	public double BklgFor(Port p) {
@@ -124,7 +123,7 @@ public class Flow {
 	}
 	
 	public double SmaxFor(Port p) {
-		return S_max[P_i.indexOf(p)];
+		return S_max[ P_i.indexOf(p) ];
 	}
 	
 	public double jitterFor(Port p) {
@@ -146,9 +145,8 @@ public class Flow {
 		return p.getConnection().getPorts().stream().filter(port -> port != p).findFirst().get();
 	}
 	
-	//TODO
 	public double RBF(Port port, double t) {
-		return (1 + Math.floor((t + jitterFor(port))/link.getMinInterFrameTime())) * link.getMaxFrameSize()/port.getBandwidth();
+		return (1 + Math.floor((t + jitterFor(port)) / link.getMinInterFrameTime())) * link.getMaxFrameSize()/port.getBandwidth();
 	}
 	
 	

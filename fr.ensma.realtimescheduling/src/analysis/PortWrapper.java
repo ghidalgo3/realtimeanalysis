@@ -56,33 +56,42 @@ public class PortWrapper {
 		if(B_calc) {return B;}
 		double a = BP() + flowsThroughMe.stream()
 				.mapToDouble(flow -> {
-					return (1 + Math.floor(flow.jitterFor(port)/flow.link.getMinInterFrameTime())) * flow.link.getMinInterFrameTime() - flow.jitterFor(port);
-				}).max()
+					double alpha = (1 + Math.floor(flow.jitterFor(port)/flow.link.getMinInterFrameTime())) * flow.link.getMinInterFrameTime() - flow.jitterFor(port);
+					System.out.println("Alpha calculation for port "+port.getId()+" by flow "+flow.link.getId()+" is "+alpha+".");
+					return alpha;
+				})
+				.max()
 				.getAsDouble();
 		B_calc = true;
 		B = a;
+		System.out.println("BP for "+port.getId()+" is "+BP);
+		System.out.println("B for "+port.getId()+" is "+B);
 		return a;
 	}
 	
 	/**
-	 * Longest busy period calculation. Fixed point algorithm.
+	 * Longest busy period calculation. Fixed point computation.
 	 * lazily evaluated
 	 * @return longest busy period
 	 */
 	public double BP() {
 		if(BP_calc) {return BP;}
-		double a = flowsThroughMe.stream().mapToDouble(flow -> flow.link.getMaxFrameSize()/port.getBandwidth()).sum();
+		double a = flowsThroughMe
+				.stream()
+				.mapToDouble(flow -> flow.link.getMaxFrameSize() / port.getBandwidth()) //sum of transmission delay
+				.sum();
 		double b = -1;
-		while(a != b || Math.abs(a - b) > 0.0001) { //kind of an arbitrary epsilon
+		do { //an arbitrary epsilon
 			System.out.println("Difference between a and b: " + Math.abs(a - b));
 			b = a;
-			final double b_ = b; //dumb java final restrictions
+			final double b_ = b; //dumb java closure restrictions
 			a = flowsThroughMe
 					.stream()
 					.mapToDouble(flow ->
 						Math.ceil(b_ / flow.link.getMinInterFrameTime()) * flow.link.getMaxFrameSize()/port.getBandwidth())
 					.sum();
-		}
+		} while(a != b || Math.abs(a - b) > 0.0001);
+		System.out.println("Difference between a and b at fixed point: " + Math.abs(a - b));
 		BP = a;
 		BP_calc = true;
 		return a;

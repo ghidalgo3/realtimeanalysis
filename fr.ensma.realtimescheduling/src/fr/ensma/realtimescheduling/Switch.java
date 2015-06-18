@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.Switch#getId <em>Id</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Switch#getLatency <em>Latency</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Switch#getSwitchPorts <em>Switch Ports</em>}</li>
  * </ul>
  * </p>
@@ -50,33 +49,6 @@ public interface Switch extends EObject {
 	 * @generated
 	 */
 	void setId(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Latency</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Latency</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Latency</em>' attribute.
-	 * @see #setLatency(int)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getSwitch_Latency()
-	 * @model default="0" required="true"
-	 * @generated
-	 */
-	int getLatency();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Switch#getLatency <em>Latency</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Latency</em>' attribute.
-	 * @see #getLatency()
-	 * @generated
-	 */
-	void setLatency(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Switch Ports</b></em>' containment reference list.

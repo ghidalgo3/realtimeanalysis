@@ -1,6 +1,6 @@
 package analysis;
 
-import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -74,7 +74,7 @@ class Analyzer {
 	 *            index of the task being analyzed
 	 * @return 0 if the task misses its deadline, worst response time otherwise
 	 */
-	static int RTA1(Partition p, List<Task> tasks, int index) {
+	static private int RTA1(Partition p, List<Task> tasks, int index) {
 		int rmax = 0;
 		List<Interval> intervals = PartitionUtils.sortedIntervals(p);
 		for (int j = 0; j < intervals.size(); j++) {
@@ -98,41 +98,41 @@ class Analyzer {
 		return rmax;
 	}
 
-	/**
-	 * This tests for schedulability of a list of tasks in the critical
-	 * partition case. This isn't used, only a sufficient test.
-	 * 
-	 * @param p
-	 *            partition
-	 * @param index
-	 *            index of the task being analyzed
-	 * @return 0 if the task misses its deadline, worst response time otherwise
-	 */
-	@Deprecated
-	static double RTA2(Partition p, int index) {
-		double rmax = 0;
-		List<fr.ensma.realtimescheduling.Task> tasks = p.getTasks();
-		double r, rpp, rppp = tasks.get(index).getWorstCaseExecTime();
-		do {
-			r = rppp;
-			final double r_final = r;
-			rpp = tasks.get(index).getWorstCaseExecTime()
-					+ IntStream
-							.range(0, index)
-							// this is constant in this method.
-							.mapToDouble(
-									k -> Math.ceil(r_final
-											/ tasks.get(k).getCharacteristicPeriod())
-											* tasks.get(k).getWorstCaseExecTime()).sum();
-			rppp = PartitionUtils.inverseSupply(p, rpp);
-		} while (r <= tasks.get(index).getImplicitDeadline() && rppp > r);
-		if (rppp > tasks.get(index).getImplicitDeadline()) {
-			rmax = 0;
-		} else {
-			rmax = Math.max(rppp, rmax);
-		}
-		return rmax;
-	}
+//	/**
+//	 * This tests for schedulability of a list of tasks in the critical
+//	 * partition case. This isn't used, only a sufficient test.
+//	 * 
+//	 * @param p
+//	 *            partition
+//	 * @param index
+//	 *            index of the task being analyzed
+//	 * @return 0 if the task misses its deadline, worst response time otherwise
+//	 */
+//	@Deprecated
+//	static private double RTA2(Partition p, int index) {
+//		double rmax = 0;
+//		List<fr.ensma.realtimescheduling.Task> tasks = p.getTasks();
+//		double r, rpp, rppp = tasks.get(index).getWorstCaseExecTime();
+//		do {
+//			r = rppp;
+//			final double r_final = r;
+//			rpp = tasks.get(index).getWorstCaseExecTime()
+//					+ IntStream
+//							.range(0, index)
+//							// this is constant in this method.
+//							.mapToDouble(
+//									k -> Math.ceil(r_final
+//											/ tasks.get(k).getCharacteristicPeriod())
+//											* tasks.get(k).getWorstCaseExecTime()).sum();
+//			rppp = PartitionUtils.inverseSupply(p, rpp);
+//		} while (r <= tasks.get(index).getImplicitDeadline() && rppp > r);
+//		if (rppp > tasks.get(index).getImplicitDeadline()) {
+//			rmax = 0;
+//		} else {
+//			rmax = Math.max(rppp, rmax);
+//		}
+//		return rmax;
+//	}
 	
 	/**
 	 * Performs the first forward-analysis paper algorithm.
@@ -142,45 +142,23 @@ class Analyzer {
 	 * @return Map from virtual link to worst case end-to-end delay as a double
 	 */
 	static Map<Flow, Double> FA1(fr.ensma.realtimescheduling.System system) {
-		int networkLatency = system.getUses().getCommunicatesOver().getLatency();
-		//all switches and all end systems will inherit the network bandwidth
-		double networkBandwith = system.getUses().getCommunicatesOver().getNetworkBandwidth();
-		system.getUses().getCommunicatesOver().getSwitches().stream().flatMap(s -> s.getSwitchPorts().stream()).forEach(port -> port.setBandwidth(networkBandwith));
-		system.getUses().getScheduledOn().stream().flatMap(mod -> mod.getModulePorts().stream()).forEach(port -> port.setBandwidth(networkBandwith));
-		
-		System.out.println("FA1 Invoked");
-		Map<Flow, Double> results = new HashMap<>();
-		List<Flow> gamma = system.getExecutesSoftware().getVirtualLInks()
+		int networkLatency = normalizeNetwork(system);
+		List<Flow> gamma = extractFlows(system);
+		Set<Port> allOutputPorts = extractOutputPorts(gamma);
+		Collection<PortWrapper> portWrappers = allOutputPorts
 				.stream()
-				.flatMap(vl -> vl.getRoutes().stream())
-				.map(route -> new Flow(system.getUses().getCommunicatesOver(), route))
-				.collect(Collectors.toList());//now need to create PortWrapperss
-		System.out.println("Flows established");
-		Set<Port> allNodes = gamma //all nodes used. Some ports may only be input ports and are therefore not counted
-				.stream()
-				.flatMap(flow -> flow.P_i.stream())
+				.map(p -> new PortWrapper(p, gamma))
 				.collect(Collectors.toSet());
-		List<PortWrapper> portWrappers = allNodes
-				.stream()
-				.map(p -> new PortWrapper(p, gamma)) //to PortWrappers
-				.collect(Collectors.toList());
-		System.out.println("Order assigned");
 		//group them by order now.
-		Map<Integer, List<PortWrapper>> byOrder = new TreeMap<>();
-		IntStream.rangeClosed(1, portWrappers.stream().mapToInt(pw -> pw.order).max().getAsInt()) // from 1 to max order
-			.forEach(order -> {
-				List<PortWrapper> thisOrder = portWrappers.stream().filter(pw -> pw.order == order).collect(Collectors.toList());
-				byOrder.put(order, thisOrder);
-			});
-		System.out.println("Partitioned by order. Beginning algorithm.");
-		//TODO we need to topologically sort nodes in an order but that will 
-		//be dealt with later
+		Map<Integer, List<PortWrapper>> byOrder = partitionByOrder(portWrappers);
+		/* SET UP DONE */
+		Map<Flow, Double> results = new HashMap<>();
+		//TODO we need to topologically sort nodes in an order
 		for(Flow v : gamma) {
 			v.setSmin(v.first, 0.0);
 			v.setSmax(v.first, 0.0);
 		}
 		for(Map.Entry<Integer, List<PortWrapper>> order : byOrder.entrySet()) {
-			System.out.println("Calculating order " + order.getKey());
 			for(PortWrapper h : order.getValue()) {
 				for(Flow v : h.flowsThroughMe) {
 					v.calculateJitterFor(h.port);
@@ -201,19 +179,66 @@ class Analyzer {
 				}
 			}
 		}
-		
-		Flow vl1 = gamma.stream().filter(v -> v.link.getId().equals("VL4")).findAny().get();
-		System.out.println("VL4 Data:");
-		System.out.println("Nodes:");
-		System.out.println(vl1);
-		System.out.println("S_Max:");
-		System.out.println(Arrays.toString(vl1.S_max));
-		System.out.println("S_min:");
-		System.out.println(Arrays.toString(vl1.S_min));
-		System.out.println("Bklg:");
-		System.out.println(Arrays.toString(vl1.Bklg));
+		for(Flow v : gamma) {
+			System.out.println(v);
+		}
+		for(PortWrapper p : portWrappers) {
+			System.out.println(p);
+		}
 		return results;
 	}
-	
-	
+
+	/**
+	 * Forces all switch ports and module ports to have the same bandwidth
+	 * 
+	 * @param system
+	 * @return The global network latency
+	 */
+	private static int normalizeNetwork(fr.ensma.realtimescheduling.System system) {
+		int networkLatency = system.getUses().getCommunicatesOver().getLatency();
+		//all switches and all end systems will inherit the network bandwidth
+		double networkBandwith = system.getUses().getCommunicatesOver().getNetworkBandwidth();
+		system.getUses().getCommunicatesOver().getSwitches().stream().flatMap(s -> s.getSwitchPorts().stream()).forEach(port -> port.setBandwidth(networkBandwith));
+		system.getUses().getScheduledOn().stream().flatMap(mod -> mod.getModulePorts().stream()).forEach(port -> port.setBandwidth(networkBandwith));
+		return networkLatency;
+	}
+
+	private static Map<Integer, List<PortWrapper>> partitionByOrder(
+			Collection<PortWrapper> portWrappers) {
+		Map<Integer, List<PortWrapper>> byOrder = new TreeMap<>();
+		IntStream.rangeClosed(1, portWrappers.stream().mapToInt(pw -> pw.order).max().getAsInt()) // from 1 to max order
+			.forEach(order -> {
+				List<PortWrapper> thisOrder = portWrappers.stream().filter(pw -> pw.order == order).collect(Collectors.toList());
+				byOrder.put(order, thisOrder);
+			});
+		return byOrder;
+	}
+
+	private static Set<Port> extractOutputPorts(List<Flow> gamma) {
+		Set<Port> allOutputPorts = gamma //Some ports may only be input ports and are not counted
+				.stream()
+				.flatMap(flow -> flow.P_i.stream())
+				.collect(Collectors.toSet());
+		return allOutputPorts;
+	}
+
+	private static List<Flow> extractFlows(fr.ensma.realtimescheduling.System system) {
+		List<Flow> gamma = system.getExecutesSoftware().getVirtualLInks()
+				.stream()
+				.flatMap(vl -> vl.getRoutes().stream())
+				.map(route -> new Flow(system.getUses().getCommunicatesOver(), route))
+				.collect(Collectors.toList());//now need to create PortWrapperss
+		return gamma;
+	}
+
+	/**
+	 * Performs the second, improved forward-analysis paper algorithm.
+	 * This takes the serialization effect into account.
+	 * 
+	 * @param net Network being analyzed
+	 * @return Map from virtual link to worst case end-to-end delay as a double
+	 */
+	static Map<Flow, Double> FA2(fr.ensma.realtimescheduling.System system) {
+		return null;
+	}
 }

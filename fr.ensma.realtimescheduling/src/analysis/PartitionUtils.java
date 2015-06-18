@@ -139,11 +139,11 @@ public class PartitionUtils {
 	public static Comparator<Task> getComparator(Partition p) {
 		switch (p.getSchedulingAlgorithm().getValue()) {
 		case SchedulingAlgorithm.DEADLINE_MONOTONIC_VALUE:
-			return ModelInterface::deadlineMonotonic;
+			return (o1,o2) -> Double.compare(o1.getImplicitDeadline(), o2.getImplicitDeadline());
 		case SchedulingAlgorithm.FIXED_PRIORITY_VALUE:
-			return ModelInterface::fixedPriority;
+			return (o1,o2) -> Integer.compare(o2.getPriority(), o1.getPriority());
 		case SchedulingAlgorithm.RATE_MONOTONIC_VALUE:
-			return ModelInterface::rateMonotonic;
+			return (o1, o2) -> Double.compare(o1.getCharacteristicPeriod(), o2.getCharacteristicPeriod());
 		default:
 			return null;
 		}

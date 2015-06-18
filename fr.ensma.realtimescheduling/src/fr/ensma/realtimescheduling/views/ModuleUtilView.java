@@ -93,7 +93,7 @@ public class ModuleUtilView extends AbstractLineChart {
 
 	@Override
 	void queryModel() {
-		if(ModelInterface.validSystem()) {
+		if(ModelInterface.isValidSystem()) {
 			modelModules = ModelInterface.system.getUses().getScheduledOn().stream().collect(Collectors.toList());
 			modules.setItems(modelModules.stream().map(Module::getId).collect(Collectors.toList()).toArray(new String[0]));
 		} 

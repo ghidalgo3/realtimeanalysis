@@ -19,7 +19,7 @@ public class RTAHandler extends AbstractHandler implements IHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		HandlerUtils.holisticAnalysis(ModelInterface.perPartitionScheduling(), event);
+		HandlerUtils.holisticAnalysis(ModelInterface.perPartitionSchedulingAnalysis(), event);
 		return null;
 	}
 

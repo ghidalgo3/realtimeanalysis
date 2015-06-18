@@ -25,7 +25,7 @@ import fr.ensma.realtimescheduling.Task;
  * @author Gustavo
  *
  */
-public class ModelInterface {
+public abstract class ModelInterface {
 	
 	/**
 	 * Instance to the System from the model being analyzed
@@ -41,7 +41,7 @@ public class ModelInterface {
 	//don't know if this will ever be needed....
 	static boolean validSystem;
 	
-	public static boolean validSystem() {return validSystem;}
+	public static boolean isValidSystem() {return validSystem;}
 	
 	/**
 	 * Very ugly way of receiving the System after the user clicks on 
@@ -63,30 +63,6 @@ public class ModelInterface {
 			system = null;
 		}
 	}
-
-	/**
-	 * Performs the rate monotonic response time analysis 
-	 * on the System and modifies the instances to reflect the analysis
-	 */
-	public static List<String> allByRateMonotonic() {
-		return fixedPriorityAlgorithm(allPartitions, ModelInterface::rateMonotonic);
-	}
-	
-	/**
-	 * Performs the fixed priority response time analysis 
-	 * on the System and modifies the instances to reflect the analysis
-	 */
-	public static List<String> allByFixedPriority() {
-		return fixedPriorityAlgorithm(allPartitions, ModelInterface::fixedPriority);
-	}
-	
-	/**
-	 * Performs the deadline monotonic response time analysis 
-	 * on the System and modifies the instances to reflect the analysis
-	 */
-	public static List<String> allByDeadlineMonotonic() {
-		return fixedPriorityAlgorithm(allPartitions, ModelInterface::deadlineMonotonic);
-	}
 	
 	/**
 	 * Looks at the user specified scheduling algorithm set for a partition and runs the
@@ -95,7 +71,7 @@ public class ModelInterface {
 	 * @return List of strings indicating the results of the schedulability analysis
 	 * 			or null if the System that ModelInterface knows about is invalid
 	 */
-	public static List<String> perPartitionScheduling() {
+	public static List<String> perPartitionSchedulingAnalysis() {
 		if(!validSystem) return null;
 		List<String> results = new LinkedList<String>();
 		for(Partition partition : allPartitions) {
@@ -212,31 +188,6 @@ public class ModelInterface {
 		return Double.compare(a.getStart(), b.getStart());
 	}
 	
-	/**
-	 * Compares Tasks by periods such that higher frequency tasks have a higher priority
-	 * @author Gustavo
-	 *
-	 */
-	public static int rateMonotonic(Task o1, Task o2) {
-		return Double.compare(o1.getCharacteristicPeriod(), o2.getCharacteristicPeriod());
-	}
-	
-	/**
-	 * Sorts task into ascending order based on user defined-priority
-	 * @author Gustavo
-	 */
-	public static int fixedPriority(Task o1, Task o2) {
-		return Integer.compare(o2.getPriority(), o1.getPriority());
-	}
-	
-	/**
-	 * Sorts task into ascending order based on implicit deadline
-	 * @author Gustavo
-	 *
-	 */
-	public static int deadlineMonotonic(Task o1, Task o2) {
-		return Double.compare(o1.getImplicitDeadline(), o2.getImplicitDeadline());
-	}
 	
 	
 	

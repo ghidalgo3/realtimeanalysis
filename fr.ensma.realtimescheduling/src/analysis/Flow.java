@@ -27,7 +27,7 @@ import fr.ensma.realtimescheduling.VirtualLink;
  * @author Gustavo
  *
  */
-public class Flow {
+class Flow {
 	
 	double ETEDelay;
 	List<Port> P_i = new ArrayList<>();
@@ -52,7 +52,7 @@ public class Flow {
 	 * @param l logical virtual link
 	 * @param r 
 	 */
-	public Flow(Network net, Route r){
+	Flow(Network net, Route r){
 		System.out.println("Flow constructor invoked.");
 		this.link = ((VirtualLink)r.eContainer());
 		this.r = r;
@@ -83,29 +83,29 @@ public class Flow {
 	 * @param p
 	 * @return
 	 */
-	public int rankOf(Port p) {
+	int rankOf(Port p) {
 		return P_i.indexOf(p) + 1;
 	}
 	
-	public void setSmin(Port p, double newValue) {
+	void setSmin(Port p, double newValue) {
 		S_min[P_i.indexOf(p)] = newValue;
 	}
 	
-	public Port successor(Port p) {
+	Port successor(Port p) {
 		return P_i.get(P_i.indexOf(p) + 1);
 	}
 	
-	public void setSmax(Port p, double newValue) {
+	void setSmax(Port p, double newValue) {
 		S_max[P_i.indexOf(p)] = newValue;
 	}
 	
-	public void calculateJitterFor(Port p) {
+	void calculateJitterFor(Port p) {
 		J[P_i.indexOf(p)] = S_max[P_i.indexOf(p)] - S_min[P_i.indexOf(p)];
 	}
 	
 	//magic maximization function here
 	//i'm thinking the problem is here
-	public void calculateBklgFor(PortWrapper p, Function<Double, Double> W) {
+	void calculateBklgFor(PortWrapper p, Function<Double, Double> W) {
 		double B_h = p.B();
 		double max = 0.0;
 		double C = link.getMaxFrameSize() / p.port.getBandwidth();
@@ -118,34 +118,34 @@ public class Flow {
 		Bklg[P_i.indexOf(p.port)] = max;
 	}
 	
-	public double BklgFor(Port p) {
+	double BklgFor(Port p) {
 		return Bklg[P_i.indexOf(p)];
 	}
 	
-	public double SmaxFor(Port p) {
+	double SmaxFor(Port p) {
 		return S_max[ P_i.indexOf(p) ];
 	}
 	
-	public double jitterFor(Port p) {
+	double jitterFor(Port p) {
 		return J[P_i.indexOf(p)];
 	}
 	
 	
 	@Override
 	public String toString() {
-		String s = "{";
+		String s = "VL : "+link.getId()+" {";
 		for (Port p : P_i) {
-			s += p.toString();
+			s += p.getId() + " -> ";
 		}
 		s+="}";
 		return s;
 	}
 	
-	private Port getOpposite(Port p , Connection c) {
+	Port getOpposite(Port p , Connection c) {
 		return p.getConnection().getPorts().stream().filter(port -> port != p).findFirst().get();
 	}
 	
-	public double RBF(Port port, double t) {
+	double RBF(Port port, double t) {
 		return (1 + Math.floor((t + jitterFor(port)) / link.getMinInterFrameTime())) * link.getMaxFrameSize()/port.getBandwidth();
 	}
 	

@@ -11,7 +11,7 @@ import fr.ensma.realtimescheduling.Port;
  * @author Gustavo
  *
  */
-public class PortWrapper {
+class PortWrapper {
 	
 	Port port;
 	
@@ -38,7 +38,7 @@ public class PortWrapper {
 	 * @param node
 	 * @param allLinks
 	 */
-	public PortWrapper(Port port, List<Flow> allFlows) {
+	PortWrapper(Port port, List<Flow> allFlows) {
 		this.port = port;
 		flowsThroughMe = allFlows.stream().filter(flow -> flow.P_i.contains(port)).collect(Collectors.toList());
 		order = flowsThroughMe.stream().mapToInt(flow -> {
@@ -52,7 +52,7 @@ public class PortWrapper {
 	 * Calculates B from the paper, lazily evaluated
 	 * @return B 
 	 */
-	public double B() {
+	double B() {
 		if(B_calc) {return B;}
 		double a = BP() + flowsThroughMe.stream()
 				.mapToDouble(flow -> {
@@ -74,7 +74,7 @@ public class PortWrapper {
 	 * lazily evaluated
 	 * @return longest busy period
 	 */
-	public double BP() {
+	double BP() {
 		if(BP_calc) {return BP;}
 		double a = flowsThroughMe
 				.stream()
@@ -99,7 +99,10 @@ public class PortWrapper {
 	
 	@Override
 	public String toString() {
-		return String.format("PortWrapper: {Port: %s, Order: %d, Flows:%s}",port.toString(), order, flowsThroughMe.toString());
+		return String.format("PortWrapper: {Port: %s, Order: %d, Flows Through Me: %s}",
+				port.getId(),
+				order,
+				flowsThroughMe.stream().reduce("", (str,  flow) -> str +", "+flow.link.getId(), (a,b) -> a+", "+b));
 	}
 	
 }

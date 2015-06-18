@@ -18,7 +18,7 @@ public class VPUView extends AbstractVerticalBarChart {
 	@Override
 	CategoryDataset createDataset() {
 		final DefaultCategoryDataset result = new DefaultCategoryDataset();
-		if(ModelInterface.allPartitions != null) {
+		if(ModelInterface.isValidSystem()) {
 		    ModelInterface.allPartitions
 		    	.stream()
 		  	    .forEach(partition -> {

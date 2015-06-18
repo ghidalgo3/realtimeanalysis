@@ -179,12 +179,6 @@ class Analyzer {
 				}
 			}
 		}
-		for(Flow v : gamma) {
-			System.out.println(v);
-		}
-		for(PortWrapper p : portWrappers) {
-			System.out.println(p);
-		}
 		return results;
 	}
 
@@ -203,6 +197,13 @@ class Analyzer {
 		return networkLatency;
 	}
 
+	/**
+	 * Partitions port wrappers by order
+	 * where order is defined as the maximum rank
+	 * of a port by any flow running through it
+	 * @param portWrappers
+	 * @return
+	 */
 	private static Map<Integer, List<PortWrapper>> partitionByOrder(
 			Collection<PortWrapper> portWrappers) {
 		Map<Integer, List<PortWrapper>> byOrder = new TreeMap<>();

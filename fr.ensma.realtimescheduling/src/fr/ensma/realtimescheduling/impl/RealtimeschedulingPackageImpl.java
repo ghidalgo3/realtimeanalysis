@@ -1253,10 +1253,22 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 			 "constraints", "EndAfterStart NonZeroLength"
 		   });	
 		addAnnotation
+		  (networkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "PositiveNetworkLatency PositiveNetworkBandwith"
+		   });	
+		addAnnotation
+		  (switchEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "AtleastTwoSwitchPorts"
+		   });	
+		addAnnotation
 		  (virtualLinkEClass, 
 		   source, 
 		   new String[] {
-			 "constraints", "DestinationsCannotIncludeSource"
+			 "constraints", "DestinationsCannotIncludeSource PositiveMinInterFrameTime PositiveMaxFrameSize PathExists RoutesConnectSourceToDestinations NoCycles"
 		   });
 	}
 
@@ -1297,20 +1309,20 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		   new String[] {
 			 "PositivePeriod", "period > 0",
 			 "AvailibilityFactorLessThanOrEqualToOne", "availabilityFactor <= 1",
-			 "PeriodSpansIntervals", "let sortedIntervals : Sequence(Interval) = executionIntervals\n\t\t\t->sortedBy(start)\n\t\tin if (sortedIntervals\n\t\t\t->size() > 1)\n\t\tthen sortedIntervals\n\t\t\t->last().end <= period\n\t\telse true\n\t\tendif",
-			 "NonOverlappingIntervals", "if (executionIntervals\n\t\t\t->size() <= 1)\n\t\tthen true -- Nothing can overlap if there is only one or none!\n\t\telse\n\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals\n\t\t\t->sortedBy(i : Interval | i.start)\n\t\tin sortedIntervals\n\t\t\t->subSequence(1, sortedIntervals\n\t\t\t\t->size() - 1)\n\t\t\t->forAll(i : Interval | i.end <= sortedIntervals\n\t\t\t\t->at(1 + sortedIntervals\n\t\t\t\t\t->indexOf(i)).start)\n\t\tendif"
+			 "PeriodSpansIntervals", "let sortedIntervals : Sequence(Interval) = executionIntervals\n\t\t->sortedBy(start)\n\tin if (sortedIntervals\n\t\t->size() > 1)\n\tthen sortedIntervals\n\t\t->last().end <= period\n\telse true\n\tendif",
+			 "NonOverlappingIntervals", "if (executionIntervals\n\t\t->size() <= 1)\n\tthen true -- Nothing can overlap if there is only one or none!\n\telse\n\tlet sortedIntervals : Sequence(Interval) = executionIntervals\n\t\t->sortedBy(i : Interval | i.start)\n\tin sortedIntervals\n\t\t->subSequence(1, sortedIntervals\n\t\t\t->size() - 1)\n\t\t->forAll(i : Interval | i.end <= sortedIntervals\n\t\t\t->at(1 + sortedIntervals\n\t\t\t\t->indexOf(i)).start)\n\tendif"
 		   });	
 		addAnnotation
 		  (getPartition_Period(), 
 		   source, 
 		   new String[] {
-			 "derivation", "if (module\n\t\t\t\t->oclIsInvalid() or module\n\t\t\t\t->oclIsUndefined() or module = null)\n\t\t\tthen 0.0\n\t\t\telse self.module.period\n\t\t\tendif"
+			 "derivation", "if (module\n\t\t\t->oclIsInvalid() or module\n\t\t\t->oclIsUndefined() or module = null)\n\t\tthen 0.0\n\t\telse self.module.period\n\t\tendif"
 		   });	
 		addAnnotation
 		  (getPartition_AvailabilityFactor(), 
 		   source, 
 		   new String[] {
-			 "derivation", "--check for divide by zero!\n\t\t\t\tif (period <> 0)\n\t\t\t\tthen executionIntervals\n\t\t\t\t\t->collect(i : Interval | i.end - i.start)\n\t\t\t\t\t->sum() / period\n\t\t\t\telse 0.0\n\t\t\t\tendif"
+			 "derivation", "--check for divide by zero!\n\t\t\tif (period <> 0)\n\t\t\tthen executionIntervals\n\t\t\t\t->collect(i : Interval | i.end - i.start)\n\t\t\t\t->sum() / period\n\t\t\telse 0.0\n\t\t\tendif"
 		   });	
 		addAnnotation
 		  (intervalEClass, 
@@ -1320,10 +1332,25 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 			 "NonZeroLength", "end <> start"
 		   });	
 		addAnnotation
+		  (networkEClass, 
+		   source, 
+		   new String[] {
+			 "PositiveNetworkLatency", "latency > 0",
+			 "PositiveNetworkBandwith", "networkBandwidth > 0"
+		   });	
+		addAnnotation
+		  (switchEClass, 
+		   source, 
+		   new String[] {
+			 "AtleastTwoSwitchPorts", "switchPorts->size() > 1"
+		   });	
+		addAnnotation
 		  (virtualLinkEClass, 
 		   source, 
 		   new String[] {
-			 "DestinationsCannotIncludeSource", "\n\t\t\tdestinations->forAll(dest : Module | dest <> source)"
+			 "DestinationsCannotIncludeSource", "\n\t\t\t\tdestinations->forAll(dest : Module | dest <> source)",
+			 "PositiveMinInterFrameTime", "minInterFrameTime > 0",
+			 "PositiveMaxFrameSize", "maxFrameSize > 0"
 		   });
 	}
 

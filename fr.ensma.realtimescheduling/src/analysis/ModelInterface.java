@@ -10,7 +10,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Partition;
+import fr.ensma.realtimescheduling.Route;
 import fr.ensma.realtimescheduling.Task;
+import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * This class houses methods to interface between the Ecore model and this package's
@@ -142,14 +144,38 @@ public abstract class ModelInterface {
 			l.add("System is invalid. Please validate the system successfully.");
 			return null;
 		}
-		Map<Flow, Double> results = Analyzer.FA1(system);
-		for(Map.Entry<Flow, Double> delay : results.entrySet()) {
-			l.add(String.format("%s: Route %s -> %s  has ETE delay %.2f",
-					delay.getKey().link.getId(),
-					delay.getKey().first.getId(),
-					delay.getKey().last.getId(), 
+		Map<Route, Double> results = Analyzer.FA1(system);
+		for(Map.Entry<Route, Double> delay : results.entrySet()) {
+			VirtualLink VL = ((VirtualLink)delay.getKey().eContainer());
+			l.add(String.format("%s: Route %s -> somewhere  has ETE delay %.2f",
+					VL.getId(),
+					((VirtualLink)delay.getKey().eContainer()).getSource().getId(),
 					delay.getValue()));
-			delay.getKey().r.setEndToEndDelay(delay.getValue().intValue());
+			delay.getKey().setEndToEndDelay(delay.getValue().intValue());
+		}
+//		system.getUses().getCommunicatesOver().getVirtualLinks().stream().forEachOrdered(vl -> l.add(vl.getNodes().toString() + "\n"));
+		return l;
+	}
+	
+	/**
+	 * Performs the end to end analysis on the network component
+	 * and returns a list of messages to display to the user.
+	 * @return
+	 */
+	public static List<String> improvedEndToEndAnalysis() {
+		List<String> l = new ArrayList<String>();
+		if(!validSystem) {
+			l.add("System is invalid. Please validate the system successfully.");
+			return null;
+		}
+		Map<Route, Double> results = Analyzer.FA2(system);
+		for(Map.Entry<Route, Double> delay : results.entrySet()) {
+			VirtualLink VL = ((VirtualLink)delay.getKey().eContainer());
+			l.add(String.format("%s: Route %s -> somewhere  has ETE delay %.2f",
+					VL.getId(),
+					((VirtualLink)delay.getKey().eContainer()).getSource().getId(),
+					delay.getValue()));
+			delay.getKey().setEndToEndDelay(delay.getValue().intValue());
 		}
 //		system.getUses().getCommunicatesOver().getVirtualLinks().stream().forEachOrdered(vl -> l.add(vl.getNodes().toString() + "\n"));
 		return l;

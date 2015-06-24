@@ -24,6 +24,10 @@
             id="fr.ensma.realtimescheduling.commands.rta"
             name="Response Time Analysis">
       </command>
+      <command
+            id="fr.ensma.realtimescheduling.commands.improvedetea"
+            name="Improved End to End Analysis">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -38,6 +42,10 @@
       <handler
             class="fr.ensma.realtimescheduling.handlers.ETEAHandler"
             commandId="fr.ensma.realtimescheduling.commands.etea">
+      </handler>
+      <handler
+            class="fr.ensma.realtimescheduling.handlers.ImprovedETEAHandler"
+            commandId="fr.ensma.realtimescheduling.commands.improvedetea">
       </handler>
    </extension>
    <extension
@@ -74,6 +82,12 @@
                   label="End to End Analysis"
                   style="push"
                   tooltip="Perform the End to End delay analysis on the network component">
+            </command>
+            <command
+                  commandId="fr.ensma.realtimescheduling.commands.improvedetea"
+                  label="Improved End to End Analysis"
+                  style="push"
+                  tooltip="Im">
             </command>
          </menu>
       </menuContribution>

@@ -2,12 +2,19 @@
  */
 package fr.ensma.realtimescheduling.util;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.jgrapht.UndirectedGraph;
+import org.jgrapht.alg.ConnectivityInspector;
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.SimpleGraph;
+import analysis.Flow;
 import analysis.ModelInterface;
 import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.EndSystemPort;
@@ -436,15 +443,55 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSwitch(Switch switch_, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(switch_, diagnostics, context);
+		if (!validate_NoCircularContainment(switch_, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(switch_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(switch_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(switch_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(switch_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(switch_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(switch_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(switch_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(switch_, diagnostics, context);
+		if (result || diagnostics != null) result &= validateSwitch_AtleastTwoSwitchPorts(switch_, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the AtleastTwoSwitchPorts constraint of '<em>Switch</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String SWITCH__ATLEAST_TWO_SWITCH_PORTS__EEXPRESSION = "switchPorts->size() > 1";
+
+	/**
+	 * Validates the AtleastTwoSwitchPorts constraint of '<em>Switch</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSwitch_AtleastTwoSwitchPorts(Switch switch_, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(RealtimeschedulingPackage.Literals.SWITCH,
+				 switch_,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "AtleastTwoSwitchPorts",
+				 SWITCH__ATLEAST_TWO_SWITCH_PORTS__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated 
 	 */
 	public boolean validateVirtualLink(VirtualLink virtualLink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		buildGraph( (fr.ensma.realtimescheduling.System)((SoftwareResource)(virtualLink.eContainer())).eContainer() );
 		if (!validate_NoCircularContainment(virtualLink, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(virtualLink, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(virtualLink, diagnostics, context);
@@ -455,6 +502,11 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(virtualLink, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(virtualLink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateVirtualLink_DestinationsCannotIncludeSource(virtualLink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateVirtualLink_PositiveMinInterFrameTime(virtualLink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateVirtualLink_PositiveMaxFrameSize(virtualLink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateVirtualLink_PathExists(virtualLink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateVirtualLink_RoutesConnectSourceToDestinations(virtualLink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateVirtualLink_NoCycles(virtualLink, diagnostics, context);
 		return result;
 	}
 
@@ -465,7 +517,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String VIRTUAL_LINK__DESTINATIONS_CANNOT_INCLUDE_SOURCE__EEXPRESSION = "\n" +
-		"\t\t\tdestinations->forAll(dest : Module | dest <> source)";
+		"\t\t\t\tdestinations->forAll(dest : Module | dest <> source)";
 
 	/**
 	 * Validates the DestinationsCannotIncludeSource constraint of '<em>Virtual Link</em>'.
@@ -486,6 +538,209 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 				 Diagnostic.ERROR,
 				 DIAGNOSTIC_SOURCE,
 				 0);
+	}
+
+	/**
+	 * The cached validation expression for the PositiveMinInterFrameTime constraint of '<em>Virtual Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String VIRTUAL_LINK__POSITIVE_MIN_INTER_FRAME_TIME__EEXPRESSION = "minInterFrameTime > 0";
+
+	/**
+	 * Validates the PositiveMinInterFrameTime constraint of '<em>Virtual Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateVirtualLink_PositiveMinInterFrameTime(VirtualLink virtualLink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(RealtimeschedulingPackage.Literals.VIRTUAL_LINK,
+				 virtualLink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "PositiveMinInterFrameTime",
+				 VIRTUAL_LINK__POSITIVE_MIN_INTER_FRAME_TIME__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the PositiveMaxFrameSize constraint of '<em>Virtual Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String VIRTUAL_LINK__POSITIVE_MAX_FRAME_SIZE__EEXPRESSION = "maxFrameSize > 0";
+
+	/**
+	 * Validates the PositiveMaxFrameSize constraint of '<em>Virtual Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateVirtualLink_PositiveMaxFrameSize(VirtualLink virtualLink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(RealtimeschedulingPackage.Literals.VIRTUAL_LINK,
+				 virtualLink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "PositiveMaxFrameSize",
+				 VIRTUAL_LINK__POSITIVE_MAX_FRAME_SIZE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+	
+	private UndirectedGraph<Port, DefaultEdge> networkGraph;
+	
+	/**
+	 * Builds a JGraphT graph from the network definition where
+	 * Ports are nodes in the graph and connections are the edges.
+	 * @param system
+	 */
+	private void buildGraph(fr.ensma.realtimescheduling.System system) {
+		networkGraph = new SimpleGraph<>(DefaultEdge.class); //Parameter is class of edge
+		for(Switch switch_ : system.getUses().getCommunicatesOver().getSwitches()) {
+			for(Port port : switch_.getSwitchPorts()) {
+				networkGraph.addVertex(port);
+			}
+			for(Port port : switch_.getSwitchPorts()) {
+				for(Port port2 : switch_.getSwitchPorts()) {
+					//within a switch, all ports are connected to each other.
+					if(port2 != port) {networkGraph.addEdge(port, port2);}
+				}
+			}
+		}
+		for(Module module : system.getUses().getScheduledOn()) {
+			for (Port port : module.getModulePorts()) {
+				networkGraph.addVertex(port);
+			}
+		}
+		for(Connection connection : system.getUses().getCommunicatesOver().getConnections()) {
+			networkGraph.addEdge(connection.getPorts().get(0), connection.getPorts().get(1));
+		}
+	}
+	
+	/**
+	 * Validates the PathExists constraint of '<em>Virtual Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateVirtualLink_PathExists(VirtualLink virtualLink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		ConnectivityInspector<Port, DefaultEdge> inspector = new ConnectivityInspector<>(networkGraph);
+		boolean pathExists = false;
+		try {
+			all: for(Port sourcePort : virtualLink.getSource().getModulePorts()) {
+				for(Module destination : virtualLink.getDestinations()) {
+					for(Port destinationPort : destination.getModulePorts()) {
+						pathExists = inspector.pathExists(sourcePort, destinationPort);
+						if(!pathExists) {break all;}
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (!pathExists) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "PathExists", getObjectLabel(virtualLink, context) },
+						 new Object[] { virtualLink },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the RoutesConnectSourceToDestinations constraint of '<em>Virtual Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateVirtualLink_RoutesConnectSourceToDestinations(VirtualLink virtualLink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean success = false;
+		List<Module> destinationsHit = new ArrayList<>();
+		destinationsHit.addAll(virtualLink.getDestinations());
+		try {
+			for(Route r : virtualLink.getRoutes()) {
+				Port first = virtualLink.getSource().getModulePorts().stream().filter(esp -> r.getConnections().contains(esp.getConnection())).findFirst().get();
+				Port current = first;
+				List<Connection> allConnections = new ArrayList<>();
+				allConnections.addAll(r.getConnections());
+				while(allConnections.size() != 1) {
+					allConnections.remove(current.getConnection());
+					current = Flow.getOpposite(current);
+					current = ((Switch)(current.eContainer())).getSwitchPorts().stream().filter(sp -> allConnections.contains(sp.getConnection())).findFirst().orElseThrow(() -> new Exception());
+				}
+				//success if any of the destination ports are one of the two ports
+				//of the remaining connection of route
+				success = allConnections.get(0).getPorts().stream()
+						.anyMatch(port -> virtualLink.getDestinations().stream()
+								.anyMatch(module -> {
+									boolean matches = module.getModulePorts().contains(port);
+									destinationsHit.remove(module);
+									return matches;
+								}));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		if (!success || destinationsHit.size() != 0) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "RoutesConnectSourceToDestinations", getObjectLabel(virtualLink, context) },
+						 new Object[] { virtualLink },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the NoCycles constraint of '<em>Virtual Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateVirtualLink_NoCycles(VirtualLink virtualLink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NoCycles", getObjectLabel(virtualLink, context) },
+						 new Object[] { virtualLink },
+						 context));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -620,13 +875,13 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String PARTITION__PERIOD_SPANS_INTERVALS__EEXPRESSION = "let sortedIntervals : Sequence(Interval) = executionIntervals\n" +
-		"\t\t\t->sortedBy(start)\n" +
-		"\t\tin if (sortedIntervals\n" +
-		"\t\t\t->size() > 1)\n" +
-		"\t\tthen sortedIntervals\n" +
-		"\t\t\t->last().end <= period\n" +
-		"\t\telse true\n" +
-		"\t\tendif";
+		"\t\t->sortedBy(start)\n" +
+		"\tin if (sortedIntervals\n" +
+		"\t\t->size() > 1)\n" +
+		"\tthen sortedIntervals\n" +
+		"\t\t->last().end <= period\n" +
+		"\telse true\n" +
+		"\tendif";
 
 	/**
 	 * Validates the PeriodSpansIntervals constraint of '<em>Partition</em>'.
@@ -656,18 +911,18 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String PARTITION__NON_OVERLAPPING_INTERVALS__EEXPRESSION = "if (executionIntervals\n" +
-		"\t\t\t->size() <= 1)\n" +
-		"\t\tthen true -- Nothing can overlap if there is only one or none!\n" +
-		"\t\telse\n" +
-		"\t\tlet sortedIntervals : Sequence(Interval) = executionIntervals\n" +
-		"\t\t\t->sortedBy(i : Interval | i.start)\n" +
-		"\t\tin sortedIntervals\n" +
-		"\t\t\t->subSequence(1, sortedIntervals\n" +
-		"\t\t\t\t->size() - 1)\n" +
-		"\t\t\t->forAll(i : Interval | i.end <= sortedIntervals\n" +
-		"\t\t\t\t->at(1 + sortedIntervals\n" +
-		"\t\t\t\t\t->indexOf(i)).start)\n" +
-		"\t\tendif";
+		"\t\t->size() <= 1)\n" +
+		"\tthen true -- Nothing can overlap if there is only one or none!\n" +
+		"\telse\n" +
+		"\tlet sortedIntervals : Sequence(Interval) = executionIntervals\n" +
+		"\t\t->sortedBy(i : Interval | i.start)\n" +
+		"\tin sortedIntervals\n" +
+		"\t\t->subSequence(1, sortedIntervals\n" +
+		"\t\t\t->size() - 1)\n" +
+		"\t\t->forAll(i : Interval | i.end <= sortedIntervals\n" +
+		"\t\t\t->at(1 + sortedIntervals\n" +
+		"\t\t\t\t->indexOf(i)).start)\n" +
+		"\tendif";
 
 	/**
 	 * Validates the NonOverlappingIntervals constraint of '<em>Partition</em>'.
@@ -774,7 +1029,76 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateNetwork(Network network, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(network, diagnostics, context);
+		if (!validate_NoCircularContainment(network, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(network, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(network, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(network, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(network, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(network, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(network, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(network, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(network, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNetwork_PositiveNetworkLatency(network, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNetwork_PositiveNetworkBandwith(network, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the PositiveNetworkLatency constraint of '<em>Network</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String NETWORK__POSITIVE_NETWORK_LATENCY__EEXPRESSION = "latency > 0";
+
+	/**
+	 * Validates the PositiveNetworkLatency constraint of '<em>Network</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNetwork_PositiveNetworkLatency(Network network, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(RealtimeschedulingPackage.Literals.NETWORK,
+				 network,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "PositiveNetworkLatency",
+				 NETWORK__POSITIVE_NETWORK_LATENCY__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the PositiveNetworkBandwith constraint of '<em>Network</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String NETWORK__POSITIVE_NETWORK_BANDWITH__EEXPRESSION = "networkBandwidth > 0";
+
+	/**
+	 * Validates the PositiveNetworkBandwith constraint of '<em>Network</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNetwork_PositiveNetworkBandwith(Network network, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(RealtimeschedulingPackage.Literals.NETWORK,
+				 network,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "PositiveNetworkBandwith",
+				 NETWORK__POSITIVE_NETWORK_BANDWITH__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**

@@ -20,7 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getSwitch()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='AtleastTwoSwitchPorts'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot AtleastTwoSwitchPorts='switchPorts->size() > 1'"
  * @generated
  */
 public interface Switch extends EObject {

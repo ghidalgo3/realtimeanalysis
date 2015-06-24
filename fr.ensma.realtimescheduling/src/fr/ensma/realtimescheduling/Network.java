@@ -22,7 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PositiveNetworkLatency PositiveNetworkBandwith'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot PositiveNetworkLatency='latency > 0' PositiveNetworkBandwith='networkBandwidth > 0'"
  * @generated
  */
 public interface Network extends EObject {

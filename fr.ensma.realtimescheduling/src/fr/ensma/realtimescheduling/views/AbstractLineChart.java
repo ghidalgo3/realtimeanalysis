@@ -37,7 +37,6 @@ public abstract class AbstractLineChart extends ViewPart {
 		Composite selectors = setUpSelectors(parent);
 		RowLayout r = new RowLayout();
 		r.justify = true;
-//		r.pack = false;
 		r.fill = true;
 		r.type = SWT.VERTICAL;
 		selectors.setLayout(r);

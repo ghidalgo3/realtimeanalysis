@@ -4,7 +4,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
-import analysis.ModelInterface;
+import fr.ensma.realtimescheduling.analysis.ModelInterface;
 
 
 public class ETEAHandler extends AbstractHandler implements IHandler {

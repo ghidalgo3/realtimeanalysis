@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import analysis.PartitionUtils;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Partition;
+import fr.ensma.realtimescheduling.analysis.PartitionUtils;
 
 /**
  * This class holds the functions to generate data for graphing. These functions

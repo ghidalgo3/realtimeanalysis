@@ -1,4 +1,4 @@
-package analysis;
+package fr.ensma.realtimescheduling.analysis;
 
 import java.util.Collection;
 import java.util.HashMap;

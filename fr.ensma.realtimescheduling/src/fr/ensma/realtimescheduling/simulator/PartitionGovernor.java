@@ -3,10 +3,10 @@ package fr.ensma.realtimescheduling.simulator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
-import analysis.PartitionUtils;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Task;
+import fr.ensma.realtimescheduling.analysis.PartitionUtils;
 
 /**
  * This class runs a DES for simulating

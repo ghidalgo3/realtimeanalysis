@@ -2,7 +2,7 @@ package fr.ensma.realtimescheduling.views;
 
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import analysis.ModelInterface;
+import fr.ensma.realtimescheduling.analysis.ModelInterface;
 
 /**
  * Displays Virtual Processor Utilization as a barchart

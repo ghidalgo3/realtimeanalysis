@@ -1,4 +1,4 @@
-package analysis;
+package fr.ensma.realtimescheduling.analysis;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,6 +21,7 @@ import fr.ensma.realtimescheduling.VirtualLink;
  * for all nodes on this route
  * 
  * @author Gustavo
+ * 
  */
 public class Flow {
 

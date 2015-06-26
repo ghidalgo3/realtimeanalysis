@@ -16,10 +16,6 @@ import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.ConnectivityInspector;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
-import analysis.Flow;
-import analysis.ModelInterface;
-import analysis.NetworkUtils;
-import analysis.PortWrapper;
 import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.EndSystemPort;
 import fr.ensma.realtimescheduling.HardwareResource;
@@ -38,6 +34,10 @@ import fr.ensma.realtimescheduling.Switch;
 import fr.ensma.realtimescheduling.SwitchPort;
 import fr.ensma.realtimescheduling.Task;
 import fr.ensma.realtimescheduling.VirtualLink;
+import fr.ensma.realtimescheduling.analysis.Flow;
+import fr.ensma.realtimescheduling.analysis.ModelInterface;
+import fr.ensma.realtimescheduling.analysis.NetworkUtils;
+import fr.ensma.realtimescheduling.analysis.PortWrapper;
 
 /**
  * <!-- begin-user-doc --> The <b>Validator</b> for the model. <!-- end-user-doc
@@ -801,7 +801,6 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * 
 	 * @generated NOT
 	 */
-	@SuppressWarnings("unused")
 	public boolean validateVirtualLink_NoCycles(VirtualLink virtualLink,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		//TODO

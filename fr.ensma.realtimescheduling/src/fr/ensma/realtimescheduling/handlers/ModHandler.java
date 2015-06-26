@@ -10,6 +10,7 @@ public class ModHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		//ask user to select file
+		
 		//parse file
 		//build graph
 		//create instance of model

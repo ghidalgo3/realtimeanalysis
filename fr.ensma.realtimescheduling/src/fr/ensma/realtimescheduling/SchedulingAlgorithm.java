@@ -5,14 +5,12 @@ package fr.ensma.realtimescheduling;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Scheduling Algorithm</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Scheduling Algorithm</b></em>', and utility methods for working with
+ * them. <!-- end-user-doc -->
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getSchedulingAlgorithm()
  * @model
  * @generated
@@ -20,8 +18,8 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum SchedulingAlgorithm implements Enumerator {
 	/**
 	 * The '<em><b>Fixed Priority</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #FIXED_PRIORITY_VALUE
 	 * @generated
 	 * @ordered
@@ -30,8 +28,8 @@ public enum SchedulingAlgorithm implements Enumerator {
 
 	/**
 	 * The '<em><b>Rate Monotonic</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #RATE_MONOTONIC_VALUE
 	 * @generated
 	 * @ordered
@@ -39,9 +37,9 @@ public enum SchedulingAlgorithm implements Enumerator {
 	RATE_MONOTONIC(1, "RateMonotonic", "RateMonotonic"),
 
 	/**
-	 * The '<em><b>Deadline Monotonic</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Deadline Monotonic</b></em>' literal object. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #DEADLINE_MONOTONIC_VALUE
 	 * @generated
 	 * @ordered
@@ -50,10 +48,11 @@ public enum SchedulingAlgorithm implements Enumerator {
 
 	/**
 	 * The '<em><b>Fixed Priority</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of '<em><b>Fixed Priority</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Fixed Priority</b></em>' literal object isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FIXED_PRIORITY
@@ -65,10 +64,11 @@ public enum SchedulingAlgorithm implements Enumerator {
 
 	/**
 	 * The '<em><b>Rate Monotonic</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of '<em><b>Rate Monotonic</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Rate Monotonic</b></em>' literal object isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RATE_MONOTONIC
@@ -79,13 +79,14 @@ public enum SchedulingAlgorithm implements Enumerator {
 	public static final int RATE_MONOTONIC_VALUE = 1;
 
 	/**
-	 * The '<em><b>Deadline Monotonic</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Deadline Monotonic</b></em>' literal value. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Deadline Monotonic</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Deadline Monotonic</b></em>' literal object
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #DEADLINE_MONOTONIC
 	 * @model name="DeadlineMonotonic"
 	 * @generated
@@ -95,12 +96,10 @@ public enum SchedulingAlgorithm implements Enumerator {
 
 	/**
 	 * An array of all the '<em><b>Scheduling Algorithm</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final SchedulingAlgorithm[] VALUES_ARRAY =
-		new SchedulingAlgorithm[] {
+	private static final SchedulingAlgorithm[] VALUES_ARRAY = new SchedulingAlgorithm[] {
 			FIXED_PRIORITY,
 			RATE_MONOTONIC,
 			DEADLINE_MONOTONIC,
@@ -108,16 +107,14 @@ public enum SchedulingAlgorithm implements Enumerator {
 
 	/**
 	 * A public read-only list of all the '<em><b>Scheduling Algorithm</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final List<SchedulingAlgorithm> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Scheduling Algorithm</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static SchedulingAlgorithm get(String literal) {
@@ -132,8 +129,7 @@ public enum SchedulingAlgorithm implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Scheduling Algorithm</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static SchedulingAlgorithm getByName(String name) {
@@ -148,8 +144,7 @@ public enum SchedulingAlgorithm implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Scheduling Algorithm</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static SchedulingAlgorithm get(int value) {
@@ -162,30 +157,27 @@ public enum SchedulingAlgorithm implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	private SchedulingAlgorithm(int value, String name, String literal) {
@@ -195,8 +187,7 @@ public enum SchedulingAlgorithm implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getValue() {
@@ -204,8 +195,7 @@ public enum SchedulingAlgorithm implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getName() {
@@ -213,8 +203,7 @@ public enum SchedulingAlgorithm implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -223,13 +212,12 @@ public enum SchedulingAlgorithm implements Enumerator {
 
 	/**
 	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //SchedulingAlgorithm
+
+} // SchedulingAlgorithm

@@ -21,9 +21,8 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Module</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Module</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -39,10 +38,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
+
 	/**
 	 * The cached setting delegate for the '{@link #getUtilization() <em>Utilization</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getUtilization()
 	 * @generated
 	 * @ordered
@@ -50,9 +50,9 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	protected EStructuralFeature.Internal.SettingDelegate UTILIZATION__ESETTING_DELEGATE = ((EStructuralFeature.Internal)RealtimeschedulingPackage.Literals.MODULE__UTILIZATION).getSettingDelegate();
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -60,9 +60,9 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -71,8 +71,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 
 	/**
 	 * The default value of the '{@link #getPeriod() <em>Period</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPeriod()
 	 * @generated
 	 * @ordered
@@ -81,8 +80,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 
 	/**
 	 * The cached value of the '{@link #getPeriod() <em>Period</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPeriod()
 	 * @generated
 	 * @ordered
@@ -91,8 +89,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 
 	/**
 	 * The cached value of the '{@link #getPartition() <em>Partition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPartition()
 	 * @generated
 	 * @ordered
@@ -101,8 +98,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 
 	/**
 	 * The cached value of the '{@link #getProcessors() <em>Processors</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getProcessors()
 	 * @generated
 	 * @ordered
@@ -111,8 +107,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 
 	/**
 	 * The cached value of the '{@link #getModulePorts() <em>Module Ports</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getModulePorts()
 	 * @generated
 	 * @ordered
@@ -120,8 +115,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	protected EList<EndSystemPort> modulePorts;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected ModuleImpl() {
@@ -129,8 +123,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -139,8 +132,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public double getUtilization() {
@@ -148,8 +140,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setUtilization(double newUtilization) {
@@ -157,8 +148,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getId() {
@@ -166,8 +156,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -178,8 +167,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getPeriod() {
@@ -187,8 +175,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setPeriod(int newPeriod) {
@@ -199,8 +186,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Partition> getPartition() {
@@ -211,8 +197,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Processor> getProcessors() {
@@ -223,8 +208,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<EndSystemPort> getModulePorts() {
@@ -235,13 +219,13 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.MODULE__PARTITION:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPartition()).basicAdd(otherEnd, msgs);
@@ -250,12 +234,12 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.MODULE__PARTITION:
 				return ((InternalEList<?>)getPartition()).basicRemove(otherEnd, msgs);
@@ -268,8 +252,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -292,8 +275,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -326,8 +308,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -356,8 +337,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -380,8 +360,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -397,4 +376,4 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		return result.toString();
 	}
 
-} //ModuleImpl
+} // ModuleImpl

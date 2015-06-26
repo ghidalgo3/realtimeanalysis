@@ -18,9 +18,8 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Connection</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Connection</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -33,11 +32,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ConnectionImpl extends MinimalEObjectImpl.Container implements Connection {
+public class ConnectionImpl extends MinimalEObjectImpl.Container implements
+		Connection {
+
 	/**
 	 * The cached value of the '{@link #getRoutes() <em>Routes</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getRoutes()
 	 * @generated
 	 * @ordered
@@ -45,9 +45,9 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	protected EList<Route> routes;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -55,9 +55,9 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -65,9 +65,9 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getB() <em>B</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getB() <em>B</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getB()
 	 * @generated
 	 * @ordered
@@ -75,9 +75,9 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	protected Port b;
 
 	/**
-	 * The cached value of the '{@link #getA() <em>A</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getA() <em>A</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getA()
 	 * @generated
 	 * @ordered
@@ -85,8 +85,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	protected Port a;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected ConnectionImpl() {
@@ -94,8 +93,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -104,8 +102,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Port getA() {
@@ -121,8 +118,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Port basicGetA() {
@@ -130,8 +126,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setA(Port newA) {
@@ -142,8 +137,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Route> getRoutes() {
@@ -154,8 +148,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getId() {
@@ -163,8 +156,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -175,8 +167,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Port getB() {
@@ -192,8 +183,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Port basicGetB() {
@@ -201,8 +191,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setB(Port newB) {
@@ -213,13 +202,13 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.CONNECTION__ROUTES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRoutes()).basicAdd(otherEnd, msgs);
@@ -228,12 +217,12 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.CONNECTION__ROUTES:
 				return ((InternalEList<?>)getRoutes()).basicRemove(otherEnd, msgs);
@@ -242,8 +231,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -264,8 +252,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -290,8 +277,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -314,8 +300,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -334,8 +319,7 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -349,4 +333,4 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 		return result.toString();
 	}
 
-} //ConnectionImpl
+} // ConnectionImpl

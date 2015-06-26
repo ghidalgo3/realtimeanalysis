@@ -60,25 +60,25 @@ public class ProcessorItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Processor_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Processor_name_feature", "_UI_Processor_type"),
-				 RealtimeschedulingPackage.Literals.PROCESSOR__NAME,
+				 getString("_UI_Processor_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Processor_id_feature", "_UI_Processor_type"),
+				 RealtimeschedulingPackage.Literals.PROCESSOR__ID,
 				 true,
 				 false,
 				 false,
@@ -106,7 +106,7 @@ public class ProcessorItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Processor)object).getName();
+		String label = ((Processor)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Processor_type") :
 			getString("_UI_Processor_type") + " " + label;
@@ -125,7 +125,7 @@ public class ProcessorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Processor.class)) {
-			case RealtimeschedulingPackage.PROCESSOR__NAME:
+			case RealtimeschedulingPackage.PROCESSOR__ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

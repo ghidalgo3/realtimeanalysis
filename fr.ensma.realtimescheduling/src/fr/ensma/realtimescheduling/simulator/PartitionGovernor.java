@@ -10,17 +10,17 @@ import fr.ensma.realtimescheduling.Task;
 
 /**
  * This class runs a DES for simulating
+ * 
  * @author Gustavo
- *
  */
 public class PartitionGovernor {
-	
+
 	private Partition p;
 	private List<Interval> basisIntervals;
 	private List<Task> allTasks;
 	private Timeline timeline;
 	private PriorityQueue<Task> taskQueue;
-	
+
 	public PartitionGovernor(Partition p) {
 		this.p = p;
 		basisIntervals = PartitionUtils.sortedIntervals(p);
@@ -28,11 +28,11 @@ public class PartitionGovernor {
 		taskQueue = new PriorityQueue<>(PartitionUtils.getComparator(p));
 		timeline = new Timeline();
 	}
-	
+
 	public void simulate(double until) {
-		//deliver all tasks
+		// deliver all tasks
 		taskQueue.addAll(allTasks);
-		while(timeline.getCurrentTime().time <= until) {
+		while (timeline.getCurrentTime().time <= until) {
 			timeline.dequeue().execute();
 		}
 	}

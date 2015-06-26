@@ -17,9 +17,8 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Route</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Route</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -31,10 +30,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
+
 	/**
 	 * The cached value of the '{@link #getConnections() <em>Connections</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getConnections()
 	 * @generated
 	 * @ordered
@@ -43,8 +42,8 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 
 	/**
 	 * The default value of the '{@link #getEndToEndDelay() <em>End To End Delay</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getEndToEndDelay()
 	 * @generated
 	 * @ordered
@@ -53,8 +52,8 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 
 	/**
 	 * The cached value of the '{@link #getEndToEndDelay() <em>End To End Delay</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getEndToEndDelay()
 	 * @generated
 	 * @ordered
@@ -62,8 +61,7 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	protected int endToEndDelay = END_TO_END_DELAY_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected RouteImpl() {
@@ -71,8 +69,7 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -81,8 +78,7 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Connection> getConnections() {
@@ -93,8 +89,7 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getEndToEndDelay() {
@@ -102,8 +97,7 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setEndToEndDelay(int newEndToEndDelay) {
@@ -114,13 +108,13 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.ROUTE__CONNECTIONS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConnections()).basicAdd(otherEnd, msgs);
@@ -129,12 +123,12 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.ROUTE__CONNECTIONS:
 				return ((InternalEList<?>)getConnections()).basicRemove(otherEnd, msgs);
@@ -143,8 +137,7 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -159,8 +152,7 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -179,8 +171,7 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -197,8 +188,7 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -213,8 +203,7 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -228,4 +217,4 @@ public class RouteImpl extends MinimalEObjectImpl.Container implements Route {
 		return result.toString();
 	}
 
-} //RouteImpl
+} // RouteImpl

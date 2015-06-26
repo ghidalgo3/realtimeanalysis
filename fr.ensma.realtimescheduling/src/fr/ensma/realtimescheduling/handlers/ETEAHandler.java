@@ -7,7 +7,6 @@ import org.eclipse.core.commands.IHandler;
 import analysis.ModelInterface;
 
 
-
 public class ETEAHandler extends AbstractHandler implements IHandler {
 
 	@Override

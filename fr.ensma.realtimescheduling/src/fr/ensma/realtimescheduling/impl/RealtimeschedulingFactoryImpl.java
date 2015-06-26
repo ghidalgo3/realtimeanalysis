@@ -28,16 +28,17 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
+ * end-user-doc -->
  * @generated
  */
-public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements RealtimeschedulingFactory {
+public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements
+		RealtimeschedulingFactory {
+
 	/**
 	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public static RealtimeschedulingFactory init() {
@@ -55,8 +56,8 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 
 	/**
 	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public RealtimeschedulingFactoryImpl() {
@@ -64,8 +65,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -92,8 +92,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -109,8 +108,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -126,8 +124,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public HardwareResource createHardwareResource() {
@@ -136,8 +133,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Task createTask() {
@@ -146,8 +142,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Module createModule() {
@@ -156,8 +151,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Partition createPartition() {
@@ -166,8 +160,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Interval createInterval() {
@@ -176,8 +169,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Network createNetwork() {
@@ -186,8 +178,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public fr.ensma.realtimescheduling.System createSystem() {
@@ -196,8 +187,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SoftwareResource createSoftwareResource() {
@@ -206,8 +196,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Processor createProcessor() {
@@ -216,8 +205,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Switch createSwitch() {
@@ -226,8 +214,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public VirtualLink createVirtualLink() {
@@ -236,8 +223,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Connection createConnection() {
@@ -246,8 +232,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Route createRoute() {
@@ -256,8 +241,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SwitchPort createSwitchPort() {
@@ -266,8 +250,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EndSystemPort createEndSystemPort() {
@@ -276,48 +259,47 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Periodicity createPeriodicityFromString(EDataType eDataType, String initialValue) {
+	public Periodicity createPeriodicityFromString(EDataType eDataType,
+			String initialValue) {
 		Periodicity result = Periodicity.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPeriodicityToString(EDataType eDataType, Object instanceValue) {
+	public String convertPeriodicityToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SchedulingAlgorithm createSchedulingAlgorithmFromString(EDataType eDataType, String initialValue) {
+	public SchedulingAlgorithm createSchedulingAlgorithmFromString(
+			EDataType eDataType, String initialValue) {
 		SchedulingAlgorithm result = SchedulingAlgorithm.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertSchedulingAlgorithmToString(EDataType eDataType, Object instanceValue) {
+	public String convertSchedulingAlgorithmToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public RealtimeschedulingPackage getRealtimeschedulingPackage() {
@@ -325,8 +307,7 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
@@ -335,4 +316,4 @@ public class RealtimeschedulingFactoryImpl extends EFactoryImpl implements Realt
 		return RealtimeschedulingPackage.eINSTANCE;
 	}
 
-} //RealtimeschedulingFactoryImpl
+} // RealtimeschedulingFactoryImpl

@@ -3,13 +3,11 @@
 package fr.ensma.realtimescheduling;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Switch</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Switch</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -25,14 +23,16 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Switch extends EObject {
+
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getSwitch_Id()
@@ -43,8 +43,7 @@ public interface Switch extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Switch#getId <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
 	 * @generated
@@ -56,8 +55,8 @@ public interface Switch extends EObject {
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.SwitchPort}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Switch Ports</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Switch Ports</em>' containment reference list
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Switch Ports</em>' containment reference list.

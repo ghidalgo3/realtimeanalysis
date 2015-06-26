@@ -4,9 +4,8 @@ package fr.ensma.realtimescheduling;
 
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>End System Port</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>End System Port</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getEndSystemPort()

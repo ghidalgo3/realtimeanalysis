@@ -5,7 +5,6 @@ package fr.ensma.realtimescheduling.provider;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -20,7 +19,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.RealtimeschedulingFactory;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.VirtualLink;
@@ -61,7 +59,7 @@ public class VirtualLinkItemProvider
 			super.getPropertyDescriptors(object);
 
 			addIdPropertyDescriptor(object);
-			addMinInterFrameTimePropertyDescriptor(object);
+			addBAGPropertyDescriptor(object);
 			addSourcePropertyDescriptor(object);
 			addDestinationsPropertyDescriptor(object);
 			addMaxFrameSizePropertyDescriptor(object);
@@ -92,19 +90,19 @@ public class VirtualLinkItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Min Inter Frame Time feature.
+	 * This adds a property descriptor for the BAG feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addMinInterFrameTimePropertyDescriptor(Object object) {
+	protected void addBAGPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_VirtualLink_minInterFrameTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_VirtualLink_minInterFrameTime_feature", "_UI_VirtualLink_type"),
-				 RealtimeschedulingPackage.Literals.VIRTUAL_LINK__MIN_INTER_FRAME_TIME,
+				 getString("_UI_VirtualLink_BAG_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_VirtualLink_BAG_feature", "_UI_VirtualLink_type"),
+				 RealtimeschedulingPackage.Literals.VIRTUAL_LINK__BAG,
 				 true,
 				 false,
 				 false,
@@ -229,15 +227,9 @@ public class VirtualLinkItemProvider
 	@Override
 	public String getText(Object object) {
 		String label = ((VirtualLink)object).getId();
-		VirtualLink vl = ((VirtualLink)object);
 		return label == null || label.length() == 0 ?
 			getString("_UI_VirtualLink_type") :
-			getString("_UI_VirtualLink_type") + " " + label + " " +
-			String.format("%s -> {%s} BAG = %d, Fmax = %d", 
-					vl.getSource().getId(),
-					vl.getDestinations().stream().map(Module::getId).collect(Collectors.toList()).toString(),
-					vl.getMinInterFrameTime(),
-					vl.getMaxFrameSize());
+			getString("_UI_VirtualLink_type") + " " + label;
 	}
 	
 
@@ -254,7 +246,7 @@ public class VirtualLinkItemProvider
 
 		switch (notification.getFeatureID(VirtualLink.class)) {
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
-			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
+			case RealtimeschedulingPackage.VIRTUAL_LINK__BAG:
 			case RealtimeschedulingPackage.VIRTUAL_LINK__MAX_FRAME_SIZE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

@@ -17,24 +17,28 @@ import fr.ensma.realtimescheduling.Task;
  */
 public class PartitionUtils {
 
-	
+
 	/**
 	 * Gets the start time of the earliest interval
+	 * 
 	 * @return earlist start time
 	 */
 	public static int getMinimumStart(Partition p) {
-		return p.getExecutionIntervals().stream().min(ModelInterface::intervalByStart).get().getStart();
+		return p.getExecutionIntervals().stream()
+				.min(ModelInterface::intervalByStart).get().getStart();
 	}
-	
+
 	/**
-	 * Gets the end time of the last interval for the first cycle
-	 * of the partition
+	 * Gets the end time of the last interval for the first cycle of the
+	 * partition
+	 * 
 	 * @return latest end time for one cycle
 	 */
 	public static double getLastIntervalEnd(Partition p) {
-		return p.getExecutionIntervals().stream().max(ModelInterface::intervalByStart).get().getEnd();
+		return p.getExecutionIntervals().stream()
+				.max(ModelInterface::intervalByStart).get().getEnd();
 	}
-	
+
 
 	/**
 	 * Calculate the supply function at some time for this partition
@@ -47,14 +51,16 @@ public class PartitionUtils {
 		int n = p.getExecutionIntervals().size();
 		double accum = 0.0;
 		double period = p.getPeriod();
-		List<Interval> intervals = sortedIntervals(p); //REMEMBER TO DO THIS OR ALL HELL BREAKS LOSE
-		
-		double supplyPerPeriod = intervals.stream().mapToDouble(i -> i.getEnd() - i.getStart()).sum();
+		List<Interval> intervals = sortedIntervals(p); // REMEMBER TO DO THIS OR
+														// ALL HELL BREAKS LOSE
+
+		double supplyPerPeriod = intervals.stream()
+				.mapToDouble(i -> i.getEnd() - i.getStart()).sum();
 		double periodsCompleted = Math.floor(t / period);
 		t -= periodsCompleted * period;
-		for(int i = 0; i < n && t >= intervals.get(i).getStart(); i++) {
-			accum += Math.min(t - intervals.get(i).getStart(),
-					intervals.get(i).getEnd() - intervals.get(i).getStart());
+		for (int i = 0; i < n && t >= intervals.get(i).getStart(); i++) {
+			accum += Math.min(t - intervals.get(i).getStart(), intervals.get(i)
+					.getEnd() - intervals.get(i).getStart());
 		}
 		return accum + supplyPerPeriod * periodsCompleted;
 	}
@@ -66,7 +72,8 @@ public class PartitionUtils {
 	 *            argument to function
 	 * @return inverse suppy
 	 */
-	public static double inverseSupply(fr.ensma.realtimescheduling.Partition p, double sf) {
+	public static double inverseSupply(fr.ensma.realtimescheduling.Partition p,
+			double sf) {
 		int n = p.getExecutionIntervals().size();
 		List<Interval> intervals = sortedIntervals(p);
 		double period = p.getPeriod();
@@ -84,7 +91,8 @@ public class PartitionUtils {
 			int i = 0;
 			double tl = 0.0;
 			for (i = 0; i < n && st > 0; i++) {
-				tl = Math.min(st, intervals.get(i).getEnd() - intervals.get(i).getStart());
+				tl = Math.min(st, intervals.get(i).getEnd()
+						- intervals.get(i).getStart());
 				st = st - tl;
 			}
 			if (i > 0) {
@@ -94,25 +102,26 @@ public class PartitionUtils {
 		}
 		return t;
 	}
-	
+
 	/**
-	 * The user may create intervals in a partition that are unsorted and for the analysis
-	 * and graphing we need the intervals to be sorted. Unfortunately direct manipulation
-	 * of the EList results in exceptions thus we need to extract the list and create a sorted
-	 * copy. This method does that.
-	 * @param p partition
+	 * The user may create intervals in a partition that are unsorted and for
+	 * the analysis and graphing we need the intervals to be sorted.
+	 * Unfortunately direct manipulation of the EList results in exceptions thus
+	 * we need to extract the list and create a sorted copy. This method does
+	 * that.
+	 * 
+	 * @param p
+	 *            partition
 	 * @return sorted intervals in a partition
 	 */
 	public static List<Interval> sortedIntervals(Partition p) {
-		return p.getExecutionIntervals()
-				.stream()
+		return p.getExecutionIntervals().stream()
 				.sorted(ModelInterface::intervalByStart)
 				.collect(Collectors.toList());
 	}
 
 	/**
-	 * Calculates the least supply function for this partition
-	 * at some time.
+	 * Calculates the least supply function for this partition at some time.
 	 * 
 	 * @param t
 	 *            argument to function
@@ -123,27 +132,30 @@ public class PartitionUtils {
 		double sf = supply(p, t + intervals.get(0).getEnd())
 				- supply(p, intervals.get(0).getEnd());
 		for (int i = 1; i < intervals.size(); i++) {
-			sf = Math.min(sf,
-					  supply(p, t+intervals.get(i).getEnd())
-					- supply(p,   intervals.get(i).getEnd())
-					);
+			sf = Math.min(sf, supply(p, t + intervals.get(i).getEnd())
+					- supply(p, intervals.get(i).getEnd()));
 		}
 		return sf;
 	}
-	
+
 	/**
 	 * Gives a comparator from the selected scheduling algorithm in a partition
-	 * @param p partition
+	 * 
+	 * @param p
+	 *            partition
 	 * @return comparator
 	 */
 	public static Comparator<Task> getComparator(Partition p) {
 		switch (p.getSchedulingAlgorithm().getValue()) {
 		case SchedulingAlgorithm.DEADLINE_MONOTONIC_VALUE:
-			return (o1,o2) -> Double.compare(o1.getImplicitDeadline(), o2.getImplicitDeadline());
+			return (o1, o2) -> Double.compare(o1.getImplicitDeadline(),
+					o2.getImplicitDeadline());
 		case SchedulingAlgorithm.FIXED_PRIORITY_VALUE:
-			return (o1,o2) -> Integer.compare(o2.getPriority(), o1.getPriority());
+			return (o1, o2) -> Integer.compare(o2.getPriority(),
+					o1.getPriority());
 		case SchedulingAlgorithm.RATE_MONOTONIC_VALUE:
-			return (o1, o2) -> Double.compare(o1.getCharacteristicPeriod(), o2.getCharacteristicPeriod());
+			return (o1, o2) -> Double.compare(o1.getCharacteristicPeriod(),
+					o2.getCharacteristicPeriod());
 		default:
 			return null;
 		}

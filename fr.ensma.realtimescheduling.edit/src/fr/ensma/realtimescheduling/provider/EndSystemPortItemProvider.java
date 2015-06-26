@@ -64,8 +64,10 @@ public class EndSystemPortItemProvider extends PortItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		EndSystemPort endSystemPort = (EndSystemPort)object;
-		return getString("_UI_EndSystemPort_type") + " " + endSystemPort.getId();
+		String label = ((EndSystemPort)object).getId();
+		return label == null || label.length() == 0 ?
+			getString("_UI_EndSystemPort_type") :
+			getString("_UI_EndSystemPort_type") + " " + label;
 	}
 	
 

@@ -3,13 +3,11 @@
 package fr.ensma.realtimescheduling;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Module</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Module</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -29,13 +27,14 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Module extends EObject {
+
 	/**
 	 * Returns the value of the '<em><b>Utilization</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Utilization</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Utilization</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Utilization</em>' attribute.
@@ -49,8 +48,8 @@ public interface Module extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Module#getUtilization <em>Utilization</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Utilization</em>' attribute.
 	 * @see #getUtilization()
 	 * @generated
@@ -58,13 +57,14 @@ public interface Module extends EObject {
 	void setUtilization(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Id()
@@ -75,8 +75,7 @@ public interface Module extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Module#getId <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
 	 * @generated
@@ -84,13 +83,14 @@ public interface Module extends EObject {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Period</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Period</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Period</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Period</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Period</em>' attribute.
 	 * @see #setPeriod(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Period()
@@ -101,8 +101,7 @@ public interface Module extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Module#getPeriod <em>Period</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Period</em>' attribute.
 	 * @see #getPeriod()
 	 * @generated
@@ -132,8 +131,8 @@ public interface Module extends EObject {
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.Processor}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Processors</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Processors</em>' containment reference list
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Processors</em>' containment reference list.
@@ -146,10 +145,11 @@ public interface Module extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Module Ports</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.EndSystemPort}.
-	 * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Module Ports</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Module Ports</em>' containment reference list
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Module Ports</em>' containment reference list.

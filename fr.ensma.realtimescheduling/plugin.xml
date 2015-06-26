@@ -28,6 +28,10 @@
             id="fr.ensma.realtimescheduling.commands.improvedetea"
             name="Improved End to End Analysis">
       </command>
+      <command
+            id="fr.ensma.realtimescheduling.commands.mod"
+            name="Parse Mod File">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -77,18 +81,30 @@
                   style="push"
                   tooltip="Determine the Worst Case Response Time for tasks in a partition using the partition&apos;s specified priority assignment algorithm">
             </command>
+            <separator
+                  name="fr.ensma.realtimescheduling.separator1"
+                  visible="true">
+            </separator>
             <command
                   commandId="fr.ensma.realtimescheduling.commands.etea"
-                  label="End to End Analysis"
+                  label="Network Delay Analysis"
                   style="push"
-                  tooltip="Perform the End to End delay analysis on the network component">
+                  tooltip="Perform the Forward analysis on the network component">
             </command>
             <command
                   commandId="fr.ensma.realtimescheduling.commands.improvedetea"
-                  label="Improved End to End Analysis"
+                  label="Serialized Network Delay Analysis"
                   style="push"
-                  tooltip="Im">
+                  tooltip="Performs the serialized forward analysis algorithm on the network">
             </command>
+            <menu
+                  label="Util">
+               <command
+                     commandId="fr.ensma.realtimescheduling.commands.mod"
+                     label="Parse Mod File"
+                     style="push">
+               </command>
+            </menu>
          </menu>
       </menuContribution>
    </extension>
@@ -173,7 +189,7 @@
                id="org.eclipse.ui.navigator.ProjectExplorer"
                minimized="false"
                moveable="true"
-               ratio=".30"
+               ratio=".2"
                relationship="left"
                relative="org.eclipse.ui.editorss"
                showTitle="true"
@@ -192,8 +208,8 @@
                id="fr.ensma.realtimescheduling.views.partitionfunctions"
                minimized="false"
                ratio="0.5"
-               relationship="bottom"
-               relative="org.eclipse.ui.editorss"
+               relationship="stack"
+               relative="fr.ensma.realtimescheduling.views.taskvisualization"
                visible="true">
          </view>
          <view

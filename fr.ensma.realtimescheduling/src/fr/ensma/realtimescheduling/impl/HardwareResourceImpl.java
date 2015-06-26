@@ -6,61 +6,55 @@ import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.Network;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Hardware Resource</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Hardware Resource</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.impl.HardwareResourceImpl#getScheduledOn <em>Scheduled On</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.HardwareResourceImpl#getCommunicatesOver <em>Communicates Over</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.HardwareResourceImpl#getModules <em>Modules</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.HardwareResourceImpl#getNetwork <em>Network</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class HardwareResourceImpl extends MinimalEObjectImpl.Container implements HardwareResource {
+public class HardwareResourceImpl extends MinimalEObjectImpl.Container
+		implements HardwareResource {
+
 	/**
-	 * The cached value of the '{@link #getScheduledOn() <em>Scheduled On</em>}' containment reference list.
+	 * The cached value of the '{@link #getModules() <em>Modules</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getScheduledOn()
+	 * @see #getModules()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Module> scheduledOn;
+	protected EList<Module> modules;
 
 	/**
-	 * The cached value of the '{@link #getCommunicatesOver() <em>Communicates Over</em>}' containment reference.
+	 * The cached value of the '{@link #getNetwork() <em>Network</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCommunicatesOver()
+	 * @see #getNetwork()
 	 * @generated
 	 * @ordered
 	 */
-	protected Network communicatesOver;
+	protected Network network;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected HardwareResourceImpl() {
@@ -68,8 +62,7 @@ public class HardwareResourceImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -82,11 +75,11 @@ public class HardwareResourceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Module> getScheduledOn() {
-		if (scheduledOn == null) {
-			scheduledOn = new EObjectContainmentEList<Module>(Module.class, this, RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON);
+	public EList<Module> getModules() {
+		if (modules == null) {
+			modules = new EObjectContainmentEList<Module>(Module.class, this, RealtimeschedulingPackage.HARDWARE_RESOURCE__MODULES);
 		}
-		return scheduledOn;
+		return modules;
 	}
 
 	/**
@@ -94,8 +87,8 @@ public class HardwareResourceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Network getCommunicatesOver() {
-		return communicatesOver;
+	public Network getNetwork() {
+		return network;
 	}
 
 	/**
@@ -103,11 +96,11 @@ public class HardwareResourceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCommunicatesOver(Network newCommunicatesOver, NotificationChain msgs) {
-		Network oldCommunicatesOver = communicatesOver;
-		communicatesOver = newCommunicatesOver;
+	public NotificationChain basicSetNetwork(Network newNetwork, NotificationChain msgs) {
+		Network oldNetwork = network;
+		network = newNetwork;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER, oldCommunicatesOver, newCommunicatesOver);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.HARDWARE_RESOURCE__NETWORK, oldNetwork, newNetwork);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -118,104 +111,100 @@ public class HardwareResourceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCommunicatesOver(Network newCommunicatesOver) {
-		if (newCommunicatesOver != communicatesOver) {
+	public void setNetwork(Network newNetwork) {
+		if (newNetwork != network) {
 			NotificationChain msgs = null;
-			if (communicatesOver != null)
-				msgs = ((InternalEObject)communicatesOver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER, null, msgs);
-			if (newCommunicatesOver != null)
-				msgs = ((InternalEObject)newCommunicatesOver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER, null, msgs);
-			msgs = basicSetCommunicatesOver(newCommunicatesOver, msgs);
+			if (network != null)
+				msgs = ((InternalEObject)network).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.HARDWARE_RESOURCE__NETWORK, null, msgs);
+			if (newNetwork != null)
+				msgs = ((InternalEObject)newNetwork).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.HARDWARE_RESOURCE__NETWORK, null, msgs);
+			msgs = basicSetNetwork(newNetwork, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER, newCommunicatesOver, newCommunicatesOver));
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.HARDWARE_RESOURCE__NETWORK, newNetwork, newNetwork));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON:
-				return ((InternalEList<?>)getScheduledOn()).basicRemove(otherEnd, msgs);
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER:
-				return basicSetCommunicatesOver(null, msgs);
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__MODULES:
+				return ((InternalEList<?>)getModules()).basicRemove(otherEnd, msgs);
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__NETWORK:
+				return basicSetNetwork(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON:
-				return getScheduledOn();
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER:
-				return getCommunicatesOver();
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__MODULES:
+				return getModules();
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__NETWORK:
+				return getNetwork();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON:
-				getScheduledOn().clear();
-				getScheduledOn().addAll((Collection<? extends Module>)newValue);
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__MODULES:
+				getModules().clear();
+				getModules().addAll((Collection<? extends Module>)newValue);
 				return;
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER:
-				setCommunicatesOver((Network)newValue);
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__NETWORK:
+				setNetwork((Network)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON:
-				getScheduledOn().clear();
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__MODULES:
+				getModules().clear();
 				return;
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER:
-				setCommunicatesOver((Network)null);
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__NETWORK:
+				setNetwork((Network)null);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON:
-				return scheduledOn != null && !scheduledOn.isEmpty();
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER:
-				return communicatesOver != null;
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__MODULES:
+				return modules != null && !modules.isEmpty();
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__NETWORK:
+				return network != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //HardwareResourceImpl
+} // HardwareResourceImpl

@@ -3,13 +3,11 @@
 package fr.ensma.realtimescheduling;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Route</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Route</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -24,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Route extends EObject {
+
 	/**
 	 * Returns the value of the '<em><b>Connections</b></em>' reference list.
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.Connection}.
@@ -60,8 +59,8 @@ public interface Route extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Route#getEndToEndDelay <em>End To End Delay</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>End To End Delay</em>' attribute.
 	 * @see #getEndToEndDelay()
 	 * @generated

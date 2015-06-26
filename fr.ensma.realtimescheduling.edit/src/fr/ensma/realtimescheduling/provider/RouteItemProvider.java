@@ -18,10 +18,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import analysis.NetworkUtils;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.Route;
-import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * This is the item provider adapter for a {@link fr.ensma.realtimescheduling.Route} object.
@@ -128,17 +126,7 @@ public class RouteItemProvider
 	@Override
 	public String getText(Object object) {
 		Route route = (Route)object;
-		VirtualLink vl = (VirtualLink)route.eContainer();
-		String destination = "";
-		try {
-			destination = NetworkUtils.destinationForRoute(route).getId();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return getString("_UI_Route_type") + " " + String.format("%s -> %s : %d",
-				vl.getSource() == null ? "" : vl.getSource().getId(),
-				destination,
-				route.getEndToEndDelay());
+		return getString("_UI_Route_type") + " " + route.getEndToEndDelay();
 	}
 	
 

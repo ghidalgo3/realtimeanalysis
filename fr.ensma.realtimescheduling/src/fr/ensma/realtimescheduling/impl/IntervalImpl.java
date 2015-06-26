@@ -4,18 +4,14 @@ package fr.ensma.realtimescheduling.impl;
 
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Interval</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Interval</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -26,11 +22,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class IntervalImpl extends MinimalEObjectImpl.Container implements Interval {
+public class IntervalImpl extends MinimalEObjectImpl.Container implements
+		Interval {
+
 	/**
 	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getStart()
 	 * @generated
 	 * @ordered
@@ -39,8 +36,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 
 	/**
 	 * The cached value of the '{@link #getStart() <em>Start</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getStart()
 	 * @generated
 	 * @ordered
@@ -48,9 +44,9 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	protected int start = START_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getEnd() <em>End</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getEnd() <em>End</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEnd()
 	 * @generated
 	 * @ordered
@@ -58,9 +54,9 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	protected static final int END_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getEnd() <em>End</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getEnd() <em>End</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEnd()
 	 * @generated
 	 * @ordered
@@ -68,8 +64,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	protected int end = END_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected IntervalImpl() {
@@ -77,8 +72,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -87,8 +81,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getStart() {
@@ -96,8 +89,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setStart(int newStart) {
@@ -108,8 +100,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getEnd() {
@@ -117,8 +108,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setEnd(int newEnd) {
@@ -129,8 +119,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -145,8 +134,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -163,8 +151,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -181,8 +168,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -197,8 +183,7 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -214,4 +199,4 @@ public class IntervalImpl extends MinimalEObjectImpl.Container implements Interv
 		return result.toString();
 	}
 
-} //IntervalImpl
+} // IntervalImpl

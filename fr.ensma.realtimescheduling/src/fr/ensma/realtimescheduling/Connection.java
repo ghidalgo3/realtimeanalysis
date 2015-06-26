@@ -3,13 +3,11 @@
 package fr.ensma.realtimescheduling;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Connection</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Connection</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -26,14 +24,16 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Connection extends EObject {
+
 	/**
-	 * Returns the value of the '<em><b>A</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>A</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>A</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>A</em>' reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>A</em>' reference.
 	 * @see #setA(Port)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getConnection_A()
@@ -44,8 +44,7 @@ public interface Connection extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Connection#getA <em>A</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>A</em>' reference.
 	 * @see #getA()
 	 * @generated
@@ -58,8 +57,8 @@ public interface Connection extends EObject {
 	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Route#getConnections <em>Connections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Routes</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Routes</em>' reference list isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Routes</em>' reference list.
@@ -71,13 +70,14 @@ public interface Connection extends EObject {
 	EList<Route> getRoutes();
 
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getConnection_Id()
@@ -88,8 +88,7 @@ public interface Connection extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Connection#getId <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
 	 * @generated
@@ -97,13 +96,14 @@ public interface Connection extends EObject {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>B</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>B</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>B</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>B</em>' reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>B</em>' reference.
 	 * @see #setB(Port)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getConnection_B()
@@ -114,8 +114,7 @@ public interface Connection extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Connection#getB <em>B</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>B</em>' reference.
 	 * @see #getB()
 	 * @generated

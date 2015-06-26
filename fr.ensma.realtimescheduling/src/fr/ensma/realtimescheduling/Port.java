@@ -5,9 +5,8 @@ package fr.ensma.realtimescheduling;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Port</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Port</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -26,14 +25,16 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Port extends EObject {
+
 	/**
-	 * Returns the value of the '<em><b>Order</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Order</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Order</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Order</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Order</em>' attribute.
 	 * @see #setOrder(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPort_Order()
@@ -44,8 +45,7 @@ public interface Port extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Port#getOrder <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Order</em>' attribute.
 	 * @see #getOrder()
 	 * @generated
@@ -57,8 +57,8 @@ public interface Port extends EObject {
 	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Bandwidth</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Bandwidth</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bandwidth</em>' attribute.
@@ -71,8 +71,7 @@ public interface Port extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Port#getBandwidth <em>Bandwidth</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Bandwidth</em>' attribute.
 	 * @see #getBandwidth()
 	 * @generated
@@ -80,20 +79,21 @@ public interface Port extends EObject {
 	void setBandwidth(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPort_Id()
 	 * @model
 	 * @generated
 	 */
-	int getId();
+	String getId();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Port#getId <em>Id</em>}' attribute.
@@ -103,16 +103,17 @@ public interface Port extends EObject {
 	 * @see #getId()
 	 * @generated
 	 */
-	void setId(int value);
+	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Connection</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Connection</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Connection</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Connection</em>' reference isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Connection</em>' reference.
 	 * @see #setConnection(Connection)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPort_Connection()
@@ -123,8 +124,8 @@ public interface Port extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Port#getConnection <em>Connection</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Connection</em>' reference.
 	 * @see #getConnection()
 	 * @generated

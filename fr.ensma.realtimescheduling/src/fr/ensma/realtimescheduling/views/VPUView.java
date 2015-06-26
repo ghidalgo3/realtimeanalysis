@@ -6,8 +6,8 @@ import analysis.ModelInterface;
 
 /**
  * Displays Virtual Processor Utilization as a barchart
+ * 
  * @author Gustavo
- *
  */
 public class VPUView extends AbstractVerticalBarChart {
 
@@ -18,14 +18,15 @@ public class VPUView extends AbstractVerticalBarChart {
 	@Override
 	CategoryDataset createDataset() {
 		final DefaultCategoryDataset result = new DefaultCategoryDataset();
-		if(ModelInterface.isValidSystem()) {
-		    ModelInterface.allPartitions
-		    	.stream()
-		  	    .forEach(partition -> {
-		  		    result.addValue(partition.getVirtualProcessorUtilization(), "Partition", ""+partition.getId());
-		  	    });
-	    }
-	    return result;
+		if (ModelInterface.isValidSystem()) {
+			ModelInterface.allPartitions.stream().forEach(
+					partition -> {
+						result.addValue(
+								partition.getVirtualProcessorUtilization(),
+								"Partition", "" + partition.getId());
+					});
+		}
+		return result;
 	}
 
 }

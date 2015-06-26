@@ -6,15 +6,14 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Virtual Link</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Virtual Link</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getId <em>Id</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getBAG <em>BAG</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getRoutes <em>Routes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getSource <em>Source</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.VirtualLink#getDestinations <em>Destinations</em>}</li>
@@ -28,14 +27,16 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface VirtualLink extends EObject {
+
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_Id()
@@ -46,8 +47,7 @@ public interface VirtualLink extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getId <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
 	 * @generated
@@ -55,38 +55,38 @@ public interface VirtualLink extends EObject {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Min Inter Frame Time</b></em>' attribute.
+	 * Returns the value of the '<em><b>BAG</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Min Inter Frame Time</em>' attribute isn't clear,
+	 * If the meaning of the '<em>BAG</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Min Inter Frame Time</em>' attribute.
-	 * @see #setMinInterFrameTime(int)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_MinInterFrameTime()
+	 * @return the value of the '<em>BAG</em>' attribute.
+	 * @see #setBAG(int)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_BAG()
 	 * @model required="true"
 	 * @generated
 	 */
-	int getMinInterFrameTime();
+	int getBAG();
 
 	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getMinInterFrameTime <em>Min Inter Frame Time</em>}' attribute.
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getBAG <em>BAG</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Inter Frame Time</em>' attribute.
-	 * @see #getMinInterFrameTime()
+	 * @param value the new value of the '<em>BAG</em>' attribute.
+	 * @see #getBAG()
 	 * @generated
 	 */
-	void setMinInterFrameTime(int value);
+	void setBAG(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Routes</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.Route}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Routes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Routes</em>' containment reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Routes</em>' containment reference list.
@@ -97,13 +97,14 @@ public interface VirtualLink extends EObject {
 	EList<Route> getRoutes();
 
 	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Source</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Source</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Source</em>' reference isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(Module)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_Source()
@@ -114,8 +115,7 @@ public interface VirtualLink extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getSource <em>Source</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Source</em>' reference.
 	 * @see #getSource()
 	 * @generated
@@ -157,8 +157,8 @@ public interface VirtualLink extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.VirtualLink#getMaxFrameSize <em>Max Frame Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Max Frame Size</em>' attribute.
 	 * @see #getMaxFrameSize()
 	 * @generated

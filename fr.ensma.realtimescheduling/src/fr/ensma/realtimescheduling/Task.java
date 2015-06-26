@@ -5,14 +5,13 @@ package fr.ensma.realtimescheduling;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Task</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.Task#getName <em>Name</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Task#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getWorstCaseExecTime <em>Worst Case Exec Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getImplicitDeadline <em>Implicit Deadline</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getPriority <em>Priority</em>}</li>
@@ -33,39 +32,40 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Task extends EObject {
+
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_Name()
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(String)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_Id()
 	 * @model id="true" required="true"
 	 * @generated
 	 */
-	String getName();
+	String getId();
 
 	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
 	 * @generated
 	 */
-	void setName(String value);
+	void setId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Worst Case Exec Time</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Worst Case Exec Time</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Worst Case Exec Time</em>' attribute isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Worst Case Exec Time</em>' attribute.
@@ -78,8 +78,8 @@ public interface Task extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getWorstCaseExecTime <em>Worst Case Exec Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Worst Case Exec Time</em>' attribute.
 	 * @see #getWorstCaseExecTime()
 	 * @generated
@@ -104,8 +104,8 @@ public interface Task extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getImplicitDeadline <em>Implicit Deadline</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Implicit Deadline</em>' attribute.
 	 * @see #getImplicitDeadline()
 	 * @generated
@@ -113,13 +113,14 @@ public interface Task extends EObject {
 	void setImplicitDeadline(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Priority</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Priority</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Priority</em>' attribute.
 	 * @see #setPriority(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_Priority()
@@ -130,8 +131,7 @@ public interface Task extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getPriority <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Priority</em>' attribute.
 	 * @see #getPriority()
 	 * @generated
@@ -139,13 +139,14 @@ public interface Task extends EObject {
 	void setPriority(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Response Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Response Time</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Response Time</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Response Time</em>' attribute.
 	 * @see #setResponseTime(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_ResponseTime()
@@ -156,8 +157,8 @@ public interface Task extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getResponseTime <em>Response Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Response Time</em>' attribute.
 	 * @see #getResponseTime()
 	 * @generated
@@ -165,13 +166,14 @@ public interface Task extends EObject {
 	void setResponseTime(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Scheduleable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Scheduleable</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Scheduleable</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Scheduleable</em>' attribute.
 	 * @see #setScheduleable(boolean)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_Scheduleable()
@@ -182,8 +184,8 @@ public interface Task extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#isScheduleable <em>Scheduleable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Scheduleable</em>' attribute.
 	 * @see #isScheduleable()
 	 * @generated
@@ -191,13 +193,14 @@ public interface Task extends EObject {
 	void setScheduleable(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Jitter</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Jitter</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Jitter</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Jitter</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Jitter</em>' attribute.
 	 * @see #setJitter(float)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_Jitter()
@@ -207,10 +210,12 @@ public interface Task extends EObject {
 	float getJitter();
 
 	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getJitter <em>Jitter</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Jitter</em>' attribute.
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getJitter
+	 * <em>Jitter</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Jitter</em>' attribute.
 	 * @see #getJitter()
 	 * @generated
 	 */
@@ -234,8 +239,8 @@ public interface Task extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getCriticalInstance <em>Critical Instance</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Critical Instance</em>' attribute.
 	 * @see #getCriticalInstance()
 	 * @generated
@@ -243,13 +248,14 @@ public interface Task extends EObject {
 	void setCriticalInstance(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Release Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Release Time</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Release Time</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Release Time</em>' attribute.
 	 * @see #setReleaseTime(double)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_ReleaseTime()
@@ -260,8 +266,8 @@ public interface Task extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getReleaseTime <em>Release Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Release Time</em>' attribute.
 	 * @see #getReleaseTime()
 	 * @generated
@@ -269,15 +275,16 @@ public interface Task extends EObject {
 	void setReleaseTime(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Periodicity</b></em>' attribute.
-	 * The default value is <code>"Periodic"</code>.
-	 * The literals are from the enumeration {@link fr.ensma.realtimescheduling.Periodicity}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Periodicity</b></em>' attribute. The
+	 * default value is <code>"Periodic"</code>. The literals are from the
+	 * enumeration {@link fr.ensma.realtimescheduling.Periodicity}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Periodicity</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Periodicity</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Periodicity</em>' attribute.
 	 * @see fr.ensma.realtimescheduling.Periodicity
 	 * @see #setPeriodicity(Periodicity)
@@ -289,8 +296,8 @@ public interface Task extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getPeriodicity <em>Periodicity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Periodicity</em>' attribute.
 	 * @see fr.ensma.realtimescheduling.Periodicity
 	 * @see #getPeriodicity()
@@ -299,12 +306,11 @@ public interface Task extends EObject {
 	void setPeriodicity(Periodicity value);
 
 	/**
-	 * Returns the value of the '<em><b>Characteristic Period</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * This field only has 'meaning' if a task is not aperiodic.
-	 * <!-- end-model-doc -->
+	 * Returns the value of the '<em><b>Characteristic Period</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+	 * begin-model-doc --> This field only has 'meaning' if a task is not
+	 * aperiodic. <!-- end-model-doc -->
+	 * 
 	 * @return the value of the '<em>Characteristic Period</em>' attribute.
 	 * @see #setCharacteristicPeriod(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_CharacteristicPeriod()
@@ -315,8 +321,8 @@ public interface Task extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getCharacteristicPeriod <em>Characteristic Period</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Characteristic Period</em>' attribute.
 	 * @see #getCharacteristicPeriod()
 	 * @generated
@@ -328,8 +334,8 @@ public interface Task extends EObject {
 	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Partition#getTasks <em>Tasks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Partition</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Partition</em>' reference isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Partition</em>' reference.
@@ -343,8 +349,7 @@ public interface Task extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getPartition <em>Partition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Partition</em>' reference.
 	 * @see #getPartition()
 	 * @generated

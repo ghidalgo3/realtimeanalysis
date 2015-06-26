@@ -5,46 +5,43 @@ package fr.ensma.realtimescheduling.impl;
 import fr.ensma.realtimescheduling.HardwareResource;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SoftwareResource;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>System</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>System</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.impl.SystemImpl#getUses <em>Uses</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.SystemImpl#getHardware <em>Hardware</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SystemImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.SystemImpl#getExecutesSoftware <em>Executes Software</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.SystemImpl#getSoftware <em>Software</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma.realtimescheduling.System {
+public class SystemImpl extends MinimalEObjectImpl.Container implements
+		fr.ensma.realtimescheduling.System {
+
 	/**
-	 * The cached value of the '{@link #getUses() <em>Uses</em>}' containment reference.
+	 * The cached value of the '{@link #getHardware() <em>Hardware</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUses()
+	 * @see #getHardware()
 	 * @generated
 	 * @ordered
 	 */
-	protected HardwareResource uses;
+	protected HardwareResource hardware;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -53,8 +50,7 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -62,18 +58,17 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getExecutesSoftware() <em>Executes Software</em>}' containment reference.
+	 * The cached value of the '{@link #getSoftware() <em>Software</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExecutesSoftware()
+	 * @see #getSoftware()
 	 * @generated
 	 * @ordered
 	 */
-	protected SoftwareResource executesSoftware;
+	protected SoftwareResource software;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected SystemImpl() {
@@ -81,8 +76,7 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -95,8 +89,8 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HardwareResource getUses() {
-		return uses;
+	public HardwareResource getHardware() {
+		return hardware;
 	}
 
 	/**
@@ -104,11 +98,11 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetUses(HardwareResource newUses, NotificationChain msgs) {
-		HardwareResource oldUses = uses;
-		uses = newUses;
+	public NotificationChain basicSetHardware(HardwareResource newHardware, NotificationChain msgs) {
+		HardwareResource oldHardware = hardware;
+		hardware = newHardware;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.SYSTEM__USES, oldUses, newUses);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.SYSTEM__HARDWARE, oldHardware, newHardware);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -119,23 +113,22 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setUses(HardwareResource newUses) {
-		if (newUses != uses) {
+	public void setHardware(HardwareResource newHardware) {
+		if (newHardware != hardware) {
 			NotificationChain msgs = null;
-			if (uses != null)
-				msgs = ((InternalEObject)uses).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.SYSTEM__USES, null, msgs);
-			if (newUses != null)
-				msgs = ((InternalEObject)newUses).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.SYSTEM__USES, null, msgs);
-			msgs = basicSetUses(newUses, msgs);
+			if (hardware != null)
+				msgs = ((InternalEObject)hardware).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.SYSTEM__HARDWARE, null, msgs);
+			if (newHardware != null)
+				msgs = ((InternalEObject)newHardware).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.SYSTEM__HARDWARE, null, msgs);
+			msgs = basicSetHardware(newHardware, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.SYSTEM__USES, newUses, newUses));
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.SYSTEM__HARDWARE, newHardware, newHardware));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getName() {
@@ -143,8 +136,7 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -159,8 +151,8 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SoftwareResource getExecutesSoftware() {
-		return executesSoftware;
+	public SoftwareResource getSoftware() {
+		return software;
 	}
 
 	/**
@@ -168,11 +160,11 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExecutesSoftware(SoftwareResource newExecutesSoftware, NotificationChain msgs) {
-		SoftwareResource oldExecutesSoftware = executesSoftware;
-		executesSoftware = newExecutesSoftware;
+	public NotificationChain basicSetSoftware(SoftwareResource newSoftware, NotificationChain msgs) {
+		SoftwareResource oldSoftware = software;
+		software = newSoftware;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.SYSTEM__EXECUTES_SOFTWARE, oldExecutesSoftware, newExecutesSoftware);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.SYSTEM__SOFTWARE, oldSoftware, newSoftware);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -183,117 +175,112 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExecutesSoftware(SoftwareResource newExecutesSoftware) {
-		if (newExecutesSoftware != executesSoftware) {
+	public void setSoftware(SoftwareResource newSoftware) {
+		if (newSoftware != software) {
 			NotificationChain msgs = null;
-			if (executesSoftware != null)
-				msgs = ((InternalEObject)executesSoftware).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.SYSTEM__EXECUTES_SOFTWARE, null, msgs);
-			if (newExecutesSoftware != null)
-				msgs = ((InternalEObject)newExecutesSoftware).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.SYSTEM__EXECUTES_SOFTWARE, null, msgs);
-			msgs = basicSetExecutesSoftware(newExecutesSoftware, msgs);
+			if (software != null)
+				msgs = ((InternalEObject)software).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.SYSTEM__SOFTWARE, null, msgs);
+			if (newSoftware != null)
+				msgs = ((InternalEObject)newSoftware).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RealtimeschedulingPackage.SYSTEM__SOFTWARE, null, msgs);
+			msgs = basicSetSoftware(newSoftware, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.SYSTEM__EXECUTES_SOFTWARE, newExecutesSoftware, newExecutesSoftware));
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.SYSTEM__SOFTWARE, newSoftware, newSoftware));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.SYSTEM__USES:
-				return basicSetUses(null, msgs);
-			case RealtimeschedulingPackage.SYSTEM__EXECUTES_SOFTWARE:
-				return basicSetExecutesSoftware(null, msgs);
+			case RealtimeschedulingPackage.SYSTEM__HARDWARE:
+				return basicSetHardware(null, msgs);
+			case RealtimeschedulingPackage.SYSTEM__SOFTWARE:
+				return basicSetSoftware(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.SYSTEM__USES:
-				return getUses();
+			case RealtimeschedulingPackage.SYSTEM__HARDWARE:
+				return getHardware();
 			case RealtimeschedulingPackage.SYSTEM__NAME:
 				return getName();
-			case RealtimeschedulingPackage.SYSTEM__EXECUTES_SOFTWARE:
-				return getExecutesSoftware();
+			case RealtimeschedulingPackage.SYSTEM__SOFTWARE:
+				return getSoftware();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.SYSTEM__USES:
-				setUses((HardwareResource)newValue);
+			case RealtimeschedulingPackage.SYSTEM__HARDWARE:
+				setHardware((HardwareResource)newValue);
 				return;
 			case RealtimeschedulingPackage.SYSTEM__NAME:
 				setName((String)newValue);
 				return;
-			case RealtimeschedulingPackage.SYSTEM__EXECUTES_SOFTWARE:
-				setExecutesSoftware((SoftwareResource)newValue);
+			case RealtimeschedulingPackage.SYSTEM__SOFTWARE:
+				setSoftware((SoftwareResource)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.SYSTEM__USES:
-				setUses((HardwareResource)null);
+			case RealtimeschedulingPackage.SYSTEM__HARDWARE:
+				setHardware((HardwareResource)null);
 				return;
 			case RealtimeschedulingPackage.SYSTEM__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case RealtimeschedulingPackage.SYSTEM__EXECUTES_SOFTWARE:
-				setExecutesSoftware((SoftwareResource)null);
+			case RealtimeschedulingPackage.SYSTEM__SOFTWARE:
+				setSoftware((SoftwareResource)null);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.SYSTEM__USES:
-				return uses != null;
+			case RealtimeschedulingPackage.SYSTEM__HARDWARE:
+				return hardware != null;
 			case RealtimeschedulingPackage.SYSTEM__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case RealtimeschedulingPackage.SYSTEM__EXECUTES_SOFTWARE:
-				return executesSoftware != null;
+			case RealtimeschedulingPackage.SYSTEM__SOFTWARE:
+				return software != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -307,4 +294,4 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements fr.ensma
 		return result.toString();
 	}
 
-} //SystemImpl
+} // SystemImpl

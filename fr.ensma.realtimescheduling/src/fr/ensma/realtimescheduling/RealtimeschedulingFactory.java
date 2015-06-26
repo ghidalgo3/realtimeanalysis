@@ -5,26 +5,25 @@ package fr.ensma.realtimescheduling;
 import org.eclipse.emf.ecore.EFactory;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Factory</b> for the model.
- * It provides a create method for each non-abstract class of the model.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
+ * create method for each non-abstract class of the model. <!-- end-user-doc -->
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage
  * @generated
  */
 public interface RealtimeschedulingFactory extends EFactory {
+
 	/**
 	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	RealtimeschedulingFactory eINSTANCE = fr.ensma.realtimescheduling.impl.RealtimeschedulingFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Hardware Resource</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>Hardware Resource</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>Hardware Resource</em>'.
 	 * @generated
 	 */
@@ -50,8 +49,8 @@ public interface RealtimeschedulingFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>Partition</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Partition</em>'.
 	 * @generated
 	 */
@@ -59,8 +58,8 @@ public interface RealtimeschedulingFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>Interval</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Interval</em>'.
 	 * @generated
 	 */
@@ -85,9 +84,9 @@ public interface RealtimeschedulingFactory extends EFactory {
 	System createSystem();
 
 	/**
-	 * Returns a new object of class '<em>Software Resource</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>Software Resource</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>Software Resource</em>'.
 	 * @generated
 	 */
@@ -95,8 +94,8 @@ public interface RealtimeschedulingFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>Processor</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Processor</em>'.
 	 * @generated
 	 */
@@ -112,9 +111,9 @@ public interface RealtimeschedulingFactory extends EFactory {
 	Switch createSwitch();
 
 	/**
-	 * Returns a new object of class '<em>Virtual Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>Virtual Link</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>Virtual Link</em>'.
 	 * @generated
 	 */
@@ -122,8 +121,8 @@ public interface RealtimeschedulingFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>Connection</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Connection</em>'.
 	 * @generated
 	 */
@@ -140,17 +139,17 @@ public interface RealtimeschedulingFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>Switch Port</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Switch Port</em>'.
 	 * @generated
 	 */
 	SwitchPort createSwitchPort();
 
 	/**
-	 * Returns a new object of class '<em>End System Port</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>End System Port</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>End System Port</em>'.
 	 * @generated
 	 */
@@ -165,4 +164,4 @@ public interface RealtimeschedulingFactory extends EFactory {
 	 */
 	RealtimeschedulingPackage getRealtimeschedulingPackage();
 
-} //RealtimeschedulingFactory
+} // RealtimeschedulingFactory

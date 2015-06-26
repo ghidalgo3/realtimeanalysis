@@ -8,29 +8,22 @@ import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.SchedulingAlgorithm;
 import fr.ensma.realtimescheduling.Task;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Partition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Partition</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -47,31 +40,32 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class PartitionImpl extends MinimalEObjectImpl.Container implements Partition {
-	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int ID_EDEFAULT = 0;
+public class PartitionImpl extends MinimalEObjectImpl.Container implements
+		Partition {
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected int id = ID_EDEFAULT;
+	protected static final String ID_EDEFAULT = "0";
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * The cached setting delegate for the '{@link #getPeriod() <em>Period</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPeriod()
 	 * @generated
 	 * @ordered
@@ -79,9 +73,10 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	protected EStructuralFeature.Internal.SettingDelegate PERIOD__ESETTING_DELEGATE = ((EStructuralFeature.Internal)RealtimeschedulingPackage.Literals.PARTITION__PERIOD).getSettingDelegate();
 
 	/**
-	 * The cached value of the '{@link #getExecutionIntervals() <em>Execution Intervals</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getExecutionIntervals()
+	 * <em>Execution Intervals</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getExecutionIntervals()
 	 * @generated
 	 * @ordered
@@ -90,8 +85,8 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 
 	/**
 	 * The default value of the '{@link #getVirtualProcessorUtilization() <em>Virtual Processor Utilization</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #getVirtualProcessorUtilization()
 	 * @generated
 	 * @ordered
@@ -100,8 +95,8 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 
 	/**
 	 * The cached value of the '{@link #getVirtualProcessorUtilization() <em>Virtual Processor Utilization</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #getVirtualProcessorUtilization()
 	 * @generated
 	 * @ordered
@@ -110,8 +105,8 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 
 	/**
 	 * The cached setting delegate for the '{@link #getAvailabilityFactor() <em>Availability Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getAvailabilityFactor()
 	 * @generated
 	 * @ordered
@@ -120,8 +115,8 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 
 	/**
 	 * The default value of the '{@link #getSchedulingAlgorithm() <em>Scheduling Algorithm</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getSchedulingAlgorithm()
 	 * @generated
 	 * @ordered
@@ -130,8 +125,8 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 
 	/**
 	 * The cached value of the '{@link #getSchedulingAlgorithm() <em>Scheduling Algorithm</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getSchedulingAlgorithm()
 	 * @generated
 	 * @ordered
@@ -140,8 +135,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 
 	/**
 	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getTasks()
 	 * @generated
 	 * @ordered
@@ -150,8 +144,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 
 	/**
 	 * The cached value of the '{@link #getModule() <em>Module</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getModule()
 	 * @generated
 	 * @ordered
@@ -159,8 +152,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	protected Module module;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PartitionImpl() {
@@ -168,8 +160,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -178,11 +169,10 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -191,16 +181,15 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setId(int newId) {
-		int oldId = id;
+	public void setId(String newId) {
+		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.PARTITION__ID, oldId, id));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public double getPeriod() {
@@ -208,8 +197,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Interval> getExecutionIntervals() {
@@ -220,8 +208,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public double getVirtualProcessorUtilization() {
@@ -229,11 +216,11 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVirtualProcessorUtilization(double newVirtualProcessorUtilization) {
+	public void setVirtualProcessorUtilization(
+			double newVirtualProcessorUtilization) {
 		double oldVirtualProcessorUtilization = virtualProcessorUtilization;
 		virtualProcessorUtilization = newVirtualProcessorUtilization;
 		if (eNotificationRequired())
@@ -241,8 +228,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public double getAvailabilityFactor() {
@@ -250,8 +236,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setAvailabilityFactor(double newAvailabilityFactor) {
@@ -259,8 +244,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SchedulingAlgorithm getSchedulingAlgorithm() {
@@ -268,11 +252,11 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSchedulingAlgorithm(SchedulingAlgorithm newSchedulingAlgorithm) {
+	public void setSchedulingAlgorithm(
+			SchedulingAlgorithm newSchedulingAlgorithm) {
 		SchedulingAlgorithm oldSchedulingAlgorithm = schedulingAlgorithm;
 		schedulingAlgorithm = newSchedulingAlgorithm == null ? SCHEDULING_ALGORITHM_EDEFAULT : newSchedulingAlgorithm;
 		if (eNotificationRequired())
@@ -280,8 +264,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Task> getTasks() {
@@ -292,8 +275,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Module getModule() {
@@ -309,8 +291,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Module basicGetModule() {
@@ -318,11 +299,11 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetModule(Module newModule, NotificationChain msgs) {
+	public NotificationChain basicSetModule(Module newModule,
+			NotificationChain msgs) {
 		Module oldModule = module;
 		module = newModule;
 		if (eNotificationRequired()) {
@@ -333,8 +314,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setModule(Module newModule) {
@@ -352,13 +332,13 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.PARTITION__TASKS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTasks()).basicAdd(otherEnd, msgs);
@@ -371,12 +351,12 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.PARTITION__EXECUTION_INTERVALS:
 				return ((InternalEList<?>)getExecutionIntervals()).basicRemove(otherEnd, msgs);
@@ -389,8 +369,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -418,8 +397,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -427,7 +405,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.PARTITION__ID:
-				setId((Integer)newValue);
+				setId((String)newValue);
 				return;
 			case RealtimeschedulingPackage.PARTITION__EXECUTION_INTERVALS:
 				getExecutionIntervals().clear();
@@ -454,8 +432,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -487,15 +464,14 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.PARTITION__ID:
-				return id != ID_EDEFAULT;
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case RealtimeschedulingPackage.PARTITION__PERIOD:
 				return PERIOD__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
 			case RealtimeschedulingPackage.PARTITION__EXECUTION_INTERVALS:
@@ -515,8 +491,7 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -534,4 +509,4 @@ public class PartitionImpl extends MinimalEObjectImpl.Container implements Parti
 		return result.toString();
 	}
 
-} //PartitionImpl
+} // PartitionImpl

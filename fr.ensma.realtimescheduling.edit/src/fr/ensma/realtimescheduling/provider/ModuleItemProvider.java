@@ -205,10 +205,9 @@ public class ModuleItemProvider
 	@Override
 	public String getText(Object object) {
 		String label = ((Module)object).getId();
-		Module mod = ((Module)object);
 		return label == null || label.length() == 0 ?
 			getString("_UI_Module_type") :
-			getString("_UI_Module_type") + " " + label +" "+ String.format("T: %d ", mod.getPeriod());
+			getString("_UI_Module_type") + " " + label;
 	}
 	
 

@@ -3,19 +3,17 @@
 package fr.ensma.realtimescheduling;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Hardware Resource</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Hardware Resource</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.HardwareResource#getScheduledOn <em>Scheduled On</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.HardwareResource#getCommunicatesOver <em>Communicates Over</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.HardwareResource#getModules <em>Modules</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.HardwareResource#getNetwork <em>Network</em>}</li>
  * </ul>
  * </p>
  *
@@ -24,46 +22,47 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface HardwareResource extends EObject {
+
 	/**
-	 * Returns the value of the '<em><b>Scheduled On</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Modules</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.Module}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Scheduled On</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Modules</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Scheduled On</em>' containment reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getHardwareResource_ScheduledOn()
+	 * @return the value of the '<em>Modules</em>' containment reference list.
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getHardwareResource_Modules()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Module> getScheduledOn();
+	EList<Module> getModules();
 
 	/**
-	 * Returns the value of the '<em><b>Communicates Over</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Network</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Communicates Over</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Network</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Communicates Over</em>' containment reference.
-	 * @see #setCommunicatesOver(Network)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getHardwareResource_CommunicatesOver()
+	 * @return the value of the '<em>Network</em>' containment reference.
+	 * @see #setNetwork(Network)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getHardwareResource_Network()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Network getCommunicatesOver();
+	Network getNetwork();
 
 	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.HardwareResource#getCommunicatesOver <em>Communicates Over</em>}' containment reference.
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.HardwareResource#getNetwork <em>Network</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Communicates Over</em>' containment reference.
-	 * @see #getCommunicatesOver()
+	 * @param value the new value of the '<em>Network</em>' containment reference.
+	 * @see #getNetwork()
 	 * @generated
 	 */
-	void setCommunicatesOver(Network value);
+	void setNetwork(Network value);
 
 } // HardwareResource

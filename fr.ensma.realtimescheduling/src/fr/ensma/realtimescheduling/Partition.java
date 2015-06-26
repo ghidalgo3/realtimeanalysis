@@ -3,13 +3,11 @@
 package fr.ensma.realtimescheduling;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Partition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Partition</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -31,22 +29,23 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Partition extends EObject {
+
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #setId(int)
+	 * @see #setId(String)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPartition_Id()
 	 * @model default="0" id="true" required="true"
 	 * @generated
 	 */
-	int getId();
+	String getId();
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Partition#getId <em>Id</em>}' attribute.
@@ -56,15 +55,15 @@ public interface Partition extends EObject {
 	 * @see #getId()
 	 * @generated
 	 */
-	void setId(int value);
+	void setId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Period</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Period</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Period</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Period</em>' attribute.
@@ -80,8 +79,9 @@ public interface Partition extends EObject {
 	 * The list contents are of type {@link fr.ensma.realtimescheduling.Interval}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Execution Intervals</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Execution Intervals</em>' containment
+	 * reference list isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Execution Intervals</em>' containment reference list.
@@ -96,8 +96,8 @@ public interface Partition extends EObject {
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Virtual Processor Utilization</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Virtual Processor Utilization</em>' attribute
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Virtual Processor Utilization</em>' attribute.
@@ -110,8 +110,8 @@ public interface Partition extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Partition#getVirtualProcessorUtilization <em>Virtual Processor Utilization</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Virtual Processor Utilization</em>' attribute.
 	 * @see #getVirtualProcessorUtilization()
 	 * @generated
@@ -123,8 +123,8 @@ public interface Partition extends EObject {
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Availability Factor</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Availability Factor</em>' attribute isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Availability Factor</em>' attribute.
@@ -138,8 +138,8 @@ public interface Partition extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Partition#getAvailabilityFactor <em>Availability Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Availability Factor</em>' attribute.
 	 * @see #getAvailabilityFactor()
 	 * @generated
@@ -147,14 +147,16 @@ public interface Partition extends EObject {
 	void setAvailabilityFactor(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Scheduling Algorithm</b></em>' attribute.
-	 * The literals are from the enumeration {@link fr.ensma.realtimescheduling.SchedulingAlgorithm}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Scheduling Algorithm</b></em>'
+	 * attribute. The literals are from the enumeration
+	 * {@link fr.ensma.realtimescheduling.SchedulingAlgorithm}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Scheduling Algorithm</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Scheduling Algorithm</em>' attribute isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Scheduling Algorithm</em>' attribute.
 	 * @see fr.ensma.realtimescheduling.SchedulingAlgorithm
 	 * @see #setSchedulingAlgorithm(SchedulingAlgorithm)
@@ -166,8 +168,8 @@ public interface Partition extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Partition#getSchedulingAlgorithm <em>Scheduling Algorithm</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Scheduling Algorithm</em>' attribute.
 	 * @see fr.ensma.realtimescheduling.SchedulingAlgorithm
 	 * @see #getSchedulingAlgorithm()
@@ -181,8 +183,8 @@ public interface Partition extends EObject {
 	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Task#getPartition <em>Partition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Tasks</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Tasks</em>' reference list isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tasks</em>' reference list.
@@ -198,8 +200,8 @@ public interface Partition extends EObject {
 	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Module#getPartition <em>Partition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Module</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Module</em>' reference isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Module</em>' reference.
@@ -213,8 +215,7 @@ public interface Partition extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Partition#getModule <em>Module</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Module</em>' reference.
 	 * @see #getModule()
 	 * @generated

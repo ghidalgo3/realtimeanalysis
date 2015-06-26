@@ -6,24 +6,20 @@ import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Periodicity;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.Task;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Task</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Task</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getId <em>Id</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getWorstCaseExecTime <em>Worst Case Exec Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getImplicitDeadline <em>Implicit Deadline</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getPriority <em>Priority</em>}</li>
@@ -41,30 +37,31 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * @generated
  */
 public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWorstCaseExecTime() <em>Worst Case Exec Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getWorstCaseExecTime()
 	 * @generated
 	 * @ordered
@@ -73,8 +70,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The cached value of the '{@link #getWorstCaseExecTime() <em>Worst Case Exec Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getWorstCaseExecTime()
 	 * @generated
 	 * @ordered
@@ -83,8 +80,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The default value of the '{@link #getImplicitDeadline() <em>Implicit Deadline</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getImplicitDeadline()
 	 * @generated
 	 * @ordered
@@ -93,8 +90,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The cached value of the '{@link #getImplicitDeadline() <em>Implicit Deadline</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getImplicitDeadline()
 	 * @generated
 	 * @ordered
@@ -103,8 +100,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPriority()
 	 * @generated
 	 * @ordered
@@ -113,8 +109,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPriority()
 	 * @generated
 	 * @ordered
@@ -123,8 +118,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The default value of the '{@link #getResponseTime() <em>Response Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getResponseTime()
 	 * @generated
 	 * @ordered
@@ -133,8 +128,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The cached value of the '{@link #getResponseTime() <em>Response Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getResponseTime()
 	 * @generated
 	 * @ordered
@@ -143,8 +138,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The default value of the '{@link #isScheduleable() <em>Scheduleable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isScheduleable()
 	 * @generated
 	 * @ordered
@@ -153,8 +147,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The cached value of the '{@link #isScheduleable() <em>Scheduleable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isScheduleable()
 	 * @generated
 	 * @ordered
@@ -163,8 +156,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The default value of the '{@link #getJitter() <em>Jitter</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getJitter()
 	 * @generated
 	 * @ordered
@@ -173,8 +165,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The cached value of the '{@link #getJitter() <em>Jitter</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getJitter()
 	 * @generated
 	 * @ordered
@@ -183,8 +174,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The default value of the '{@link #getCriticalInstance() <em>Critical Instance</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getCriticalInstance()
 	 * @generated
 	 * @ordered
@@ -193,8 +184,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The cached value of the '{@link #getCriticalInstance() <em>Critical Instance</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getCriticalInstance()
 	 * @generated
 	 * @ordered
@@ -203,8 +194,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The default value of the '{@link #getReleaseTime() <em>Release Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getReleaseTime()
 	 * @generated
 	 * @ordered
@@ -213,8 +203,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The cached value of the '{@link #getReleaseTime() <em>Release Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getReleaseTime()
 	 * @generated
 	 * @ordered
@@ -223,8 +212,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The default value of the '{@link #getPeriodicity() <em>Periodicity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPeriodicity()
 	 * @generated
 	 * @ordered
@@ -233,8 +221,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The cached value of the '{@link #getPeriodicity() <em>Periodicity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPeriodicity()
 	 * @generated
 	 * @ordered
@@ -243,8 +230,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The default value of the '{@link #getCharacteristicPeriod() <em>Characteristic Period</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getCharacteristicPeriod()
 	 * @generated
 	 * @ordered
@@ -253,8 +240,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The cached value of the '{@link #getCharacteristicPeriod() <em>Characteristic Period</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getCharacteristicPeriod()
 	 * @generated
 	 * @ordered
@@ -263,8 +250,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 
 	/**
 	 * The cached value of the '{@link #getPartition() <em>Partition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPartition()
 	 * @generated
 	 * @ordered
@@ -272,8 +258,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	protected Partition partition;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected TaskImpl() {
@@ -281,8 +266,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -295,8 +279,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
+	public String getId() {
+		return id;
 	}
 
 	/**
@@ -304,16 +288,15 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__ID, oldId, id));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getWorstCaseExecTime() {
@@ -321,8 +304,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setWorstCaseExecTime(int newWorstCaseExecTime) {
@@ -333,8 +315,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getImplicitDeadline() {
@@ -342,8 +323,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setImplicitDeadline(int newImplicitDeadline) {
@@ -354,8 +334,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getPriority() {
@@ -363,8 +342,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setPriority(int newPriority) {
@@ -375,8 +353,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getResponseTime() {
@@ -384,8 +361,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setResponseTime(int newResponseTime) {
@@ -396,8 +372,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isScheduleable() {
@@ -405,8 +380,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setScheduleable(boolean newScheduleable) {
@@ -417,8 +391,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public float getJitter() {
@@ -426,8 +399,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setJitter(float newJitter) {
@@ -438,8 +410,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getCriticalInstance() {
@@ -447,8 +418,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setCriticalInstance(int newCriticalInstance) {
@@ -459,8 +429,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public double getReleaseTime() {
@@ -468,8 +437,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setReleaseTime(double newReleaseTime) {
@@ -480,8 +448,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Periodicity getPeriodicity() {
@@ -489,8 +456,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setPeriodicity(Periodicity newPeriodicity) {
@@ -501,8 +467,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getCharacteristicPeriod() {
@@ -510,8 +475,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setCharacteristicPeriod(int newCharacteristicPeriod) {
@@ -522,8 +486,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Partition getPartition() {
@@ -539,8 +502,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Partition basicGetPartition() {
@@ -548,11 +510,11 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPartition(Partition newPartition, NotificationChain msgs) {
+	public NotificationChain basicSetPartition(Partition newPartition,
+			NotificationChain msgs) {
 		Partition oldPartition = partition;
 		partition = newPartition;
 		if (eNotificationRequired()) {
@@ -563,8 +525,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setPartition(Partition newPartition) {
@@ -582,12 +543,12 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.TASK__PARTITION:
 				if (partition != null)
@@ -598,12 +559,12 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.TASK__PARTITION:
 				return basicSetPartition(null, msgs);
@@ -612,15 +573,14 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.TASK__NAME:
-				return getName();
+			case RealtimeschedulingPackage.TASK__ID:
+				return getId();
 			case RealtimeschedulingPackage.TASK__WORST_CASE_EXEC_TIME:
 				return getWorstCaseExecTime();
 			case RealtimeschedulingPackage.TASK__IMPLICIT_DEADLINE:
@@ -649,15 +609,14 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.TASK__NAME:
-				setName((String)newValue);
+			case RealtimeschedulingPackage.TASK__ID:
+				setId((String)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__WORST_CASE_EXEC_TIME:
 				setWorstCaseExecTime((Integer)newValue);
@@ -697,15 +656,14 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.TASK__NAME:
-				setName(NAME_EDEFAULT);
+			case RealtimeschedulingPackage.TASK__ID:
+				setId(ID_EDEFAULT);
 				return;
 			case RealtimeschedulingPackage.TASK__WORST_CASE_EXEC_TIME:
 				setWorstCaseExecTime(WORST_CASE_EXEC_TIME_EDEFAULT);
@@ -745,15 +703,14 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.TASK__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case RealtimeschedulingPackage.TASK__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case RealtimeschedulingPackage.TASK__WORST_CASE_EXEC_TIME:
 				return worstCaseExecTime != WORST_CASE_EXEC_TIME_EDEFAULT;
 			case RealtimeschedulingPackage.TASK__IMPLICIT_DEADLINE:
@@ -781,8 +738,7 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -790,8 +746,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
+		result.append(" (id: ");
+		result.append(id);
 		result.append(", worstCaseExecTime: ");
 		result.append(worstCaseExecTime);
 		result.append(", implicitDeadline: ");
@@ -816,4 +772,4 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 		return result.toString();
 	}
 
-} //TaskImpl
+} // TaskImpl

@@ -56,7 +56,7 @@ public class TaskItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 			addWorstCaseExecTimePropertyDescriptor(object);
 			addImplicitDeadlinePropertyDescriptor(object);
 			addPriorityPropertyDescriptor(object);
@@ -73,19 +73,19 @@ public class TaskItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Task_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_name_feature", "_UI_Task_type"),
-				 RealtimeschedulingPackage.Literals.TASK__NAME,
+				 getString("_UI_Task_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Task_id_feature", "_UI_Task_type"),
+				 RealtimeschedulingPackage.Literals.TASK__ID,
 				 true,
 				 false,
 				 false,
@@ -355,7 +355,7 @@ public class TaskItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Task)object).getName();
+		String label = ((Task)object).getId();
 		String partition = ""+(((Task)object).getPartition() == null ? "" : ((Task)object).getPartition().getId());
 		return label == null || label.length() == 0 ?
 			getString("_UI_Task_type") :
@@ -375,7 +375,7 @@ public class TaskItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Task.class)) {
-			case RealtimeschedulingPackage.TASK__NAME:
+			case RealtimeschedulingPackage.TASK__ID:
 			case RealtimeschedulingPackage.TASK__WORST_CASE_EXEC_TIME:
 			case RealtimeschedulingPackage.TASK__IMPLICIT_DEADLINE:
 			case RealtimeschedulingPackage.TASK__PRIORITY:

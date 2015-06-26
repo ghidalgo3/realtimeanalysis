@@ -5,14 +5,13 @@ package fr.ensma.realtimescheduling;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Processor</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Processor</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.Processor#getName <em>Name</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Processor#getId <em>Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -21,30 +20,31 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Processor extends EObject {
+
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getProcessor_Name()
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(String)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getProcessor_Id()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getName();
+	String getId();
 
 	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Processor#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Processor#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
 	 * @generated
 	 */
-	void setName(String value);
+	void setId(String value);
 
 } // Processor

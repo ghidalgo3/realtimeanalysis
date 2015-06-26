@@ -10,9 +10,9 @@
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="HardwareResource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="scheduledOn" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
         eType="#//Module" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="communicatesOver" eType="#//Network"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="network" eType="#//Network"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task">
@@ -26,7 +26,7 @@
       <details key="DeadlineLessThanPeriod" value="implicitDeadline &lt;= characteristicPeriod"/>
       <details key="PositivePeriod" value="characteristicPeriod > 0"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="worstCaseExecTime" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
@@ -95,7 +95,7 @@
       <details key="PeriodSpansIntervals" value="let sortedIntervals : Sequence(Interval) = executionIntervals&#xA;&#x9;&#x9;->sortedBy(start)&#xA;&#x9;in if (sortedIntervals&#xA;&#x9;&#x9;->size() > 1)&#xA;&#x9;then sortedIntervals&#xA;&#x9;&#x9;->last().end &lt;= period&#xA;&#x9;else true&#xA;&#x9;endif"/>
       <details key="NonOverlappingIntervals" value="if (executionIntervals&#xA;&#x9;&#x9;->size() &lt;= 1)&#xA;&#x9;then true -- Nothing can overlap if there is only one or none!&#xA;&#x9;else&#xA;&#x9;let sortedIntervals : Sequence(Interval) = executionIntervals&#xA;&#x9;&#x9;->sortedBy(i : Interval | i.start)&#xA;&#x9;in sortedIntervals&#xA;&#x9;&#x9;->subSequence(1, sortedIntervals&#xA;&#x9;&#x9;&#x9;->size() - 1)&#xA;&#x9;&#x9;->forAll(i : Interval | i.end &lt;= sortedIntervals&#xA;&#x9;&#x9;&#x9;->at(1 + sortedIntervals&#xA;&#x9;&#x9;&#x9;&#x9;->indexOf(i)).start)&#xA;&#x9;endif"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="0" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         changeable="false" defaultValueLiteral="0" derived="true">
@@ -152,10 +152,10 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="System">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="uses" lowerBound="1" eType="#//HardwareResource"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hardware" lowerBound="1"
+        eType="#//HardwareResource" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="executesSoftware" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="software" lowerBound="1"
         eType="#//SoftwareResource" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SchedulingAlgorithm">
@@ -168,11 +168,11 @@
         eType="#//Task" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedPartitions" lowerBound="1"
         upperBound="-1" eType="#//Partition" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="virtualLInks" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="virtualLinks" upperBound="-1"
         eType="#//VirtualLink" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Processor">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Switch">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -195,8 +195,7 @@
       <details key="PositiveMaxFrameSize" value="maxFrameSize > 0"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minInterFrameTime" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BAG" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="routes" lowerBound="1"
         upperBound="-1" eType="#//Route" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
@@ -218,7 +217,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Bandwidth" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.0"
         derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connection" lowerBound="1"
         eType="#//Connection"/>
   </eClassifiers>

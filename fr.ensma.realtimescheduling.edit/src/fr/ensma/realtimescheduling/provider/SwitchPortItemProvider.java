@@ -64,8 +64,10 @@ public class SwitchPortItemProvider extends PortItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		SwitchPort switchPort = (SwitchPort)object;
-		return getString("_UI_SwitchPort_type") + " " + switchPort.getId();
+		String label = ((SwitchPort)object).getId();
+		return label == null || label.length() == 0 ?
+			getString("_UI_SwitchPort_type") :
+			getString("_UI_SwitchPort_type") + " " + label;
 	}
 	
 

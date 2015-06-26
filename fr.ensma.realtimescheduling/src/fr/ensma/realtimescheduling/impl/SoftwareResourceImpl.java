@@ -17,25 +17,26 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Software Resource</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Software Resource</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getExecutedTasks <em>Executed Tasks</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getContainedPartitions <em>Contained Partitions</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getVirtualLInks <em>Virtual LInks</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.SoftwareResourceImpl#getVirtualLinks <em>Virtual Links</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implements SoftwareResource {
+public class SoftwareResourceImpl extends MinimalEObjectImpl.Container
+		implements SoftwareResource {
+
 	/**
 	 * The cached value of the '{@link #getExecutedTasks() <em>Executed Tasks</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #getExecutedTasks()
 	 * @generated
 	 * @ordered
@@ -43,9 +44,10 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	protected EList<Task> executedTasks;
 
 	/**
-	 * The cached value of the '{@link #getContainedPartitions() <em>Contained Partitions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getContainedPartitions()
+	 * <em>Contained Partitions</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getContainedPartitions()
 	 * @generated
 	 * @ordered
@@ -53,18 +55,17 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	protected EList<Partition> containedPartitions;
 
 	/**
-	 * The cached value of the '{@link #getVirtualLInks() <em>Virtual LInks</em>}' containment reference list.
+	 * The cached value of the '{@link #getVirtualLinks() <em>Virtual Links</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVirtualLInks()
+	 * @see #getVirtualLinks()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<VirtualLink> virtualLInks;
+	protected EList<VirtualLink> virtualLinks;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected SoftwareResourceImpl() {
@@ -72,8 +73,7 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -82,8 +82,7 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Task> getExecutedTasks() {
@@ -94,8 +93,7 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Partition> getContainedPartitions() {
@@ -110,34 +108,33 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<VirtualLink> getVirtualLInks() {
-		if (virtualLInks == null) {
-			virtualLInks = new EObjectContainmentEList<VirtualLink>(VirtualLink.class, this, RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS);
+	public EList<VirtualLink> getVirtualLinks() {
+		if (virtualLinks == null) {
+			virtualLinks = new EObjectContainmentEList<VirtualLink>(VirtualLink.class, this, RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS);
 		}
-		return virtualLInks;
+		return virtualLinks;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__EXECUTED_TASKS:
 				return ((InternalEList<?>)getExecutedTasks()).basicRemove(otherEnd, msgs);
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS:
 				return ((InternalEList<?>)getContainedPartitions()).basicRemove(otherEnd, msgs);
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
-				return ((InternalEList<?>)getVirtualLInks()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getVirtualLinks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -148,14 +145,13 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS:
 				return getContainedPartitions();
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
-				return getVirtualLInks();
+				return getVirtualLinks();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -171,16 +167,15 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 				getContainedPartitions().addAll((Collection<? extends Partition>)newValue);
 				return;
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
-				getVirtualLInks().clear();
-				getVirtualLInks().addAll((Collection<? extends VirtualLink>)newValue);
+				getVirtualLinks().clear();
+				getVirtualLinks().addAll((Collection<? extends VirtualLink>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -193,15 +188,14 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 				getContainedPartitions().clear();
 				return;
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
-				getVirtualLInks().clear();
+				getVirtualLinks().clear();
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -212,9 +206,9 @@ public class SoftwareResourceImpl extends MinimalEObjectImpl.Container implement
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__CONTAINED_PARTITIONS:
 				return containedPartitions != null && !containedPartitions.isEmpty();
 			case RealtimeschedulingPackage.SOFTWARE_RESOURCE__VIRTUAL_LINKS:
-				return virtualLInks != null && !virtualLInks.isEmpty();
+				return virtualLinks != null && !virtualLinks.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //SoftwareResourceImpl
+} // SoftwareResourceImpl

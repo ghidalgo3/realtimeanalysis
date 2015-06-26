@@ -3,22 +3,22 @@
 package fr.ensma.realtimescheduling;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Node</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Node</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.Node#getVirtualLinks <em>Virtual Links</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Node#getId <em>Id</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Node#getTransmissionDelay <em>Transmission Delay</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Node#getRealOutboundLinks <em>Real Outbound Links</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Node#getOrder <em>Order</em>}</li>
+ * <li>{@link fr.ensma.realtimescheduling.Node#getVirtualLinks <em>Virtual Links
+ * </em>}</li>
+ * <li>{@link fr.ensma.realtimescheduling.Node#getId <em>Id</em>}</li>
+ * <li>{@link fr.ensma.realtimescheduling.Node#getTransmissionDelay <em>
+ * Transmission Delay</em>}</li>
+ * <li>{@link fr.ensma.realtimescheduling.Node#getRealOutboundLinks <em>Real
+ * Outbound Links</em>}</li>
+ * <li>{@link fr.ensma.realtimescheduling.Node#getOrder <em>Order</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,16 +27,19 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Node extends EObject {
+
 	/**
 	 * Returns the value of the '<em><b>Virtual Links</b></em>' reference list.
-	 * The list contents are of type {@link fr.ensma.realtimescheduling.VirtualLink}.
-	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.VirtualLink#getNodes <em>Nodes</em>}'.
-	 * <!-- begin-user-doc -->
+	 * The list contents are of type
+	 * {@link fr.ensma.realtimescheduling.VirtualLink}. It is bidirectional and
+	 * its opposite is '{@link fr.ensma.realtimescheduling.VirtualLink#getNodes
+	 * <em>Nodes</em>}'. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Virtual Links</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Virtual Links</em>' reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Virtual Links</em>' reference list.
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_VirtualLinks()
 	 * @see fr.ensma.realtimescheduling.VirtualLink#getNodes
@@ -46,13 +49,14 @@ public interface Node extends EObject {
 	EList<VirtualLink> getVirtualLinks();
 
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_Id()
@@ -62,10 +66,11 @@ public interface Node extends EObject {
 	String getId();
 
 	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Node#getId <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Node#getId
+	 * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
 	 * @generated
 	 */
@@ -73,13 +78,13 @@ public interface Node extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Transmission Delay</b></em>' attribute.
-	 * The default value is <code>"0.0"</code>.
-	 * <!-- begin-user-doc -->
+	 * The default value is <code>"0.0"</code>. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Transmission Delay</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Transmission Delay</em>' attribute isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Transmission Delay</em>' attribute.
 	 * @see #setTransmissionDelay(double)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_TransmissionDelay()
@@ -89,24 +94,28 @@ public interface Node extends EObject {
 	double getTransmissionDelay();
 
 	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Node#getTransmissionDelay <em>Transmission Delay</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transmission Delay</em>' attribute.
+	 * Sets the value of the '
+	 * {@link fr.ensma.realtimescheduling.Node#getTransmissionDelay
+	 * <em>Transmission Delay</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Transmission Delay</em>' attribute.
 	 * @see #getTransmissionDelay()
 	 * @generated
 	 */
 	void setTransmissionDelay(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Real Outbound Links</b></em>' reference list.
-	 * The list contents are of type {@link fr.ensma.realtimescheduling.Node}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Real Outbound Links</b></em>' reference
+	 * list. The list contents are of type
+	 * {@link fr.ensma.realtimescheduling.Node}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Real Outbound Links</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Real Outbound Links</em>' reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Real Outbound Links</em>' reference list.
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_RealOutboundLinks()
 	 * @model
@@ -115,13 +124,14 @@ public interface Node extends EObject {
 	EList<Node> getRealOutboundLinks();
 
 	/**
-	 * Returns the value of the '<em><b>Order</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Order</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Order</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Order</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Order</em>' attribute.
 	 * @see #setOrder(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNode_Order()
@@ -131,10 +141,11 @@ public interface Node extends EObject {
 	int getOrder();
 
 	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Node#getOrder <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Order</em>' attribute.
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Node#getOrder
+	 * <em>Order</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Order</em>' attribute.
 	 * @see #getOrder()
 	 * @generated
 	 */

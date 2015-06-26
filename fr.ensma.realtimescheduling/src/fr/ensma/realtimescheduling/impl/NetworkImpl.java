@@ -6,27 +6,20 @@ import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.Network;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import fr.ensma.realtimescheduling.Switch;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Network</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Network</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -40,11 +33,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class NetworkImpl extends MinimalEObjectImpl.Container implements Network {
+public class NetworkImpl extends MinimalEObjectImpl.Container implements
+		Network {
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -53,8 +47,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -63,8 +56,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 
 	/**
 	 * The cached value of the '{@link #getSwitches() <em>Switches</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSwitches()
 	 * @generated
 	 * @ordered
@@ -73,8 +65,8 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 
 	/**
 	 * The default value of the '{@link #getNetworkBandwidth() <em>Network Bandwidth</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getNetworkBandwidth()
 	 * @generated
 	 * @ordered
@@ -83,8 +75,8 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 
 	/**
 	 * The cached value of the '{@link #getNetworkBandwidth() <em>Network Bandwidth</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getNetworkBandwidth()
 	 * @generated
 	 * @ordered
@@ -93,8 +85,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 
 	/**
 	 * The cached value of the '{@link #getConnections() <em>Connections</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getConnections()
 	 * @generated
 	 * @ordered
@@ -103,8 +94,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 
 	/**
 	 * The default value of the '{@link #getLatency() <em>Latency</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getLatency()
 	 * @generated
 	 * @ordered
@@ -113,8 +103,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 
 	/**
 	 * The cached value of the '{@link #getLatency() <em>Latency</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getLatency()
 	 * @generated
 	 * @ordered
@@ -122,8 +111,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	protected int latency = LATENCY_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected NetworkImpl() {
@@ -131,8 +119,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -141,8 +128,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getName() {
@@ -150,8 +136,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -162,8 +147,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Switch> getSwitches() {
@@ -174,8 +158,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getNetworkBandwidth() {
@@ -183,8 +166,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setNetworkBandwidth(int newNetworkBandwidth) {
@@ -195,8 +177,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Connection> getConnections() {
@@ -207,8 +188,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getLatency() {
@@ -216,8 +196,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setLatency(int newLatency) {
@@ -228,12 +207,12 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.NETWORK__SWITCHES:
 				return ((InternalEList<?>)getSwitches()).basicRemove(otherEnd, msgs);
@@ -244,8 +223,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -266,8 +244,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -296,8 +273,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -323,8 +299,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -345,8 +320,7 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -364,4 +338,4 @@ public class NetworkImpl extends MinimalEObjectImpl.Container implements Network
 		return result.toString();
 	}
 
-} //NetworkImpl
+} // NetworkImpl

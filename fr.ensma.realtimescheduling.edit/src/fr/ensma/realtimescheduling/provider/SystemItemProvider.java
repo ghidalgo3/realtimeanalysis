@@ -101,8 +101,8 @@ public class SystemItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.SYSTEM__USES);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.SYSTEM__EXECUTES_SOFTWARE);
+			childrenFeatures.add(RealtimeschedulingPackage.Literals.SYSTEM__HARDWARE);
+			childrenFeatures.add(RealtimeschedulingPackage.Literals.SYSTEM__SOFTWARE);
 		}
 		return childrenFeatures;
 	}
@@ -161,8 +161,8 @@ public class SystemItemProvider
 			case RealtimeschedulingPackage.SYSTEM__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case RealtimeschedulingPackage.SYSTEM__USES:
-			case RealtimeschedulingPackage.SYSTEM__EXECUTES_SOFTWARE:
+			case RealtimeschedulingPackage.SYSTEM__HARDWARE:
+			case RealtimeschedulingPackage.SYSTEM__SOFTWARE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -182,12 +182,12 @@ public class SystemItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RealtimeschedulingPackage.Literals.SYSTEM__USES,
+				(RealtimeschedulingPackage.Literals.SYSTEM__HARDWARE,
 				 RealtimeschedulingFactory.eINSTANCE.createHardwareResource()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RealtimeschedulingPackage.Literals.SYSTEM__EXECUTES_SOFTWARE,
+				(RealtimeschedulingPackage.Literals.SYSTEM__SOFTWARE,
 				 RealtimeschedulingFactory.eINSTANCE.createSoftwareResource()));
 	}
 

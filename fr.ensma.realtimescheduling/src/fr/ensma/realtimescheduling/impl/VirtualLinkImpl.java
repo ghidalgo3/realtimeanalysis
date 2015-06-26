@@ -19,14 +19,13 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Virtual Link</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Virtual Link</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getId <em>Id</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getMinInterFrameTime <em>Min Inter Frame Time</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getBAG <em>BAG</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getRoutes <em>Routes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getSource <em>Source</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.VirtualLinkImpl#getDestinations <em>Destinations</em>}</li>
@@ -36,11 +35,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements VirtualLink {
+public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements
+		VirtualLink {
+
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -48,9 +49,9 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -58,29 +59,28 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getMinInterFrameTime() <em>Min Inter Frame Time</em>}' attribute.
+	 * The default value of the '{@link #getBAG() <em>BAG</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMinInterFrameTime()
+	 * @see #getBAG()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MIN_INTER_FRAME_TIME_EDEFAULT = 0;
+	protected static final int BAG_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getMinInterFrameTime() <em>Min Inter Frame Time</em>}' attribute.
+	 * The cached value of the '{@link #getBAG() <em>BAG</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMinInterFrameTime()
+	 * @see #getBAG()
 	 * @generated
 	 * @ordered
 	 */
-	protected int minInterFrameTime = MIN_INTER_FRAME_TIME_EDEFAULT;
+	protected int bag = BAG_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getRoutes() <em>Routes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getRoutes()
 	 * @generated
 	 * @ordered
@@ -89,8 +89,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSource()
 	 * @generated
 	 * @ordered
@@ -99,8 +98,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 
 	/**
 	 * The cached value of the '{@link #getDestinations() <em>Destinations</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDestinations()
 	 * @generated
 	 * @ordered
@@ -109,8 +107,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 
 	/**
 	 * The default value of the '{@link #getMaxFrameSize() <em>Max Frame Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getMaxFrameSize()
 	 * @generated
 	 * @ordered
@@ -119,8 +117,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 
 	/**
 	 * The cached value of the '{@link #getMaxFrameSize() <em>Max Frame Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getMaxFrameSize()
 	 * @generated
 	 * @ordered
@@ -128,8 +126,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	protected int maxFrameSize = MAX_FRAME_SIZE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected VirtualLinkImpl() {
@@ -137,8 +134,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -147,8 +143,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getId() {
@@ -156,8 +151,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -172,8 +166,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getMinInterFrameTime() {
-		return minInterFrameTime;
+	public int getBAG() {
+		return bag;
 	}
 
 	/**
@@ -181,16 +175,15 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMinInterFrameTime(int newMinInterFrameTime) {
-		int oldMinInterFrameTime = minInterFrameTime;
-		minInterFrameTime = newMinInterFrameTime;
+	public void setBAG(int newBAG) {
+		int oldBAG = bag;
+		bag = newBAG;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME, oldMinInterFrameTime, minInterFrameTime));
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.VIRTUAL_LINK__BAG, oldBAG, bag));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Route> getRoutes() {
@@ -201,8 +194,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Module getSource() {
@@ -218,8 +210,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Module basicGetSource() {
@@ -227,8 +218,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setSource(Module newSource) {
@@ -239,8 +229,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Module> getDestinations() {
@@ -251,8 +240,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getMaxFrameSize() {
@@ -260,8 +248,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setMaxFrameSize(int newMaxFrameSize) {
@@ -272,12 +259,12 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				return ((InternalEList<?>)getRoutes()).basicRemove(otherEnd, msgs);
@@ -286,8 +273,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -295,8 +281,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 		switch (featureID) {
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				return getId();
-			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
-				return getMinInterFrameTime();
+			case RealtimeschedulingPackage.VIRTUAL_LINK__BAG:
+				return getBAG();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				return getRoutes();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE:
@@ -311,8 +297,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -322,8 +307,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				setId((String)newValue);
 				return;
-			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
-				setMinInterFrameTime((Integer)newValue);
+			case RealtimeschedulingPackage.VIRTUAL_LINK__BAG:
+				setBAG((Integer)newValue);
 				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				getRoutes().clear();
@@ -344,8 +329,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -354,8 +338,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
-				setMinInterFrameTime(MIN_INTER_FRAME_TIME_EDEFAULT);
+			case RealtimeschedulingPackage.VIRTUAL_LINK__BAG:
+				setBAG(BAG_EDEFAULT);
 				return;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				getRoutes().clear();
@@ -374,8 +358,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -383,8 +366,8 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 		switch (featureID) {
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case RealtimeschedulingPackage.VIRTUAL_LINK__MIN_INTER_FRAME_TIME:
-				return minInterFrameTime != MIN_INTER_FRAME_TIME_EDEFAULT;
+			case RealtimeschedulingPackage.VIRTUAL_LINK__BAG:
+				return bag != BAG_EDEFAULT;
 			case RealtimeschedulingPackage.VIRTUAL_LINK__ROUTES:
 				return routes != null && !routes.isEmpty();
 			case RealtimeschedulingPackage.VIRTUAL_LINK__SOURCE:
@@ -398,8 +381,7 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -409,12 +391,12 @@ public class VirtualLinkImpl extends MinimalEObjectImpl.Container implements Vir
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
 		result.append(id);
-		result.append(", minInterFrameTime: ");
-		result.append(minInterFrameTime);
+		result.append(", BAG: ");
+		result.append(bag);
 		result.append(", maxFrameSize: ");
 		result.append(maxFrameSize);
 		result.append(')');
 		return result.toString();
 	}
 
-} //VirtualLinkImpl
+} // VirtualLinkImpl

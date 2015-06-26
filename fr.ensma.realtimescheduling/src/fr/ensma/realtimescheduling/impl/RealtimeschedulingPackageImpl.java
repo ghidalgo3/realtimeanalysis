@@ -31,148 +31,131 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Package</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
+ * end-user-doc -->
  * @generated
  */
-public class RealtimeschedulingPackageImpl extends EPackageImpl implements RealtimeschedulingPackage {
+public class RealtimeschedulingPackageImpl extends EPackageImpl implements
+		RealtimeschedulingPackage {
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass hardwareResourceEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass taskEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass moduleEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass partitionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass intervalEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass networkEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass systemEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass softwareResourceEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass processorEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass switchEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass virtualLinkEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass portEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass connectionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass routeEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass switchPortEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass endSystemPortEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum periodicityEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum schedulingAlgorithmEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
+	 * package package URI value.
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory
+	 * method {@link #init init()}, which also performs initialization of the
+	 * package, or returns the registered package, if one already exists. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#eNS_URI
 	 * @see #init()
@@ -183,8 +166,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static boolean isInited = false;
@@ -194,8 +176,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * 
 	 * <p>This method is used to initialize {@link RealtimeschedulingPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -234,8 +216,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getHardwareResource() {
@@ -247,7 +228,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHardwareResource_ScheduledOn() {
+	public EReference getHardwareResource_Modules() {
 		return (EReference)hardwareResourceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -256,13 +237,12 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHardwareResource_CommunicatesOver() {
+	public EReference getHardwareResource_Network() {
 		return (EReference)hardwareResourceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getTask() {
@@ -274,13 +254,12 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_Name() {
+	public EAttribute getTask_Id() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTask_WorstCaseExecTime() {
@@ -288,8 +267,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTask_ImplicitDeadline() {
@@ -297,8 +275,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTask_Priority() {
@@ -306,8 +283,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTask_ResponseTime() {
@@ -315,8 +291,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTask_Scheduleable() {
@@ -324,8 +299,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTask_Jitter() {
@@ -333,8 +307,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTask_CriticalInstance() {
@@ -342,8 +315,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTask_ReleaseTime() {
@@ -351,8 +323,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTask_Periodicity() {
@@ -360,8 +331,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTask_CharacteristicPeriod() {
@@ -369,8 +339,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTask_Partition() {
@@ -378,8 +347,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getModule() {
@@ -387,8 +355,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getModule_Utilization() {
@@ -396,8 +363,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getModule_Id() {
@@ -405,8 +371,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getModule_Period() {
@@ -414,8 +379,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getModule_Partition() {
@@ -423,8 +387,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getModule_Processors() {
@@ -432,8 +395,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getModule_ModulePorts() {
@@ -441,8 +403,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getPartition() {
@@ -450,8 +411,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPartition_Id() {
@@ -459,8 +419,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPartition_Period() {
@@ -468,8 +427,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPartition_ExecutionIntervals() {
@@ -477,8 +435,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPartition_VirtualProcessorUtilization() {
@@ -486,8 +443,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPartition_AvailabilityFactor() {
@@ -495,8 +451,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPartition_SchedulingAlgorithm() {
@@ -504,8 +459,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPartition_Tasks() {
@@ -513,8 +467,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPartition_Module() {
@@ -522,8 +475,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getInterval() {
@@ -531,8 +483,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getInterval_Start() {
@@ -540,8 +491,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getInterval_End() {
@@ -549,8 +499,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getNetwork() {
@@ -558,8 +507,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getNetwork_Name() {
@@ -567,8 +515,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getNetwork_Switches() {
@@ -576,8 +523,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getNetwork_NetworkBandwidth() {
@@ -585,8 +531,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getNetwork_Connections() {
@@ -594,8 +539,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getNetwork_Latency() {
@@ -603,8 +547,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSystem() {
@@ -616,13 +559,12 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystem_Uses() {
+	public EReference getSystem_Hardware() {
 		return (EReference)systemEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSystem_Name() {
@@ -634,13 +576,12 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystem_ExecutesSoftware() {
+	public EReference getSystem_Software() {
 		return (EReference)systemEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSoftwareResource() {
@@ -648,8 +589,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSoftwareResource_ExecutedTasks() {
@@ -657,8 +597,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSoftwareResource_ContainedPartitions() {
@@ -670,13 +609,12 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSoftwareResource_VirtualLInks() {
+	public EReference getSoftwareResource_VirtualLinks() {
 		return (EReference)softwareResourceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getProcessor() {
@@ -688,13 +626,12 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProcessor_Name() {
+	public EAttribute getProcessor_Id() {
 		return (EAttribute)processorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSwitch() {
@@ -702,8 +639,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSwitch_Id() {
@@ -711,8 +647,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSwitch_SwitchPorts() {
@@ -720,8 +655,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getVirtualLink() {
@@ -729,8 +663,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getVirtualLink_Id() {
@@ -742,13 +675,12 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getVirtualLink_MinInterFrameTime() {
+	public EAttribute getVirtualLink_BAG() {
 		return (EAttribute)virtualLinkEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getVirtualLink_Routes() {
@@ -756,8 +688,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getVirtualLink_Source() {
@@ -765,8 +696,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getVirtualLink_Destinations() {
@@ -774,8 +704,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getVirtualLink_MaxFrameSize() {
@@ -783,8 +712,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getPort() {
@@ -792,8 +720,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPort_Order() {
@@ -801,8 +728,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPort_Bandwidth() {
@@ -810,8 +736,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPort_Id() {
@@ -819,8 +744,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPort_Connection() {
@@ -828,8 +752,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getConnection() {
@@ -837,8 +760,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getConnection_A() {
@@ -846,8 +768,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getConnection_Routes() {
@@ -855,8 +776,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getConnection_Id() {
@@ -864,8 +784,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getConnection_B() {
@@ -873,8 +792,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getRoute() {
@@ -882,8 +800,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getRoute_Connections() {
@@ -891,8 +808,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getRoute_EndToEndDelay() {
@@ -900,8 +816,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSwitchPort() {
@@ -909,8 +824,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getEndSystemPort() {
@@ -918,8 +832,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getPeriodicity() {
@@ -927,8 +840,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getSchedulingAlgorithm() {
@@ -936,8 +848,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public RealtimeschedulingFactory getRealtimeschedulingFactory() {
@@ -945,8 +856,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -964,11 +874,11 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 
 		// Create classes and their features
 		hardwareResourceEClass = createEClass(HARDWARE_RESOURCE);
-		createEReference(hardwareResourceEClass, HARDWARE_RESOURCE__SCHEDULED_ON);
-		createEReference(hardwareResourceEClass, HARDWARE_RESOURCE__COMMUNICATES_OVER);
+		createEReference(hardwareResourceEClass, HARDWARE_RESOURCE__MODULES);
+		createEReference(hardwareResourceEClass, HARDWARE_RESOURCE__NETWORK);
 
 		taskEClass = createEClass(TASK);
-		createEAttribute(taskEClass, TASK__NAME);
+		createEAttribute(taskEClass, TASK__ID);
 		createEAttribute(taskEClass, TASK__WORST_CASE_EXEC_TIME);
 		createEAttribute(taskEClass, TASK__IMPLICIT_DEADLINE);
 		createEAttribute(taskEClass, TASK__PRIORITY);
@@ -1011,9 +921,9 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		createEAttribute(networkEClass, NETWORK__LATENCY);
 
 		systemEClass = createEClass(SYSTEM);
-		createEReference(systemEClass, SYSTEM__USES);
+		createEReference(systemEClass, SYSTEM__HARDWARE);
 		createEAttribute(systemEClass, SYSTEM__NAME);
-		createEReference(systemEClass, SYSTEM__EXECUTES_SOFTWARE);
+		createEReference(systemEClass, SYSTEM__SOFTWARE);
 
 		softwareResourceEClass = createEClass(SOFTWARE_RESOURCE);
 		createEReference(softwareResourceEClass, SOFTWARE_RESOURCE__EXECUTED_TASKS);
@@ -1021,7 +931,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		createEReference(softwareResourceEClass, SOFTWARE_RESOURCE__VIRTUAL_LINKS);
 
 		processorEClass = createEClass(PROCESSOR);
-		createEAttribute(processorEClass, PROCESSOR__NAME);
+		createEAttribute(processorEClass, PROCESSOR__ID);
 
 		switchEClass = createEClass(SWITCH);
 		createEAttribute(switchEClass, SWITCH__ID);
@@ -1029,7 +939,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 
 		virtualLinkEClass = createEClass(VIRTUAL_LINK);
 		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__ID);
-		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__MIN_INTER_FRAME_TIME);
+		createEAttribute(virtualLinkEClass, VIRTUAL_LINK__BAG);
 		createEReference(virtualLinkEClass, VIRTUAL_LINK__ROUTES);
 		createEReference(virtualLinkEClass, VIRTUAL_LINK__SOURCE);
 		createEReference(virtualLinkEClass, VIRTUAL_LINK__DESTINATIONS);
@@ -1061,17 +971,16 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Complete the initialization of the package and its meta-model. This
+	 * method is guarded to have no affect on any invocation but its first. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
@@ -1093,11 +1002,11 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(hardwareResourceEClass, HardwareResource.class, "HardwareResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHardwareResource_ScheduledOn(), this.getModule(), null, "scheduledOn", null, 0, -1, HardwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHardwareResource_CommunicatesOver(), this.getNetwork(), null, "communicatesOver", null, 0, 1, HardwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHardwareResource_Modules(), this.getModule(), null, "modules", null, 0, -1, HardwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHardwareResource_Network(), this.getNetwork(), null, "network", null, 0, 1, HardwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTask_Name(), ecorePackage.getEString(), "name", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_Id(), ecorePackage.getEString(), "id", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_WorstCaseExecTime(), ecorePackage.getEInt(), "worstCaseExecTime", "0", 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_ImplicitDeadline(), ecorePackage.getEInt(), "implicitDeadline", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Priority(), ecorePackage.getEInt(), "priority", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1119,7 +1028,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEReference(getModule_ModulePorts(), this.getEndSystemPort(), null, "modulePorts", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(partitionEClass, Partition.class, "Partition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartition_Id(), ecorePackage.getEInt(), "id", "0", 1, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartition_Id(), ecorePackage.getEString(), "id", "0", 1, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartition_Period(), ecorePackage.getEDouble(), "period", "0", 0, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getPartition_ExecutionIntervals(), this.getInterval(), null, "executionIntervals", null, 0, -1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPartition_VirtualProcessorUtilization(), ecorePackage.getEDouble(), "virtualProcessorUtilization", "0", 1, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1140,17 +1049,17 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEAttribute(getNetwork_Latency(), ecorePackage.getEInt(), "latency", "0", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, fr.ensma.realtimescheduling.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSystem_Uses(), this.getHardwareResource(), null, "uses", null, 1, 1, fr.ensma.realtimescheduling.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystem_Hardware(), this.getHardwareResource(), null, "hardware", null, 1, 1, fr.ensma.realtimescheduling.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSystem_Name(), ecorePackage.getEString(), "name", null, 1, 1, fr.ensma.realtimescheduling.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSystem_ExecutesSoftware(), this.getSoftwareResource(), null, "executesSoftware", null, 1, 1, fr.ensma.realtimescheduling.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystem_Software(), this.getSoftwareResource(), null, "software", null, 1, 1, fr.ensma.realtimescheduling.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(softwareResourceEClass, SoftwareResource.class, "SoftwareResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSoftwareResource_ExecutedTasks(), this.getTask(), null, "executedTasks", null, 0, -1, SoftwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSoftwareResource_ContainedPartitions(), this.getPartition(), null, "containedPartitions", null, 1, -1, SoftwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSoftwareResource_VirtualLInks(), this.getVirtualLink(), null, "virtualLInks", null, 0, -1, SoftwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSoftwareResource_VirtualLinks(), this.getVirtualLink(), null, "virtualLinks", null, 0, -1, SoftwareResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processorEClass, Processor.class, "Processor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProcessor_Name(), ecorePackage.getEString(), "name", null, 1, 1, Processor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessor_Id(), ecorePackage.getEString(), "id", null, 1, 1, Processor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(switchEClass, Switch.class, "Switch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSwitch_Id(), ecorePackage.getEString(), "id", null, 1, 1, Switch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1158,7 +1067,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 
 		initEClass(virtualLinkEClass, VirtualLink.class, "VirtualLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVirtualLink_Id(), ecorePackage.getEString(), "id", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVirtualLink_MinInterFrameTime(), ecorePackage.getEInt(), "minInterFrameTime", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVirtualLink_BAG(), ecorePackage.getEInt(), "BAG", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVirtualLink_Routes(), this.getRoute(), null, "routes", null, 1, -1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVirtualLink_Source(), this.getModule(), null, "source", null, 1, 1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVirtualLink_Destinations(), this.getModule(), null, "destinations", null, 1, -1, VirtualLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1167,7 +1076,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPort_Order(), ecorePackage.getEInt(), "order", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPort_Bandwidth(), ecorePackage.getEDouble(), "Bandwidth", "0.0", 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPort_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPort_Id(), ecorePackage.getEString(), "id", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPort_Connection(), this.getConnection(), null, "connection", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectionEClass, Connection.class, "Connection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1209,8 +1118,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 
 	/**
 	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createImportAnnotations() {
@@ -1290,9 +1198,10 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Initializes the annotations for
+	 * <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createPivotAnnotations() {
@@ -1377,4 +1286,4 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		   });
 	}
 
-} //RealtimeschedulingPackageImpl
+} // RealtimeschedulingPackageImpl

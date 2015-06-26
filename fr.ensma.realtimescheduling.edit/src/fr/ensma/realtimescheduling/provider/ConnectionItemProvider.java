@@ -171,13 +171,10 @@ public class ConnectionItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Connection conn = ((Connection)object);
 		String label = ((Connection)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Connection_type") :
-			getString("_UI_Connection_type") + " " + label + ": " + String.format("[%s-%s]",
-					conn.getA().getId(),
-					conn.getB().getId());
+			getString("_UI_Connection_type") + " " + label;
 	}
 	
 

@@ -72,8 +72,8 @@ public class HardwareResourceItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.HARDWARE_RESOURCE__SCHEDULED_ON);
-			childrenFeatures.add(RealtimeschedulingPackage.Literals.HARDWARE_RESOURCE__COMMUNICATES_OVER);
+			childrenFeatures.add(RealtimeschedulingPackage.Literals.HARDWARE_RESOURCE__MODULES);
+			childrenFeatures.add(RealtimeschedulingPackage.Literals.HARDWARE_RESOURCE__NETWORK);
 		}
 		return childrenFeatures;
 	}
@@ -126,8 +126,8 @@ public class HardwareResourceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HardwareResource.class)) {
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__SCHEDULED_ON:
-			case RealtimeschedulingPackage.HARDWARE_RESOURCE__COMMUNICATES_OVER:
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__MODULES:
+			case RealtimeschedulingPackage.HARDWARE_RESOURCE__NETWORK:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -147,12 +147,12 @@ public class HardwareResourceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RealtimeschedulingPackage.Literals.HARDWARE_RESOURCE__SCHEDULED_ON,
+				(RealtimeschedulingPackage.Literals.HARDWARE_RESOURCE__MODULES,
 				 RealtimeschedulingFactory.eINSTANCE.createModule()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(RealtimeschedulingPackage.Literals.HARDWARE_RESOURCE__COMMUNICATES_OVER,
+				(RealtimeschedulingPackage.Literals.HARDWARE_RESOURCE__NETWORK,
 				 RealtimeschedulingFactory.eINSTANCE.createNetwork()));
 	}
 

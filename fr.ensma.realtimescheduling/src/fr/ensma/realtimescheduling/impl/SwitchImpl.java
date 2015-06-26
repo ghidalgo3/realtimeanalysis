@@ -17,9 +17,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Switch</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Switch</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -31,10 +30,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
+
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -42,9 +42,9 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -53,8 +53,7 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 
 	/**
 	 * The cached value of the '{@link #getSwitchPorts() <em>Switch Ports</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSwitchPorts()
 	 * @generated
 	 * @ordered
@@ -62,8 +61,7 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	protected EList<SwitchPort> switchPorts;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected SwitchImpl() {
@@ -71,8 +69,7 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -81,8 +78,7 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getId() {
@@ -90,8 +86,7 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -102,8 +97,7 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<SwitchPort> getSwitchPorts() {
@@ -114,12 +108,12 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RealtimeschedulingPackage.SWITCH__SWITCH_PORTS:
 				return ((InternalEList<?>)getSwitchPorts()).basicRemove(otherEnd, msgs);
@@ -128,8 +122,7 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -144,8 +137,7 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -164,8 +156,7 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -182,8 +173,7 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -198,8 +188,7 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -213,4 +202,4 @@ public class SwitchImpl extends MinimalEObjectImpl.Container implements Switch {
 		return result.toString();
 	}
 
-} //SwitchImpl
+} // SwitchImpl

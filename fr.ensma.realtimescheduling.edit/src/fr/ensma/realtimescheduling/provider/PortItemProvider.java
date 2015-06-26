@@ -129,7 +129,7 @@ public class PortItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -164,8 +164,10 @@ public class PortItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Port port = (Port)object;
-		return getString("_UI_Port_type") + " " + port.getId();
+		String label = ((Port)object).getId();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Port_type") :
+			getString("_UI_Port_type") + " " + label;
 	}
 	
 

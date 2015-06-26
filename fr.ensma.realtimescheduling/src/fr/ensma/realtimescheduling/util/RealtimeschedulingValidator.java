@@ -1213,10 +1213,11 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateNetwork(Network network,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		buildGraph((fr.ensma.realtimescheduling.System) network.eContainer().eContainer());
 		if (!validate_NoCircularContainment(network, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(network, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(network, diagnostics, context);
@@ -1298,7 +1299,6 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean valid = validate_EveryDefaultConstraint(system, diagnostics,
 				context);
-		buildGraph(system);
 		ModelInterface.setSystem(valid ? system : null);
 		return valid;
 	}

@@ -801,8 +801,10 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * 
 	 * @generated NOT
 	 */
+	@SuppressWarnings("unused")
 	public boolean validateVirtualLink_NoCycles(VirtualLink virtualLink,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		//TODO
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add(createDiagnostic(Diagnostic.ERROR,

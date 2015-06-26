@@ -51,6 +51,10 @@
             class="fr.ensma.realtimescheduling.handlers.ImprovedETEAHandler"
             commandId="fr.ensma.realtimescheduling.commands.improvedetea">
       </handler>
+      <handler
+            class="fr.ensma.realtimescheduling.handlers.ModHandler"
+            commandId="fr.ensma.realtimescheduling.commands.mod">
+      </handler>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
@@ -98,11 +102,12 @@
                   tooltip="Performs the serialized forward analysis algorithm on the network">
             </command>
             <menu
-                  label="Util">
+                  label="Extra">
                <command
                      commandId="fr.ensma.realtimescheduling.commands.mod"
                      label="Parse Mod File"
-                     style="push">
+                     style="push"
+                     tooltip="Read a mod file and instantiate a model instance with that data">
                </command>
             </menu>
          </menu>

@@ -4,6 +4,7 @@ package fr.ensma.realtimescheduling.views;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -13,9 +14,12 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Spinner;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.StandardChartTheme;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
+
+
 import analysis.ModelInterface;
 import fr.ensma.realtimescheduling.Partition;
 
@@ -128,6 +132,7 @@ public class PartitionFunctionsView extends AbstractLineChart {
 	@Override
 	JFreeChart generateChart() {
 		XYDataset dataset = createDataset();
+		ChartFactory.setChartTheme(StandardChartTheme.createLegacyTheme());
 		JFreeChart chart = ChartFactory.createXYLineChart(
 				currentFunction.getTitle(), currentFunction.getDomainName(), // x
 																				// axis

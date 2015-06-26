@@ -16,6 +16,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.experimental.chart.swt.ChartComposite;
+import org.jfree.chart.StandardChartTheme;
 
 /**
  * This class handles most of the functions of displaying a BarChart from a
@@ -127,6 +128,7 @@ public abstract class AbstractVerticalBarChart extends ViewPart {
 	 */
 	JFreeChart generateChart() {
 		final CategoryDataset dataset = createDataset();
+		ChartFactory.setChartTheme(StandardChartTheme.createLegacyTheme());
 		final JFreeChart chart = ChartFactory.createBarChart(title, // chart
 																	// title
 				domainName, // domain axis label

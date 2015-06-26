@@ -19,6 +19,7 @@ import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
 import analysis.ModelInterface;
 import fr.ensma.realtimescheduling.Module;
+import org.jfree.chart.StandardChartTheme;
 
 /**
  * Displays chronological displays of partitions
@@ -34,6 +35,7 @@ public class ModuleUtilView extends AbstractLineChart {
 	@Override
 	JFreeChart generateChart() {
 		XYDataset dataset = createDataset();
+		ChartFactory.setChartTheme(StandardChartTheme.createLegacyTheme());
 		JFreeChart chart = ChartFactory.createXYStepChart("Partitions", "Time", // x
 																				// axis
 																				// name

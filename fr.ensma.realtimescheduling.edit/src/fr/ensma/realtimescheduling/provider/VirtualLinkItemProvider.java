@@ -3,18 +3,12 @@
 package fr.ensma.realtimescheduling.provider;
 
 
-import fr.ensma.realtimescheduling.RealtimeschedulingFactory;
-import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
-import fr.ensma.realtimescheduling.VirtualLink;
-
 import java.util.Collection;
 import java.util.List;
-
+import java.util.stream.Collectors;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -26,6 +20,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import fr.ensma.realtimescheduling.Module;
+import fr.ensma.realtimescheduling.RealtimeschedulingFactory;
+import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
+import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * This is the item provider adapter for a {@link fr.ensma.realtimescheduling.VirtualLink} object.
@@ -231,9 +229,15 @@ public class VirtualLinkItemProvider
 	@Override
 	public String getText(Object object) {
 		String label = ((VirtualLink)object).getId();
+		VirtualLink vl = ((VirtualLink)object);
 		return label == null || label.length() == 0 ?
 			getString("_UI_VirtualLink_type") :
-			getString("_UI_VirtualLink_type") + " " + label;
+			getString("_UI_VirtualLink_type") + " " + label + " " +
+			String.format("%s -> {%s} BAG = %d, Fmax = %d", 
+					vl.getSource().getId(),
+					vl.getDestinations().stream().map(Module::getId).collect(Collectors.toList()).toString(),
+					vl.getMinInterFrameTime(),
+					vl.getMaxFrameSize());
 	}
 	
 

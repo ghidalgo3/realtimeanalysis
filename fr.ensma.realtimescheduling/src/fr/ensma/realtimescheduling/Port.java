@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPort()
  * @model abstract="true"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PositiveBandwidth UtilizationSumLessThanOne'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot PositiveBandwidth='Bandwidth > 0'"
  * @generated
  */
 public interface Port extends EObject {
@@ -105,7 +107,6 @@ public interface Port extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Connection</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Connection#getPorts <em>Ports</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Connection</em>' reference isn't clear,
@@ -115,8 +116,7 @@ public interface Port extends EObject {
 	 * @return the value of the '<em>Connection</em>' reference.
 	 * @see #setConnection(Connection)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getPort_Connection()
-	 * @see fr.ensma.realtimescheduling.Connection#getPorts
-	 * @model opposite="ports" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	Connection getConnection();

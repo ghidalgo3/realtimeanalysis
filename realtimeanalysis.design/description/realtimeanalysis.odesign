@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="realtimeanalysis" version="8.1.0">
+  <ownedViewpoints name="Design">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Network" initialisation="true" domainClass="System">
+      <defaultLayer name="Default">
+        <edgeMappings name="Connection" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@toolSections.0/@ownedTools[name='Change%20ID']" semanticCandidatesExpression="[uses.communicatesOver.connections/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@containerMappings[name='Module']/@borderedNodeMappings[name='End%20System%20Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@additionalLayers[name='Switches']/@containerMappings[name='Switch']/@borderedNodeMappings[name='Switch%20Port']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@containerMappings[name='Module']/@borderedNodeMappings[name='End%20System%20Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@additionalLayers[name='Switches']/@containerMappings[name='Switch']/@borderedNodeMappings[name='Switch%20Port']" targetFinderExpression="[B/]" sourceFinderExpression="[A/]" domainClass="realtimescheduling.Connection" useDomainElement="true">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelFormat="bold" labelExpression="[id.toString() + ':' + routes->collect(r : Route | r.eContainer().oclAsType(VirtualLink).id.toString())/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Module" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@toolSections.0/@ownedTools[name='Change%20ID']" semanticCandidatesExpression="[uses.scheduledOn/]" domainClass="realtimescheduling.Module">
+          <borderedNodeMappings name="End System Port" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@toolSections.0/@ownedTools[name='Change%20ID']" semanticCandidatesExpression="[modulePorts/]" synchronizationLock="true" domainClass="realtimescheduling.Port">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="feature:id" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" showIcon="false" labelExpression="feature:id" widthComputationExpression="6" heightComputationExpression="6">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Creation">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Module" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@containerMappings[name='Module']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:uses">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="realtimescheduling.Module" referenceName="scheduledOn">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="['ES'.concat(eContainer().oclAsType(HardwareResource).scheduledOn->size().toString())/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="End System Port" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@containerMappings[name='Module']/@borderedNodeMappings[name='End%20System%20Port']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="realtimescheduling.EndSystemPort" referenceName="modulePorts"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Switch" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@additionalLayers[name='Switches']/@containerMappings[name='Switch']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:uses">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:communicatesOver">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="realtimescheduling.Switch" referenceName="switches">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="['S'.concat(eContainer().oclAsType(Network).switches->size().toString())/]"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Switch Port" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@additionalLayers[name='Switches']/@containerMappings[name='Switch']/@borderedNodeMappings[name='Switch%20Port']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="realtimescheduling.SwitchPort" referenceName="switchPorts"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Change ID" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="[arg0/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Connection" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@edgeMappings[name='Connection']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[source.oclIsKindOf(EndSystemPort)/]">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[eContainer().eContainer().eGet('communicatesOver').oclAsType(Network)/]">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="realtimescheduling.Connection" referenceName="connections">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="A" valueExpression="[source.oclAsType(Port)/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="B" valueExpression="[target.oclAsType(Port)/]"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.A/]">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="connection" valueExpression="[instance/]"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[B/]">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="connection" valueExpression="[instance/]"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[source.oclIsKindOf(SwitchPort)/]">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[eContainer().eContainer().eContainer().eGet('communicatesOver').oclAsType(Network)/]">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="realtimescheduling.Connection" referenceName="connections">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="A" valueExpression="[source.oclAsType(Port)/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="B" valueExpression="[target.oclAsType(Port)/]"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.A/]">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="connection" valueExpression="[instance/]"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[B/]">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="connection" valueExpression="[instance/]"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="[eContainer().oclAsType(Network).connections->size().toString()/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Virtual">
+        <edgeMappings name="VirtualLink" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@additionalLayers[name='Virtual']/@toolSections.0/@ownedTools[name='Change%20ID']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@containerMappings[name='Module']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@containerMappings[name='Module']" targetFinderExpression="[destinations/]" sourceFinderExpression="[source/]" domainClass="realtimescheduling.VirtualLink" useDomainElement="true">
+          <style lineStyle="dash" sourceArrow="OutputFillClosedArrow" targetArrow="InputFillClosedArrow" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelFormat="bold" showIcon="false" labelExpression="[id/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="[destinations->size() > 1/]">
+            <style lineStyle="dash" sourceArrow="OutputFillClosedArrow" targetArrow="InputFillClosedArrow" sizeComputationExpression="2" routingStyle="tree">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription labelExpression="[id/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <toolSections name="Virtual Links">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Change ID" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="[arg0/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="VL Creation" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@additionalLayers[name='Virtual']/@edgeMappings[name='VirtualLink']">
+            <sourceVariable name="C"/>
+            <targetVariable name="D"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[eContainer().eContainer().oclAsType(System).executesSoftware/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="realtimescheduling.VirtualLink" referenceName="virtualLInks">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="[C/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="destinations" valueExpression="[D/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="['VL'.concat(eContainer().oclAsType(SoftwareResource).virtualLInks->size().toString())/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+      <additionalLayers name="Switches">
+        <containerMappings name="Switch" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@toolSections.0/@ownedTools[name='Change%20ID']" semanticCandidatesExpression="[uses.communicatesOver.switches/]" domainClass="realtimescheduling.Switch">
+          <borderedNodeMappings name="Switch Port" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@toolSections.0/@ownedTools[name='Change%20ID']" semanticCandidatesExpression="[switchPorts/]" domainClass="realtimescheduling.Port">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="feature:id" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelFormat="bold" showIcon="false" labelExpression="feature:id" widthComputationExpression="6" heightComputationExpression="[switchPorts->size()*2 + 1/]">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="Routes">
+        <edgeMappings name="Route" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@additionalLayers[name='Virtual']/@edgeMappings[name='VirtualLink']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Network']/@defaultLayer/@edgeMappings[name='Connection']" targetFinderExpression="[routes.connections/]">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2" foldingStyle="SOURCE" endsCentering="Both">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Scheduling" domainClass="System">
+      <defaultLayer name="Default">
+        <nodeMappings name="Task" semanticCandidatesExpression="[executesSoftware.executedTasks/]" domainClass="realtimescheduling.Task">
+          <style xsi:type="style:SquareDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="Partition" semanticCandidatesExpression="[executesSoftware.containedPartitions/]" domainClass="realtimescheduling.Partition" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Scheduling']/@defaultLayer/@toolSections.0/@ownedTools[name='Assign%20Partition']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:id">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Assignment">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Assign Partition" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Scheduling']/@defaultLayer/@nodeMappings[name='Task']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="tasks"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

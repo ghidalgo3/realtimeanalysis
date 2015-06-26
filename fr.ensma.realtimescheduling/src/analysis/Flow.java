@@ -40,7 +40,7 @@ public class Flow {
 	double[] J;
 	double[] Bklg;
 	
-	VirtualLink link;
+	public VirtualLink link;
 	Route r;
 	
 	//already sorted by rank
@@ -118,13 +118,10 @@ public class Flow {
 	 * @param W
 	 */
 	void calculateBklgFor(PortWrapper p, Function<Double, Double> W) {
-		if (p.port.getId() == 1) {
-			System.out.println("Trap");
-		}
 		double B_h = p.B();
 		double max = 0.0;
 		double C = link.getMaxFrameSize() / p.port.getBandwidth();
-		for (double t = 0.0; t <= B_h; t += B_h / 1000.0) {
+		for (double t = 0.0; t <= B_h; t += B_h / 2000.0) {
 			double w = W.apply(t);
 			double c = w - C - t;
 			if(c > max) {
@@ -132,11 +129,6 @@ public class Flow {
 			}
 		}
 		Bklg[P_i.indexOf(p.port)] = max;
-//		for(Flow v : allRoutesByName.get(this.link.getId())) {
-//			if (v.P_i.indexOf(p.port) != -1) {
-//				
-//			}
-//		}
 	}
 	
 	double BklgFor(Port p) {
@@ -163,7 +155,7 @@ public class Flow {
 	}
 	
 	public static Port getOpposite(Port p) {
-		return p.getConnection().getPorts().stream().filter(port -> port != p).findFirst().get();
+		return p.getConnection().getA() == p ? p.getConnection().getB() : p.getConnection().getA();
 	}
 	
 	double RBF(Port port, double t) {

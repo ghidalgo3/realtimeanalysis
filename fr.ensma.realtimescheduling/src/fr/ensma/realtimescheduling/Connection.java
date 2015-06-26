@@ -14,9 +14,10 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.Connection#getPorts <em>Ports</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Connection#getRoutes <em>Routes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Connection#getId <em>Id</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Connection#getB <em>B</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Connection#getA <em>A</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,22 +27,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Connection extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Ports</b></em>' reference list.
-	 * The list contents are of type {@link fr.ensma.realtimescheduling.Port}.
-	 * It is bidirectional and its opposite is '{@link fr.ensma.realtimescheduling.Port#getConnection <em>Connection</em>}'.
+	 * Returns the value of the '<em><b>A</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Ports</em>' reference list isn't clear,
+	 * If the meaning of the '<em>A</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ports</em>' reference list.
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getConnection_Ports()
-	 * @see fr.ensma.realtimescheduling.Port#getConnection
-	 * @model opposite="connection" lower="2" upper="2"
+	 * @return the value of the '<em>A</em>' reference.
+	 * @see #setA(Port)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getConnection_A()
+	 * @model required="true"
 	 * @generated
 	 */
-	EList<Port> getPorts();
+	Port getA();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Connection#getA <em>A</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>A</em>' reference.
+	 * @see #getA()
+	 * @generated
+	 */
+	void setA(Port value);
 
 	/**
 	 * Returns the value of the '<em><b>Routes</b></em>' reference list.
@@ -86,5 +95,31 @@ public interface Connection extends EObject {
 	 * @generated
 	 */
 	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>B</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>B</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>B</em>' reference.
+	 * @see #setB(Port)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getConnection_B()
+	 * @model required="true"
+	 * @generated
+	 */
+	Port getB();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Connection#getB <em>B</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>B</em>' reference.
+	 * @see #getB()
+	 * @generated
+	 */
+	void setB(Port value);
 
 } // Connection

@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import fr.ensma.realtimescheduling.Interval;
@@ -139,21 +140,30 @@ public abstract class ModelInterface {
 	 * @return
 	 */
 	public static List<String> endToEndAnalysis() {
+		return eteTemplate(Analyzer::FA1);
+	}
+	
+	/**
+	 * Removing redundancy
+	 * @param analyze
+	 * @return
+	 */
+	private static List<String> eteTemplate(Function<fr.ensma.realtimescheduling.System, Map<Route, Double>> analyze) {
 		List<String> l = new ArrayList<String>();
 		if(!validSystem) {
 			l.add("System is invalid. Please validate the system successfully.");
 			return null;
 		}
-		Map<Route, Double> results = Analyzer.FA1(system);
+		Map<Route, Double> results = analyze.apply(system);
 		for(Map.Entry<Route, Double> delay : results.entrySet()) {
 			VirtualLink VL = ((VirtualLink)delay.getKey().eContainer());
-			l.add(String.format("%s: Route %s -> somewhere  has ETE delay %.2f",
+			l.add(String.format("%s: Route %s -> %s  has ETE delay %.2f",
 					VL.getId(),
 					((VirtualLink)delay.getKey().eContainer()).getSource().getId(),
+					NetworkUtils.destinationForRoute(delay.getKey()).getId(),
 					delay.getValue()));
 			delay.getKey().setEndToEndDelay(delay.getValue().intValue());
 		}
-//		system.getUses().getCommunicatesOver().getVirtualLinks().stream().forEachOrdered(vl -> l.add(vl.getNodes().toString() + "\n"));
 		return l;
 	}
 	
@@ -163,22 +173,7 @@ public abstract class ModelInterface {
 	 * @return
 	 */
 	public static List<String> improvedEndToEndAnalysis() {
-		List<String> l = new ArrayList<String>();
-		if(!validSystem) {
-			l.add("System is invalid. Please validate the system successfully.");
-			return null;
-		}
-		Map<Route, Double> results = Analyzer.FA2(system);
-		for(Map.Entry<Route, Double> delay : results.entrySet()) {
-			VirtualLink VL = ((VirtualLink)delay.getKey().eContainer());
-			l.add(String.format("%s: Route %s -> somewhere  has ETE delay %.2f",
-					VL.getId(),
-					((VirtualLink)delay.getKey().eContainer()).getSource().getId(),
-					delay.getValue()));
-			delay.getKey().setEndToEndDelay(delay.getValue().intValue());
-		}
-//		system.getUses().getCommunicatesOver().getVirtualLinks().stream().forEachOrdered(vl -> l.add(vl.getNodes().toString() + "\n"));
-		return l;
+		return eteTemplate(Analyzer::FA2);
 	}
 	
 	/**

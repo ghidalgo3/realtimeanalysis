@@ -24,25 +24,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.ensma.realtimescheduling.impl.ConnectionImpl#getPorts <em>Ports</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.ConnectionImpl#getRoutes <em>Routes</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.ConnectionImpl#getId <em>Id</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.ConnectionImpl#getB <em>B</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.ConnectionImpl#getA <em>A</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class ConnectionImpl extends MinimalEObjectImpl.Container implements Connection {
-	/**
-	 * The cached value of the '{@link #getPorts() <em>Ports</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPorts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Port> ports;
-
 	/**
 	 * The cached value of the '{@link #getRoutes() <em>Routes</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -74,6 +65,26 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	protected String id = ID_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getB() <em>B</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getB()
+	 * @generated
+	 * @ordered
+	 */
+	protected Port b;
+
+	/**
+	 * The cached value of the '{@link #getA() <em>A</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getA()
+	 * @generated
+	 * @ordered
+	 */
+	protected Port a;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -97,11 +108,37 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Port> getPorts() {
-		if (ports == null) {
-			ports = new EObjectWithInverseResolvingEList<Port>(Port.class, this, RealtimeschedulingPackage.CONNECTION__PORTS, RealtimeschedulingPackage.PORT__CONNECTION);
+	public Port getA() {
+		if (a != null && a.eIsProxy()) {
+			InternalEObject oldA = (InternalEObject)a;
+			a = (Port)eResolveProxy(oldA);
+			if (a != oldA) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RealtimeschedulingPackage.CONNECTION__A, oldA, a));
+			}
 		}
-		return ports;
+		return a;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port basicGetA() {
+		return a;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setA(Port newA) {
+		Port oldA = a;
+		a = newA;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.CONNECTION__A, oldA, a));
 	}
 
 	/**
@@ -142,12 +179,48 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Port getB() {
+		if (b != null && b.eIsProxy()) {
+			InternalEObject oldB = (InternalEObject)b;
+			b = (Port)eResolveProxy(oldB);
+			if (b != oldB) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RealtimeschedulingPackage.CONNECTION__B, oldB, b));
+			}
+		}
+		return b;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port basicGetB() {
+		return b;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setB(Port newB) {
+		Port oldB = b;
+		b = newB;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.CONNECTION__B, oldB, b));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.CONNECTION__PORTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPorts()).basicAdd(otherEnd, msgs);
 			case RealtimeschedulingPackage.CONNECTION__ROUTES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRoutes()).basicAdd(otherEnd, msgs);
 		}
@@ -162,8 +235,6 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.CONNECTION__PORTS:
-				return ((InternalEList<?>)getPorts()).basicRemove(otherEnd, msgs);
 			case RealtimeschedulingPackage.CONNECTION__ROUTES:
 				return ((InternalEList<?>)getRoutes()).basicRemove(otherEnd, msgs);
 		}
@@ -178,12 +249,16 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.CONNECTION__PORTS:
-				return getPorts();
 			case RealtimeschedulingPackage.CONNECTION__ROUTES:
 				return getRoutes();
 			case RealtimeschedulingPackage.CONNECTION__ID:
 				return getId();
+			case RealtimeschedulingPackage.CONNECTION__B:
+				if (resolve) return getB();
+				return basicGetB();
+			case RealtimeschedulingPackage.CONNECTION__A:
+				if (resolve) return getA();
+				return basicGetA();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -197,16 +272,18 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.CONNECTION__PORTS:
-				getPorts().clear();
-				getPorts().addAll((Collection<? extends Port>)newValue);
-				return;
 			case RealtimeschedulingPackage.CONNECTION__ROUTES:
 				getRoutes().clear();
 				getRoutes().addAll((Collection<? extends Route>)newValue);
 				return;
 			case RealtimeschedulingPackage.CONNECTION__ID:
 				setId((String)newValue);
+				return;
+			case RealtimeschedulingPackage.CONNECTION__B:
+				setB((Port)newValue);
+				return;
+			case RealtimeschedulingPackage.CONNECTION__A:
+				setA((Port)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -220,14 +297,17 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.CONNECTION__PORTS:
-				getPorts().clear();
-				return;
 			case RealtimeschedulingPackage.CONNECTION__ROUTES:
 				getRoutes().clear();
 				return;
 			case RealtimeschedulingPackage.CONNECTION__ID:
 				setId(ID_EDEFAULT);
+				return;
+			case RealtimeschedulingPackage.CONNECTION__B:
+				setB((Port)null);
+				return;
+			case RealtimeschedulingPackage.CONNECTION__A:
+				setA((Port)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -241,12 +321,14 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RealtimeschedulingPackage.CONNECTION__PORTS:
-				return ports != null && !ports.isEmpty();
 			case RealtimeschedulingPackage.CONNECTION__ROUTES:
 				return routes != null && !routes.isEmpty();
 			case RealtimeschedulingPackage.CONNECTION__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case RealtimeschedulingPackage.CONNECTION__B:
+				return b != null;
+			case RealtimeschedulingPackage.CONNECTION__A:
+				return a != null;
 		}
 		return super.eIsSet(featureID);
 	}

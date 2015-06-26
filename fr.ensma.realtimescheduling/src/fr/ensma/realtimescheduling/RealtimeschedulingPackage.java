@@ -892,22 +892,13 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int CONNECTION = 12;
 
 	/**
-	 * The feature id for the '<em><b>Ports</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTION__PORTS = 0;
-
-	/**
 	 * The feature id for the '<em><b>Routes</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION__ROUTES = 1;
+	int CONNECTION__ROUTES = 0;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -916,7 +907,25 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION__ID = 2;
+	int CONNECTION__ID = 1;
+
+	/**
+	 * The feature id for the '<em><b>B</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__B = 2;
+
+	/**
+	 * The feature id for the '<em><b>A</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__A = 3;
 
 	/**
 	 * The number of structural features of the '<em>Connection</em>' class.
@@ -925,7 +934,7 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_FEATURE_COUNT = 3;
+	int CONNECTION_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Connection</em>' class.
@@ -1856,15 +1865,15 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EClass getConnection();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.Connection#getPorts <em>Ports</em>}'.
+	 * Returns the meta object for the reference '{@link fr.ensma.realtimescheduling.Connection#getA <em>A</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Ports</em>'.
-	 * @see fr.ensma.realtimescheduling.Connection#getPorts()
+	 * @return the meta object for the reference '<em>A</em>'.
+	 * @see fr.ensma.realtimescheduling.Connection#getA()
 	 * @see #getConnection()
 	 * @generated
 	 */
-	EReference getConnection_Ports();
+	EReference getConnection_A();
 
 	/**
 	 * Returns the meta object for the reference list '{@link fr.ensma.realtimescheduling.Connection#getRoutes <em>Routes</em>}'.
@@ -1887,6 +1896,17 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getConnection_Id();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.ensma.realtimescheduling.Connection#getB <em>B</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>B</em>'.
+	 * @see fr.ensma.realtimescheduling.Connection#getB()
+	 * @see #getConnection()
+	 * @generated
+	 */
+	EReference getConnection_B();
 
 	/**
 	 * Returns the meta object for class '{@link fr.ensma.realtimescheduling.Route <em>Route</em>}'.
@@ -2546,12 +2566,12 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EClass CONNECTION = eINSTANCE.getConnection();
 
 		/**
-		 * The meta object literal for the '<em><b>Ports</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>A</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONNECTION__PORTS = eINSTANCE.getConnection_Ports();
+		EReference CONNECTION__A = eINSTANCE.getConnection_A();
 
 		/**
 		 * The meta object literal for the '<em><b>Routes</b></em>' reference list feature.
@@ -2568,6 +2588,14 @@ public interface RealtimeschedulingPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONNECTION__ID = eINSTANCE.getConnection_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>B</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTION__B = eINSTANCE.getConnection_B();
 
 		/**
 		 * The meta object literal for the '{@link fr.ensma.realtimescheduling.impl.RouteImpl <em>Route</em>}' class.

@@ -841,8 +841,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConnection_Ports() {
-		return (EReference)connectionEClass.getEStructuralFeatures().get(0);
+	public EReference getConnection_A() {
+		return (EReference)connectionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -851,7 +851,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * @generated
 	 */
 	public EReference getConnection_Routes() {
-		return (EReference)connectionEClass.getEStructuralFeatures().get(1);
+		return (EReference)connectionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -860,7 +860,16 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 	 * @generated
 	 */
 	public EAttribute getConnection_Id() {
-		return (EAttribute)connectionEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)connectionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConnection_B() {
+		return (EReference)connectionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1033,9 +1042,10 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		createEReference(portEClass, PORT__CONNECTION);
 
 		connectionEClass = createEClass(CONNECTION);
-		createEReference(connectionEClass, CONNECTION__PORTS);
 		createEReference(connectionEClass, CONNECTION__ROUTES);
 		createEAttribute(connectionEClass, CONNECTION__ID);
+		createEReference(connectionEClass, CONNECTION__B);
+		createEReference(connectionEClass, CONNECTION__A);
 
 		routeEClass = createEClass(ROUTE);
 		createEReference(routeEClass, ROUTE__CONNECTIONS);
@@ -1158,12 +1168,13 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		initEAttribute(getPort_Order(), ecorePackage.getEInt(), "order", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPort_Bandwidth(), ecorePackage.getEDouble(), "Bandwidth", "0.0", 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPort_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPort_Connection(), this.getConnection(), this.getConnection_Ports(), "connection", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPort_Connection(), this.getConnection(), null, "connection", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectionEClass, Connection.class, "Connection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConnection_Ports(), this.getPort(), this.getPort_Connection(), "ports", null, 2, 2, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnection_Routes(), this.getRoute(), this.getRoute_Connections(), "routes", null, 0, -1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnection_Id(), ecorePackage.getEString(), "id", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnection_B(), this.getPort(), null, "B", null, 1, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnection_A(), this.getPort(), null, "A", null, 1, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(routeEClass, Route.class, "Route", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRoute_Connections(), this.getConnection(), this.getConnection_Routes(), "connections", null, 0, -1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1269,6 +1280,12 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 		   source, 
 		   new String[] {
 			 "constraints", "DestinationsCannotIncludeSource PositiveMinInterFrameTime PositiveMaxFrameSize PathExists RoutesConnectSourceToDestinations NoCycles"
+		   });	
+		addAnnotation
+		  (portEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "PositiveBandwidth UtilizationSumLessThanOne"
 		   });
 	}
 
@@ -1351,6 +1368,12 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements Realt
 			 "DestinationsCannotIncludeSource", "\n\t\t\t\tdestinations->forAll(dest : Module | dest <> source)",
 			 "PositiveMinInterFrameTime", "minInterFrameTime > 0",
 			 "PositiveMaxFrameSize", "maxFrameSize > 0"
+		   });	
+		addAnnotation
+		  (portEClass, 
+		   source, 
+		   new String[] {
+			 "PositiveBandwidth", "Bandwidth > 0"
 		   });
 	}
 

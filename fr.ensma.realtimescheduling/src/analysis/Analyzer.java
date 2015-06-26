@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -24,7 +23,7 @@ import fr.ensma.realtimescheduling.Task;
  * 
  * @author Gustavo Hidalgo
  */
-class Analyzer {
+public class Analyzer {
 	
 
 	/**
@@ -39,7 +38,7 @@ class Analyzer {
 	static List<Integer> responseTimeAnalysis(Partition p, Comparator<Task> taskComparator) {
 		List<fr.ensma.realtimescheduling.Task> sortedTasks = p.getTasks()
 				.stream()
-				.sorted(taskComparator)
+				.sorted(taskComparator)	
 				.collect(Collectors.toList());
 		return responseTimeAnalysis(p, sortedTasks);
 	}
@@ -147,76 +146,6 @@ class Analyzer {
 	}
 
 	/**
-	 * Forces all switch ports and module ports to have the same bandwidth
-	 * 
-	 * @param system
-	 * @return The global network latency
-	 */
-	private static int normalizeNetwork(fr.ensma.realtimescheduling.System system) {
-		int networkLatency = system.getUses().getCommunicatesOver().getLatency();
-		//all switches and all end systems will inherit the network bandwidth
-		double networkBandwith = system.getUses().getCommunicatesOver().getNetworkBandwidth();
-		system.getUses().getCommunicatesOver().getSwitches().stream()
-			.flatMap(s -> s.getSwitchPorts().stream())
-			.forEach(port -> port.setBandwidth(networkBandwith));
-		system.getUses().getScheduledOn().stream()
-			.flatMap(mod -> mod.getModulePorts().stream())
-			.forEach(port -> port.setBandwidth(networkBandwith));
-		return networkLatency;
-	}
-
-	/**
-	 * Partitions port wrappers by order
-	 * where order is defined as the maximum rank
-	 * of a port by any flow running through it
-	 * 
-	 * @param portWrappers
-	 * @return
-	 */
-	private static Map<Integer, List<PortWrapper>> partitionByOrder(
-			Collection<PortWrapper> portWrappers) {
-		Map<Integer, List<PortWrapper>> byOrder = new TreeMap<>();
-		IntStream.rangeClosed(1, portWrappers.stream()
-				.mapToInt(pw -> pw.order)
-				.max()
-				.getAsInt()) // from 1 to max order
-			.forEach(order -> {
-				List<PortWrapper> thisOrder = portWrappers.stream()
-						.filter(pw -> pw.order == order)
-						.collect(Collectors.toList());
-				byOrder.put(order, thisOrder);
-			});
-		return byOrder;
-	}
-
-	/**
-	 * Extracts all of the output ports out of the flows in a system
-	 * @param gamma
-	 * @return
-	 */
-	private static Set<Port> extractOutputPorts(List<Flow> gamma) {
-		Set<Port> allOutputPorts = gamma
-				.stream()
-				.flatMap(flow -> flow.P_i.stream())
-				.collect(Collectors.toSet());
-		return allOutputPorts;
-	}
-
-	/**
-	 * Creates a flow for each route in the system
-	 * @param system with hardware defined
-	 * @return All of the flows
-	 */
-	private static List<Flow> extractFlows(fr.ensma.realtimescheduling.System system) {
-		List<Flow> gamma = system.getExecutesSoftware().getVirtualLInks()
-				.stream()
-				.flatMap(vl -> vl.getRoutes().stream())
-				.map(route -> new Flow(route))
-				.collect(Collectors.toList());//now need to create PortWrapperss
-		return gamma;
-	}
-
-	/**
 	 * Performs the second, improved forward-analysis paper algorithm.
 	 * This takes the serialization effect into account.
 	 * 
@@ -237,15 +166,12 @@ class Analyzer {
 	 */
 	private static Map<Route, Double> endToEndAnalysis(fr.ensma.realtimescheduling.System system,
 			Function<PortWrapper, Function<Double,Double>> w) {
-		int networkLatency = normalizeNetwork(system);
-		List<Flow> gamma = extractFlows(system);
-		Set<Port> allOutputPorts = extractOutputPorts(gamma);
-		Collection<PortWrapper> portWrappers = allOutputPorts
-				.stream()
-				.map(p -> new PortWrapper(p, gamma))
-				.collect(Collectors.toSet());
+		int networkLatency = NetworkUtils.normalizeNetwork(system);
+		List<Flow> gamma = NetworkUtils.extractFlows(system);
+		Set<Port> allOutputPorts = NetworkUtils.extractOutputPorts(gamma);
+		Collection<PortWrapper> portWrappers = NetworkUtils.outputPortsToPortWrappers(allOutputPorts, gamma);
 		//group them by order now.
-		Map<Integer, List<PortWrapper>> byOrder = partitionByOrder(portWrappers);
+		Map<Integer, List<PortWrapper>> byOrder = NetworkUtils.partitionByOrder(portWrappers);
 		Map<Route, Double> results = new HashMap<>();
 		//TODO we need to topologically sort nodes in an order
 		for(Flow v : gamma) {
@@ -295,13 +221,6 @@ class Analyzer {
 		if(h.order == 1) {
 			return wFunctionPlain(h);
 		} else {
-			if(h.port.getId() == 45) {
-				System.out.println("Port 45 has following inputs : ");
-				for(Port IP : h.inputsToMe) { 
-					System.out.println(IP);
-					System.out.println("With flows " + h.flowsForInput.get(IP));
-				}
-			}
 			for(Port IP : h.inputsToMe) {
 				Function<Double,Double> a = t -> {
 					return t + h.flowsForInput.get(IP).stream()

@@ -3,8 +3,10 @@
 package fr.ensma.realtimescheduling.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -16,6 +18,8 @@ import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 import analysis.Flow;
 import analysis.ModelInterface;
+import analysis.NetworkUtils;
+import analysis.PortWrapper;
 import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.EndSystemPort;
 import fr.ensma.realtimescheduling.HardwareResource;
@@ -488,10 +492,9 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated 
+	 * @generated NOT
 	 */
 	public boolean validateVirtualLink(VirtualLink virtualLink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		buildGraph( (fr.ensma.realtimescheduling.System)((SoftwareResource)(virtualLink.eContainer())).eContainer() );
 		if (!validate_NoCircularContainment(virtualLink, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(virtualLink, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(virtualLink, diagnostics, context);
@@ -613,7 +616,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 			}
 			for(Port port : switch_.getSwitchPorts()) {
 				for(Port port2 : switch_.getSwitchPorts()) {
-					//within a switch, all ports are connected to each other.
+					//within a switch, all ports are "connected" to each other.
 					if(port2 != port) {networkGraph.addEdge(port, port2);}
 				}
 			}
@@ -624,7 +627,9 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 			}
 		}
 		for(Connection connection : system.getUses().getCommunicatesOver().getConnections()) {
-			networkGraph.addEdge(connection.getPorts().get(0), connection.getPorts().get(1));
+			if(connection.getA() != null && connection.getB() != null) {
+				networkGraph.addEdge(connection.getA(), connection.getB());
+			}
 		}
 	}
 	
@@ -688,14 +693,18 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 					current = ((Switch)(current.eContainer())).getSwitchPorts().stream().filter(sp -> allConnections.contains(sp.getConnection())).findFirst().orElseThrow(() -> new Exception());
 				}
 				//success if any of the destination ports are one of the two ports
-				//of the remaining connection of route
-				success = allConnections.get(0).getPorts().stream()
-						.anyMatch(port -> virtualLink.getDestinations().stream()
-								.anyMatch(module -> {
-									boolean matches = module.getModulePorts().contains(port);
-									destinationsHit.remove(module);
-									return matches;
-								}));
+				//of the remaining connection of routes
+				success = virtualLink.getDestinations().stream().anyMatch(module -> {
+					boolean matches = module.getModulePorts().contains(allConnections.get(0).getB());
+					destinationsHit.remove(module);
+					return matches;
+				})
+				|| /* OR */
+				virtualLink.getDestinations().stream().anyMatch(module -> {
+					boolean matches = module.getModulePorts().contains(allConnections.get(0).getA());
+					destinationsHit.remove(module);
+					return matches;
+				});
 			}
 			
 		} catch (Exception e) {
@@ -749,7 +758,90 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePort(Port port, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(port, diagnostics, context);
+		if (!validate_NoCircularContainment(port, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(port, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(port, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(port, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(port, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(port, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(port, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(port, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(port, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePort_PositiveBandwidth(port, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePort_UtilizationSumLessThanOne(port, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the PositiveBandwidth constraint of '<em>Port</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String PORT__POSITIVE_BANDWIDTH__EEXPRESSION = "Bandwidth > 0";
+
+	/**
+	 * Validates the PositiveBandwidth constraint of '<em>Port</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePort_PositiveBandwidth(Port port, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(RealtimeschedulingPackage.Literals.PORT,
+				 port,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "PositiveBandwidth",
+				 PORT__POSITIVE_BANDWIDTH__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * Validates the UtilizationSumLessThanOne constraint of '<em>Port</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validatePort_UtilizationSumLessThanOne(Port port, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean fail;
+		try {
+			fr.ensma.realtimescheduling.System system = null;
+			if(port instanceof SwitchPort) {
+				system = (fr.ensma.realtimescheduling.System) port.eContainer().eContainer().eContainer().eContainer();
+			} else if (port instanceof EndSystemPort) {
+				system = (fr.ensma.realtimescheduling.System) port.eContainer().eContainer().eContainer();
+			}
+			List<Flow> gamma = NetworkUtils.extractFlows(system);
+			Set<Port> allOutputPorts = NetworkUtils.extractOutputPorts(gamma);
+			Collection<PortWrapper> portWrappers = NetworkUtils.outputPortsToPortWrappers(allOutputPorts, gamma);
+			fail = portWrappers.stream()
+				.mapToDouble(portw -> portw.flowsThroughMe.stream() //for every port
+						.mapToDouble(flow -> flow.link.getMaxFrameSize()/portw.port.getBandwidth()/flow.link.getMinInterFrameTime()) //every flow
+						.sum()) //sum utilization 
+				.anyMatch(util -> util > 1.0);
+		} catch (Exception e) {
+			fail = false;
+		}
+		if (fail) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "UtilizationSumLessThanOne", getObjectLabel(port, context) },
+						 new Object[] { port },
+						 context));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -776,7 +868,18 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSwitchPort(SwitchPort switchPort, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(switchPort, diagnostics, context);
+		if (!validate_NoCircularContainment(switchPort, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(switchPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(switchPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(switchPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(switchPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(switchPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(switchPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(switchPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(switchPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePort_PositiveBandwidth(switchPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePort_UtilizationSumLessThanOne(switchPort, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -785,7 +888,18 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateEndSystemPort(EndSystemPort endSystemPort, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(endSystemPort, diagnostics, context);
+		if (!validate_NoCircularContainment(endSystemPort, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(endSystemPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(endSystemPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(endSystemPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(endSystemPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(endSystemPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(endSystemPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(endSystemPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(endSystemPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePort_PositiveBandwidth(endSystemPort, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePort_UtilizationSumLessThanOne(endSystemPort, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1108,6 +1222,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 */
 	public boolean validateSystem(fr.ensma.realtimescheduling.System system, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean valid = validate_EveryDefaultConstraint(system, diagnostics, context);
+		buildGraph(system);
 		ModelInterface.setSystem(valid ? system : null);
 		return valid;
 	}

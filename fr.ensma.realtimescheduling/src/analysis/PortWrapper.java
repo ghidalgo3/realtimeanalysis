@@ -16,9 +16,9 @@ import fr.ensma.realtimescheduling.Port;
  * @author Gustavo
  *
  */
-class PortWrapper {
+public class PortWrapper {
 	
-	Port port;
+	public Port port;
 	
 	/**
 	 * Maximum rank of a node
@@ -33,7 +33,7 @@ class PortWrapper {
 	 */
 	private double BP; private boolean BP_calc;
 	
-	Collection<Flow> flowsThroughMe;
+	public Collection<Flow> flowsThroughMe;
 	Set<Port> inputsToMe = new HashSet<>();
 	Map<Port, Set<Flow>> flowsForInput = new HashMap<>();
 

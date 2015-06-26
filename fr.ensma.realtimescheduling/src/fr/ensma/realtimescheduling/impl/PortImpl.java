@@ -6,7 +6,6 @@ import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.Port;
 import fr.ensma.realtimescheduling.RealtimeschedulingPackage;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -212,63 +211,11 @@ public abstract class PortImpl extends MinimalEObjectImpl.Container implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetConnection(Connection newConnection, NotificationChain msgs) {
+	public void setConnection(Connection newConnection) {
 		Connection oldConnection = connection;
 		connection = newConnection;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.PORT__CONNECTION, oldConnection, newConnection);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setConnection(Connection newConnection) {
-		if (newConnection != connection) {
-			NotificationChain msgs = null;
-			if (connection != null)
-				msgs = ((InternalEObject)connection).eInverseRemove(this, RealtimeschedulingPackage.CONNECTION__PORTS, Connection.class, msgs);
-			if (newConnection != null)
-				msgs = ((InternalEObject)newConnection).eInverseAdd(this, RealtimeschedulingPackage.CONNECTION__PORTS, Connection.class, msgs);
-			msgs = basicSetConnection(newConnection, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.PORT__CONNECTION, newConnection, newConnection));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case RealtimeschedulingPackage.PORT__CONNECTION:
-				if (connection != null)
-					msgs = ((InternalEObject)connection).eInverseRemove(this, RealtimeschedulingPackage.CONNECTION__PORTS, Connection.class, msgs);
-				return basicSetConnection((Connection)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case RealtimeschedulingPackage.PORT__CONNECTION:
-				return basicSetConnection(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.PORT__CONNECTION, oldConnection, connection));
 	}
 
 	/**

@@ -12,11 +12,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.StandardChartTheme;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.experimental.chart.swt.ChartComposite;
-import org.jfree.chart.StandardChartTheme;
 
 /**
  * This class handles most of the functions of displaying a BarChart from a

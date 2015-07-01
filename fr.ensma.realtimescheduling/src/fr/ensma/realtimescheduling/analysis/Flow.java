@@ -92,7 +92,7 @@ public class Flow {
 		Bklg = new double[P_i.size()];
 	}
 
-	Port inputTo(Port p) {
+	Port getInputTo(Port p) {
 		return inputs.get(P_i.indexOf(p) - 1);
 	}
 
@@ -103,7 +103,7 @@ public class Flow {
 	 * @param p
 	 * @return
 	 */
-	int rankOf(Port p) {
+	int getRankOf(Port p) {
 		return P_i.indexOf(p) + 1;
 	}
 
@@ -111,7 +111,7 @@ public class Flow {
 		S_min[P_i.indexOf(p)] = newValue;
 	}
 
-	Port successor(Port p) {
+	Port getSuccessor(Port p) {
 		return P_i.get(P_i.indexOf(p) + 1);
 	}
 
@@ -119,7 +119,7 @@ public class Flow {
 		S_max[P_i.indexOf(p)] = newValue;
 	}
 
-	void calculateJitterFor(Port p) {
+	void setJitterFor(Port p) {
 		J[P_i.indexOf(p)] = S_max[P_i.indexOf(p)] - S_min[P_i.indexOf(p)];
 	}
 
@@ -145,15 +145,15 @@ public class Flow {
 		Bklg[P_i.indexOf(p.port)] = max;
 	}
 
-	double BklgFor(Port p) {
+	double getBklgFor(Port p) {
 		return Bklg[P_i.indexOf(p)];
 	}
 
-	double SmaxFor(Port p) {
+	double getSmaxFor(Port p) {
 		return S_max[P_i.indexOf(p)];
 	}
 
-	double jitterFor(Port p) {
+	double getJitterFor(Port p) {
 		return J[P_i.indexOf(p)];
 	}
 
@@ -174,7 +174,7 @@ public class Flow {
 	}
 
 	double RBF(Port port, double t) {
-		return (1 + Math.floor((t + jitterFor(port))
+		return (1 + Math.floor((t + getJitterFor(port))
 				/ link.getBAG()))
 				* link.getMaxFrameSize() / port.getBandwidth();
 	}

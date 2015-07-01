@@ -14,9 +14,14 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: com.keypoint,
- fr.ensma.realtimescheduling;uses:="org.eclipse.emf.ecore,org.eclipse.emf.common.util",
- fr.ensma.realtimescheduling.analysis;uses:="fr.ensma.realtimescheduling",
- fr.ensma.realtimescheduling.handlers;uses:="org.eclipse.ui,org.eclipse.core.commands",
+ fr.ensma.realtimescheduling;
+  uses:="org.eclipse.emf.ecore,
+   org.eclipse.emf.common.util",
+ fr.ensma.realtimescheduling.analysis;
+  uses:="fr.ensma.realtimescheduling",
+ fr.ensma.realtimescheduling.handlers;
+  uses:="org.eclipse.ui,
+   org.eclipse.core.commands",
  fr.ensma.realtimescheduling.impl;
   uses:="org.eclipse.emf.ecore,
    org.eclipse.emf.ecore.impl,
@@ -35,11 +40,21 @@ Export-Package: com.keypoint,
    org.eclipse.swt.widgets,
    fr.ensma.realtimescheduling,
    org.eclipse.ui.part",
- org.jfree;uses:="org.jfree.ui.about",
- org.jfree.base;uses:="org.jfree.util,org.jfree.base.modules,org.jfree.base.config",
- org.jfree.base.config;uses:="org.jfree.util",
- org.jfree.base.log;uses:="org.jfree.util,org.jfree.base.modules",
- org.jfree.base.modules;uses:="org.jfree.util,org.jfree.base,org.jfree.base.config",
+ org.jfree;
+  uses:="org.jfree.ui.about",
+ org.jfree.base;
+  uses:="org.jfree.util,
+   org.jfree.base.modules,
+   org.jfree.base.config",
+ org.jfree.base.config;
+  uses:="org.jfree.util",
+ org.jfree.base.log;
+  uses:="org.jfree.util,
+   org.jfree.base.modules",
+ org.jfree.base.modules;
+  uses:="org.jfree.util,
+   org.jfree.base,
+   org.jfree.base.config",
  org.jfree.chart;
   uses:="org.jfree.ui,
    org.jfree.chart.panel,
@@ -85,7 +100,9 @@ Export-Package: com.keypoint,
    org.jfree.ui,
    org.jfree.text,
    org.jfree.chart.entity",
- org.jfree.chart.demo;uses:="org.jfree.ui,javax.swing",
+ org.jfree.chart.demo;
+  uses:="org.jfree.ui,
+   javax.swing",
  org.jfree.chart.editor;
   uses:="org.jfree.ui,
    org.jfree.chart.title,
@@ -110,7 +127,8 @@ Export-Package: com.keypoint,
    org.jfree.chart,
    org.jfree.chart.annotations,
    org.jfree.chart.axis",
- org.jfree.chart.imagemap;uses:="org.jfree.chart",
+ org.jfree.chart.imagemap;
+  uses:="org.jfree.chart",
  org.jfree.chart.labels;
   uses:="org.jfree.data.xy,
    org.jfree.util,
@@ -195,7 +213,9 @@ Export-Package: com.keypoint,
    org.jfree.chart.entity,
    org.jfree.chart.axis",
  org.jfree.chart.resources,
- org.jfree.chart.servlet;uses:="javax.servlet.http,org.jfree.chart",
+ org.jfree.chart.servlet;
+  uses:="javax.servlet.http,
+   org.jfree.chart",
  org.jfree.chart.title;
   uses:="org.jfree.data,
    org.jfree.ui,
@@ -211,10 +231,18 @@ Export-Package: com.keypoint,
    org.jfree.util,
    org.jfree.data.category,
    org.jfree.data.general",
- org.jfree.chart.util;uses:="org.jfree.ui",
- org.jfree.data;uses:="org.jfree.util,org.jfree.data.general",
- org.jfree.data.category;uses:="org.jfree.data,org.jfree.util,org.jfree.data.general",
- org.jfree.data.contour;uses:="org.jfree.data.xy,org.jfree.data",
+ org.jfree.chart.util;
+  uses:="org.jfree.ui",
+ org.jfree.data;
+  uses:="org.jfree.util,
+   org.jfree.data.general",
+ org.jfree.data.category;
+  uses:="org.jfree.data,
+   org.jfree.util,
+   org.jfree.data.general",
+ org.jfree.data.contour;
+  uses:="org.jfree.data.xy,
+   org.jfree.data",
  org.jfree.data.function,
  org.jfree.data.gantt;
   uses:="org.jfree.data.time,
@@ -229,7 +257,8 @@ Export-Package: com.keypoint,
    org.jfree.chart.renderer,
    org.jfree.data.category,
    org.jfree.data.function",
- org.jfree.data.io;uses:="org.jfree.data.category",
+ org.jfree.data.io;
+  uses:="org.jfree.data.category",
  org.jfree.data.jdbc;
   uses:="org.jfree.data.xy,
    org.jfree.data,
@@ -249,7 +278,10 @@ Export-Package: com.keypoint,
    javax.swing.table,
    org.jfree.data.general,
    org.jfree.date",
- org.jfree.data.time.ohlc;uses:="org.jfree.data.time,org.jfree.data.xy,org.jfree.data",
+ org.jfree.data.time.ohlc;
+  uses:="org.jfree.data.time,
+   org.jfree.data.xy,
+   org.jfree.data",
  org.jfree.data.xml;
   uses:="org.xml.sax.helpers,
    org.jfree.data.category,
@@ -266,7 +298,10 @@ Export-Package: com.keypoint,
    org.jfree.data.category,
    org.jfree.chart.renderer.xy,
    javax.swing",
- org.jfree.experimental.chart.plot;uses:="org.jfree.data,org.jfree.chart.plot,org.jfree.chart.axis",
+ org.jfree.experimental.chart.plot;
+  uses:="org.jfree.data,
+   org.jfree.chart.plot,
+   org.jfree.chart.axis",
  org.jfree.experimental.chart.renderer.xy;
   uses:="org.jfree.data.xy,
    org.jfree.chart.plot,
@@ -280,7 +315,8 @@ Export-Package: com.keypoint,
    org.jfree.chart.event,
    org.jfree.chart,
    org.eclipse.swt.printing",
- org.jfree.experimental.chart.swt.demo;uses:="javax.swing",
+ org.jfree.experimental.chart.swt.demo;
+  uses:="javax.swing",
  org.jfree.experimental.chart.swt.editor;
   uses:="org.eclipse.swt.events,
    org.eclipse.swt.graphics,
@@ -299,7 +335,9 @@ Export-Package: com.keypoint,
  org.jfree.io,
  org.jfree.layout,
  org.jfree.resources,
- org.jfree.text;uses:="org.jfree.util,org.jfree.ui",
+ org.jfree.text;
+  uses:="org.jfree.util,
+   org.jfree.ui",
  org.jfree.threads,
  org.jfree.ui;
   uses:="javax.swing.table,
@@ -316,9 +354,14 @@ Export-Package: com.keypoint,
    org.jfree.base,
    javax.swing",
  org.jfree.ui.about.resources,
- org.jfree.ui.action;uses:="javax.swing",
- org.jfree.ui.tabbedui;uses:="javax.swing",
- org.jfree.util;uses:="org.jfree.ui,org.jfree.base.config,javax.swing",
+ org.jfree.ui.action;
+  uses:="javax.swing",
+ org.jfree.ui.tabbedui;
+  uses:="javax.swing",
+ org.jfree.util;
+  uses:="org.jfree.ui,
+   org.jfree.base.config,
+   javax.swing",
  org.jgrapht,
  org.jgrapht.alg,
  org.jgrapht.alg.cycle,

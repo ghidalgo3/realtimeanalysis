@@ -62,6 +62,9 @@ public interface VirtualLink extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Bandwith allocation gap. Minimum time between two consecutive frames.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>BAG</em>' attribute.
 	 * @see #setBAG(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_BAG()
@@ -147,6 +150,9 @@ public interface VirtualLink extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Maximum frame size in bytes.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Frame Size</em>' attribute.
 	 * @see #setMaxFrameSize(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_MaxFrameSize()

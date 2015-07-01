@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.Module#getPartition <em>Partition</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Module#getProcessors <em>Processors</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Module#getModulePorts <em>Module Ports</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.Module#getDelay <em>Delay</em>}</li>
  * </ul>
  * </p>
  *
@@ -158,5 +159,31 @@ public interface Module extends EObject {
 	 * @generated
 	 */
 	EList<EndSystemPort> getModulePorts();
+
+	/**
+	 * Returns the value of the '<em><b>Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Delay</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Delay</em>' attribute.
+	 * @see #setDelay(int)
+	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule_Delay()
+	 * @model required="true"
+	 * @generated
+	 */
+	int getDelay();
+
+	/**
+	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Module#getDelay <em>Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Delay</em>' attribute.
+	 * @see #getDelay()
+	 * @generated
+	 */
+	void setDelay(int value);
 
 } // Module

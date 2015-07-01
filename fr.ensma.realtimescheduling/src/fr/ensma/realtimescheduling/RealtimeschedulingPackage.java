@@ -294,13 +294,22 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int MODULE__MODULE_PORTS = 5;
 
 	/**
+	 * The feature id for the '<em><b>Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__DELAY = 6;
+
+	/**
 	 * The number of structural features of the '<em>Module</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_FEATURE_COUNT = 6;
+	int MODULE_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Module</em>' class. <!--
@@ -1357,6 +1366,17 @@ public interface RealtimeschedulingPackage extends EPackage {
 	EReference getModule_ModulePorts();
 
 	/**
+	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Module#getDelay <em>Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Delay</em>'.
+	 * @see fr.ensma.realtimescheduling.Module#getDelay()
+	 * @see #getModule()
+	 * @generated
+	 */
+	EAttribute getModule_Delay();
+
+	/**
 	 * Returns the meta object for class '
 	 * {@link fr.ensma.realtimescheduling.Partition <em>Partition</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -2154,6 +2174,14 @@ public interface RealtimeschedulingPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODULE__MODULE_PORTS = eINSTANCE.getModule_ModulePorts();
+
+		/**
+		 * The meta object literal for the '<em><b>Delay</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODULE__DELAY = eINSTANCE.getModule_Delay();
 
 		/**
 		 * The meta object literal for the '

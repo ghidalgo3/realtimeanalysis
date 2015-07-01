@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getPartition <em>Partition</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getProcessors <em>Processors</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getModulePorts <em>Module Ports</em>}</li>
+ *   <li>{@link fr.ensma.realtimescheduling.impl.ModuleImpl#getDelay <em>Delay</em>}</li>
  * </ul>
  * </p>
  *
@@ -113,6 +114,26 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * @ordered
 	 */
 	protected EList<EndSystemPort> modulePorts;
+
+	/**
+	 * The default value of the '{@link #getDelay() <em>Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDelay()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int DELAY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getDelay() <em>Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDelay()
+	 * @generated
+	 * @ordered
+	 */
+	protected int delay = DELAY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -219,6 +240,27 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getDelay() {
+		return delay;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDelay(int newDelay) {
+		int oldDelay = delay;
+		delay = newDelay;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.MODULE__DELAY, oldDelay, delay));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -270,6 +312,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				return getProcessors();
 			case RealtimeschedulingPackage.MODULE__MODULE_PORTS:
 				return getModulePorts();
+			case RealtimeschedulingPackage.MODULE__DELAY:
+				return getDelay();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -303,6 +347,9 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				getModulePorts().clear();
 				getModulePorts().addAll((Collection<? extends EndSystemPort>)newValue);
 				return;
+			case RealtimeschedulingPackage.MODULE__DELAY:
+				setDelay((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -332,6 +379,9 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 			case RealtimeschedulingPackage.MODULE__MODULE_PORTS:
 				getModulePorts().clear();
 				return;
+			case RealtimeschedulingPackage.MODULE__DELAY:
+				setDelay(DELAY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -355,6 +405,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				return processors != null && !processors.isEmpty();
 			case RealtimeschedulingPackage.MODULE__MODULE_PORTS:
 				return modulePorts != null && !modulePorts.isEmpty();
+			case RealtimeschedulingPackage.MODULE__DELAY:
+				return delay != DELAY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -372,6 +424,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		result.append(id);
 		result.append(", period: ");
 		result.append(period);
+		result.append(", delay: ");
+		result.append(delay);
 		result.append(')');
 		return result.toString();
 	}

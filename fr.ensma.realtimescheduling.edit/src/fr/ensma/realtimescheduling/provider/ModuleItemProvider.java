@@ -62,6 +62,7 @@ public class ModuleItemProvider
 			addIdPropertyDescriptor(object);
 			addPeriodPropertyDescriptor(object);
 			addPartitionPropertyDescriptor(object);
+			addDelayPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -155,6 +156,28 @@ public class ModuleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Delay feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDelayPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Module_delay_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Module_delay_feature", "_UI_Module_type"),
+				 RealtimeschedulingPackage.Literals.MODULE__DELAY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -226,6 +249,7 @@ public class ModuleItemProvider
 			case RealtimeschedulingPackage.MODULE__UTILIZATION:
 			case RealtimeschedulingPackage.MODULE__ID:
 			case RealtimeschedulingPackage.MODULE__PERIOD:
+			case RealtimeschedulingPackage.MODULE__DELAY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case RealtimeschedulingPackage.MODULE__PROCESSORS:

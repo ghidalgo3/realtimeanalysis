@@ -78,6 +78,11 @@ public interface Network extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The forward analysis algorithm expects that all frames in a virtual link will have the same transmission time.
+	 * This attribute will be used by the FA algorithm to force all ports on the network to have the same bandwidth.
+	 * 
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Network Bandwidth</em>' attribute.
 	 * @see #setNetworkBandwidth(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_NetworkBandwidth()
@@ -121,6 +126,9 @@ public interface Network extends EObject {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Technological latency at each switch of forwarding a frame.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Latency</em>' attribute.
 	 * @see #setLatency(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getNetwork_Latency()

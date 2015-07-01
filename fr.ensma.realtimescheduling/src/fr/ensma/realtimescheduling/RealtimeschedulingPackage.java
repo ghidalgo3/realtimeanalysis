@@ -163,30 +163,12 @@ public interface RealtimeschedulingPackage extends EPackage {
 	int TASK__SCHEDULEABLE = 5;
 
 	/**
-	 * The feature id for the '<em><b>Jitter</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__JITTER = 6;
-
-	/**
 	 * The feature id for the '<em><b>Critical Instance</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CRITICAL_INSTANCE = 7;
-
-	/**
-	 * The feature id for the '<em><b>Release Time</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__RELEASE_TIME = 8;
+	int TASK__CRITICAL_INSTANCE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Periodicity</b></em>' attribute. <!--
@@ -195,7 +177,7 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__PERIODICITY = 9;
+	int TASK__PERIODICITY = 7;
 
 	/**
 	 * The feature id for the '<em><b>Characteristic Period</b></em>' attribute.
@@ -203,7 +185,7 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CHARACTERISTIC_PERIOD = 10;
+	int TASK__CHARACTERISTIC_PERIOD = 8;
 
 	/**
 	 * The feature id for the '<em><b>Partition</b></em>' reference. <!--
@@ -212,7 +194,7 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__PARTITION = 11;
+	int TASK__PARTITION = 9;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class. <!--
@@ -221,7 +203,7 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = 12;
+	int TASK_FEATURE_COUNT = 10;
 
 	/**
 	 * The number of operations of the '<em>Task</em>' class. <!--
@@ -1228,18 +1210,6 @@ public interface RealtimeschedulingPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for the attribute '
-	 * {@link fr.ensma.realtimescheduling.Task#getJitter <em>Jitter</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for the attribute '<em>Jitter</em>'.
-	 * @see fr.ensma.realtimescheduling.Task#getJitter()
-	 * @see #getTask()
-	 * @generated
-	 */
-	EAttribute getTask_Jitter();
-
-	/**
-	 * Returns the meta object for the attribute '
 	 * {@link fr.ensma.realtimescheduling.Task#getCriticalInstance
 	 * <em>Critical Instance</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
@@ -1250,16 +1220,6 @@ public interface RealtimeschedulingPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTask_CriticalInstance();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Task#getReleaseTime <em>Release Time</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Release Time</em>'.
-	 * @see fr.ensma.realtimescheduling.Task#getReleaseTime()
-	 * @see #getTask()
-	 * @generated
-	 */
-	EAttribute getTask_ReleaseTime();
 
 	/**
 	 * Returns the meta object for the attribute '{@link fr.ensma.realtimescheduling.Task#getPeriodicity <em>Periodicity</em>}'.
@@ -2079,25 +2039,11 @@ public interface RealtimeschedulingPackage extends EPackage {
 		EAttribute TASK__SCHEDULEABLE = eINSTANCE.getTask_Scheduleable();
 
 		/**
-		 * The meta object literal for the '<em><b>Jitter</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TASK__JITTER = eINSTANCE.getTask_Jitter();
-
-		/**
 		 * The meta object literal for the '<em><b>Critical Instance</b></em>' attribute feature.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute TASK__CRITICAL_INSTANCE = eINSTANCE.getTask_CriticalInstance();
-
-		/**
-		 * The meta object literal for the '<em><b>Release Time</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TASK__RELEASE_TIME = eINSTANCE.getTask_ReleaseTime();
 
 		/**
 		 * The meta object literal for the '<em><b>Periodicity</b></em>' attribute feature.

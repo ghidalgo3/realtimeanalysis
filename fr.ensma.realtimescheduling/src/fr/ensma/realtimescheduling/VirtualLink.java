@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='DestinationsCannotIncludeSource PositiveMinInterFrameTime PositiveMaxFrameSize PathExists RoutesConnectSourceToDestinations NoCycles'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot DestinationsCannotIncludeSource='\n\t\t\t\tdestinations->forAll(dest : Module | dest <> source)' PositiveMinInterFrameTime='minInterFrameTime > 0' PositiveMaxFrameSize='maxFrameSize > 0'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='DestinationsCannotIncludeSource PositiveBAG PositiveMaxFrameSize PathExists RoutesConnectSourceToDestinations NoCycles'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot DestinationsCannotIncludeSource='\n\t\t\t\tdestinations->forAll(dest : Module | dest <> source)' PositiveBAG='BAG > 0' PositiveMaxFrameSize='maxFrameSize > 0'"
  * @generated
  */
 public interface VirtualLink extends EObject {

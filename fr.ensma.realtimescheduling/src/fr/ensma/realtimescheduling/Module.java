@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getModule()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NonZeroPeriod NonOverlappingPartitions'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NonZeroPeriod='period > 0' NonOverlappingPartitions='let allIntervals : Sequence(Interval) = partition.executionIntervals\n\t\t->flatten()\n\t\t->sortedBy(i : Interval | i.start)\n\tin if (allIntervals\n\t\t\t->size() <= 1)\n\t\tthen true\n\t\telse allIntervals\n\t\t\t->subSequence(1, allIntervals\n\t\t\t\t->size() - 1)\n\t\t\t->forAll(i : Interval | i.end <= allIntervals\n\t\t\t\t->at(1 + allIntervals\n\t\t\t\t\t->indexOf(i)).start)\n\t\tendif'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PositiveDelay NonZeroPeriod NonOverlappingPartitions'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot PositiveDelay='delay > 0' NonZeroPeriod='period > 0' NonOverlappingPartitions='let allIntervals : Sequence(Interval) = partition.executionIntervals\n\t\t->flatten()\n\t\t->sortedBy(i : Interval | i.start)\n\tin if (allIntervals\n\t\t\t->size() <= 1)\n\t\tthen true\n\t\telse allIntervals\n\t\t\t->subSequence(1, allIntervals\n\t\t\t\t->size() - 1)\n\t\t\t->forAll(i : Interval | i.end <= allIntervals\n\t\t\t\t->at(1 + allIntervals\n\t\t\t\t\t->indexOf(i)).start)\n\t\tendif'"
  * @generated
  */
 public interface Module extends EObject {

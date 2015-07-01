@@ -25,9 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getResponseTime <em>Response Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#isScheduleable <em>Scheduleable</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getJitter <em>Jitter</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getCriticalInstance <em>Critical Instance</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getReleaseTime <em>Release Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getPeriodicity <em>Periodicity</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getCharacteristicPeriod <em>Characteristic Period</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.impl.TaskImpl#getPartition <em>Partition</em>}</li>
@@ -155,24 +153,6 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	protected boolean scheduleable = SCHEDULEABLE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getJitter() <em>Jitter</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getJitter()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final float JITTER_EDEFAULT = 0.0F;
-
-	/**
-	 * The cached value of the '{@link #getJitter() <em>Jitter</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getJitter()
-	 * @generated
-	 * @ordered
-	 */
-	protected float jitter = JITTER_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getCriticalInstance() <em>Critical Instance</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -191,24 +171,6 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * @ordered
 	 */
 	protected int criticalInstance = CRITICAL_INSTANCE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getReleaseTime() <em>Release Time</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getReleaseTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double RELEASE_TIME_EDEFAULT = 0.0;
-
-	/**
-	 * The cached value of the '{@link #getReleaseTime() <em>Release Time</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getReleaseTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected double releaseTime = RELEASE_TIME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPeriodicity() <em>Periodicity</em>}' attribute.
@@ -394,25 +356,6 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public float getJitter() {
-		return jitter;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setJitter(float newJitter) {
-		float oldJitter = jitter;
-		jitter = newJitter;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__JITTER, oldJitter, jitter));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getCriticalInstance() {
 		return criticalInstance;
 	}
@@ -426,25 +369,6 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 		criticalInstance = newCriticalInstance;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__CRITICAL_INSTANCE, oldCriticalInstance, criticalInstance));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getReleaseTime() {
-		return releaseTime;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setReleaseTime(double newReleaseTime) {
-		double oldReleaseTime = releaseTime;
-		releaseTime = newReleaseTime;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RealtimeschedulingPackage.TASK__RELEASE_TIME, oldReleaseTime, releaseTime));
 	}
 
 	/**
@@ -591,12 +515,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 				return getResponseTime();
 			case RealtimeschedulingPackage.TASK__SCHEDULEABLE:
 				return isScheduleable();
-			case RealtimeschedulingPackage.TASK__JITTER:
-				return getJitter();
 			case RealtimeschedulingPackage.TASK__CRITICAL_INSTANCE:
 				return getCriticalInstance();
-			case RealtimeschedulingPackage.TASK__RELEASE_TIME:
-				return getReleaseTime();
 			case RealtimeschedulingPackage.TASK__PERIODICITY:
 				return getPeriodicity();
 			case RealtimeschedulingPackage.TASK__CHARACTERISTIC_PERIOD:
@@ -633,14 +553,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 			case RealtimeschedulingPackage.TASK__SCHEDULEABLE:
 				setScheduleable((Boolean)newValue);
 				return;
-			case RealtimeschedulingPackage.TASK__JITTER:
-				setJitter((Float)newValue);
-				return;
 			case RealtimeschedulingPackage.TASK__CRITICAL_INSTANCE:
 				setCriticalInstance((Integer)newValue);
-				return;
-			case RealtimeschedulingPackage.TASK__RELEASE_TIME:
-				setReleaseTime((Double)newValue);
 				return;
 			case RealtimeschedulingPackage.TASK__PERIODICITY:
 				setPeriodicity((Periodicity)newValue);
@@ -680,14 +594,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 			case RealtimeschedulingPackage.TASK__SCHEDULEABLE:
 				setScheduleable(SCHEDULEABLE_EDEFAULT);
 				return;
-			case RealtimeschedulingPackage.TASK__JITTER:
-				setJitter(JITTER_EDEFAULT);
-				return;
 			case RealtimeschedulingPackage.TASK__CRITICAL_INSTANCE:
 				setCriticalInstance(CRITICAL_INSTANCE_EDEFAULT);
-				return;
-			case RealtimeschedulingPackage.TASK__RELEASE_TIME:
-				setReleaseTime(RELEASE_TIME_EDEFAULT);
 				return;
 			case RealtimeschedulingPackage.TASK__PERIODICITY:
 				setPeriodicity(PERIODICITY_EDEFAULT);
@@ -721,12 +629,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 				return responseTime != RESPONSE_TIME_EDEFAULT;
 			case RealtimeschedulingPackage.TASK__SCHEDULEABLE:
 				return scheduleable != SCHEDULEABLE_EDEFAULT;
-			case RealtimeschedulingPackage.TASK__JITTER:
-				return jitter != JITTER_EDEFAULT;
 			case RealtimeschedulingPackage.TASK__CRITICAL_INSTANCE:
 				return criticalInstance != CRITICAL_INSTANCE_EDEFAULT;
-			case RealtimeschedulingPackage.TASK__RELEASE_TIME:
-				return releaseTime != RELEASE_TIME_EDEFAULT;
 			case RealtimeschedulingPackage.TASK__PERIODICITY:
 				return periodicity != PERIODICITY_EDEFAULT;
 			case RealtimeschedulingPackage.TASK__CHARACTERISTIC_PERIOD:
@@ -758,12 +662,8 @@ public class TaskImpl extends MinimalEObjectImpl.Container implements Task {
 		result.append(responseTime);
 		result.append(", scheduleable: ");
 		result.append(scheduleable);
-		result.append(", jitter: ");
-		result.append(jitter);
 		result.append(", criticalInstance: ");
 		result.append(criticalInstance);
-		result.append(", releaseTime: ");
-		result.append(releaseTime);
 		result.append(", periodicity: ");
 		result.append(periodicity);
 		result.append(", characteristicPeriod: ");

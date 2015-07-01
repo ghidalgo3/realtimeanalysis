@@ -17,9 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.ensma.realtimescheduling.Task#getPriority <em>Priority</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getResponseTime <em>Response Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#isScheduleable <em>Scheduleable</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Task#getJitter <em>Jitter</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getCriticalInstance <em>Critical Instance</em>}</li>
- *   <li>{@link fr.ensma.realtimescheduling.Task#getReleaseTime <em>Release Time</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getPeriodicity <em>Periodicity</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getCharacteristicPeriod <em>Characteristic Period</em>}</li>
  *   <li>{@link fr.ensma.realtimescheduling.Task#getPartition <em>Partition</em>}</li>
@@ -193,35 +191,6 @@ public interface Task extends EObject {
 	void setScheduleable(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Jitter</b></em>' attribute. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Jitter</em>' attribute isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Jitter</em>' attribute.
-	 * @see #setJitter(float)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_Jitter()
-	 * @model required="true"
-	 * @generated
-	 */
-	float getJitter();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getJitter
-	 * <em>Jitter</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Jitter</em>' attribute.
-	 * @see #getJitter()
-	 * @generated
-	 */
-	void setJitter(float value);
-
-	/**
 	 * Returns the value of the '<em><b>Critical Instance</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -246,33 +215,6 @@ public interface Task extends EObject {
 	 * @generated
 	 */
 	void setCriticalInstance(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Release Time</b></em>' attribute. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Release Time</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Release Time</em>' attribute.
-	 * @see #setReleaseTime(double)
-	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getTask_ReleaseTime()
-	 * @model required="true"
-	 * @generated
-	 */
-	double getReleaseTime();
-
-	/**
-	 * Sets the value of the '{@link fr.ensma.realtimescheduling.Task#getReleaseTime <em>Release Time</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @param value the new value of the '<em>Release Time</em>' attribute.
-	 * @see #getReleaseTime()
-	 * @generated
-	 */
-	void setReleaseTime(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Periodicity</b></em>' attribute. The

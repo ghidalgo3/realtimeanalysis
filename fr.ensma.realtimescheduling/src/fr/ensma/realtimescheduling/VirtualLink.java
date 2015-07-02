@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='DestinationsCannotIncludeSource PositiveMinInterFrameTime PositiveMaxFrameSize PathExists RoutesConnectSourceToDestinations NoCycles'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot DestinationsCannotIncludeSource='\n\t\t\t\tdestinations->forAll(dest : Module | dest <> source)' PositiveMinInterFrameTime='minInterFrameTime > 0' PositiveMaxFrameSize='maxFrameSize > 0'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='DestinationsCannotIncludeSource PositiveBAG PositiveMaxFrameSize PathExists RoutesConnectSourceToDestinations NoCycles'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot DestinationsCannotIncludeSource='\n\t\t\t\tdestinations->forAll(dest : Module | dest <> source)' PositiveBAG='BAG > 0' PositiveMaxFrameSize='maxFrameSize > 0'"
  * @generated
  */
 public interface VirtualLink extends EObject {
@@ -62,6 +62,9 @@ public interface VirtualLink extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Bandwith allocation gap. Minimum time between two consecutive frames.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>BAG</em>' attribute.
 	 * @see #setBAG(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_BAG()
@@ -147,6 +150,9 @@ public interface VirtualLink extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Maximum frame size in bytes.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Frame Size</em>' attribute.
 	 * @see #setMaxFrameSize(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getVirtualLink_MaxFrameSize()

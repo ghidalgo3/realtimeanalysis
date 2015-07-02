@@ -4,7 +4,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
-import analysis.ModelInterface;
+import fr.ensma.realtimescheduling.analysis.ModelInterface;
 
 /**
  * Handles the case where the user wants the analysis to occur based on each

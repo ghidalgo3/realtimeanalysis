@@ -1,4 +1,4 @@
-package analysis;
+package fr.ensma.realtimescheduling.analysis;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,9 +17,8 @@ import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * This class houses methods to interface between the Ecore model and this
- * package's analysis algorithms. For now, until I figure out a better way to do
- * this, 'Validate' the model first in order to discover the 'System' being
- * studied, then and only then can the analysis be run. Not java.lang.System!
+ * package's analysis algorithms. 
+ * 
  * This class's only job is to receive an instance of the model from the
  * validation class. When the user asks for analysis, the analysis package gets
  * the model from this class and performs analysis on it which may involve
@@ -30,8 +29,7 @@ import fr.ensma.realtimescheduling.VirtualLink;
 public abstract class ModelInterface {
 
 	/**
-	 * Instance to the System from the model being analyzed We will also parse
-	 * the other entities out of the System
+	 * Instance to the System from the model being analyzed
 	 */
 	public static fr.ensma.realtimescheduling.System system;
 
@@ -40,7 +38,6 @@ public abstract class ModelInterface {
 	 * partitions from the model and make it publicly available.
 	 */
 	public static List<Partition> allPartitions;
-	// don't know if this will ever be needed....
 	static boolean validSystem;
 
 	public static boolean isValidSystem() {
@@ -48,8 +45,7 @@ public abstract class ModelInterface {
 	}
 
 	/**
-	 * Very ugly way of receiving the System after the user clicks on validate.
-	 * I have made the Validator pass null to this method when the system
+	 * The Validator shall pass null to this method when the system
 	 * doesn't validate. Thus, that is our signal to know that the System failed
 	 * validation.
 	 * 
@@ -115,7 +111,7 @@ public abstract class ModelInterface {
 	 * Sets the virtual processor utilization on all partitions with all tasks
 	 * schedulable. Does not return null
 	 * 
-	 * @return
+	 * @return list of VPU analysis results
 	 */
 	public static List<String> virtualProcessorUtilizationAnalysis() {
 		List<String> l = new ArrayList<String>();
@@ -155,7 +151,7 @@ public abstract class ModelInterface {
 	 * Performs the end to end analysis on the network component and returns a
 	 * list of messages to display to the user.
 	 * 
-	 * @return
+	 * @return End to end analysis strings
 	 */
 	public static List<String> endToEndAnalysis() {
 		return eteTemplate(Analyzer::FA1);
@@ -175,9 +171,10 @@ public abstract class ModelInterface {
 			return null;
 		}
 		Map<Route, Double> results = analyze.apply(system);
+		l.add("Delays calculated using Forward Analysis");
 		for (Map.Entry<Route, Double> delay : results.entrySet()) {
 			VirtualLink VL = ((VirtualLink) delay.getKey().eContainer());
-			l.add(String.format("%s: Route %s -> %s  has ETE delay %.2f", VL
+			l.add(String.format("%s: Route %s -> %s  has delay %.2f", VL
 					.getId(), ((VirtualLink) delay.getKey().eContainer())
 					.getSource().getId(),
 					NetworkUtils.destinationForRoute(delay.getKey()).getId(),

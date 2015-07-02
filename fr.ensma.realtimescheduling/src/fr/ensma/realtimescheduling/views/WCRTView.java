@@ -2,7 +2,7 @@ package fr.ensma.realtimescheduling.views;
 
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import analysis.ModelInterface;
+import fr.ensma.realtimescheduling.analysis.ModelInterface;
 
 /**
  * A BarChart that displays worst case response times from the model's Tasks

@@ -17,8 +17,8 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
-import analysis.ModelInterface;
 import fr.ensma.realtimescheduling.Module;
+import fr.ensma.realtimescheduling.analysis.ModelInterface;
 import org.jfree.chart.StandardChartTheme;
 
 /**

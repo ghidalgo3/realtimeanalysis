@@ -62,9 +62,7 @@ public class TaskItemProvider
 			addPriorityPropertyDescriptor(object);
 			addResponseTimePropertyDescriptor(object);
 			addScheduleablePropertyDescriptor(object);
-			addJitterPropertyDescriptor(object);
 			addCriticalInstancePropertyDescriptor(object);
-			addReleaseTimePropertyDescriptor(object);
 			addPeriodicityPropertyDescriptor(object);
 			addCharacteristicPeriodPropertyDescriptor(object);
 			addPartitionPropertyDescriptor(object);
@@ -205,28 +203,6 @@ public class TaskItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Jitter feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addJitterPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_jitter_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_jitter_feature", "_UI_Task_type"),
-				 RealtimeschedulingPackage.Literals.TASK__JITTER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Critical Instance feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -244,28 +220,6 @@ public class TaskItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Release Time feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addReleaseTimePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_releaseTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_releaseTime_feature", "_UI_Task_type"),
-				 RealtimeschedulingPackage.Literals.TASK__RELEASE_TIME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -381,9 +335,7 @@ public class TaskItemProvider
 			case RealtimeschedulingPackage.TASK__PRIORITY:
 			case RealtimeschedulingPackage.TASK__RESPONSE_TIME:
 			case RealtimeschedulingPackage.TASK__SCHEDULEABLE:
-			case RealtimeschedulingPackage.TASK__JITTER:
 			case RealtimeschedulingPackage.TASK__CRITICAL_INSTANCE:
-			case RealtimeschedulingPackage.TASK__RELEASE_TIME:
 			case RealtimeschedulingPackage.TASK__PERIODICITY:
 			case RealtimeschedulingPackage.TASK__CHARACTERISTIC_PERIOD:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

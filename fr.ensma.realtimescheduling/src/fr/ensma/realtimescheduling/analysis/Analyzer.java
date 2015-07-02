@@ -1,4 +1,4 @@
-package analysis;
+package fr.ensma.realtimescheduling.analysis;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,9 +17,7 @@ import fr.ensma.realtimescheduling.Route;
 import fr.ensma.realtimescheduling.Task;
 
 /**
- * Performs schedulability analysis for classes in this package. This class only
- * knows about Partitions and Tasks, it should have no knowledge about the other
- * details of the meta-model
+ * Performs schedulability and network delay analysis for classes in this package.
  * 
  * @author Gustavo Hidalgo
  */
@@ -29,10 +27,11 @@ public class Analyzer {
 	/**
 	 * Analyzes the tasks in an application in the context of a partition and
 	 * returns a list of worst case response times. A response time of 0.0 means
-	 * the task misses its deadline.
+	 * the task misses its deadline. The order induced by the comparator
+	 * implies the priority of tasks.
 	 * 
 	 * @param p
-	 *            partition to test on. Only used for its interval definition
+	 *            partition to test on.
 	 * @param taskComparator
 	 *            used to sort the tasks by some definition of priority
 	 * @return A list of response times
@@ -47,9 +46,8 @@ public class Analyzer {
 	/**
 	 * Analysis the tasks in an application in the context of a partition and
 	 * returns a list of worst case response times. A response time of 0.0 means
-	 * the task misses its deadline. This version differs from the other in that
-	 * it does not sort tasks before running the analysis. This is just to speed
-	 * up the computation if this is going to be run over a large system.
+	 * the task misses its deadline. The order of the list is used as the
+	 * priority of the tasks
 	 * 
 	 * @param p
 	 *            partition to test on. Only used for its interval definition
@@ -65,9 +63,8 @@ public class Analyzer {
 	}
 
 	/**
-	 * This tests the schedulability of one task among a list of tasks The
-	 * sorting order of the tasks corresponds to the priority. This is an exact
-	 * test.
+	 * This tests the schedulability of a single task among a list of tasks.
+	 * This is an exact test.
 	 * 
 	 * @param p
 	 *            partition
@@ -147,8 +144,8 @@ public class Analyzer {
 	// }
 
 	/**
-	 * Performs the first forward-analysis paper algorithm. This is not the
-	 * improved version.
+	 * Performs the first forward-analysis paper algorithm. This 
+	 * analysis ignores serialization effects
 	 * 
 	 * @param net
 	 *            Network being analyzed
@@ -172,8 +169,7 @@ public class Analyzer {
 
 	/**
 	 * The two FA algorithms differ essentially by their implementation of a W
-	 * function which changes based on the port being studied. To reduce the
-	 * chance of an error, this behavior has been abstracted to a function:
+	 * function which changes based on the port being studied.
 	 * PortWrapper -> Double -> Double.
 	 * 
 	 * @param system
@@ -202,27 +198,27 @@ public class Analyzer {
 		for (Map.Entry<Integer, List<PortWrapper>> order : byOrder.entrySet()) {
 			for (PortWrapper h : order.getValue()) {
 				for (Flow v : h.flowsThroughMe) {
-					v.calculateJitterFor(h.port);
+					v.setJitterFor(h.port);
 				}
 				Function<Double, Double> W = w.apply(h);
 				for (Flow v : h.flowsThroughMe) {
 					v.calculateBklgFor(h, W);
 					if (h.port != v.last) {
 						v.setSmin(
-								v.successor(h.port),
-								v.rankOf(h.port)
+								v.getSuccessor(h.port),
+								v.getRankOf(h.port)
 										* (v.link.getMaxFrameSize()
 												/ h.port.getBandwidth() + networkLatency));
 						v.setSmax(
-								v.successor(h.port),
-								v.SmaxFor(h.port) + v.BklgFor(h.port)
+								v.getSuccessor(h.port),
+								v.getSmaxFor(h.port) + v.getBklgFor(h.port)
 										+ v.link.getMaxFrameSize()
 										/ h.port.getBandwidth()
 										+ networkLatency);
 					} else {
-						v.ETEDelay = v.SmaxFor(h.port) + v.BklgFor(h.port)
+						v.ETEDelay = v.getSmaxFor(h.port) + v.getBklgFor(h.port)
 								+ v.link.getMaxFrameSize()
-								/ h.port.getBandwidth();
+								/ h.port.getBandwidth() + v.link.getSource().getDelay();
 						results.put(v.r, v.ETEDelay);
 					}
 				}

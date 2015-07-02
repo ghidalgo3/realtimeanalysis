@@ -4,7 +4,6 @@ package fr.ensma.realtimescheduling.views;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -18,10 +17,8 @@ import org.jfree.chart.StandardChartTheme;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
-
-
-import analysis.ModelInterface;
 import fr.ensma.realtimescheduling.Partition;
+import fr.ensma.realtimescheduling.analysis.ModelInterface;
 
 /**
  * This class handles the XY line graphing aspects of the plugin.

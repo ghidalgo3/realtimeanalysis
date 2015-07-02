@@ -1,4 +1,4 @@
-package analysis;
+package fr.ensma.realtimescheduling.analysis;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -58,10 +58,10 @@ public class PortWrapper {
 		flowsThroughMe = allFlows.stream()
 				.filter(flow -> flow.P_i.contains(port))
 				.collect(Collectors.toList());
-		order = flowsThroughMe.stream().mapToInt(flow -> flow.rankOf(port))
+		order = flowsThroughMe.stream().mapToInt(flow -> flow.getRankOf(port))
 				.max().getAsInt(); // get the maximum rank
 		if (order != 1) {
-			flowsThroughMe.stream().map(flow -> flow.inputTo(port))
+			flowsThroughMe.stream().map(flow -> flow.getInputTo(port))
 					.forEach(p -> inputsToMe.add(p));
 			for (Port input : inputsToMe) {
 				Set<Flow> flowsThroughInput = flowsThroughMe.stream()
@@ -86,10 +86,10 @@ public class PortWrapper {
 				+ flowsThroughMe
 						.stream()
 						.mapToDouble(
-								flow -> (1 + Math.floor(flow.jitterFor(port)
+								flow -> (1 + Math.floor(flow.getJitterFor(port)
 										/ flow.link.getBAG()))
 										* flow.link.getBAG()
-										- flow.jitterFor(port)).max()
+										- flow.getJitterFor(port)).max()
 						.getAsDouble();
 		B_calc = true;
 		B = a;

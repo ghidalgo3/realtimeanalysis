@@ -49,6 +49,9 @@ public interface Route extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * End to end delay for a frame on this route of a virtual link
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End To End Delay</em>' attribute.
 	 * @see #setEndToEndDelay(int)
 	 * @see fr.ensma.realtimescheduling.RealtimeschedulingPackage#getRoute_EndToEndDelay()

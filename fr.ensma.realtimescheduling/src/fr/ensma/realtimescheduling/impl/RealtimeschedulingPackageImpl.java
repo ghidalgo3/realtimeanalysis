@@ -302,7 +302,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_Jitter() {
+	public EAttribute getTask_CriticalInstance() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -310,7 +310,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_CriticalInstance() {
+	public EAttribute getTask_Periodicity() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -318,7 +318,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_ReleaseTime() {
+	public EAttribute getTask_CharacteristicPeriod() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -326,24 +326,8 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_Periodicity() {
-		return (EAttribute)taskEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTask_CharacteristicPeriod() {
-		return (EAttribute)taskEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getTask_Partition() {
-		return (EReference)taskEClass.getEStructuralFeatures().get(11);
+		return (EReference)taskEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -400,6 +384,15 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 	 */
 	public EReference getModule_ModulePorts() {
 		return (EReference)moduleEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getModule_Delay() {
+		return (EAttribute)moduleEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -884,9 +877,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 		createEAttribute(taskEClass, TASK__PRIORITY);
 		createEAttribute(taskEClass, TASK__RESPONSE_TIME);
 		createEAttribute(taskEClass, TASK__SCHEDULEABLE);
-		createEAttribute(taskEClass, TASK__JITTER);
 		createEAttribute(taskEClass, TASK__CRITICAL_INSTANCE);
-		createEAttribute(taskEClass, TASK__RELEASE_TIME);
 		createEAttribute(taskEClass, TASK__PERIODICITY);
 		createEAttribute(taskEClass, TASK__CHARACTERISTIC_PERIOD);
 		createEReference(taskEClass, TASK__PARTITION);
@@ -898,6 +889,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 		createEReference(moduleEClass, MODULE__PARTITION);
 		createEReference(moduleEClass, MODULE__PROCESSORS);
 		createEReference(moduleEClass, MODULE__MODULE_PORTS);
+		createEAttribute(moduleEClass, MODULE__DELAY);
 
 		partitionEClass = createEClass(PARTITION);
 		createEAttribute(partitionEClass, PARTITION__ID);
@@ -1012,9 +1004,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 		initEAttribute(getTask_Priority(), ecorePackage.getEInt(), "priority", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_ResponseTime(), ecorePackage.getEInt(), "responseTime", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Scheduleable(), ecorePackage.getEBoolean(), "scheduleable", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTask_Jitter(), ecorePackage.getEFloat(), "jitter", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_CriticalInstance(), ecorePackage.getEInt(), "criticalInstance", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTask_ReleaseTime(), ecorePackage.getEDouble(), "releaseTime", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Periodicity(), this.getPeriodicity(), "periodicity", "Periodic", 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_CharacteristicPeriod(), ecorePackage.getEInt(), "characteristicPeriod", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_Partition(), this.getPartition(), this.getPartition_Tasks(), "partition", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1026,6 +1016,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 		initEReference(getModule_Partition(), this.getPartition(), this.getPartition_Module(), "partition", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_Processors(), this.getProcessor(), null, "processors", null, 1, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_ModulePorts(), this.getEndSystemPort(), null, "modulePorts", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModule_Delay(), ecorePackage.getEInt(), "delay", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(partitionEClass, Partition.class, "Partition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPartition_Id(), ecorePackage.getEString(), "id", "0", 1, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1157,7 +1148,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 		  (moduleEClass, 
 		   source, 
 		   new String[] {
-			 "constraints", "NonZeroPeriod NonOverlappingPartitions"
+			 "constraints", "PositiveDelay NonZeroPeriod NonOverlappingPartitions"
 		   });	
 		addAnnotation
 		  (partitionEClass, 
@@ -1187,7 +1178,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 		  (virtualLinkEClass, 
 		   source, 
 		   new String[] {
-			 "constraints", "DestinationsCannotIncludeSource PositiveMinInterFrameTime PositiveMaxFrameSize PathExists RoutesConnectSourceToDestinations NoCycles"
+			 "constraints", "DestinationsCannotIncludeSource PositiveBAG PositiveMaxFrameSize PathExists RoutesConnectSourceToDestinations NoCycles"
 		   });	
 		addAnnotation
 		  (portEClass, 
@@ -1220,6 +1211,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 		  (moduleEClass, 
 		   source, 
 		   new String[] {
+			 "PositiveDelay", "delay > 0",
 			 "NonZeroPeriod", "period > 0",
 			 "NonOverlappingPartitions", "let allIntervals : Sequence(Interval) = partition.executionIntervals\n\t\t->flatten()\n\t\t->sortedBy(i : Interval | i.start)\n\tin if (allIntervals\n\t\t\t->size() <= 1)\n\t\tthen true\n\t\telse allIntervals\n\t\t\t->subSequence(1, allIntervals\n\t\t\t\t->size() - 1)\n\t\t\t->forAll(i : Interval | i.end <= allIntervals\n\t\t\t\t->at(1 + allIntervals\n\t\t\t\t\t->indexOf(i)).start)\n\t\tendif"
 		   });	
@@ -1275,7 +1267,7 @@ public class RealtimeschedulingPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "DestinationsCannotIncludeSource", "\n\t\t\t\tdestinations->forAll(dest : Module | dest <> source)",
-			 "PositiveMinInterFrameTime", "minInterFrameTime > 0",
+			 "PositiveBAG", "BAG > 0",
 			 "PositiveMaxFrameSize", "maxFrameSize > 0"
 		   });	
 		addAnnotation

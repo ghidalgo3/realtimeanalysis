@@ -16,10 +16,6 @@ import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.ConnectivityInspector;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
-import analysis.Flow;
-import analysis.ModelInterface;
-import analysis.NetworkUtils;
-import analysis.PortWrapper;
 import fr.ensma.realtimescheduling.Connection;
 import fr.ensma.realtimescheduling.EndSystemPort;
 import fr.ensma.realtimescheduling.HardwareResource;
@@ -38,6 +34,10 @@ import fr.ensma.realtimescheduling.Switch;
 import fr.ensma.realtimescheduling.SwitchPort;
 import fr.ensma.realtimescheduling.Task;
 import fr.ensma.realtimescheduling.VirtualLink;
+import fr.ensma.realtimescheduling.analysis.Flow;
+import fr.ensma.realtimescheduling.analysis.ModelInterface;
+import fr.ensma.realtimescheduling.analysis.NetworkUtils;
+import fr.ensma.realtimescheduling.analysis.PortWrapper;
 
 /**
  * <!-- begin-user-doc --> The <b>Validator</b> for the model. <!-- end-user-doc
@@ -351,9 +351,39 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(module, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(module, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(module, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModule_PositiveDelay(module, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModule_NonZeroPeriod(module, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModule_NonOverlappingPartitions(module, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * The cached validation expression for the PositiveDelay constraint of '<em>Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String MODULE__POSITIVE_DELAY__EEXPRESSION = "delay > 0";
+
+	/**
+	 * Validates the PositiveDelay constraint of '<em>Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModule_PositiveDelay(Module module, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(RealtimeschedulingPackage.Literals.MODULE,
+				 module,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "PositiveDelay",
+				 MODULE__POSITIVE_DELAY__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -526,7 +556,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 			result &= validateVirtualLink_DestinationsCannotIncludeSource(
 					virtualLink, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateVirtualLink_PositiveMinInterFrameTime(
+			result &= validateVirtualLink_PositiveBAG(
 					virtualLink, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateVirtualLink_PositiveMaxFrameSize(virtualLink,
@@ -575,21 +605,20 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	}
 
 	/**
-	 * The cached validation expression for the PositiveMinInterFrameTime constraint of '<em>Virtual Link</em>'.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The cached validation expression for the PositiveBAG constraint of '<em>Virtual Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String VIRTUAL_LINK__POSITIVE_MIN_INTER_FRAME_TIME__EEXPRESSION = "minInterFrameTime > 0";
+	protected static final String VIRTUAL_LINK__POSITIVE_BAG__EEXPRESSION = "BAG > 0";
 
 	/**
-	 * Validates the PositiveMinInterFrameTime constraint of '<em>Virtual Link</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Validates the PositiveBAG constraint of '<em>Virtual Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateVirtualLink_PositiveMinInterFrameTime(
-			VirtualLink virtualLink, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public boolean validateVirtualLink_PositiveBAG(VirtualLink virtualLink, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return
 			validate
 				(RealtimeschedulingPackage.Literals.VIRTUAL_LINK,
@@ -597,8 +626,8 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 				 diagnostics,
 				 context,
 				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "PositiveMinInterFrameTime",
-				 VIRTUAL_LINK__POSITIVE_MIN_INTER_FRAME_TIME__EEXPRESSION,
+				 "PositiveBAG",
+				 VIRTUAL_LINK__POSITIVE_BAG__EEXPRESSION,
 				 Diagnostic.ERROR,
 				 DIAGNOSTIC_SOURCE,
 				 0);
@@ -801,7 +830,6 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 	 * 
 	 * @generated NOT
 	 */
-	@SuppressWarnings("unused")
 	public boolean validateVirtualLink_NoCycles(VirtualLink virtualLink,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		//TODO

@@ -278,4 +278,50 @@ public class Analyzer {
 			return t -> W_accum.stream().mapToDouble(f -> f.apply(t)).sum();
 		}
 	}
+
+	static Map<Route, Double> NC(fr.ensma.realtimescheduling.System system) {
+		return networkCalculus(system);
+	}
+
+	private static Map<Route, Double> networkCalculus(
+		fr.ensma.realtimescheduling.System system) {
+	int networkLatency = NetworkUtils.normalizeNetwork(system);
+	List<Flow> gamma = NetworkUtils.extractFlows(system);
+	Set<Port> allOutputPorts = NetworkUtils.extractOutputPorts(gamma);
+	Collection<PortWrapper> portWrappers = NetworkUtils
+			.outputPortsToPortWrappers(allOutputPorts, gamma);
+	// group them by order now.
+	Map<Integer, List<PortWrapper>> byOrder = NetworkUtils
+			.partitionByOrder(portWrappers);
+	Map<Route, Double> results = new HashMap<>();
+	// TODO we need to topologically sort nodes in an order
+	for (Flow v : gamma) {
+		v.ETEDelay = 0;
+	}
+	for (Map.Entry<Integer, List<PortWrapper>> order : byOrder.entrySet()) {
+		for (PortWrapper h : order.getValue()) {
+			h.L = networkLatency;
+			h.R = h.port.getBandwidth();
+			
+			for (Flow v : h.flowsThroughMe) {
+				h.Ba = h.Ba + v.B;
+				h.Ra = h.Ra + v.R;
+			}
+			h.D = (h.Ba)/(h.R);
+			h.Bklg = h.Ba;
+			
+			for (Flow v : h.flowsThroughMe) {
+				v.B = v.B + v.R*(h.D-(v.link.getMaxFrameSize())/(h.R));
+				v.ETEDelay = v.ETEDelay + h.D;
+				if (h.order > 1) {
+					v.ETEDelay = v.ETEDelay + 16;
+				}
+			}
+		}
+	}
+	System.out.println("Size of results " + results.size());
+	return results;
 }
+
+}
+

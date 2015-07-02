@@ -196,6 +196,19 @@ public abstract class ModelInterface {
 	public static List<String> improvedEndToEndAnalysis() {
 		return eteTemplate(Analyzer::FA2);
 	}
+	
+	
+	/**
+	 * Performs the Network Calculus analysis on the network component and returns a
+	 * list of messages to display to the user.
+	 * 
+	 * @return
+	 */
+	
+	public static List<String> networkCalculus() {
+		return eteTemplate(Analyzer::NC);
+	}
+	
 
 	/**
 	 * This applies the scheduling analysis to all tasks in one partition and

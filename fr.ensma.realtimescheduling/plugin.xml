@@ -29,6 +29,10 @@
             name="Improved End to End Analysis">
       </command>
       <command
+            id="fr.ensma.realtimescheduling.command.nc"
+            name="Network Calculus Analysis">
+      </command>
+      <command
             id="fr.ensma.realtimescheduling.commands.mod"
             name="Parse Mod File">
       </command>
@@ -50,6 +54,10 @@
       <handler
             class="fr.ensma.realtimescheduling.handlers.ImprovedETEAHandler"
             commandId="fr.ensma.realtimescheduling.commands.improvedetea">
+      </handler>
+      <handler
+            class="fr.ensma.realtimescheduling.handlers.NCHandler"
+            commandId="fr.ensma.realtimescheduling.commands.nc">
       </handler>
       <handler
             class="fr.ensma.realtimescheduling.handlers.ModHandler"
@@ -100,6 +108,12 @@
                   label="Serialized Network Delay Analysis"
                   style="push"
                   tooltip="Performs the serialized forward analysis algorithm on the network">
+            </command>
+            <command
+                  commandId="fr.ensma.realtimescheduling.commands.nc"
+                  label="Network Calculus Delay Analysis"
+                  style="push"
+                  tooltip="Perform the Network Calculus analysis on the network component">
             </command>
             <menu
                   label="Extra">

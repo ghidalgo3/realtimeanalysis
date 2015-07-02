@@ -11,7 +11,7 @@ import fr.ensma.realtimescheduling.Port;
 
 /**
  * Contains meta-data about a node for the forward-analysis algorithm. A node is
- * any port that serves as an output port. We disregard input ports.
+ * any port that serves as an output port. We mostly ignore input ports.
  * 
  * @author Gustavo
  */
@@ -23,16 +23,7 @@ public class PortWrapper {
 	 * Maximum rank of a node
 	 */
 	int order;
-	/**
-	 * Analytical value from algorithm
-	 */
-	private double B;
-	private boolean B_calc;
-	/**
-	 * Analytical value from algorithm
-	 */
-	private double BP;
-	private boolean BP_calc;
+
 
 	public Collection<Flow> flowsThroughMe;
 	Set<Port> inputsToMe = new HashSet<>();
@@ -69,43 +60,34 @@ public class PortWrapper {
 
 
 	/**
-	 * Calculates B from the paper, lazily evaluated
+	 * Calculates B from the paper
 	 * 
 	 * @return B
 	 */
 	double B() {
-		if (B_calc) { return B; }
-		double a = BP()
-				+ flowsThroughMe
+		double a = BP() + flowsThroughMe
 						.stream()
 						.mapToDouble(
-								flow -> (1 + Math.floor(flow.getJitterFor(port)
-										/ flow.link.getBAG()))
+								flow -> (1 + Math.floor(flow.getJitterFor(port) / flow.link.getBAG()))
 										* flow.link.getBAG()
 										- flow.getJitterFor(port)).max()
 						.getAsDouble();
-		B_calc = true;
-		B = a;
 		return a;
 	}
 
 	/**
-	 * Longest busy period calculation. Fixed point computation. lazily
-	 * evaluated
+	 * Longest busy period calculation. Fixed point computation
 	 * 
 	 * @return longest busy period
 	 */
 	double BP() {
-		if (BP_calc) { return BP; }
 		double a = flowsThroughMe
 				.stream()
 				.mapToDouble(
-						flow -> flow.link.getMaxFrameSize()
-								/ port.getBandwidth()) // sum of transmission
-														// delay
+						flow -> flow.link.getMaxFrameSize() / port.getBandwidth())
 				.sum();
 		double b = -1;
-		do { // an arbitrary epsilon
+		do {
 			b = a;
 			final double b_ = b; // dumb java closure restrictions
 			a = flowsThroughMe
@@ -116,8 +98,6 @@ public class PortWrapper {
 									* flow.link.getMaxFrameSize()
 									/ port.getBandwidth()).sum();
 		} while (a != b || Math.abs(a - b) > 0.0001);
-		BP = a;
-		BP_calc = true;
 		return a;
 	}
 

@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import fr.ensma.realtimescheduling.Interval;
 import fr.ensma.realtimescheduling.Partition;
 import fr.ensma.realtimescheduling.Route;
@@ -119,31 +118,22 @@ public abstract class ModelInterface {
 			l.add("System is invalid. Please validate the system successfully.");
 			return null;
 		}
-		allPartitions
-				.stream()
-				.forEach(
-						p -> {
-							if (p.getTasks().stream()
-									.allMatch(t -> t.isScheduleable())) {
-								double vpu = 1
-										/ p.getAvailabilityFactor()
-										* p.getTasks()
-												.stream()
-												.mapToDouble(
-														t -> (1.0 * t
-																.getWorstCaseExecTime())
-																/ t.getCharacteristicPeriod())
-												.sum();
-								p.setVirtualProcessorUtilization(vpu);
-								l.add("Partition " + p.getId()
-										+ " has determinate VPU: " + vpu + ".");
-							} else {
-								l.add("Partition "
-										+ p.getId()
-										+ " has unschedulable tasks. Could not determine VPU.");
-								p.setVirtualProcessorUtilization(0.0);
-							}
-						});
+		for(Partition p : allPartitions) {
+			if (p.getTasks().stream().allMatch(t -> t.isScheduleable())) {
+				double vpu = 1 / p.getAvailabilityFactor() * p.getTasks().stream()
+								.mapToDouble(
+									t -> (1.0 * t.getWorstCaseExecTime())/ t.getCharacteristicPeriod())
+								.sum();
+				p.setVirtualProcessorUtilization(vpu);
+				l.add("Partition " + p.getId()
+						+ " has determinate VPU: " + vpu + ".");
+			} else {
+				l.add("Partition "
+						+ p.getId()
+						+ " has unschedulable tasks. Could not determine VPU.");
+				p.setVirtualProcessorUtilization(0.0);
+			}
+		}
 		return l;
 	}
 
@@ -174,9 +164,9 @@ public abstract class ModelInterface {
 		l.add("Delays calculated using Forward Analysis");
 		for (Map.Entry<Route, Double> delay : results.entrySet()) {
 			VirtualLink VL = ((VirtualLink) delay.getKey().eContainer());
-			l.add(String.format("%s: Route %s -> %s  has delay %.2f", VL
-					.getId(), ((VirtualLink) delay.getKey().eContainer())
-					.getSource().getId(),
+			l.add(String.format("%s: Route %s -> %s  has delay %.2f",
+					VL.getId(),
+					VL.getSource().getId(),
 					NetworkUtils.destinationForRoute(delay.getKey()).getId(),
 					delay.getValue()));
 			delay.getKey().setEndToEndDelay(delay.getValue().intValue());
@@ -211,20 +201,18 @@ public abstract class ModelInterface {
 		List<Integer> responseTimes = Analyzer.responseTimeAnalysis(partition,
 				sortedTasks);
 		StringBuilder sb = new StringBuilder();
-		IntStream.range(0, partition.getTasks().size()).forEach(
-				n -> {
-					partition.getTasks().get(n)
-							.setResponseTime(responseTimes.get(n));
-					if (responseTimes.get(n) == 0.0) {
-						partition.getTasks().get(n).setScheduleable(false);
-						sb.append(partition.getTasks().get(n).getId()
-								+ " will MISS its deadline.\n");
-					} else {
-						sb.append(partition.getTasks().get(n).getId()
-								+ " is schedulable.\n");
-						partition.getTasks().get(n).setScheduleable(true);
-					}
-				});
+		for(int n = 0; n < partition.getTasks().size(); n++) {
+			partition.getTasks().get(n).setResponseTime(responseTimes.get(n));
+			if (responseTimes.get(n) == 0.0) {
+				partition.getTasks().get(n).setScheduleable(false);
+				sb.append(partition.getTasks().get(n).getId()
+						+ " will MISS its deadline.\n");
+			} else {
+				sb.append(partition.getTasks().get(n).getId()
+						+ " is schedulable.\n");
+				partition.getTasks().get(n).setScheduleable(true);
+			}
+		}
 		return sb.toString();
 	}
 

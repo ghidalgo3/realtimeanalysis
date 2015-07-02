@@ -12,14 +12,27 @@ import fr.ensma.realtimescheduling.VirtualLink;
 
 /**
  * Holds supplementary meta-data about flows used during the end to end delay
- * analysis. The following data is maintained: ETE response time Response bound
- * function for a node in this flow Static list of output nodes traversed by
- * this route Static list of input nodes traversed by this route first node last
- * node (last output port before destination) List of minimum cumulative delays
- * to a node on this route List of maximal cumulative delays to a node on this
- * route List of jitter values for all nodes on this route List of Bklg values
- * for all nodes on this route
+ * analysis. The following data is maintained:
+ * ETE response time
+ * Response bound function for a node in this flow
+ * Static list of output nodes traversed by this route
+ * Static list of input nodes traversed by this route
+ * first node
+ * lastnode (last output port before destination)
+ * List of minimum cumulative delays to a node on this route
+ * List of maximal cumulative delays to a node on this route
+ * List of jitter values for all nodes on this route 
+ * List of Bklg values for all nodes on this route
  * 
+ * A flow (characterized by a route) is a linear path
+ * between a source end system and a single destination 
+ * end system.
+ * 
+ * A VirtualLink can be made up of many flows/routes.
+ * 
+ * By construction, many of these methods do not check for invalid
+ * states because it is assumed that the model passed validation 
+ * beforehand.
  * @author Gustavo
  * 
  */
@@ -39,17 +52,13 @@ public class Flow {
 	public VirtualLink link;
 	Route r;
 
-	// already sorted by rank
-
 	/**
-	 * Given a physical description of a network, a logical virtual link between
-	 * 1 -> n modules and a route, constructs a flow.
+	 * Constructs a flow from a Route using the Virtual link information
+	 * from the Route's container
 	 * 
-	 * @param net
-	 *            Physical network
-	 * @param l
-	 *            logical virtual link
-	 * @param r
+	 * This constructor traverses the route and builds the list of nodes
+	 * 
+	 * @param r Route
 	 */
 	Flow(Route r) {
 		this.link = ((VirtualLink) r.eContainer());
@@ -66,13 +75,8 @@ public class Flow {
 		P_i.add(first);
 		Port current = first;
 		// walk the connections, gathering output ports along the way
-		System.out.println("Traversing "
-				+ ((VirtualLink) r.eContainer()).getId());
 		while (allConnections.size() != 1) { // stop at one because we don't
 												// care about last link
-			System.out.println("Current belongs to a "
-					+ (current.eContainer() instanceof Switch ? "Switch"
-							: "EndSystem"));
 			allConnections.remove(current.getConnection()); // done with link
 			current = getOpposite(current); // move to the next port
 			inputs.add(current); // current in an input port
@@ -88,10 +92,16 @@ public class Flow {
 		last = current;
 		S_min = new double[P_i.size()];
 		S_max = new double[P_i.size()];
-		J = new double[P_i.size()];
-		Bklg = new double[P_i.size()];
+		J     = new double[P_i.size()];
+		Bklg  = new double[P_i.size()];
 	}
 
+	/**
+	 * Used by the serialized algorithm, gets the one input port
+	 * for an output port on a switch for this flow
+	 * @param p
+	 * @return
+	 */
 	Port getInputTo(Port p) {
 		return inputs.get(P_i.indexOf(p) - 1);
 	}
@@ -107,6 +117,11 @@ public class Flow {
 		return P_i.indexOf(p) + 1;
 	}
 
+	/**
+	 * Sets the cumulative transmission time for a port on this flow
+	 * @param p
+	 * @param newValue
+	 */
 	void setSmin(Port p, double newValue) {
 		S_min[P_i.indexOf(p)] = newValue;
 	}

@@ -6,7 +6,11 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import fr.ensma.realtimescheduling.analysis.ModelInterface;
 
-
+/**
+ * End to end analysis handler. No serialization effect.
+ * @author Gustavo
+ * @date Jul 1, 2015
+ */
 public class ETEAHandler extends AbstractHandler implements IHandler {
 
 	@Override

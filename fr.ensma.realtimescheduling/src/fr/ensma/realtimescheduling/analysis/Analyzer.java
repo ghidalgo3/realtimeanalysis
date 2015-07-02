@@ -106,43 +106,6 @@ public class Analyzer {
 		return rmax;
 	}
 
-	// /**
-	// * This tests for schedulability of a list of tasks in the critical
-	// * partition case. This isn't used, only a sufficient test.
-	// *
-	// * @param p
-	// * partition
-	// * @param index
-	// * index of the task being analyzed
-	// * @return 0 if the task misses its deadline, worst response time
-	// otherwise
-	// */
-	// @Deprecated
-	// static private double RTA2(Partition p, int index) {
-	// double rmax = 0;
-	// List<fr.ensma.realtimescheduling.Task> tasks = p.getTasks();
-	// double r, rpp, rppp = tasks.get(index).getWorstCaseExecTime();
-	// do {
-	// r = rppp;
-	// final double r_final = r;
-	// rpp = tasks.get(index).getWorstCaseExecTime()
-	// + IntStream
-	// .range(0, index)
-	// // this is constant in this method.
-	// .mapToDouble(
-	// k -> Math.ceil(r_final
-	// / tasks.get(k).getCharacteristicPeriod())
-	// * tasks.get(k).getWorstCaseExecTime()).sum();
-	// rppp = PartitionUtils.inverseSupply(p, rpp);
-	// } while (r <= tasks.get(index).getImplicitDeadline() && rppp > r);
-	// if (rppp > tasks.get(index).getImplicitDeadline()) {
-	// rmax = 0;
-	// } else {
-	// rmax = Math.max(rppp, rmax);
-	// }
-	// return rmax;
-	// }
-
 	/**
 	 * Performs the first forward-analysis paper algorithm. This 
 	 * analysis ignores serialization effects
@@ -229,7 +192,7 @@ public class Analyzer {
 	}
 
 	/**
-	 * W function from the first ETE paper
+	 * W function from the first Forward Analysis paper
 	 * 
 	 * @param h
 	 *            port
@@ -241,7 +204,7 @@ public class Analyzer {
 	}
 
 	/**
-	 * Improved W function from the second ETE paper
+	 * Improved W function from the second Forward Analysis paper
 	 * 
 	 * @param h
 	 *            port
@@ -254,8 +217,7 @@ public class Analyzer {
 		} else {
 			for (Port IP : h.inputsToMe) {
 				Function<Double, Double> a = t -> {
-					return t
-							+ h.flowsForInput
+					return t + h.flowsForInput
 									.get(IP)
 									.stream()
 									.mapToDouble(
@@ -267,8 +229,7 @@ public class Analyzer {
 					return h.flowsForInput.get(IP).stream()
 							.mapToDouble(flow -> flow.RBF(h.port, t)).sum();
 				};
-				Function<Double, Double> F = t -> Math.min(a.apply(t),
-						b.apply(t));
+				Function<Double, Double> F = t -> Math.min(a.apply(t), b.apply(t));
 				W_accum.add(F);
 			}
 			return t -> W_accum.stream().mapToDouble(f -> f.apply(t)).sum();

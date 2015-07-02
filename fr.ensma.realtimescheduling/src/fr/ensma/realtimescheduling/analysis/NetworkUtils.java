@@ -41,15 +41,10 @@ public class NetworkUtils {
 	 *            with hardware defined
 	 * @return All of the flows
 	 */
-	public static List<Flow> extractFlows(
-			fr.ensma.realtimescheduling.System system) {
+	public static List<Flow> extractFlows(fr.ensma.realtimescheduling.System system) {
 		List<Flow> gamma = system.getSoftware().getVirtualLinks()
 				.stream().flatMap(vl -> vl.getRoutes().stream())
-				.map(route -> new Flow(route)).collect(Collectors.toList());// now
-																			// need
-																			// to
-																			// create
-																			// PortWrapperss
+				.map(route -> new Flow(route)).collect(Collectors.toList());
 		return gamma;
 	}
 

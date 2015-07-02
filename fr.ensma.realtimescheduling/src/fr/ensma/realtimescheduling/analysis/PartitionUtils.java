@@ -53,7 +53,6 @@ public class PartitionUtils {
 		double period = p.getPeriod();
 		List<Interval> intervals = sortedIntervals(p); // REMEMBER TO DO THIS OR
 														// ALL HELL BREAKS LOSE
-
 		double supplyPerPeriod = intervals.stream()
 				.mapToDouble(i -> i.getEnd() - i.getStart()).sum();
 		double periodsCompleted = Math.floor(t / period);
@@ -104,14 +103,14 @@ public class PartitionUtils {
 	}
 
 	/**
+	 * Gets a time-sorted list of intervals from a partition
+	 * 
 	 * The user may create intervals in a partition that are unsorted and for
 	 * the analysis and graphing we need the intervals to be sorted.
 	 * Unfortunately direct manipulation of the EList results in exceptions thus
-	 * we need to extract the list and create a sorted copy. This method does
-	 * that.
+	 * we need to extract the list and create a sorted copy.
 	 * 
-	 * @param p
-	 *            partition
+	 * @param p partition
 	 * @return sorted intervals in a partition
 	 */
 	public static List<Interval> sortedIntervals(Partition p) {
@@ -123,8 +122,7 @@ public class PartitionUtils {
 	/**
 	 * Calculates the least supply function for this partition at some time.
 	 * 
-	 * @param t
-	 *            argument to function
+	 * @param t argument to function
 	 * @return least supply
 	 */
 	public static double leastSupply(Partition p, double t) {
@@ -140,9 +138,8 @@ public class PartitionUtils {
 
 	/**
 	 * Gives a comparator from the selected scheduling algorithm in a partition
-	 * 
-	 * @param p
-	 *            partition
+	 * Add more case statements here to add more algorithms
+	 * @param p partition
 	 * @return comparator
 	 */
 	public static Comparator<Task> getComparator(Partition p) {

@@ -60,7 +60,6 @@ public abstract class AbstractLineChart extends ViewPart {
 		Button query = new Button(selectors, SWT.PUSH);
 		query.setText("Query");
 		query.addMouseListener(new MouseAdapter() {
-
 			@Override
 			public void mouseUp(MouseEvent e) {
 				queryModel();

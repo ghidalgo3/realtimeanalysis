@@ -50,6 +50,10 @@ public class Flow {
 	double[] Bklg;
 
 	public VirtualLink link;
+	
+	double R = (link.getMaxFrameSize())/(link.getBAG());
+	double B = link.getMaxFrameSize();
+	
 	Route r;
 
 	/**

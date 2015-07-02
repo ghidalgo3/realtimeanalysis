@@ -18,6 +18,13 @@ import fr.ensma.realtimescheduling.Port;
 public class PortWrapper {
 
 	public Port port;
+	
+	double L; //Latency
+	double R; //Bandwidth
+	double Ra = 0;
+	double Ba = 0;
+	double Bklg;
+	double D;
 
 	/**
 	 * Maximum rank of a node

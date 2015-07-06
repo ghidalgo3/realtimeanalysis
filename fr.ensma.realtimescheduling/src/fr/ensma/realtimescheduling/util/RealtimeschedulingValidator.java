@@ -936,7 +936,7 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 		}
 		if (fail) {
 			if (diagnostics != null) {
-				diagnostics.add(createDiagnostic(Diagnostic.ERROR,
+				diagnostics.add(createDiagnostic(Diagnostic.WARNING,
 						DIAGNOSTIC_SOURCE, 0,
 						"_UI_GenericConstraint_diagnostic",
 						new Object[] { "UtilizationSumLessThanOne",

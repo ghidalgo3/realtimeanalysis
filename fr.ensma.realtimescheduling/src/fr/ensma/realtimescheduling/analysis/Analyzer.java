@@ -78,8 +78,7 @@ public class Analyzer {
 		int rmax = 0;
 		List<Interval> intervals = PartitionUtils.sortedIntervals(p);
 		for (int j = 0; j < intervals.size(); j++) {
-			int sej = (int) Math.round(PartitionUtils.supply(p, intervals
-					.get(j).getEnd()));
+			int sej = (int) Math.round(PartitionUtils.supply(p, intervals.get(j).getEnd()));
 			int r, rpp, rppp = tasks.get(index).getWorstCaseExecTime();
 			do {
 				r = rppp;
@@ -87,10 +86,7 @@ public class Analyzer {
 				rpp = tasks.get(index).getWorstCaseExecTime()
 						+ IntStream
 								.range(0, index)
-								.map(k -> (int) Math.ceil(1.0
-										* r_final
-										/ tasks.get(k)
-												.getCharacteristicPeriod())
+								.map(k -> (int) Math.ceil(1.0 * r_final/ tasks.get(k).getCharacteristicPeriod())
 										* tasks.get(k).getWorstCaseExecTime())
 								.sum();
 				rppp = (int) Math.round((PartitionUtils.inverseSupply(p, rpp

@@ -126,7 +126,9 @@ public class IntervalItemProvider
 	@Override
 	public String getText(Object object) {
 		Interval interval = (Interval)object;
-		return getString("_UI_Interval_type") + " " + String.format("(%d, %d)", interval.getStart(), interval.getEnd());
+		return getString("_UI_Interval_type") + " " + String.format("(%d, %d)",
+				interval.getStart(),
+				interval.getEnd());
 	}
 	
 

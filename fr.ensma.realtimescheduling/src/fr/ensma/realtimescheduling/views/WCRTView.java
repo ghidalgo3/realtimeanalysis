@@ -24,23 +24,12 @@ public class WCRTView extends AbstractVerticalBarChart {
 	CategoryDataset createDataset() {
 		final DefaultCategoryDataset result = new DefaultCategoryDataset();
 		if (ModelInterface.isValidSystem()) {
-			ModelInterface.allPartitions
-					.stream()
-					.forEach(
-							partition -> {
-								partition
-										.getTasks()
-										.stream()
-										.forEach(
-												task -> {
-													result.addValue(
-															task.getResponseTime(),
-															"Partition "
-																	+ partition
-																			.getId(),
-															task.getId());
-												});
-							});
+			ModelInterface.allPartitions.stream()
+				.forEach(partition -> {
+					partition.getTasks().stream()
+						.forEach(task ->
+							result.addValue(task.getResponseTime(),"Partition "+ partition.getId(),task.getId()));
+						});
 		}
 		return result;
 	}

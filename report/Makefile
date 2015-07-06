@@ -1,7 +1,7 @@
 all:
-	pdflatex report.tex
-	pdflatex report.tex
-	open report.pdf
+	./img/convert.sh
+	pdflatex -shell-escape report.tex
+	pdflatex -shell-escape report.tex
 
 clean:
-	rm *.log *.aux
+	rm *.log *.aux *.toc

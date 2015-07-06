@@ -2,8 +2,13 @@
 \contentsline {section}{\numberline {2}Eclipse Modeling}{1}{section.2}
 \contentsline {section}{\numberline {3}Meta Model}{2}{section.3}
 \contentsline {section}{\numberline {4}Implementation}{2}{section.4}
-\contentsline {section}{\numberline {5}Example}{2}{section.5}
-\contentsline {section}{\numberline {6}Installation}{2}{section.6}
-\contentsline {subsection}{\numberline {6.1}From Source}{2}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}From JARs}{2}{subsection.6.2}
-\contentsline {section}{\numberline {7}Future Work}{2}{section.7}
+\contentsline {subsection}{\numberline {4.1}Main Project}{3}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Edit}{4}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Editor}{4}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Sirius Editor}{4}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Eclipse Extensions}{4}{subsection.4.5}
+\contentsline {section}{\numberline {5}Example}{4}{section.5}
+\contentsline {section}{\numberline {6}Installation}{4}{section.6}
+\contentsline {subsection}{\numberline {6.1}From Source}{4}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}From JARs}{4}{subsection.6.2}
+\contentsline {section}{\numberline {7}Future Work}{4}{section.7}

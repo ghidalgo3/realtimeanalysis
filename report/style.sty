@@ -5,8 +5,25 @@
 \usepackage{hyperref}
 % Indent first paragraph of a sectino
 \usepackage{indentfirst}
+\usepackage{listings} 
+\usepackage{color}
+\usepackage{minted}
 
 %remove dots from TOC
 \makeatletter
 \renewcommand{\@dotsep}{10000} 
 \makeatother
+
+%graphics path
+\graphicspath{{./img/}}
+
+\lstdefinestyle{myocl}{%
+backgroundcolor=\color{white},
+frame=single,
+keepspaces=true,
+keywordstyle=\color{purple},
+otherkeywords={,invariant,class,literal,enum,composes,ordered,attribute},
+stringstyle=\color{blue},
+showspaces=false
+}
+

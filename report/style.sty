@@ -1,13 +1,15 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{fullpage}
-\usepackage{listings}
 \usepackage{hyperref}
 % Indent first paragraph of a sectino
 \usepackage{indentfirst}
 \usepackage{listings} 
 \usepackage{color}
 \usepackage{minted}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{inconsolata}
 
 %remove dots from TOC
 \makeatletter
@@ -17,12 +19,15 @@
 %graphics path
 \graphicspath{{./img/}}
 
-\lstdefinestyle{myocl}{%
+\lstset{%
+language=ocl,
 backgroundcolor=\color{white},
 frame=single,
 keepspaces=true,
 keywordstyle=\color{purple},
-otherkeywords={,invariant,class,literal,enum,composes,ordered,attribute},
+otherkeywords={property,invariant,class,literal,enum,composes,ordered,attribute},
+basicstyle=\small\ttfamily,
+lineskip={-1.5pt},
 stringstyle=\color{blue},
 showspaces=false
 }

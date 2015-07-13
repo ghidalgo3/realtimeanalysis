@@ -1,14 +1,19 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
 \contentsline {section}{\numberline {2}Eclipse Modeling}{1}{section.2}
-\contentsline {section}{\numberline {3}Meta Model}{2}{section.3}
-\contentsline {section}{\numberline {4}Implementation}{2}{section.4}
-\contentsline {subsection}{\numberline {4.1}Main Project}{3}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Edit}{4}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Editor}{4}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Sirius Editor}{4}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Eclipse Extensions}{4}{subsection.4.5}
-\contentsline {section}{\numberline {5}Example}{4}{section.5}
-\contentsline {section}{\numberline {6}Installation}{4}{section.6}
-\contentsline {subsection}{\numberline {6.1}From Source}{4}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}From JARs}{4}{subsection.6.2}
-\contentsline {section}{\numberline {7}Future Work}{4}{section.7}
+\contentsline {section}{\numberline {3}Meta Model}{3}{section.3}
+\contentsline {paragraph}{System}{3}{section*.4}
+\contentsline {paragraph}{Hardware and Software Resources}{3}{section*.5}
+\contentsline {paragraph}{Task}{4}{section*.6}
+\contentsline {paragraph}{Constraint Details}{4}{section*.7}
+\contentsline {subsection}{\numberline {3.1}Complex Validation}{4}{subsection.3.1}
+\contentsline {section}{\numberline {4}Implementation}{5}{section.4}
+\contentsline {subsection}{\numberline {4.1}Main Project}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Edit}{6}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Editor}{6}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Sirius Editor}{6}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Eclipse Extensions}{6}{subsection.4.5}
+\contentsline {section}{\numberline {5}Example}{7}{section.5}
+\contentsline {section}{\numberline {6}Installation}{8}{section.6}
+\contentsline {subsection}{\numberline {6.1}From Source}{8}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}From JARs}{8}{subsection.6.2}
+\contentsline {section}{\numberline {7}Future Work}{8}{section.7}

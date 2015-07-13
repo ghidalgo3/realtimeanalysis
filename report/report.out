@@ -1,14 +1,15 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Eclipse Modeling}{}% 2
 \BOOKMARK [1][-]{section.3}{Meta Model}{}% 3
-\BOOKMARK [1][-]{section.4}{Implementation}{}% 4
-\BOOKMARK [2][-]{subsection.4.1}{Main Project}{section.4}% 5
-\BOOKMARK [2][-]{subsection.4.2}{Edit}{section.4}% 6
-\BOOKMARK [2][-]{subsection.4.3}{Editor}{section.4}% 7
-\BOOKMARK [2][-]{subsection.4.4}{Sirius Editor}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.5}{Eclipse Extensions}{section.4}% 9
-\BOOKMARK [1][-]{section.5}{Example}{}% 10
-\BOOKMARK [1][-]{section.6}{Installation}{}% 11
-\BOOKMARK [2][-]{subsection.6.1}{From Source}{section.6}% 12
-\BOOKMARK [2][-]{subsection.6.2}{From JARs}{section.6}% 13
-\BOOKMARK [1][-]{section.7}{Future Work}{}% 14
+\BOOKMARK [2][-]{subsection.3.1}{Complex Validation}{section.3}% 4
+\BOOKMARK [1][-]{section.4}{Implementation}{}% 5
+\BOOKMARK [2][-]{subsection.4.1}{Main Project}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.2}{Edit}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.3}{Editor}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.4}{Sirius Editor}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.5}{Eclipse Extensions}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Example}{}% 11
+\BOOKMARK [1][-]{section.6}{Installation}{}% 12
+\BOOKMARK [2][-]{subsection.6.1}{From Source}{section.6}% 13
+\BOOKMARK [2][-]{subsection.6.2}{From JARs}{section.6}% 14
+\BOOKMARK [1][-]{section.7}{Future Work}{}% 15

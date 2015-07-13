@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.RowData;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
@@ -46,10 +48,15 @@ public class PartitionFunctionsView extends AbstractLineChart {
 	@Override
 	Composite setUpSelectors(Composite parent) {
 		Composite selectors = new Composite(parent, SWT.BORDER);
-		Label functionName = new Label(selectors, SWT.NONE);
+		Composite innerSelectors = new Composite(selectors, SWT.DEFAULT);
+		
+		Label functionName = new Label(innerSelectors, SWT.NONE);
 		functionName.setText("Function");
-		functionCombo = new Combo(selectors, SWT.READ_ONLY);
-		Label partitionName = new Label(selectors, SWT.NONE);
+		functionName.setLayoutData(new RowData()); //start here
+		functionCombo = new Combo(innerSelectors, SWT.READ_ONLY);
+		functionCombo.setLayoutData(new RowData()); //start here
+		Label partitionName = new Label(innerSelectors, SWT.NONE);
+		partitionName.setLayoutData(new RowData()); //start here
 		partitionName.setText("Partition (Validate First)");
 		functionCombo.addSelectionListener(new SelectionAdapter() {
 
@@ -64,7 +71,7 @@ public class PartitionFunctionsView extends AbstractLineChart {
 		functionCombo.setItems(Arrays.stream(FunctionAttributes.values())
 				.map(f -> f.getTitle()).collect(Collectors.toList())
 				.toArray(new String[0]));
-		partitionCombo = new Combo(selectors, SWT.READ_ONLY);
+		partitionCombo = new Combo(innerSelectors, SWT.READ_ONLY);
 		partitionCombo.addSelectionListener(new SelectionAdapter() {
 
 			@Override
@@ -72,12 +79,22 @@ public class PartitionFunctionsView extends AbstractLineChart {
 				currentPartition = partitionCombo.getText();
 			}
 		});
-
-
-		Label periods = new Label(selectors, SWT.NONE);
+		partitionCombo.setLayoutData(new RowData()); //start here
+		Label periods = new Label(innerSelectors, SWT.NONE);
 		periods.setText("Periods to draw");
-		periodSpinner = new Spinner(selectors, SWT.NONE);
+		periods.setLayoutData(new RowData()); //start here
+		periodSpinner = new Spinner(innerSelectors, SWT.NONE);
 		periodSpinner.setMinimum(1);
+		periodSpinner.setLayoutData(new RowData()); //start here
+		RowLayout r = new RowLayout();
+		r.justify = false;
+		r.fill = true;
+		r.type = SWT.VERTICAL;
+		r.pack = false;
+		innerSelectors.setLayout(r);
+		RowLayout ver = new RowLayout();
+		ver.type = SWT.VERTICAL;
+		selectors.setLayout(ver);
 		return selectors;
 	}
 

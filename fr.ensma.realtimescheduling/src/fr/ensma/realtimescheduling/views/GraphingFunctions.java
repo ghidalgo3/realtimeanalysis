@@ -12,7 +12,7 @@ import fr.ensma.realtimescheduling.analysis.PartitionUtils;
 
 /**
  * This class holds the functions to generate data for graphing. These functions
- * have to handle special cases for the graphs to look good.
+ * have to handle special cases for the graphs to look good!
  * 
  * @author Gustavo
  */

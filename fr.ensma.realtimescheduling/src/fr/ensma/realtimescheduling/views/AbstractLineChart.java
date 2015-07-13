@@ -6,7 +6,6 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
-import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
@@ -35,12 +34,7 @@ public abstract class AbstractLineChart extends ViewPart {
 	public void createPartControl(Composite parent) {
 		Composite chart = setUpChart(parent);
 		Composite selectors = setUpSelectors(parent);
-		RowLayout r = new RowLayout();
-		r.justify = true;
-		r.fill = true;
-		r.type = SWT.VERTICAL;
-		selectors.setLayout(r);
-		// here, make it so the chart takes up as much space as possible
+		
 		FormLayout parentLayout = new FormLayout();
 		parentLayout.marginWidth = 5;
 		parentLayout.marginHeight = 5;
@@ -54,6 +48,7 @@ public abstract class AbstractLineChart extends ViewPart {
 		FormData selectorData = new FormData();
 		selectorData.right = new FormAttachment(100, 0);
 		selectorData.top = new FormAttachment(0, 10);
+		selectorData.bottom = new FormAttachment(100,-10);
 		selectorData.width = 200;
 		chartData.right = new FormAttachment(selectors, 0, SWT.LEFT);
 		selectors.setLayoutData(selectorData);

@@ -7,11 +7,14 @@ import java.util.stream.Collectors;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.RowData;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.StandardChartTheme;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
@@ -19,7 +22,6 @@ import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
 import fr.ensma.realtimescheduling.Module;
 import fr.ensma.realtimescheduling.analysis.ModelInterface;
-import org.jfree.chart.StandardChartTheme;
 
 /**
  * Displays chronological displays of partitions
@@ -58,8 +60,10 @@ public class ModuleUtilView extends AbstractLineChart {
 	Composite setUpSelectors(Composite parent) {
 		Composite holder = new Composite(parent, SWT.BORDER);
 		Label l = new Label(holder, SWT.BORDER);
+		l.setLayoutData(new RowData());
 		l.setText("Module");
 		modules = new List(holder, SWT.BORDER);
+		modules.setLayoutData(new RowData(200,200));
 		modules.addSelectionListener(new SelectionAdapter() {
 
 			@Override
@@ -71,6 +75,9 @@ public class ModuleUtilView extends AbstractLineChart {
 						.collect(Collectors.toList());
 			}
 		});
+		RowLayout v = new RowLayout();
+		v.type = SWT.VERTICAL;
+		holder.setLayout(v);
 		return holder;
 	}
 

@@ -1,3 +1,4 @@
+\pagebreak
 \section{Implementation}
 This section describes Java code and Eclipse specific implementation details
 of the plug in. The plug in is composed of 5 Eclipse projects, 4 generated from
@@ -34,7 +35,7 @@ project. The package structure of this project is given in figure \ref{fig:packa
 \end{figure}
 Several of these packages deserve special attention.
 \begin{description}
-    \item[analysis] This package contains the algorithms and "glue" code between the model and the
+    \item[analysis] This package contains the algorithms and ``glue'' code between the model and the
     algorithms. The \texttt{Analyzer.java} class holds the implementations of all the algorithms
     described in the CORAC-PANDA project: the response time analysis from chapter 2 and the
     network delay analysis from chapter 3. The code was written attempting to recreate as much
@@ -67,11 +68,54 @@ This project contains generated code for modifying elements of a model instance.
 modifications to this code are found in the \texttt{getText()} method of some of the instances
 which makes the display in the editor more user friendly. See figure \ref{fig:model_editor}.
 \subsection{Editor}
-\subsection{Sirius Editor}
-\subsection{Eclipse Extensions}
-The plug in provides Eclipse extensions. 
+This project defines the generated classes for a simple model editor which
+only displays a tree representation of the model.
 \begin{figure}[h]
     \includegraphics[width=0.4\textwidth]{model_editor}
     \caption{Model editor in use}
     \label{fig:model_editor}
 \end{figure}
+\subsection{Sirius Editor}
+A view definition project was also created with the intent of making the network
+definition easier. Editors that this project provides are only available in the 
+runtime instance of Eclipse
+\subsection{Eclipse Extensions}
+The plug in provides several custom Eclipse extensions apart from the generated ones.
+\begin{figure}[h]
+    \includegraphics{eclipse_extensions}
+    \caption{Plug in extensions}
+    \label{fig:eclipse_extensions}
+\end{figure}
+\begin{description}
+    \item[Menu] Menu extensions add items to existing menus. In this case, I added a menu item
+    to the main Eclipse menu bar (see figure \ref{fig:menu_extension}). This is indicated by the root \textbf{Menu Contribution} element
+    of the extension which indicates that this menu should be added to the menu specified by
+    \texttt{menu:org.eclipse.ui.main.menu}.
+    \begin{figure}[h]
+        \includegraphics[width=0.4\textwidth]{menu_extension}
+        \includegraphics[width=0.3\textwidth]{menu_action}
+        \caption{Menu extension definition and result}
+        \label{fig:menu_extension}
+    \end{figure}
+    \item[View] Several new views are defined in the project. These are mainly for graphing
+    the information derived from the analysis of the model.
+    \begin{figure}[h]
+        \includegraphics[width=0.45\textwidth]{view_extension}
+        \includegraphics[width=0.45\textwidth]{view_action}
+        \caption{View extension defition and result}
+        \label{view_extension}
+    \end{figure}
+    \item[Perspective] One new perspective is declared with the purpose of arranging the model editor and the 
+    graphing views into a coherent layout. New perspectives can be defined by first creating an extension of
+    \texttt{org.eclipse.ui.perspective} and then of \texttt{org.eclipse.ui.perspectiveExtensions}. The
+    first is a manifest to Eclipse that this plug-in defines a new extension; the second allows you
+    to define the layout of the extension from within the \texttt{plugin.xml} editor. 
+    \begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{perspective_extension}
+	\includegraphics[width=.4\textwidth]{perspective_action}
+	\caption{New perspective}
+    \end{figure}
+
+
+\end{description}
+

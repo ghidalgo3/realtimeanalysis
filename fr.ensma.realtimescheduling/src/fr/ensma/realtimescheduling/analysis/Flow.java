@@ -51,8 +51,8 @@ public class Flow {
 
 	public VirtualLink link;
 	
-	double R = (link.getMaxFrameSize())/(link.getBAG());
-	double B = link.getMaxFrameSize();
+	double R;
+	double B;
 	
 	Route r;
 
@@ -77,6 +77,8 @@ public class Flow {
 				.filter(esp -> r.getConnections().contains(esp.getConnection()))
 				.findFirst().get();
 		P_i.add(first);
+		B = link.getMaxFrameSize();
+		R = (link.getMaxFrameSize())/(link.getBAG());
 		Port current = first;
 		// walk the connections, gathering output ports along the way
 		while (allConnections.size() != 1) { // stop at one because we don't

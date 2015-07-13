@@ -12,8 +12,11 @@
 \contentsline {subsection}{\numberline {4.3}Editor}{6}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Sirius Editor}{6}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Eclipse Extensions}{6}{subsection.4.5}
-\contentsline {section}{\numberline {5}Example}{7}{section.5}
-\contentsline {section}{\numberline {6}Installation}{8}{section.6}
-\contentsline {subsection}{\numberline {6.1}From Source}{8}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}From JARs}{8}{subsection.6.2}
-\contentsline {section}{\numberline {7}Future Work}{8}{section.7}
+\contentsline {section}{\numberline {5}Example}{8}{section.5}
+\contentsline {paragraph}{Project Creation}{8}{section*.15}
+\contentsline {paragraph}{Manipulation}{8}{section*.19}
+\contentsline {paragraph}{Analysis}{10}{section*.25}
+\contentsline {section}{\numberline {6}Installation}{13}{section.6}
+\contentsline {subsection}{\numberline {6.1}From Source}{13}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}From JARs}{13}{subsection.6.2}
+\contentsline {section}{\numberline {7}Future Work}{13}{section.7}

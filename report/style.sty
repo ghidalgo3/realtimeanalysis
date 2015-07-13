@@ -2,7 +2,7 @@
 \usepackage{subcaption}
 \usepackage{fullpage}
 \usepackage{hyperref}
-% Indent first paragraph of a sectino
+% Indent first paragraph of a section
 \usepackage{indentfirst}
 \usepackage{listings} 
 \usepackage{color}
@@ -10,12 +10,31 @@
 \usepackage{xcolor}
 \usepackage{textcomp}
 \usepackage{inconsolata}
+\usepackage{wrapfig}
+\usepackage{morefloats}
 
 %remove dots from TOC
 \makeatletter
 \renewcommand{\@dotsep}{10000} 
 \makeatother
 
+\newcommand{\centeredpic}[4]{
+    \begin{figure}[H]
+	\centering
+	\includegraphics[width=#2\textwidth]{#1}
+	\caption{#3}
+	\label{#4}
+    \end{figure}
+}
+\newcommand{\rightfloat}[4]{
+    \begin{wrapfigure}{r}{#2\textwidth}
+    \begin{center}
+	\includegraphics[width=#2\textwidth]{#1}
+    \end{center}
+	\caption{#3}
+	\label{#4}
+    \end{wrapfigure}
+}
 %graphics path
 \graphicspath{{./img/}}
 

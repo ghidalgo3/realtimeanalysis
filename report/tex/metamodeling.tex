@@ -6,6 +6,7 @@ with the OCLinEcore validation steps that are applied.
 For reference, the full meta-model is displayed first and the individual
 components after.
 \begin{figure}[h]
+    \centering
     \includegraphics[width=0.8\textwidth]{metamodel_full.png}
     \caption{Full UML meta-model}
     \label{fig:fullmodel} % adding labels for references
@@ -53,23 +54,93 @@ class Task {
     property partition#tasks : Partition;
     invariant PositiveWCET: worstCaseExecTime > 0;
     invariant ExecutionAndDeadlineAllowsCompletion:
-        worstCaseExecTime <= implicitDeadline;
+	worstCaseExecTime <= implicitDeadline;
     invariant ExecutionAndPeriodAllowsCompletion: 
-        if (periodicity <> Periodicity::Aperiodic)
-            then worstCaseExecTime <= characteristicPeriod
-        else true
-            endif;
+	if (periodicity <> Periodicity::Aperiodic)
+	    then worstCaseExecTime <= characteristicPeriod
+	else true
+	    endif;
     invariant DeadlineLessThanPeriod: implicitDeadline <= characteristicPeriod;
     invariant PositivePeriod: characteristicPeriod > 0;
 }
 \end{lstlisting}
 \paragraph{Constraint Details} 
 \begin{description}
-    \item[\texttt{PositiveWCET}] The worst case execution time of a task must be a positive number.
-    \item[\texttt{ExecutionAndDeadlineAllowsCompletion}] The WCET must be less than or equal to the implicit deadline otherwise the task will never complete in time.
-    \item[\texttt{ExecutionAndPeriodAllowsCompletion}] The WCET must be less than or equal to the period of the task. This is only a constraint on \textit{aperiodic} tasks: tasks without a minimum time between arrivals.
-    \item[\texttt{DeadlineLessThanPeriod}] The deadline of the task must be less than or equal to the period otherwise multiple instances of the task will exist simultaneously.
-    \item[\texttt{PositivePeriod}] The period of a task must be a positive number.
+\item[\texttt{ExecutionAndDeadlineAllowsCompletion}] The WCET must be less than or equal to the implicit deadline otherwise the task will never complete in time.
+\item[\texttt{ExecutionAndPeriodAllowsCompletion}] The WCET must be less than or equal to the period of the task. This is only a constraint on tasks that are not 
+\textit{aperiodic} tasks: tasks without a minimum time between arrivals.
+\item[\texttt{DeadlineLessThanPeriod}] The deadline of the task must be less than or equal to the period otherwise multiple instances of the task will exist simultaneously.
 \end{description}
-
+\paragraph{Partition}
+A partition is a list of time intervals and a period. Tasks are assigned to partitions.
+\begin{lstlisting}[caption=Partition constraints]
+class Partition {
+    attribute id : String = '0' { id  };
+    attribute period : ecore::EDouble[?] = '0' { derived readonly  } {
+	derivation:
+	if (module->oclIsInvalid() or module->oclIsUndefined() or module = null)
+    	then 0.0
+	else self.module.period
+    	endif;
+    }
+    property executionIntervals : Interval[*] { ordered composes  };
+    attribute virtualProcessorUtilization : ecore::EDouble = '0';
+    attribute availabilityFactor : ecore::EDouble = '0' { derived  } { derivation:
+	--check for divide by zero!
+	if (period <> 0)
+	then executionIntervals->
+	    collect(i : Interval | i.end - i.start)->sum() / period
+	else 0.0
+	endif;
+    }
+    attribute schedulingAlgorithm : SchedulingAlgorithm;
+    property tasks#partition : Task[*] { ordered  };
+    property module#partition : Module;
+    invariant PositivePeriod: period > 0;
+    invariant AvailibilityFactorLessThanOrEqualToOne: availabilityFactor <= 1;
+    invariant PeriodSpansIntervals:
+	let sortedIntervals : Sequence(Interval) = executionIntervals->
+	    sortedBy(start) in
+	if (sortedIntervals->size() > 1)
+	then sortedIntervals->last().end <= period
+	else true
+	endif;
+    invariant NonOverlappingIntervals:
+	if (executionIntervals->size() <= 1)
+	then true -- Nothing can overlap if there is only one or none!
+	else
+	let sortedIntervals : Sequence(Interval) = executionIntervals->
+	    sortedBy(i : Interval | i.start) in
+	    sortedIntervals->
+	    subSequence(1, sortedIntervals->size() - 1)->
+	    forAll(i : Interval |
+		i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)
+	    endif;
+}
+\end{lstlisting}
+\paragraph{Constraint Details}
+\begin{description}
+    \item[\texttt{period}] The period of a Task is defined to be the period of the module it executes on.
+    This simplifies validating that no partitions overlap within a module.
+    \item[\texttt{availabilityFactor}] The fraction of time this partition occupies within a module. This
+    is not the same as the virtual processor utilization which is the fraction of time that any task
+    is executing in a partition.
+    \item[\texttt{PeriodSpansIntervals}] The intervals defined in a partition must be wholly contained
+    within $t = (0,T)$. 
+    \item[\texttt{NonOverlappingIntervals}] No two intervals within a partition may overlap. This is
+    acchieved by imposing an ordering on the intervals and checking to make sure that
+    no two sequential intervals overlap.
+\end{description}
+\paragraph{Interval}
+An interval is a period of execution for tasks in a partition.
+\begin{lstlisting}[caption=Interval constraints]
+class Interval {
+    attribute start : ecore::EInt;
+    attribute end : ecore::EInt;
+    invariant EndAfterStart: end >= start;
+    invariant NonZeroLength: end <> start;
+}
+\end{lstlisting}
 \subsection{Complex Validation}
+Some validation could not be expressed in \texttt{OCLinEcore}
+

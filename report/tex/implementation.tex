@@ -5,7 +5,8 @@ of the plug in. The plug in is composed of 5 Eclipse projects, 4 generated from
 the Ecore model and 1 from the Sirius specification. See figure \ref{fig:projects}
 for the list of projects.
 
-\begin{figure}[h]
+\begin{figure}[H]
+    \centering
     \includegraphics[width=0.5\textwidth]{eclipse_projects}
     \caption{Plug in projects}
     \label{fig:projects}
@@ -28,7 +29,8 @@ of a model.
 \subsection{Main Project}
 The main project contains the analysis algorithms and non-trivial UI logic code for the 
 project. The package structure of this project is given in figure \ref{fig:packages}.
-\begin{figure}[h]
+\begin{figure}[H]
+    \centering
     \includegraphics[width=0.4\textwidth]{packages}
     \caption{Main project packages}
     \label{fig:packages}
@@ -70,7 +72,8 @@ which makes the display in the editor more user friendly. See figure \ref{fig:mo
 \subsection{Editor}
 This project defines the generated classes for a simple model editor which
 only displays a tree representation of the model.
-\begin{figure}[h]
+\begin{figure}[H]
+    \centering
     \includegraphics[width=0.4\textwidth]{model_editor}
     \caption{Model editor in use}
     \label{fig:model_editor}
@@ -81,7 +84,8 @@ definition easier. Editors that this project provides are only available in the
 runtime instance of Eclipse
 \subsection{Eclipse Extensions}
 The plug in provides several custom Eclipse extensions apart from the generated ones.
-\begin{figure}[h]
+\begin{figure}[H]
+    \centering
     \includegraphics{eclipse_extensions}
     \caption{Plug in extensions}
     \label{fig:eclipse_extensions}
@@ -91,7 +95,8 @@ The plug in provides several custom Eclipse extensions apart from the generated 
     to the main Eclipse menu bar (see figure \ref{fig:menu_extension}). This is indicated by the root \textbf{Menu Contribution} element
     of the extension which indicates that this menu should be added to the menu specified by
     \texttt{menu:org.eclipse.ui.main.menu}.
-    \begin{figure}[h]
+    \begin{figure}[H]
+	\centering
         \includegraphics[width=0.4\textwidth]{menu_extension}
         \includegraphics[width=0.3\textwidth]{menu_action}
         \caption{Menu extension definition and result}
@@ -99,7 +104,8 @@ The plug in provides several custom Eclipse extensions apart from the generated 
     \end{figure}
     \item[View] Several new views are defined in the project. These are mainly for graphing
     the information derived from the analysis of the model.
-    \begin{figure}[h]
+    \begin{figure}[H]
+	\centering
         \includegraphics[width=0.45\textwidth]{view_extension}
         \includegraphics[width=0.45\textwidth]{view_action}
         \caption{View extension defition and result}
@@ -110,12 +116,11 @@ The plug in provides several custom Eclipse extensions apart from the generated 
     \texttt{org.eclipse.ui.perspective} and then of \texttt{org.eclipse.ui.perspectiveExtensions}. The
     first is a manifest to Eclipse that this plug-in defines a new extension; the second allows you
     to define the layout of the extension from within the \texttt{plugin.xml} editor. 
-    \begin{figure}[h]
+    \begin{figure}[H]
+	\centering
 	\includegraphics[width=0.5\textwidth]{perspective_extension}
 	\includegraphics[width=.4\textwidth]{perspective_action}
 	\caption{New perspective}
     \end{figure}
-
-
 \end{description}
 

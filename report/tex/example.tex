@@ -2,7 +2,7 @@
 \section{Example}
 This section shows an example model created using the plug-in. I describe
 how to create it and how to analyze it.
-\paragraph{Project Creation}
+\subsection{Project Creation}
 You will first have to create a new empty project in Eclipse.
 
 \centeredpic{example/new_project}{0.2}{Create a new project}{fig:new_project}
@@ -29,7 +29,7 @@ When prompted, make sure to select the root element \texttt{System}.
     \caption{Select model}
 \end{figure}
 
-\paragraph{Manipulation}
+\subsection{Manipulation}
 You should change into the \texttt{Realtime Analysis} perspective to
 maximize your use of the plugin. You should see the editor view appear
 with a single element that is the \texttt{System} object. You will need
@@ -58,7 +58,8 @@ then clicking on \texttt{Validate}.
 If the model successfully validates, we should see an ``Success''
 message. But if it does not, we will see errors on the objects
 that did not pass validation.
-\begin{figure}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=0.4\textwidth]{example/validation_errors}
     \includegraphics[width=0.4\textwidth]{example/validation_success}
     \caption{Validation messages}
@@ -66,7 +67,7 @@ that did not pass validation.
 We can quickly fix the errors and see the expected success prompt.
 Once the model has successfully validated, we can safely perform
 analysis on it.
-\paragraph{Analysis}
+\subsection{Analysis}
 Open the \textbf{Analysis} menu in the main
 toolbar to see the possible options.
 \centeredpic{example/analysis}{0.4}{Analysis menu}{fig:analysis}
@@ -100,7 +101,7 @@ adding new functions to the system. For example, we would like to add an
 altitude control task to run alongside the PID controllers.
 We define a new task with $T,D = 200$ and $C = 50$. Unfortunately this
 tasks becomes unschedulable.
-\centeredpic{example/new_task_misses}{0.4}{Scheduling failuer}{fig:fail}
+\centeredpic{example/new_task_misses}{0.4}{Scheduling failure}{fig:fail}
 We can try to make it schedulable through trial and error but the plugin
 can provide some information to help us make these decisions.
 In the \texttt{Partition Functions} view, we can see that the \texttt{Least Supply}
@@ -138,3 +139,19 @@ We define some new tasks.
 \includegraphics[width=0.4\textwidth]{example/new_slow_tasks_properties}
 \caption{New wifi tasks}
 \end{figure}
+Immediately we see that these new tasks are unschedulable, but only in the 
+``Slow'' partition! 
+\centeredpic{example/missed_deadlines_within_partition}{0.5}{Local partition effects}{fig:z}
+Let us look to the least supply function for guidance. 
+The LSF for the ``Slow'' partition has a value of 0 at $t = 50$ which is
+the period of the wifi tasks.
+\centeredpic{example/least_supply_again}{0.5}{Least supply for ``Slow''}{fig:y}
+This means that no task with a period less than $t = 130$ will ever complete in the slow
+partition because there is a critical instance where the task will not get to execute for
+130 time units. This lines up with the times $(0,130)$ which the ``Fast'' partition
+claimed. Knowing this, we must make these tasks have longer periods. Once we make them
+schedulable we can then see that this increases the VPU of the ``Slow'' partition.
+\centeredpic{example/higher_vpu}{0.5}{Increased VPU}{fig:q}
+\subsection{Network}
+Now we will define a network component, although quadcopters do not communicate with motors
+based on packet switched networks.

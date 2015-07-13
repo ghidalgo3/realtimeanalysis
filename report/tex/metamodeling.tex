@@ -146,11 +146,12 @@ Some validation could not be expressed in \texttt{OCLinEcore}.
 \paragraph{Network Invariants} There are invariants for a \texttt{VirtualLink}
 that are better expressed through graph algorithms.
 \begin{lstlisting}[caption=VirtualLink graph invariants]
-invariant PathExists;
-invariant RoutesConnectSourceToDestinations;
-invariant NoCycles;
+    invariant PathExists;
+    invariant RoutesConnectSourceToDestinations;
+    invariant NoCycles;
 \end{lstlisting}
-These invariants are expressed in the \texttt{fr.ensma.realtimescheduling.util.RealtimeschedulingValidator.java} class as part of the validation code.
+These invariants are expressed in the \texttt{fr.ensma.realtimescheduling.util.RealtimeschedulingValidator.java}
+class as part of the validation code.
 We used the free and open source Java graph library \href{http://jgrapht.org/}{\textbf{JGraphT}}.
 The first constraint \texttt{PathExists} verifies that there is atleast one path possible
 between the source of a virtual link and each of its destinations. We consider all
@@ -166,8 +167,7 @@ frame=lines,
     ]{java}
     private void buildGraph(fr.ensma.realtimescheduling.System system) {
 	networkGraph = new SimpleGraph<>(DefaultEdge.class); 
-	for (Switch switch_ : system.getHardware().getNetwork()
-		.getSwitches()) { 
+	for (Switch switch_ : system.getHardware().getNetwork().getSwitches()) { 
 	    for (Port port : switch_.getSwitchPorts()) 
 		networkGraph.addVertex(port);
 	    for (Port port : switch_.getSwitchPorts()) 
@@ -187,7 +187,7 @@ frame=lines,
 \end{minted}
 Then we ask JGraphT to check the connectivity of every virtual link.
 \begin{minted}[
-frame=lines,
+    frame=lines,
     framesep=2mm,
     baselinestretch=1.2,
     fontsize=\footnotesize,
@@ -207,3 +207,59 @@ all: for (Port sourcePort : virtualLink.getSource().getModulePorts())
 	e.printStackTrace();
     }
 \end{minted}
+The next constraint verifies that the specified routes actually connect the correct modules.
+This is done by `walking' a route and verifying that the last connection
+connects one of the destinations. If, at the end, all destinations have been reached,
+then all of the routes connect all of the destinations and the virtual link is valid.
+\begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize,
+    linenos
+]{java}
+boolean success = false;
+List<Module> destinationsHit = new ArrayList<>();
+destinationsHit.addAll(virtualLink.getDestinations());
+try {
+    for (Route r : virtualLink.getRoutes()) {
+	Port first = virtualLink.getSource().getModulePorts().stream()
+	    .filter(esp -> r.getConnections()
+		.contains(esp.getConnection()))
+	    .findFirst()
+	    .get();
+	Port current = first;
+	List<Connection> allConnections = new ArrayList<>();
+	allConnections.addAll(r.getConnections());
+	while (allConnections.size() != 1) {
+	    allConnections.remove(current.getConnection());
+	    current = Flow.getOpposite(current);
+	    current = ((Switch) (current.eContainer())).getSwitchPorts().stream()
+		.filter(sp -> allConnections.contains(sp.getConnection()))
+		.findFirst()
+		.orElseThrow(() -> new Exception());
+	}
+	// success if any of the destination ports are one of the two
+	// ports
+	// of the remaining connection of routes
+	success = virtualLink.getDestinations().stream()
+	    .anyMatch(module -> {
+		    boolean matches = module.getModulePorts().contains(allConnections.get(0).getB());
+		    destinationsHit.remove(module);
+		    return matches;
+		    })
+	|| /* OR */
+	    virtualLink.getDestinations().stream()
+	    .anyMatch(module -> {
+		    boolean matches = module.getModulePorts().contains(allConnections.get(0).getA());
+		    destinationsHit.remove(module);
+		    return matches;
+		    });
+
+    }
+} catch (Exception e) {
+    e.printStackTrace();
+    success = false;
+}
+\end{minted}
+The cycle checker is not implemented. See section \ref{future}.

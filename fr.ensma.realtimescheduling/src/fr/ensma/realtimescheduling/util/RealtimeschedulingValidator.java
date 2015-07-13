@@ -772,38 +772,26 @@ public class RealtimeschedulingValidator extends EObjectValidator {
 					current = ((Switch) (current.eContainer()))
 							.getSwitchPorts()
 							.stream()
-							.filter(sp -> allConnections.contains(sp
-									.getConnection())).findFirst()
+							.filter(sp -> allConnections.contains(sp.getConnection()))
+							.findFirst()
 							.orElseThrow(() -> new Exception());
 				}
 				// success if any of the destination ports are one of the two
 				// ports
 				// of the remaining connection of routes
-				success = virtualLink
-						.getDestinations()
-						.stream()
-						.anyMatch(
-								module -> {
-									boolean matches = module.getModulePorts()
-											.contains(
-													allConnections.get(0)
-															.getB());
-									destinationsHit.remove(module);
-									return matches;
-								})
+				success = virtualLink.getDestinations().stream()
+						.anyMatch(module -> {
+								boolean matches = module.getModulePorts().contains(allConnections.get(0).getB());
+								destinationsHit.remove(module);
+								return matches;
+							})
 						|| /* OR */
-						virtualLink
-								.getDestinations()
-								.stream()
-								.anyMatch(
-										module -> {
-											boolean matches = module
-													.getModulePorts().contains(
-															allConnections.get(
-																	0).getA());
-											destinationsHit.remove(module);
-											return matches;
-										});
+						virtualLink.getDestinations().stream()
+							.anyMatch(module -> {
+								boolean matches = module.getModulePorts().contains(allConnections.get(0).getA());
+								destinationsHit.remove(module);
+								return matches;
+							});
 			}
 
 		} catch (Exception e) {

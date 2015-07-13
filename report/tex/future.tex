@@ -1,15 +1,19 @@
 \pagebreak
-\section{Future Work}
-This section describes what future work needs to be done to improve the project
+\section{future work}\label{future}
+this section describes what future work needs to be done to improve the project
 and the steps required to start that work.
 \begin{enumerate}
-    \item Add units to all attributes that need them. For example,
+    \item add units to all attributes that need them. for example,
     the worst case execution time of tasks could be in milliseconds
-    or microseconds. Consistency is important in this because
+    or microseconds. consistency is important in this because
     the code would have to be modified with unit conversions.
-    \item Better Sirius diagrams with more functionality. Altough it
+    \item better sirius diagrams with more functionality. altough it
     is possible to edit the model entirely from the tree editor, it is
-    error prone and difficult. This would require serious knowledge of
-    Sirius best practices.
-    \item More analysis algorithms.
+    error prone and difficult. this would require serious knowledge of
+    sirius best practices.
+    \item more analysis algorithms.
+    \item cycle detection in the network is a little harder because jgrapht does
+    not provide an undirected graph cycle checker. I would like to avoid writing
+    the algorithm but apparently it is not so 
+    \href{http://stackoverflow.com/questions/526331/cycles-in-an-undirected-graph}{\textbf{hard}}. 
 \end{enumerate}

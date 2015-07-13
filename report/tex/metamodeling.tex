@@ -6,10 +6,10 @@ with the OCLinEcore validation steps that are applied.
 For reference, the full meta-model is displayed first and the individual
 components after.
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{metamodel_full.png}
-    \caption{Full UML meta-model}
-    \label{fig:fullmodel} % adding labels for references
+\centering
+\includegraphics[width=0.8\textwidth]{metamodel_full.png}
+\caption{Full UML meta-model}
+\label{fig:fullmodel} % adding labels for references
 \end{figure}
 
 % Now all of the model elements
@@ -77,21 +77,21 @@ A partition is a list of time intervals and a period. Tasks are assigned to part
 class Partition {
     attribute id : String = '0' { id  };
     attribute period : ecore::EDouble[?] = '0' { derived readonly  } {
-	derivation:
+derivation:
 	if (module->oclIsInvalid() or module->oclIsUndefined() or module = null)
-    	then 0.0
+	    then 0.0
 	else self.module.period
-    	endif;
+	    endif;
     }
     property executionIntervals : Interval[*] { ordered composes  };
     attribute virtualProcessorUtilization : ecore::EDouble = '0';
     attribute availabilityFactor : ecore::EDouble = '0' { derived  } { derivation:
 	--check for divide by zero!
-	if (period <> 0)
-	then executionIntervals->
-	    collect(i : Interval | i.end - i.start)->sum() / period
-	else 0.0
-	endif;
+	    if (period <> 0)
+		then executionIntervals->
+		    collect(i : Interval | i.end - i.start)->sum() / period
+	    else 0.0
+		endif;
     }
     attribute schedulingAlgorithm : SchedulingAlgorithm;
     property tasks#partition : Task[*] { ordered  };
@@ -100,36 +100,36 @@ class Partition {
     invariant AvailibilityFactorLessThanOrEqualToOne: availabilityFactor <= 1;
     invariant PeriodSpansIntervals:
 	let sortedIntervals : Sequence(Interval) = executionIntervals->
-	    sortedBy(start) in
+	sortedBy(start) in
 	if (sortedIntervals->size() > 1)
-	then sortedIntervals->last().end <= period
+	    then sortedIntervals->last().end <= period
 	else true
-	endif;
+	    endif;
     invariant NonOverlappingIntervals:
 	if (executionIntervals->size() <= 1)
-	then true -- Nothing can overlap if there is only one or none!
+	    then true -- Nothing can overlap if there is only one or none!
 	else
-	let sortedIntervals : Sequence(Interval) = executionIntervals->
-	    sortedBy(i : Interval | i.start) in
-	    sortedIntervals->
-	    subSequence(1, sortedIntervals->size() - 1)->
-	    forAll(i : Interval |
-		i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)
-	    endif;
+	    let sortedIntervals : Sequence(Interval) = executionIntervals->
+		sortedBy(i : Interval | i.start) in
+		sortedIntervals->
+		subSequence(1, sortedIntervals->size() - 1)->
+		forAll(i : Interval |
+			i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)
+		endif;
 }
 \end{lstlisting}
 \paragraph{Constraint Details}
 \begin{description}
-    \item[\texttt{period}] The period of a Task is defined to be the period of the module it executes on.
-    This simplifies validating that no partitions overlap within a module.
-    \item[\texttt{availabilityFactor}] The fraction of time this partition occupies within a module. This
-    is not the same as the virtual processor utilization which is the fraction of time that any task
-    is executing in a partition.
-    \item[\texttt{PeriodSpansIntervals}] The intervals defined in a partition must be wholly contained
-    within $t = (0,T)$. 
-    \item[\texttt{NonOverlappingIntervals}] No two intervals within a partition may overlap. This is
-    acchieved by imposing an ordering on the intervals and checking to make sure that
-    no two sequential intervals overlap.
+\item[\texttt{period}] The period of a Task is defined to be the period of the module it executes on.
+This simplifies validating that no partitions overlap within a module.
+\item[\texttt{availabilityFactor}] The fraction of time this partition occupies within a module. This
+is not the same as the virtual processor utilization which is the fraction of time that any task
+is executing in a partition.
+\item[\texttt{PeriodSpansIntervals}] The intervals defined in a partition must be wholly contained
+within $t = (0,T)$. 
+\item[\texttt{NonOverlappingIntervals}] No two intervals within a partition may overlap. This is
+acchieved by imposing an ordering on the intervals and checking to make sure that
+no two sequential intervals overlap.
 \end{description}
 \paragraph{Interval}
 An interval is a period of execution for tasks in a partition.
@@ -142,5 +142,68 @@ class Interval {
 }
 \end{lstlisting}
 \subsection{Complex Validation}
-Some validation could not be expressed in \texttt{OCLinEcore}
-
+Some validation could not be expressed in \texttt{OCLinEcore}.
+\paragraph{Network Invariants} There are invariants for a \texttt{VirtualLink}
+that are better expressed through graph algorithms.
+\begin{lstlisting}[caption=VirtualLink graph invariants]
+invariant PathExists;
+invariant RoutesConnectSourceToDestinations;
+invariant NoCycles;
+\end{lstlisting}
+These invariants are expressed in the \texttt{fr.ensma.realtimescheduling.util.RealtimeschedulingValidator.java} class as part of the validation code.
+We used the free and open source Java graph library \href{http://jgrapht.org/}{\textbf{JGraphT}}.
+The first constraint \texttt{PathExists} verifies that there is atleast one path possible
+between the source of a virtual link and each of its destinations. We consider all
+of the ports in the network as nodes and all of the ports of a switch are fully connected.
+Regular connections are edges.
+First we build the graph.
+\begin{minted}[
+frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize,
+    linenos
+    ]{java}
+    private void buildGraph(fr.ensma.realtimescheduling.System system) {
+	networkGraph = new SimpleGraph<>(DefaultEdge.class); 
+	for (Switch switch_ : system.getHardware().getNetwork()
+		.getSwitches()) { 
+	    for (Port port : switch_.getSwitchPorts()) 
+		networkGraph.addVertex(port);
+	    for (Port port : switch_.getSwitchPorts()) 
+		for (Port port2 : switch_.getSwitchPorts()) 
+		    // within a switch, all ports are "connected" to each other.
+		    if (port2 != port) 
+			networkGraph.addEdge(port, port2);
+	}
+	for (Module module : system.getHardware().getModules()) 
+	    for (Port port : module.getModulePorts()) 
+		networkGraph.addVertex(port);
+	for (Connection connection : system.getHardware().getNetwork()
+		.getConnections()) 
+	    if (connection.getA() != null && connection.getB() != null) 
+		networkGraph.addEdge(connection.getA(), connection.getB());
+    }
+\end{minted}
+Then we ask JGraphT to check the connectivity of every virtual link.
+\begin{minted}[
+frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize,
+    linenos
+    ]{java}
+    ConnectivityInspector<Port, DefaultEdge> inspector = new ConnectivityInspector<>(networkGraph);
+    boolean pathExists = false;
+    try {
+all: for (Port sourcePort : virtualLink.getSource().getModulePorts()) 
+	 for (Module destination : virtualLink.getDestinations()) 
+	     for (Port destinationPort : destination.getModulePorts()) {
+		 pathExists = inspector.pathExists(sourcePort,destinationPort);
+		 if (!pathExists)
+		     break all;
+	     }
+    } catch (Exception e) {
+	e.printStackTrace();
+    }
+\end{minted}

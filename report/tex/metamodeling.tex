@@ -7,11 +7,11 @@ For reference, the full meta-model is displayed first and the individual
 components after.
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{metamodel_full.png}
+\includegraphics[width=1\textwidth]{metamodel_full.png}
 \caption{Full UML meta-model}
 \label{fig:fullmodel} % adding labels for references
 \end{figure}
-
+Some of the key entities of the system will be explained, the others have obvious functions.
 % Now all of the model elements
 \paragraph{System}
 The root object for an instance of the meta model. This class
@@ -54,12 +54,12 @@ class Task {
     property partition#tasks : Partition;
     invariant PositiveWCET: worstCaseExecTime > 0;
     invariant ExecutionAndDeadlineAllowsCompletion:
-	worstCaseExecTime <= implicitDeadline;
+    worstCaseExecTime <= implicitDeadline;
     invariant ExecutionAndPeriodAllowsCompletion: 
-	if (periodicity <> Periodicity::Aperiodic)
-	    then worstCaseExecTime <= characteristicPeriod
-	else true
-	    endif;
+    if (periodicity <> Periodicity::Aperiodic)
+        then worstCaseExecTime <= characteristicPeriod
+    else true
+        endif;
     invariant DeadlineLessThanPeriod: implicitDeadline <= characteristicPeriod;
     invariant PositivePeriod: characteristicPeriod > 0;
 }
@@ -78,20 +78,20 @@ class Partition {
     attribute id : String = '0' { id  };
     attribute period : ecore::EDouble[?] = '0' { derived readonly  } {
 derivation:
-	if (module->oclIsInvalid() or module->oclIsUndefined() or module = null)
-	    then 0.0
-	else self.module.period
-	    endif;
+    if (module->oclIsInvalid() or module->oclIsUndefined() or module = null)
+        then 0.0
+    else self.module.period
+        endif;
     }
     property executionIntervals : Interval[*] { ordered composes  };
     attribute virtualProcessorUtilization : ecore::EDouble = '0';
     attribute availabilityFactor : ecore::EDouble = '0' { derived  } { derivation:
-	--check for divide by zero!
-	    if (period <> 0)
-		then executionIntervals->
-		    collect(i : Interval | i.end - i.start)->sum() / period
-	    else 0.0
-		endif;
+    --check for divide by zero!
+        if (period <> 0)
+        then executionIntervals->
+            collect(i : Interval | i.end - i.start)->sum() / period
+        else 0.0
+        endif;
     }
     attribute schedulingAlgorithm : SchedulingAlgorithm;
     property tasks#partition : Task[*] { ordered  };
@@ -99,23 +99,23 @@ derivation:
     invariant PositivePeriod: period > 0;
     invariant AvailibilityFactorLessThanOrEqualToOne: availabilityFactor <= 1;
     invariant PeriodSpansIntervals:
-	let sortedIntervals : Sequence(Interval) = executionIntervals->
-	sortedBy(start) in
-	if (sortedIntervals->size() > 1)
-	    then sortedIntervals->last().end <= period
-	else true
-	    endif;
+    let sortedIntervals : Sequence(Interval) = executionIntervals->
+    sortedBy(start) in
+    if (sortedIntervals->size() > 1)
+        then sortedIntervals->last().end <= period
+    else true
+        endif;
     invariant NonOverlappingIntervals:
-	if (executionIntervals->size() <= 1)
-	    then true -- Nothing can overlap if there is only one or none!
-	else
-	    let sortedIntervals : Sequence(Interval) = executionIntervals->
-		sortedBy(i : Interval | i.start) in
-		sortedIntervals->
-		subSequence(1, sortedIntervals->size() - 1)->
-		forAll(i : Interval |
-			i.end <= sortedIntervals->at(1 + sortedIntervals->indexOf(i)).start)
-		endif;
+    if (executionIntervals->size() <= 1)
+    then true -- Nothing can overlap if there is only one or none!
+    else
+    let sortedIntervals : Sequence(Interval) = executionIntervals->
+        sortedBy(i : Interval | i.start) in
+        sortedIntervals->
+        subSequence(1, sortedIntervals->size() - 1)->
+        forAll(i : Interval |
+            i.end <= sortedIntervals->at(1+sortedIntervals->indexOf(i)).start)
+        endif;
 }
 \end{lstlisting}
 \paragraph{Constraint Details}
@@ -141,14 +141,96 @@ class Interval {
     invariant NonZeroLength: end <> start;
 }
 \end{lstlisting}
-\subsection{Complex Validation}
+\paragraph{Network}
+A network is a physical description of the network hardware, namely switches, connections, and ports on a switch.
+\begin{lstlisting}[caption=Network constraints]
+class Network {
+    attribute name : String;
+    property switches : Switch[*] { ordered composes };
+    attribute networkBandwidth : ecore::EInt = '0';
+    property connections : Connection[*] { ordered composes };
+    attribute latency : ecore::EInt = '0';
+    invariant PositiveNetworkLatency: latency > 0;
+    invariant PositiveNetworkBandwith: networkBandwidth > 0;
+}
+\end{lstlisting}
+\paragraph{Module}
+A module is an `End system' in the view of the network and a processing element
+where software resources execute.
+\begin{lstlisting}[caption=Module constraints]
+class Module
+{
+    attribute utilization : ecore::EDouble = '0' { derived } { derivation:
+	if (partition->size() > 0)
+	then partition->collect(p | p.availabilityFactor)->sum()
+	else 0.0
+	endif;
+    }
+    attribute id : String;
+    attribute period : ecore::EInt;
+    property partition#module : Partition[*] { ordered };
+    property processors : Processor[+] { ordered composes };
+    property modulePorts : EndSystemPort[*] { ordered composes };
+    attribute delay : ecore::EInt;
+    invariant PositiveDelay: delay > 0;
+    invariant NonZeroPeriod: period > 0;
+    invariant NonOverlappingPartitions: 
+    let allIntervals : Sequence(Interval) =
+    partition.executionIntervals->flatten()->sortedBy(i : Interval | i.start)
+    in if (allIntervals->size() <= 1)
+    then true
+    else allIntervals->subSequence(1, allIntervals->size() - 1)
+	->forAll(i : Interval |
+	    i.end <= allIntervals->at(1 + allIntervals->indexOf(i)).start)
+    endif;
+}
+\end{lstlisting}
+\paragraph{Constraint details}
+\begin{description}
+    \item[\texttt{utilization}] This derived quantity is based on the partitions scheduled on the module.
+	It is the sum of the availibility factors of each partition. 
+    \item[\texttt{NonOverlappingPartitions}] This applies the same overlapping logic as an individual partition's overlapping
+	check but to all partition assigned to this module.
+\end{description}
+\paragraph{Switch} A switch is a network device that helps to connect devices.
+\begin{lstlisting}[caption=Switch constraints]
+class Switch {
+    attribute id : String;
+    property switchPorts : SwitchPort[+] { ordered composes };
+    invariant AtleastTwoSwitchPorts: switchPorts->size() > 1;
+}
+\end{lstlisting}
+
+\paragraph{Virtual Link} A Virtual Link represents a logical connection between
+one `source' end system and one or more `destination' end systems.
+\begin{lstlisting}[caption=Virtual Link constraints]
+class VirtualLink {
+    attribute id : String;
+    attribute BAG : ecore::EInt;
+    property routes : Route[+] { ordered composes };
+    property source : Module;
+    property destinations : Module[+] { ordered };
+    attribute maxFrameSize : ecore::EInt = '0';
+    invariant DestinationsCannotIncludeSource: 
+    destinations->forAll(dest : Module | dest <> source);
+    invariant PositiveBAG: BAG > 0;
+    invariant PositiveMaxFrameSize: maxFrameSize > 0;
+    invariant PathExists;
+    invariant RoutesConnectSourceToDestinations;
+    invariant NoCycles;
+}
+\end{lstlisting}
+\paragraph{Constrain details} See \ref{complex_validation}.
+
+
+\subsection{Complex Validation} \label{complex_validation}
 Some validation could not be expressed in \texttt{OCLinEcore}.
 \paragraph{Network Invariants} There are invariants for a \texttt{VirtualLink}
 that are better expressed through graph algorithms.
 \begin{lstlisting}[caption=VirtualLink graph invariants]
-    invariant PathExists;
-    invariant RoutesConnectSourceToDestinations;
-    invariant NoCycles;
+invariant PathExists;
+invariant RoutesConnectSourceToDestinations;
+invariant NoCycles;
 \end{lstlisting}
 These invariants are expressed in the \texttt{fr.ensma.realtimescheduling.util.RealtimeschedulingValidator.java}
 class as part of the validation code.
@@ -166,23 +248,22 @@ frame=lines,
     linenos
     ]{java}
     private void buildGraph(fr.ensma.realtimescheduling.System system) {
-	networkGraph = new SimpleGraph<>(DefaultEdge.class); 
-	for (Switch switch_ : system.getHardware().getNetwork().getSwitches()) { 
-	    for (Port port : switch_.getSwitchPorts()) 
-		networkGraph.addVertex(port);
-	    for (Port port : switch_.getSwitchPorts()) 
-		for (Port port2 : switch_.getSwitchPorts()) 
-		    // within a switch, all ports are "connected" to each other.
-		    if (port2 != port) 
-			networkGraph.addEdge(port, port2);
+    networkGraph = new SimpleGraph<>(DefaultEdge.class); 
+    for (Switch switch_ : system.getHardware().getNetwork().getSwitches()) { 
+        for (Port port : switch_.getSwitchPorts()) 
+	    networkGraph.addVertex(port);
+        for (Port port : switch_.getSwitchPorts()) 
+	    for (Port port2 : switch_.getSwitchPorts()) 
+		// within a switch, all ports are "connected" to each other.
+		if (port2 != port) 
+		    networkGraph.addEdge(port, port2);
 	}
-	for (Module module : system.getHardware().getModules()) 
-	    for (Port port : module.getModulePorts()) 
-		networkGraph.addVertex(port);
-	for (Connection connection : system.getHardware().getNetwork()
-		.getConnections()) 
-	    if (connection.getA() != null && connection.getB() != null) 
-		networkGraph.addEdge(connection.getA(), connection.getB());
+    for (Module module : system.getHardware().getModules()) 
+        for (Port port : module.getModulePorts()) 
+        networkGraph.addVertex(port);
+    for (Connection connection : system.getHardware().getNetwork().getConnections()) 
+        if (connection.getA() != null && connection.getB() != null) 
+	    networkGraph.addEdge(connection.getA(), connection.getB());
     }
 \end{minted}
 Then we ask JGraphT to check the connectivity of every virtual link.
@@ -199,12 +280,12 @@ Then we ask JGraphT to check the connectivity of every virtual link.
 all: for (Port sourcePort : virtualLink.getSource().getModulePorts()) 
 	 for (Module destination : virtualLink.getDestinations()) 
 	     for (Port destinationPort : destination.getModulePorts()) {
-		 pathExists = inspector.pathExists(sourcePort,destinationPort);
-		 if (!pathExists)
-		     break all;
+	     pathExists = inspector.pathExists(sourcePort,destinationPort);
+	     if (!pathExists)
+		 break all;
 	     }
     } catch (Exception e) {
-	e.printStackTrace();
+    e.printStackTrace();
     }
 \end{minted}
 The next constraint verifies that the specified routes actually connect the correct modules.
@@ -223,38 +304,34 @@ List<Module> destinationsHit = new ArrayList<>();
 destinationsHit.addAll(virtualLink.getDestinations());
 try {
     for (Route r : virtualLink.getRoutes()) {
-	Port first = virtualLink.getSource().getModulePorts().stream()
-	    .filter(esp -> r.getConnections()
-		.contains(esp.getConnection()))
-	    .findFirst()
-	    .get();
-	Port current = first;
-	List<Connection> allConnections = new ArrayList<>();
-	allConnections.addAll(r.getConnections());
-	while (allConnections.size() != 1) {
-	    allConnections.remove(current.getConnection());
-	    current = Flow.getOpposite(current);
-	    current = ((Switch) (current.eContainer())).getSwitchPorts().stream()
-		.filter(sp -> allConnections.contains(sp.getConnection()))
-		.findFirst()
-		.orElseThrow(() -> new Exception());
-	}
-	// success if any of the destination ports are one of the two
-	// ports
-	// of the remaining connection of routes
-	success = virtualLink.getDestinations().stream()
-	    .anyMatch(module -> {
-		    boolean matches = module.getModulePorts().contains(allConnections.get(0).getB());
-		    destinationsHit.remove(module);
-		    return matches;
-		    })
-	|| /* OR */
-	    virtualLink.getDestinations().stream()
-	    .anyMatch(module -> {
-		    boolean matches = module.getModulePorts().contains(allConnections.get(0).getA());
-		    destinationsHit.remove(module);
-		    return matches;
-		    });
+    Port first = virtualLink.getSource().getModulePorts().stream()
+        .filter(esp -> r.getConnections().contains(esp.getConnection()))
+        .findFirst()
+        .get();
+    Port current = first;
+    List<Connection> allConnections = new ArrayList<>();
+    allConnections.addAll(r.getConnections());
+    while (allConnections.size() != 1) {
+        allConnections.remove(current.getConnection());
+        current = Flow.getOpposite(current);
+        current = ((Switch) (current.eContainer())).getSwitchPorts().stream()
+        .filter(sp -> allConnections.contains(sp.getConnection()))
+        .findFirst()
+        .orElseThrow(() -> new Exception());
+    }
+    success = virtualLink.getDestinations().stream()
+        .anyMatch(module -> {
+            boolean matches = module.getModulePorts().contains(allConnections.get(0).getB());
+            destinationsHit.remove(module);
+            return matches;
+            })
+    || /* OR */
+        virtualLink.getDestinations().stream()
+        .anyMatch(module -> {
+            boolean matches = module.getModulePorts().contains(allConnections.get(0).getA());
+            destinationsHit.remove(module);
+            return matches;
+            });
 
     }
 } catch (Exception e) {

@@ -84,8 +84,7 @@ public class Analyzer {
 				r = rppp;
 				final int r_final = r;
 				rpp = tasks.get(index).getWorstCaseExecTime()
-						+ IntStream
-								.range(0, index)
+						+ IntStream.range(0, index)
 								.map(k -> (int) Math.ceil(1.0 * r_final/ tasks.get(k).getCharacteristicPeriod())
 										* tasks.get(k).getWorstCaseExecTime())
 								.sum();
@@ -183,7 +182,6 @@ public class Analyzer {
 				}
 			}
 		}
-		System.out.println("Size of results " + results.size());
 		return results;
 	}
 

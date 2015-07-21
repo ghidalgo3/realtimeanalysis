@@ -43,6 +43,7 @@ the attributes of the element. Here you can change any attribute declared
 as \texttt{changeable} by double clicking on the value field and
 entering a new value.
 \centeredpic{example/properties.png}{0.4}{Properties}{fig:properties}
+
 Some of the fields will set referential relations and will ask
 you to choose from a list of instance objects: for example, if you
 were to set the Tasks of a partition then a window will open to display
@@ -50,11 +51,13 @@ all the tasks available. For this example, we will work on a ficticious quadcopt
 the attitude controller tasks have hard realtime constraints.
 Lets add some tasks and partition definitions. 
 \centeredpic{example/defined_system.png}{0.2}{Defined system}{fig:system}
+
 Now we can start probing the system but first we would like to make sure that
 the system is ``Valid'' first: that it is structurally sound. We can
 do that by right-clicking on the \texttt{System} object and 
 then clicking on \texttt{Validate}.
 \centeredpic{example/validate}{0.3}{Validate}{fig:validate}
+
 If the model successfully validates, we should see an ``Success''
 message. But if it does not, we will see errors on the objects
 that did not pass validation.
@@ -64,6 +67,7 @@ that did not pass validation.
     \includegraphics[width=0.4\textwidth]{example/validation_success}
     \caption{Validation messages}
 \end{figure}
+
 We can quickly fix the errors and see the expected success prompt.
 Once the model has successfully validated, we can safely perform
 analysis on it.
@@ -71,6 +75,7 @@ analysis on it.
 Open the \textbf{Analysis} menu in the main
 toolbar to see the possible options.
 \centeredpic{example/analysis}{0.4}{Analysis menu}{fig:analysis}
+
 We have not defined a network yet so we are constrained to analyzing
 the tasks schedulability behavior.
 Click on \textbf{Analysis} then \textbf{Response Time}.
@@ -85,6 +90,7 @@ a bar chart of the worst case response time for all tasks in the system.
     \includegraphics[width=0.5\textwidth]{example/graph_wcrt}
     \caption{Analysis results}
 \end{figure}
+
 We have a problem with the Motors missing their deadline. We have several
 options as designers: we can decrease the execution time of the tasks,
 we can increase its period, we can redistribute the time in the parititions,
@@ -96,12 +102,14 @@ we will add more time to the ``Fast'' partition and increase the period
 of the Motors task. Rerunning the analysis will show us that all tasks
 are now schedulable.
 \centeredpic{example/alter_partitions}{0.4}{Scheduling success}{fig:sched_success}
+
 Now that a stable configuration is achieved, we can start thinking about 
 adding new functions to the system. For example, we would like to add an
 altitude control task to run alongside the PID controllers.
 We define a new task with $T,D = 200$ and $C = 50$. Unfortunately this
 tasks becomes unschedulable.
 \centeredpic{example/new_task_misses}{0.4}{Scheduling failure}{fig:fail}
+
 We can try to make it schedulable through trial and error but the plugin
 can provide some information to help us make these decisions.
 In the \texttt{Partition Functions} view, we can see that the \texttt{Least Supply}
@@ -118,6 +126,7 @@ We can also attempt to make this task a higher priority task manually
 by assigning it a higher priority as a property. However, this 
 has disastrous results. 
 \centeredpic{example/bad_results}{0.4}{Priority changes do not fix the problem}{fig:a}
+
 Notice that tasks in the ``Slow'' partition are unaffected by our changes to the
 ``Fast'' partition. This isolation is good for the designer but also for
 the system where tasks will not harm the execution of other partition
@@ -128,30 +137,84 @@ We can look at the virtual processor utilization of a partition
 to help us decide where to place new tasks. This function is in the
 \textbf{Analysis} menu. 
 \centeredpic{example/vpu_results}{0.4}{Virtual processor utilization}{fig:b}
+
 The ``Fast'' partition has a relatively high VPU: around 75\%. The slow partition's
 low VPU makes it a candidate for adding more tasks because the partition is only
 being utilized for 20\% of the time it is executing. There is also a VPU view
 chart available. Let's say that we want the drone to provide mobile wifi access.
 We define some new tasks. 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{example/new_slow_tasks}
-\includegraphics[width=0.4\textwidth]{example/new_slow_tasks_properties}
-\caption{New wifi tasks}
+    \centering
+    \includegraphics[width=0.4\textwidth]{example/new_slow_tasks}
+    \includegraphics[width=0.4\textwidth]{example/new_slow_tasks_properties}
+    \caption{New wifi tasks}
 \end{figure}
+
 Immediately we see that these new tasks are unschedulable, but only in the 
 ``Slow'' partition! 
 \centeredpic{example/missed_deadlines_within_partition}{0.5}{Local partition effects}{fig:z}
+
 Let us look to the least supply function for guidance. 
 The LSF for the ``Slow'' partition has a value of 0 at $t = 50$ which is
 the period of the wifi tasks.
 \centeredpic{example/least_supply_again}{0.5}{Least supply for ``Slow''}{fig:y}
+
 This means that no task with a period less than $t = 130$ will ever complete in the slow
 partition because there is a critical instance where the task will not get to execute for
 130 time units. This lines up with the times $(0,130)$ which the ``Fast'' partition
 claimed. Knowing this, we must make these tasks have longer periods. Once we make them
 schedulable we can then see that this increases the VPU of the ``Slow'' partition.
 \centeredpic{example/higher_vpu}{0.5}{Increased VPU}{fig:q}
+
 \subsection{Network}
 Now we will define a network component, although quadcopters do not communicate with motors
-based on packet switched networks.
+based on packet switched networks. First, open the graphical editor by first right clicking 
+on the project and selecting \textbf{Viewpoint Selection}. You should see a single option
+named `Design', select that. Right click on the project again but now select \textbf{Create Representation}
+and choose the `Network' representation with the System object as the root.
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.4\textwidth]{viewpoint/1}
+    \includegraphics[width=0.4\textwidth]{viewpoint/2}
+\caption{Creating the graphical editor}
+\end{figure}
+
+Create a few more modules to represent the motors of the quadcopter. You should then see
+a few modules in the editor. If you do not see anything, you may need to enable the layers
+which you can do with the toolbar button of the editor.
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.4\textwidth]{example/layers}
+    \includegraphics[width=0.4\textwidth]{example/network}
+\caption{Viewing the network}
+\end{figure}
+
+Before you continue editing the Network, you should make sure that there
+is an instance of a Network object in the model. \textit{\textbf{This is very important!}}
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.5\textwidth]{example/need_network_object}
+\caption{IMPORTANT}
+\end{figure}
+
+Now you can define your network using the tools on the right side of the graphical editor.
+The model will update with your changes when you save the file. Add a switch with 5 ports 
+and add module ports to all the modules. Also connect them up. Connections can only
+be made between two distinct ports.
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.5\textwidth]{example/define_physical}
+\caption{Defined network}
+\end{figure}
+
+You may also use the virtual link definition tool by enabling the Virtual Link layer. This allows
+you to define virtual links from within the editor but you will still need to define the connections
+from the tree editor.
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.5\textwidth]{example/vl_def}
+\caption{Defining virtual links}
+\end{figure}
+
+If you make a mistake in designing your network, the validator should catch it. Now you may
+run the network delay analysis options from the \textbf{Analysis} menu.

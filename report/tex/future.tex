@@ -1,19 +1,20 @@
 \pagebreak
-\section{future work}\label{future}
-this section describes what future work needs to be done to improve the project
-and the steps required to start that work.
+\section{Future work}\label{future}
+This section describes what future work needs to be done to improve the project.
 \begin{enumerate}
-    \item add units to all attributes that need them. for example,
+    \item Add units to all attributes that need them. for example,
     the worst case execution time of tasks could be in milliseconds
-    or microseconds. consistency is important in this because
+    or microseconds. Consistency is important in this because
     the code would have to be modified with unit conversions.
-    \item better sirius diagrams with more functionality. altough it
+    \item Better Sirius diagrams with more functionality. Altough it
     is possible to edit the model entirely from the tree editor, it is
-    error prone and difficult. this would require serious knowledge of
+    error prone and difficult. This would require serious knowledge of
     sirius best practices.
-    \item more analysis algorithms.
-    \item cycle detection in the network is a little harder because jgrapht does
+    \item More analysis algorithms.
+    \item Cycle detection in the network is a little harder because JGraphT does
     not provide an undirected graph cycle checker. I would like to avoid writing
-    the algorithm but apparently it is not so 
-    \href{http://stackoverflow.com/questions/526331/cycles-in-an-undirected-graph}{\textbf{hard}}. 
+    the algorithm but apparently 
+    \href{http://stackoverflow.com/questions/526331/cycles-in-an-undirected-graph}{\textbf{it is not so hard}}. 
+    \item The analysis algorithms expect that the model is valid. This is too optimistic.
+    \item Currently the \texttt{ModelInterface} class receives the model once it is validated. There should be a better way to reference the model besides waiting for the user to validate the model.
 \end{enumerate}
